@@ -1,0 +1,329 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import scatterPlotsQuiz from '@site/src/data/quizzes/data-viz/scatter-plots';
+
+# Scatter Plots
+
+### Story Time
+
+So far, you have learned how to compare categories with bar charts and how to show change over time with line charts.
+
+Now we move to another important analytical question: **Are two numerical variables related?**
+
+For example:
+
+- Do students with higher reading scores also tend to have higher writing scores?
+- Is there a relationship between hours studied and exam performance?
+- Do two measurements increase together, decrease together, or show no clear pattern?
+
+Scatter plots help answer these questions.
+
+In this lesson, you will learn how to create scatter plots with Matplotlib and how to interpret the patterns they show.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- explain when a scatter plot should be used,
+- create a scatter plot with Matplotlib,
+- add titles and axis labels,
+- interpret positive, negative, and weak relationships,
+- recognize outliers and clusters,
+- avoid common mistakes when reading scatter plots.
+
+### Why This Topic Matters
+
+Many real data problems involve relationships between two numerical variables.
+
+Examples include:
+
+- study time and exam score,
+- reading score and writing score,
+- advertising spend and sales,
+- temperature and electricity usage.
+
+A scatter plot makes these relationships easier to see by plotting each observation as a point. It helps analysts understand whether two variables tend to move together and whether the relationship appears strong, weak, or unclear.
+### What Is a Scatter Plot?
+
+A scatter plot shows pairs of numerical values on an x-y coordinate system.
+
+Each point represents one observation:
+
+- the x-position shows the value of one variable,
+- the y-position shows the value of the second variable.
+
+For example, one point might represent a student with:
+
+- reading score = 72
+- writing score = 75
+
+So every dot on the chart corresponds to one row of data.
+### When Should You Use a Scatter Plot?
+
+Use a scatter plot when:
+
+- both variables are numerical,
+- you want to study whether they are related,
+- you want to look for patterns, clusters, or outliers.
+
+A scatter plot is especially useful when the question is about **relationship**, not comparison or trend.
+
+For example:
+
+- reading score vs writing score → scatter plot  
+- gender vs average math score → bar chart  
+- sales over months → line chart
+
+### Your First Scatter Plot
+
+You can create a scatter plot in Matplotlib with `plt.scatter()`.
+
+```python
+import matplotlib.pyplot as plt
+
+reading =[5][6][7][8][9][10]
+writing =[11][12][13][14][15][16]
+
+plt.scatter(reading, writing)
+plt.show()
+```
+
+This creates a scatter plot where:
+
+- the x-axis shows reading scores,
+- the y-axis shows writing scores.
+
+Each point represents one student or one observation. 
+
+### Adding a Title and Axis Labels
+
+As with other charts, labels make the plot easier to interpret.
+
+```python
+import matplotlib.pyplot as plt
+
+reading =[6][7][8][9][10][5]
+writing =[12][13][14][15][16][11]
+
+plt.scatter(reading, writing)
+plt.title("Reading Score vs Writing Score")
+plt.xlabel("Reading Score")
+plt.ylabel("Writing Score")
+plt.show()
+```
+
+Titles and axis labels help viewers understand what each axis represents, which is essential for correct interpretation. 
+
+### Interpreting the Direction of a Relationship
+
+One of the first things to notice in a scatter plot is the **direction** of the relationship.
+
+#### Positive Relationship
+
+If points tend to move upward from left to right, the relationship is positive.
+
+This means:
+
+- as x increases,
+- y also tends to increase.
+
+For example, if students with higher reading scores also tend to have higher writing scores, the scatter plot will show an upward pattern. 
+
+#### Negative Relationship
+
+If points tend to move downward from left to right, the relationship is negative.
+
+This means:
+
+- as x increases,
+- y tends to decrease.
+
+An example might be a case where more absences are associated with lower scores. 
+
+#### No Clear Relationship
+
+If the points appear scattered without a clear upward or downward pattern, there may be little or no relationship between the variables.
+
+This means knowing one variable does not strongly help you predict the other.
+
+### Interpreting Strength
+
+The **strength** of the relationship depends on how closely the points follow a pattern.
+
+- If the points are tightly grouped around an upward or downward path, the relationship is stronger.
+- If the points are spread widely, the relationship is weaker.
+
+When reading a scatter plot, try not to focus on one point alone. Look at the overall arrangement of the points. 
+
+### Outliers and Unusual Points
+
+A scatter plot can also reveal outliers.
+
+An outlier is a point that lies far from the main group of points.
+
+For example, if most students with reading scores around 80 also have writing scores around 78–85, but one student has a writing score of 40, that point may be unusual.
+
+Outliers are important because they may represent:
+
+- data entry errors,
+- unusual observations,
+- or important exceptions in the data.
+
+### Example: Positive Relationship
+
+Suppose you create a scatter plot of reading and writing scores.
+
+```python
+import matplotlib.pyplot as plt
+
+reading =[7][8][9][10][17][18][5][6]
+writing =[13][19][20][21][22][23][24][12]
+
+plt.scatter(reading, writing)
+plt.title("Reading Score vs Writing Score")
+plt.xlabel("Reading Score")
+plt.ylabel("Writing Score")
+plt.show()
+```
+
+A good interpretation would be:
+
+- the points show an upward pattern,
+- students with higher reading scores also tend to have higher writing scores,
+- the relationship appears positive.
+
+### Example: Weak Relationship
+
+Now imagine a different scatter plot:
+
+```python
+import matplotlib.pyplot as plt
+
+hours_studied =[25][26]
+quiz_score =[8][9][22][27][28][29][6][7]
+
+plt.scatter(hours_studied, quiz_score)
+plt.title("Hours Studied vs Quiz Score")
+plt.xlabel("Hours Studied")
+plt.ylabel("Quiz Score")
+plt.show()
+```
+
+This chart may still suggest some upward tendency, but the points are more spread out.
+
+A stronger interpretation would be:
+
+- there may be a positive relationship,
+- but it does not appear very strong,
+- the scores vary even for similar study hours.
+
+### Customizing a Scatter Plot
+
+You can adjust the color, size, and transparency of points.
+
+```python
+import matplotlib.pyplot as plt
+
+reading =[9][10][17][18][5][6][7][8]
+writing =[19][20][21][22][23][24][12][13]
+
+plt.scatter(reading, writing, color="purple", s=80, alpha=0.7)
+plt.title("Reading Score vs Writing Score")
+plt.xlabel("Reading Score")
+plt.ylabel("Writing Score")
+plt.show()
+```
+
+In this example:
+
+- `color="purple"` changes the point color,
+- `s=80` changes the point size,
+- `alpha=0.7` makes points slightly transparent.
+
+These choices can improve readability, especially when many points overlap.
+
+### Reading a Scatter Plot as an Analyst
+
+When interpreting a scatter plot, ask:
+
+1. What variable is on the x-axis?  
+2. What variable is on the y-axis?  
+3. Is the relationship positive, negative, or unclear?  
+4. Is the relationship strong or weak?  
+5. Are there clusters of points?  
+6. Are there outliers or unusual observations?  
+7. What is the main message in one sentence?
+
+For example:
+
+> Reading and writing scores show a positive relationship, with higher reading scores generally associated with higher writing scores.
+
+That is a more analytical interpretation than simply saying, “The points go upward.”
+
+### Google Colab Activity
+
+Using the Students Performance dataset, create a scatter plot of:
+
+- reading score on the x-axis,
+- writing score on the y-axis.
+
+Then answer:
+
+- Does the relationship appear positive, negative, or unclear?
+- Does it seem strong or weak?
+- Are there any unusual points?
+
+### Practice Exercise
+
+Create a scatter plot using two numerical variables from a dataset you are working with.
+
+Then write 2–3 sentences that describe:
+
+- the direction of the relationship,
+- the strength of the relationship,
+- whether any outliers appear.
+
+<Quiz title="Check Your Understanding" questions={scatterPlotsQuiz} />
+
+### Challenge Exercise
+
+Create a scatter plot that tells a meaningful story about student performance.
+
+Your chart should include:
+
+- clear axis labels,
+- a title,
+- readable plotting choices,
+- a short written interpretation.
+
+Try to explain not just what the chart is, but what it suggests about the relationship between the two variables.
+
+### Common Mistakes
+
+#### Using a Scatter Plot with Categorical Variables
+
+Scatter plots are meant for two numerical variables. If one variable is categorical, another chart type is usually better. 
+
+#### Looking at Individual Points Only
+
+The value of a scatter plot comes from the overall pattern, not just one or two dots. Look for direction, strength, and clustering.
+#### Assuming Correlation Means Causation
+
+A scatter plot may show that two variables are related, but it does not prove that one causes the other.
+
+#### Ignoring Outliers
+
+Unusual points can be important. They may reflect errors, rare cases, or important exceptions that deserve attention. 
+
+### Key Takeaways
+
+In this lesson, you learned how to:
+
+- create scatter plots with Matplotlib,
+- use scatter plots to study relationships between two numerical variables,
+- interpret positive, negative, and weak relationships,
+- identify outliers and clusters,
+- read scatter plots more carefully as an analyst.
+
+### Continue Your Journey
+
+Next, you will learn **Histograms**, which help you understand how a single numerical variable is distributed.

@@ -1,0 +1,191 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import exportingDataQuiz from '@site/src/data/quizzes/working-with-data/exporting-data';
+
+# Exporting Data
+
+### Story Time
+
+You have cleaned, grouped, and summarized the Students Performance dataset.
+
+Now you want to share your results or reuse the cleaned data in future projects. Rather than repeating the same cleaning steps every time, you can **export** your DataFrames to files such as CSV or Excel and download them from Google Colab.
+
+In this lesson, you will learn how to save full, filtered, and column‑selected DataFrames to disk.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Export DataFrames to CSV files.
+- Export DataFrames to Excel files.
+- Save filtered datasets.
+- Export selected columns.
+- Download files from Google Colab.
+- Choose appropriate export formats.
+
+### Why Export Data?
+
+After cleaning, transforming, or analyzing a dataset, you will often want to save your work for future use.
+
+Exporting data allows you to:
+
+- share results with others  
+- use cleaned data in another project  
+- create reports  
+- preserve the outputs of your analysis  
+
+Saving your work as files is an important step in any data analysis workflow.
+
+---
+
+### Exporting to CSV
+
+CSV (Comma‑Separated Values) is one of the most common formats for storing tabular data.
+
+```python
+df.to_csv("students_clean.csv", index=False)
+```
+
+Here:
+
+- `"students_clean.csv"` is the filename.  
+- `index=False` prevents the DataFrame index from being written as an extra column.
+
+CSV files are widely supported by tools such as spreadsheets, databases, and programming languages.
+
+---
+
+### Exporting to Excel
+
+You can also save your data as an Excel workbook:
+
+```python
+df.to_excel("students_clean.xlsx", index=False)
+```
+
+This format is useful when you are sharing data with people who primarily use Microsoft Excel. The `index=False` argument again avoids writing the DataFrame index to the file.
+
+---
+
+### Exporting Selected Columns
+
+Sometimes you only need to export specific columns rather than the entire dataset.
+
+```python
+df[["gender", "math score", "reading score"]].to_csv(
+    "scores.csv",
+    index=False
+)
+```
+
+This creates a file containing only the selected columns. This approach is useful for focused reports or sharing only the variables that matter for a particular audience.
+
+---
+
+### Exporting Filtered Data
+
+You can export the result of any filter or subset.
+
+```python
+high_scores = df[df["math score"] >= 90]
+
+high_scores.to_csv(
+    "high_math_scores.csv",
+    index=False
+)
+```
+
+This saves only the students with mathematics scores of 90 or higher. In practice, you might create several filtered files for different groups or conditions.
+
+---
+
+### Downloading Files in Google Colab
+
+When working in Google Colab, exported files live in the Colab environment. You can download them to your local machine with:
+
+```python
+from google.colab import files
+
+files.download("students_clean.csv")
+```
+
+Run the export command first (such as `to_csv()`), then call `files.download()` with the same filename to download the file.
+
+---
+
+### Worked Example
+
+Create a cleaned version of the Students Performance dataset and save it as both a CSV and an Excel file:
+
+```python
+df.to_csv("students_clean.csv", index=False)
+df.to_excel("students_clean.xlsx", index=False)
+```
+
+You can then download these files from Colab or use them in other projects without repeating the cleaning steps.
+
+---
+
+### Practice Exercise
+
+Complete the following tasks:
+
+1. Export the complete dataset as a CSV file.  
+2. Export only the mathematics and reading scores as a CSV file.  
+3. Export students who scored above 90 in mathematics as a CSV file.  
+4. Save the filtered dataset (students with math score > 90) as an Excel workbook.
+
+Write the code for each export and confirm that the files appear in your Colab environment.
+
+---
+
+<Quiz title="Check Your Understanding" questions={exportingDataQuiz} />
+
+---
+
+### Challenge Exercise
+
+Prepare a report containing only students who **completed** the test preparation course.
+
+Then:
+
+- export this filtered dataset as a CSV file, and  
+- export the same filtered dataset as an Excel file.
+
+These two files can be shared with instructors or administrators who want to focus on this specific group.
+
+---
+
+### Common Mistakes
+
+#### Forgetting `index=False`
+
+If you omit `index=False`, the DataFrame index is written as an extra column. This is often unnecessary and can be confusing to non‑technical users.
+
+#### Saving Files to the Wrong Location
+
+In Colab, files are saved in the current working directory by default. Make sure you know where the file is created before trying to download it.
+
+#### Exporting Before Cleaning the Data
+
+If you export too early, you may share data that still contains missing values, duplicates, or inconsistent column names. Clean first, then export.
+
+#### Overwriting Important Files
+
+Using the same filename repeatedly can overwrite previous versions. Choose descriptive filenames and be careful when re‑running export commands.
+
+---
+
+### Key Takeaways
+
+In this lesson, you learned how to:
+
+- export DataFrames as CSV and Excel files,  
+- export selected columns and filtered subsets,  
+- download exported files from Google Colab,  
+- choose appropriate formats when sharing or reusing data.
+
+---
+
+### Continue Your Journey
+
+Next, you will move into the **Student Performance Case Study**, where you will apply everything you have learned—loading, cleaning, exploring, grouping, and exporting—to a complete analysis workflow.

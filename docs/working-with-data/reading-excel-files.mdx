@@ -1,0 +1,223 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import readingExcelFilesQuiz from '@site/src/data/quizzes/working-with-data/reading-excel-files';
+
+# Reading Excel Files
+
+### Story Time
+
+You have already learned how to read CSV files into Pandas.
+
+Now imagine a university sends you exam data in an Excel workbook instead. The file has one or more worksheets, and you want to analyze the data in Python rather than clicking through spreadsheets.
+
+In this lesson, you will learn how to read Excel files into Pandas DataFrames so you can work with them just like CSV files.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Explain what an Excel file is.
+- Read Excel files into Python using Pandas.
+- Load specific worksheets from a workbook.
+- Display the contents of an Excel file.
+- Explain key differences between CSV and Excel files.
+
+### Why This Topic Matters
+
+Many organizations store and share data in Microsoft Excel format.
+
+Financial reports, research data, survey responses, and administrative records are often distributed as Excel workbooks. If you can only read CSV files, you will miss a large portion of real‑world datasets.
+
+Being able to read Excel files with Pandas is an important practical skill for data analysis.
+
+### What Is an Excel File?
+
+An Excel workbook is a spreadsheet file that can contain one or more worksheets.
+
+Compared to CSV files, Excel workbooks can include:
+
+- Multiple sheets  
+- Formulas  
+- Formatting  
+- Charts  
+- Tables  
+
+For data analysis, you usually focus on the tabular data stored in the worksheets. Pandas can read that data and ignore most of the extra formatting.
+
+### Reading an Excel File
+
+Pandas provides the `read_excel()` function to load Excel files:
+
+```python
+import pandas as pd
+
+df = pd.read_excel("students_performance.xlsx")
+```
+
+Here:
+
+- `pd` refers to the Pandas library.  
+- `read_excel()` reads the Excel file.  
+- `df` is a DataFrame containing the dataset.
+
+Once loaded, you can use `df` just as you did with CSV data.
+
+### Reading a Specific Worksheet
+
+If an Excel workbook has multiple sheets, you can specify which worksheet to load using the `sheet_name` parameter:
+
+```python
+df = pd.read_excel(
+    "students_performance.xlsx",
+    sheet_name="Sheet1"
+)
+```
+
+Replace `"Sheet1"` with the actual name of the worksheet you want to read. This lets you choose a single sheet rather than loading everything at once.
+
+### Viewing the Data
+
+You can preview the DataFrame using the same functions you used for CSV files:
+
+```python
+df.head()
+```
+
+shows the first five rows, and:
+
+```python
+df.tail()
+```
+
+shows the last five rows. These functions behave the same regardless of whether the data came from CSV or Excel.
+
+### CSV vs Excel
+
+Here is a simple comparison between CSV and Excel files:
+
+| CSV               | Excel                    |
+|-------------------|--------------------------|
+| Plain text        | Spreadsheet workbook     |
+| One worksheet     | Multiple worksheets      |
+| Smaller file size | Larger file size         |
+| Often faster to read | Slightly slower to read |
+| No formatting     | Supports formatting and formulas |
+
+Both formats are common in data analysis. CSV is simple and lightweight, while Excel is richer and often used in business and administrative settings.
+
+### Worked Example
+
+```python
+import pandas as pd
+
+df = pd.read_excel("students_performance.xlsx")
+
+df.head()
+```
+
+As you look at the output, observe:
+
+- How many columns are present  
+- The names of each column  
+- A few sample records  
+
+Then compare what you see with the CSV version from the previous lesson. The structure should be similar, even though the source file format is different.
+
+### Google Colab Activity
+
+1. Upload the Excel version of the Students Performance dataset to Google Colab.  
+2. Import Pandas.  
+3. Load the dataset using `read_excel()`.  
+4. Display the first five rows with `head()`.  
+5. Display the last five rows with `tail()`.  
+
+Compare the output with what you saw when reading the CSV file.
+
+### Practice Exercise
+
+Read the Excel dataset into a DataFrame named `students`:
+
+```python
+import pandas as pd
+
+students = pd.read_excel("students_performance.xlsx")
+```
+
+Display:
+
+- The first five rows  
+- The first ten rows  
+
+Then answer:
+
+- Does the output differ from the CSV version?  
+- Which file format would you choose for data analysis, and why?
+
+Write a short explanation in your notebook.
+
+<Quiz title="Check Your Understanding" questions={readingExcelFilesQuiz} />
+
+### Independent Exercise
+
+Suppose a university provides student records in an Excel workbook containing multiple worksheets (for example, different years or departments).
+
+Research the `sheet_name` parameter, then:
+
+- Choose one worksheet name  
+- Load that worksheet using `read_excel()`  
+- Display its first five rows with `head()`
+
+This will help you practice working with multi‑sheet workbooks.
+
+### Common Mistakes
+
+#### Using the Wrong Function
+
+Incorrect:
+
+```python
+pd.read_csv("students.xlsx")
+```
+
+Correct:
+
+```python
+pd.read_excel("students.xlsx")
+```
+
+CSV files use `read_csv()`, while Excel files use `read_excel()`.
+
+#### Incorrect Worksheet Name
+
+```python
+pd.read_excel(
+    "students.xlsx",
+    sheet_name="Data"
+)
+```
+
+If `"Data"` is not a valid worksheet name, Pandas will raise an error. Always check the sheet names inside the Excel file before using them.
+
+#### Missing Excel Engine
+
+Some environments require an additional library such as `openpyxl` to read Excel files.
+
+If you see an error about an Excel engine, install it with:
+
+```bash
+pip install openpyxl
+```
+
+Google Colab already includes the required dependency in most cases.
+
+### Key Takeaways
+
+In this lesson, you learned that:
+
+- Pandas can read Excel files using `read_excel()`.  
+- Excel workbooks can contain multiple worksheets.  
+- You can use `sheet_name` to load a specific worksheet.  
+- CSV and Excel files share tabular data but differ in structure and features.  
+
+### Continue Your Journey
+
+Next, you will focus on **Understanding DataFrames**, the core data structure you will use for most of your analysis in Pandas.

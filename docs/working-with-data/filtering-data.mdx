@@ -1,0 +1,251 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import filteringDataQuiz from '@site/src/data/quizzes/working-with-data/filtering-data';
+
+# Filtering Data
+
+### Story Time
+
+You can now select specific rows and columns from your DataFrame.
+
+The next step is to focus on **which** rows you actually care about. Analysts rarely work with every record at once. Instead, they filter the data to focus on students with certain scores, courses, or categories.
+
+In this lesson, you will learn how to filter rows in a DataFrame using conditions.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Filter data using comparison operators.
+- Apply multiple filtering conditions.
+- Use logical operators (`&`, `|`, `~`).
+- Answer analytical questions using filtered datasets.
+
+### Why This Topic Matters
+
+In real analysis, you often ask questions such as:
+
+- Which students scored above 90 in mathematics?  
+- Which students completed the test preparation course?  
+- Which students received a standard lunch?  
+- Which female students scored above 80 in reading?  
+
+Filtering lets you answer these questions quickly by keeping only the rows that match the conditions you care about.
+
+### Analysis Question
+
+Consider this question:
+
+> **How can we display only students who scored more than 90 in Mathematics?**
+
+To answer this, we need to filter the DataFrame using a condition on the `math score` column.
+
+### Filtering with a Single Condition
+
+Use a comparison operator inside square brackets:
+
+```python
+df[df["math score"] > 90]
+```
+
+This returns only the rows where the mathematics score is greater than 90.
+
+### Using Different Comparison Operators
+
+Common comparison operators include:
+
+| Operator | Meaning              |
+|----------|----------------------|
+| `==`     | Equal to             |
+| `!=`     | Not equal to         |
+| `>`      | Greater than         |
+| `<`      | Less than            |
+| `>=`     | Greater than or equal to |
+| `<=`     | Less than or equal to    |
+
+Example:
+
+```python
+df[df["reading score"] >= 80]
+```
+
+This returns students whose reading score is 80 or higher.
+
+### Filtering Text Values
+
+You can filter on text columns as well.
+
+For example, to display only female students:
+
+```python
+df[df["gender"] == "female"]
+```
+
+To display students who received a standard lunch:
+
+```python
+df[df["lunch"] == "standard"]
+```
+
+These filters help you focus on particular groups.
+
+### Multiple Conditions with AND (`&`)
+
+Suppose we want **female** students who scored above 90 in mathematics:
+
+```python
+df[
+    (df["gender"] == "female") &
+    (df["math score"] > 90)
+]
+```
+
+The `&` operator means **AND**: both conditions must be true for a row to be included.
+
+### Multiple Conditions with OR (`|`)
+
+Suppose we want students who scored above 95 in mathematics **or** reading:
+
+```python
+df[
+    (df["math score"] > 95) |
+    (df["reading score"] > 95)
+]
+```
+
+The `|` operator means **OR**: at least one of the conditions must be true.
+
+### Excluding Values with NOT (`~`)
+
+Use `~` to negate a condition.
+
+Example:
+
+```python
+df[
+    ~(df["test preparation course"] == "completed")
+]
+```
+
+This returns students who did **not** complete the test preparation course.
+
+### Worked Example
+
+Question:
+
+> **Which students completed the test preparation course and scored above 80 in Mathematics?**
+
+Code:
+
+```python
+df[
+    (df["test preparation course"] == "completed") &
+    (df["math score"] > 80)
+]
+```
+
+After filtering, you might ask:
+
+- How many students satisfy both conditions?  
+- What is their average mathematics score?  
+
+You can answer these follow‑up questions using methods like `len()` and `mean()` on the filtered DataFrame.
+
+### Google Colab Activity
+
+Using the Students Performance dataset, find:
+
+- Students with mathematics scores above 90.  
+- Students with reading scores below 60.  
+- Students who completed the test preparation course.  
+- Female students with writing scores above 85.  
+
+Write each filter as a separate code cell and run them to see the results.
+
+### Practice Exercise
+
+Answer the following questions using Python:
+
+1. Display students who received free/reduced lunch.  
+2. Display students whose reading score is greater than 80.  
+3. Display male students who scored above 90 in mathematics.  
+4. Display students who scored below 50 in writing.  
+5. Display students who completed the test preparation course and scored above 85 in reading.
+
+<Quiz title="Check Your Understanding" questions={filteringDataQuiz} />
+
+### Independent Exercise
+
+A school wants to identify high‑performing students.
+
+Display students who satisfy **all** of the following:
+
+- mathematics score greater than 85  
+- reading score greater than 85  
+- writing score greater than 85  
+
+Then count how many students meet all three criteria.
+
+### Common Mistakes
+
+#### Using `=` Instead of `==`
+
+Incorrect:
+
+```python
+df[df["gender"] = "female"]
+```
+
+Correct:
+
+```python
+df[df["gender"] == "female"]
+```
+
+Use `==` for comparison; `=` is used for assignment.
+
+#### Forgetting Parentheses Around Conditions
+
+Incorrect:
+
+```python
+df[df["math score"] > 80 & df["reading score"] > 80]
+```
+
+Correct:
+
+```python
+df[
+    (df["math score"] > 80) &
+    (df["reading score"] > 80)
+]
+```
+
+Always wrap each condition in parentheses when using `&` or `|`.
+
+#### Confusing `&` and `and`
+
+Incorrect:
+
+```python
+(df["math score"] > 80) and (df["reading score"] > 80)
+```
+
+Correct:
+
+```python
+(df["math score"] > 80) & (df["reading score"] > 80)
+```
+
+When filtering DataFrames, use `&` and `|`, not `and` and `or`.
+
+### Key Takeaways
+
+In this lesson, you learned:
+
+- How to filter data using comparison operators.  
+- How to combine multiple conditions with `&`, `|`, and `~`.  
+- How filtering helps answer specific analytical questions using subsets of a dataset.  
+
+### Continue Your Journey
+
+Next, you will learn **Sorting Data**, which will help you order records by scores or other variables to see highest and lowest values clearly.

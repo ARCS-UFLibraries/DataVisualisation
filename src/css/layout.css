@@ -1,0 +1,39 @@
+/* ==========================================================
+   PAGE LAYOUT
+   ========================================================== */
+
+html {
+
+  scroll-behavior: smooth;
+
+}
+
+body {
+
+  background: var(--background-page);
+
+}
+
+/* Main documentation content */
+
+.container {
+
+  max-width: 1500px;
+
+}
+
+/* Reading width */
+
+.theme-doc-markdown {
+
+  max-width: var(--content-width);
+
+}
+
+/* Better spacing */
+
+main {
+
+  padding-bottom: 4rem;
+
+}

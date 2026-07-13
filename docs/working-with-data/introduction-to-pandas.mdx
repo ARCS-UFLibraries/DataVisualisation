@@ -1,0 +1,195 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import introductionToPandasQuiz from '@site/src/data/quizzes/working-with-data/introduction-to-pandas';
+
+# Introduction to Pandas
+
+### Story Time
+
+In the last lesson, you started thinking about student exam scores as data.
+
+Now imagine that instead of just a few rows, you have an entire class dataset with names, scores, and other details. Looking at that information one cell at a time would be slow and difficult. You would need a better way to organize, explore, and summarize the data.
+
+That is where Pandas comes in.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Explain what Pandas is.
+- Describe why Pandas is widely used for data analysis.
+- Identify the two main Pandas data structures.
+- Import the Pandas library into Python.
+
+### Why This Topic Matters
+
+As datasets grow, manual work becomes harder.
+
+For example, if you want to find the average math score, identify students who scored above 90, or check whether a test preparation course improved performance, doing everything by hand would quickly become tedious. Pandas gives you tools to work with these questions more efficiently inside Python.
+
+This makes it easier to clean, explore, and summarize tabular data as your datasets get larger.
+
+### What Is Pandas?
+
+Pandas is an open-source Python library for working with structured or tabular data.
+
+It helps you:
+
+- Load datasets.
+- Organize data.
+- Filter records.
+- Perform calculations.
+- Handle missing values.
+- Prepare data for visualization and machine learning.
+
+Pandas is one of the most widely used tools in data analysis because it is practical, flexible, and beginner-friendly once you understand the basics.
+
+### Why Is It Called Pandas?
+
+The name **Pandas** comes from the term **Panel Data**, which refers to structured datasets used in statistics and economics.
+
+Today, the name is simply associated with the Python library itself. You do not need to remember the history to use the library, but it is helpful to know where the name comes from.
+
+### What Can Pandas Read?
+
+Pandas can work with many different data formats:
+
+| File Type | Example |
+|-----------|---------|
+| CSV | Student records |
+| Excel | Financial reports |
+| JSON | API responses |
+| SQL Databases | Business databases |
+| Parquet | Large analytical datasets |
+
+In this course, you will mostly start with CSV and Excel files because they are common and easy to understand.
+
+### The Two Main Data Structures
+
+Pandas has two core data structures that you will see often.
+
+#### Series
+
+A **Series** stores one column of data.
+
+For example:
+
+```python
+72
+69
+90
+47
+76
+```
+
+You can think of a Series as a single column in a spreadsheet.
+
+#### DataFrame
+
+A **DataFrame** stores an entire table.
+
+| Gender | Math | Reading | Writing |
+|--------|------|---------|---------|
+| Female | 72 | 72 | 74 |
+| Female | 69 | 90 | 88 |
+| Male | 90 | 95 | 93 |
+
+Most of your work in Pandas will happen inside DataFrames, since they are the structure used for full datasets.
+
+### Importing Pandas
+
+Before using Pandas, you need to import it.
+
+```python
+import pandas as pd
+```
+
+This tells Python to load the Pandas library.
+
+The alias `pd` is a common convention, so you will see it in most data analysis code. It keeps code short and easy to read.
+
+### Your First Pandas Program
+
+```python
+import pandas as pd
+
+print(pd.__version__)
+```
+
+This prints the version of Pandas installed in your environment.
+
+It is a small first step, but it helps you confirm that the library is ready to use.
+
+### Worked Example
+
+```python
+import pandas as pd
+
+data = {
+    "Name": ["Emma", "Alex", "Sophia"],
+    "Math":[4][5][6]
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+```
+
+Output:
+
+```text
+     Name  Math
+0    Emma    72
+1    Alex    85
+2  Sophia    91
+```
+
+This example shows how Pandas can turn a simple Python dictionary into a table.
+
+Do not worry if this feels new. In the next lessons, you will learn how to read real datasets into DataFrames step by step.
+
+### Practice
+
+Open the accompanying notebook in Google Colab and run this code:
+
+```python
+import pandas as pd
+
+print(pd.__version__)
+```
+
+Then answer:
+
+- Was Pandas already available?
+- Which version is installed?
+
+After that, discuss these questions:
+
+1. What problems can Pandas solve that would be difficult to solve manually?
+2. What is the difference between a Series and a DataFrame?
+3. Why do most Python programs import Pandas as `pd`?
+
+<Quiz questions={introductionToPandasQuiz} />
+
+### Challenge
+
+Think about a dataset you might want to analyze, such as student scores, weather records, or shopping data.
+
+Write a short response that answers:
+
+- What kind of data would it contain?
+- Would it be better as a Series or a DataFrame?
+- What kind of question could you answer with it?
+
+### Key Takeaways
+
+In this lesson, you learned that:
+
+- Pandas is a Python library for working with tabular data.
+- It is widely used because it makes data analysis easier.
+- A Series stores one column of data.
+- A DataFrame stores an entire table.
+- You can import Pandas using `import pandas as pd`.
+
+### Continue Your Journey
+
+Now that you know what Pandas is, the next step is to learn how to install and import libraries more confidently in your notebooks.

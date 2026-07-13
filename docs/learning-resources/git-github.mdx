@@ -1,0 +1,437 @@
+# Git & GitHub
+
+### Overview
+
+Git and GitHub are essential tools for managing code, tracking project history, and collaborating with others.
+
+Although the names are often used together, they are not the same thing.
+
+- **Git** is a version control system.
+- **GitHub** is a cloud platform for hosting Git repositories.
+
+Learning both early will make your coursework, projects, and collaboration much easier.
+
+### Skill Level
+
+**Beginner**
+
+This page is designed for students who are completely new to Git, GitHub, and version control.
+
+### Why This Matters
+
+As you build more Python, data analysis, and machine learning projects, you will eventually need a reliable way to:
+
+- save project history,
+- track changes over time,
+- recover earlier versions,
+- share code with others,
+- collaborate without overwriting someone else’s work.
+
+Git and GitHub make all of this possible.
+
+They are widely used in:
+
+- software development,
+- data science,
+- academic research,
+- open-source work,
+- internships and industry teams.
+
+### What is Git?
+
+Git is a **version control system**.
+
+It records changes made to files over time, which means you can return to earlier versions, compare edits, and manage project progress more safely.
+
+With Git, you can:
+
+- track project history,
+- restore previous versions,
+- experiment without losing stable work,
+- work on new features safely,
+- collaborate with other people.
+
+You can think of Git as a timeline of your project.
+
+### What is GitHub?
+
+GitHub is a **cloud platform for hosting Git repositories**.
+
+It helps you store your projects online and makes collaboration easier.
+
+With GitHub, you can:
+
+- store repositories online,
+- share code with others,
+- collaborate in teams,
+- manage documentation,
+- track issues and project tasks,
+- publish portfolios and open-source projects.
+
+Git works on your computer. GitHub helps you share and collaborate through the web.
+
+### Git vs GitHub
+
+A simple way to remember the difference:
+
+- **Git** tracks changes in your project.
+- **GitHub** hosts Git repositories online.
+
+You use Git to manage version history locally, and you often use GitHub to store and share that work remotely.
+
+### Before You Start
+
+If you are using GitHub for the first time, make sure you have:
+
+- an email address you can access,
+- a username idea,
+- a secure password,
+- Git installed on your computer,
+- a small project or folder you can use for practice.
+
+If you do not have Git installed yet, that is okay. You can still create your GitHub account first.
+
+### Video: Create Your GitHub Account
+
+Watch this first if you have never created a GitHub account before.
+
+<div style={{position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '12px', marginBottom: '1rem'}}>
+  <iframe
+    src="https://www.youtube.com/embed/h5cKAd94QNo"
+    title="How to Create a GitHub Account"
+    style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0}}
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  />
+</div>
+
+This video is useful if you need help with the sign-up flow and first-time GitHub setup.
+
+### How to Create a GitHub Account
+
+If this is your first time using GitHub, follow these steps:
+
+1. Go to [GitHub](https://github.com/).
+2. Click **Sign up**.
+3. Enter your email address.
+4. Create a strong password.
+5. Choose a username.
+6. Follow the prompts to complete account creation.
+7. Verify your email address.
+
+Your username is important because it becomes part of your GitHub identity, so choose something professional and easy to keep long term.
+
+Try to avoid usernames that feel too informal if you plan to use GitHub for internships, projects, or professional portfolios.
+
+### Verify Your Email
+
+After signing up, GitHub will ask you to verify your email address.
+
+Do not skip this step.
+
+Email verification is important because it helps secure your account and enables full use of GitHub features.
+
+If you do not see the email immediately, check:
+
+- spam,
+- junk,
+- promotions,
+- other inbox tabs.
+
+### Set Up Your GitHub Profile
+
+After creating your account, spend a few minutes setting up your profile.
+
+A beginner-friendly profile setup includes:
+
+- your real name,
+- a short bio,
+- your location if you want,
+- a profile photo,
+- links to portfolio or LinkedIn later if needed.
+
+Your profile does not need to be perfect on day one, but it should look clean and genuine.
+
+### Enable Two-Factor Authentication
+
+It is a very good idea to enable **two-factor authentication (2FA)** on your GitHub account.
+
+This adds an extra layer of security beyond your password.
+
+Even if you are just starting out, building good security habits early is worth it.
+
+### Install Git on Your Computer
+
+To use Git from your local machine, you need to install it.
+
+The easiest starting point is to download Git from the official site:
+
+- [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Git Download Page](https://git-scm.com/downloads)
+
+After installation, open your terminal or command prompt and check that Git works:
+
+```bash
+git --version
+```
+
+If Git is installed correctly, you should see a version number.
+
+### Configure Git for the First Time
+
+After installing Git, you should set your name and email.
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+```
+
+This tells Git who is making commits.
+
+Use the same email you want connected to your GitHub account when possible.
+
+### Video: Git & GitHub Basics
+
+After creating your account, watch this basics video to understand the workflow.
+
+<div style={{position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '12px', marginBottom: '1rem'}}>
+  <iframe
+    src="https://www.youtube.com/embed/tRZGeaHPoaw"
+    title="Git and GitHub Tutorial for Beginners"
+    style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0}}
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  />
+</div>
+
+This video is helpful once you are ready to understand repositories, commits, push, and pull.
+
+### Important Beginner Terms
+
+When learning Git and GitHub, these words appear often:
+
+- **Repository (repo):** a project folder tracked by Git.
+- **Clone:** a copy of a remote repository on your computer.
+- **Stage:** selecting changes that should be included in the next commit.
+- **Commit:** a saved snapshot of staged changes.
+- **Push:** sending local commits to GitHub.
+- **Pull:** downloading new changes from GitHub.
+- **Branch:** a separate line of development used for new work.
+- **Merge:** combining changes from different branches.
+
+Understanding these terms will make the workflow much easier.
+
+### Create Your First GitHub Repository
+
+Once your account is ready, you can create your first repository.
+
+Steps:
+
+1. Log in to GitHub.
+2. Click the **+** icon in the top-right corner.
+3. Choose **New repository**.
+4. Enter a repository name.
+5. Add a short description if you want.
+6. Choose **Public** or **Private**.
+7. Optionally add a README file.
+8. Click **Create repository**.
+
+For beginners, creating a repository with a README is a good starting point because it gives the repository an initial file.
+
+### Public vs Private Repositories
+
+When creating a repository, you will usually choose between:
+
+- **Public:** anyone can see the repository.
+- **Private:** only you and selected collaborators can access it.
+
+For learning and portfolios, public repositories are often useful.
+
+For personal practice or unfinished work, private repositories can feel safer.
+
+### Basic Git Workflow
+
+A typical beginner workflow looks like this:
+
+1. Clone a repository or create a new project folder.
+2. Create or modify files.
+3. Stage your changes.
+4. Commit your changes with a meaningful message.
+5. Push the changes to GitHub.
+
+This workflow repeats throughout real projects.
+
+### A Simple Example Workflow
+
+Here is a basic Git workflow in commands:
+
+```bash
+git clone <repository-url>
+cd <repository-folder>
+git add .
+git commit -m "Add initial project files"
+git push
+```
+
+Later, when you continue working on the project, a common workflow looks like this:
+
+```bash
+git add .
+git commit -m "Update analysis notebook"
+git push
+```
+
+At the beginning, focus on understanding what each step means rather than memorizing many commands.
+
+### Your Very First Practice Plan
+
+If you are using GitHub for the first time, here is a simple practice plan:
+
+1. Create a GitHub account.
+2. Verify your email.
+3. Install Git.
+4. Configure your Git name and email.
+5. Create one test repository on GitHub.
+6. Create a small local folder on your computer.
+7. Add one text file or README.
+8. Commit the file.
+9. Push the project to GitHub.
+
+This small exercise is enough to make the workflow much more understandable.
+
+### GitHub Desktop vs Command Line
+
+Beginners often wonder whether they should start with GitHub Desktop or the command line.
+
+A simple answer is:
+
+- **GitHub Desktop** is easier for visual beginners.
+- **Command line Git** is more flexible and is widely used in technical workflows.
+
+Both are valid starting points.
+
+If you feel overwhelmed by terminal commands at first, you can begin with GitHub Desktop and gradually learn the command line alongside it.
+
+### When Students Usually Start Using Git
+
+You do not need to wait until you are an expert programmer.
+
+Git becomes useful as soon as you start working on:
+
+- class projects,
+- assignments with multiple files,
+- collaborative work,
+- portfolio projects,
+- notebooks and scripts you want to improve over time.
+
+Even simple projects benefit from version history.
+
+### Why Learn Git Early?
+
+Many students delay learning Git because it looks technical at first.
+
+But learning it early has major benefits:
+
+- you develop better project habits,
+- you lose less work,
+- you can collaborate more confidently,
+- you are better prepared for internships and research work,
+- your projects become easier to organize and share.
+
+Git can feel unfamiliar at first, but it becomes much easier with practice.
+
+### GitHub for Students
+
+GitHub is especially useful for students because it helps you:
+
+- build a public project portfolio,
+- submit code professionally,
+- collaborate on team assignments,
+- document your work with README files,
+- show recruiters or professors what you have built.
+
+A well-organized GitHub profile can become part of your professional identity.
+
+### Recommended Learning Approach
+
+If you are a beginner, a good order is:
+
+1. Learn what Git is and why version control matters.
+2. Create your GitHub account.
+3. Install Git on your computer.
+4. Learn the ideas of repository, commit, push, and pull.
+5. Practice with one small project.
+6. Later, learn branches, pull requests, and collaboration workflows.
+
+Do not try to learn everything in one day.
+
+### Recommended Resources
+
+#### Getting Started
+
+- [Creating an account on GitHub](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github)
+- [Getting started with your GitHub account](https://docs.github.com/en/get-started/onboarding/getting-started-with-your-github-account)
+- [Hello World](https://docs.github.com/en/get-started/start-your-journey/hello-world)
+
+#### Installation and Setup
+
+- [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Git Download Page](https://git-scm.com/downloads)
+- [Git Guides: Install Git](https://github.com/git-guides/install-git)
+
+#### Documentation and Guides
+
+- [Official Git Documentation](https://git-scm.com/doc)
+- [GitHub Documentation](https://docs.github.com/)
+- [Pro Git Book](https://git-scm.com/book/en/v2)
+- [Git Guides](https://github.com/git-guides)
+
+#### Interactive Practice
+
+- [GitHub Skills](https://skills.github.com/)
+- [Git and GitHub Learning Resources](https://docs.github.com/en/get-started/start-your-journey/git-and-github-learning-resources)
+
+### Common Beginner Mistakes
+
+#### Thinking Git and GitHub Are the Same
+
+They work together, but they are different tools. Git manages version history, while GitHub hosts and shares repositories.
+
+#### Memorizing Commands Without Understanding the Workflow
+
+Try to understand the meaning of clone, add, commit, push, and pull. The workflow matters more than memorizing command lists.
+
+#### Avoiding Git Until a Big Project
+
+Git is easiest to learn on small projects. Starting early makes later collaboration much easier.
+
+#### Writing Poor Commit Messages
+
+A commit message should describe what changed clearly.
+
+For example:
+
+- `Add data cleaning script`
+- `Fix score calculation bug`
+- `Update README with project instructions`
+
+This makes project history easier to understand.
+
+#### Skipping Account Setup Details
+
+Many beginners create an account quickly but forget important setup steps such as email verification, profile cleanup, and Git configuration on the local machine.
+
+### Key Takeaways
+
+- Git is a version control system.
+- GitHub is a platform for hosting Git repositories.
+- You should create and verify your GitHub account before starting collaborative work.
+- Installing and configuring Git on your computer is an important early step.
+- A beginner should first learn the basic workflow: clone, edit, stage, commit, and push.
+- Learning Git early is one of the most useful long-term technical habits you can build.
+
+### Next Step
+
+A strong next step is to create a GitHub account, install Git, create one small repository, and make your first commit.
+
+That first hands-on workflow usually makes the concepts much clearer than reading alone.

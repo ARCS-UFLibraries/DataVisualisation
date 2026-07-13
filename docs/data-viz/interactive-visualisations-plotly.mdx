@@ -1,0 +1,321 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import interactiveVisualisationsPlotlyQuiz from '@site/src/data/quizzes/data-viz/interactive-visualisations-plotly';
+
+# Interactive Visualisations with Plotly
+
+### Story Time
+
+So far, you have created visualizations mainly with Matplotlib and Seaborn.
+
+Those libraries are excellent for building strong static charts, but sometimes you want the viewer to explore the data more actively.
+
+That is where **Plotly** becomes useful.
+
+Plotly allows you to create interactive charts where users can hover over points, zoom into areas, pan across the chart, and inspect values more closely.
+
+In this lesson, you will learn how to create interactive visualizations with Plotly and how to think about interactivity as part of analysis.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- explain what makes a visualization interactive,
+- understand why Plotly is useful,
+- create simple interactive charts with Plotly Express,
+- interpret hover and zoom features,
+- compare Plotly with Matplotlib and Seaborn,
+- recognize when interactivity adds value to analysis.
+
+### Why This Topic Matters
+
+A static chart shows one view of the data.
+
+An interactive chart allows the user to explore that data more deeply.
+
+For example, interactivity can help a viewer:
+
+- inspect exact values by hovering,
+- zoom in on a dense region,
+- pan across a chart,
+- focus on a specific range or group.
+
+This is especially useful when datasets are larger or when the audience wants to ask follow-up questions while viewing the chart.
+
+### What Makes a Chart Interactive?
+
+A chart is interactive when the viewer can do more than just look at it.
+
+Common interactive features include:
+
+- hover tooltips,
+- zooming,
+- panning,
+- selecting points,
+- toggling traces on and off.
+
+Plotly charts often provide these features automatically with very little extra code.
+
+### Why Use Plotly?
+
+Plotly is a Python visualization library that makes interactive chart creation much easier.
+
+It is especially useful because:
+
+- it supports interactive exploration,
+- it works well with Python,
+- it includes a high-level interface called Plotly Express,
+- it can create many common chart types with concise syntax.
+
+### Plotly Express
+
+Plotly Express is the high-level interface inside Plotly and is the best starting point for most common figures.
+
+You usually import it like this:
+
+```python
+import plotly.express as px
+```
+
+This is similar in spirit to using Seaborn for higher-level charting.
+
+### Your First Interactive Chart
+
+Let’s create a simple interactive bar chart.
+
+```python
+import plotly.express as px
+import pandas as pd
+
+df = pd.DataFrame({
+    "gender": ["Female", "Male"],
+    "avg_math_score": [63.6, 68.7]
+})
+
+fig = px.bar(df, x="gender", y="avg_math_score", title="Average Math Score by Gender")
+fig.show()
+```
+
+This chart looks like a bar chart, but unlike a static Matplotlib version, the viewer can interact with it directly.
+
+### Hovering Over the Chart
+
+One of Plotly’s most useful features is the hover tooltip.
+
+When you place the cursor over a bar, line, or point, Plotly can show the exact value and related details.
+
+This is helpful because:
+
+- the chart stays visually clean,
+- exact values remain easy to access,
+- the viewer can inspect details only when needed.
+
+### Zooming and Panning
+
+Plotly charts also support zooming and panning.
+
+This means you can:
+
+- zoom into a crowded area,
+- focus on a smaller range,
+- move across the chart to inspect different regions.
+
+These features are especially useful for larger or denser datasets.
+
+### Interactive Line Chart
+
+Here is a simple Plotly line chart.
+
+```python
+import plotly.express as px
+import pandas as pd
+
+df = pd.DataFrame({
+    "month": ["Jan", "Feb", "Mar", "Apr"],
+    "sales":[1][2][3][4]
+})
+
+fig = px.line(df, x="month", y="sales", title="Monthly Sales Trend")
+fig.show()
+```
+
+With Plotly, you can hover over each point and inspect the exact value while still seeing the full trend.
+
+### Interactive Scatter Plot
+
+Scatter plots are especially powerful in interactive form because hover makes each point easier to inspect.
+
+```python
+import plotly.express as px
+import pandas as pd
+
+df = pd.DataFrame({
+    "reading_score":,[5][6][7][8][9][10]
+    "writing_score":,[11][12][13][14][15][16]
+    "student": ["A", "B", "C", "D", "E", "F"]
+})
+
+fig = px.scatter(
+    df,
+    x="reading_score",
+    y="writing_score",
+    hover_name="student",
+    title="Reading Score vs Writing Score"
+)
+
+fig.show()
+```
+
+Here, hovering over a point reveals which student the point represents, making the chart more informative without cluttering the plot.
+
+### Customising Hover Information
+
+Plotly Express also allows you to control what appears in hover tooltips.
+
+For example, you can use `hover_name` and `hover_data` to show additional information.
+
+```python
+import plotly.express as px
+import pandas as pd
+
+df = pd.DataFrame({
+    "reading_score":,[6][7][5]
+    "writing_score":,[12][13][11]
+    "student": ["A", "B", "C"],
+    "group": ["G1", "G1", "G2"]
+})
+
+fig = px.scatter(
+    df,
+    x="reading_score",
+    y="writing_score",
+    hover_name="student",
+    hover_data=["group"],
+    title="Reading vs Writing Scores"
+)
+
+fig.show()
+```
+
+This helps you provide richer detail without overloading the chart visually.
+
+### Why Interactivity Helps Interpretation
+
+Interactive charts do not replace good analysis, but they can support it.
+
+For example, instead of guessing which point is highest, the viewer can hover and confirm the exact value. Instead of struggling to inspect crowded regions, the viewer can zoom in and explore more carefully.
+
+This makes interactivity especially useful for exploration and presentation.
+
+### Plotly vs Matplotlib and Seaborn
+
+Each library has its strengths.
+
+**Matplotlib** is strong for foundational plotting and detailed control over static charts.
+
+**Seaborn** is strong for statistical charts and cleaner comparison plots with simpler syntax.
+
+**Plotly** is strong for interactive exploration, especially when the audience may want to hover, zoom, pan, or inspect details dynamically.
+
+A good analyst chooses the right tool for the task.
+
+### Adding Color and Labels
+
+Plotly Express also makes it easy to map color to categories and add chart titles.
+
+```python
+import plotly.express as px
+import pandas as pd
+
+df = pd.DataFrame({
+    "group": ["A", "B", "C"],
+    "score":[15][17][18]
+})
+
+fig = px.bar(
+    df,
+    x="group",
+    y="score",
+    color="group",
+    title="Score by Group"
+)
+
+fig.show()
+```
+
+This helps create interactive charts that are still clear and easy to interpret.
+
+### Exporting Interactive Charts
+
+Plotly charts can also be saved and shared as HTML files.
+
+This makes them useful for dashboards, notebooks, class projects, and interactive reports.
+
+### Google Colab Activity
+
+In Google Colab, create:
+
+1. an interactive bar chart,  
+2. an interactive line chart,  
+3. an interactive scatter plot.
+
+For each chart, interact with it by hovering and zooming, then write 1–2 sentences explaining what the interactive features helped you notice.
+
+### Practice Exercise
+
+Using a dataset of your choice, create an interactive scatter plot with Plotly Express.
+
+Your chart should include:
+
+- x and y variables,
+- a title,
+- hover information.
+
+Then answer:
+
+- What does the hover feature reveal?
+- Does zoom help you inspect crowded regions?
+- What relationship do you observe?
+
+<Quiz title="Check Your Understanding" questions={interactiveVisualisationsPlotlyQuiz} />
+
+### Challenge Exercise
+
+Choose a chart type you already know, such as a bar chart, line chart, or scatter plot, and recreate it using Plotly Express.
+
+Then write a short explanation of:
+
+- how the Plotly version differs from a static version,
+- which interactive features add value,
+- whether the interactivity improves interpretation.
+
+### Common Mistakes
+
+#### Assuming Interactivity Replaces Clarity
+
+A chart must still be well designed. Hover and zoom are helpful, but they do not fix unclear titles, weak labels, or poor chart choices.
+
+#### Adding Interactivity Without a Purpose
+
+Interactivity is most useful when it helps people explore details, inspect dense data, or answer follow-up questions. It should support analysis, not distract from it.
+
+#### Forgetting That Plotly Express Is the Best Starting Point
+
+Beginners usually benefit from starting with Plotly Express because it provides a simple and consistent way to build common charts.
+
+#### Using Too Many Visual Encodings at Once
+
+Even interactive charts can become confusing if they use too many colors, labels, and variables at once. Keep the design focused.
+
+### Key Takeaways
+
+In this lesson, you learned how to:
+
+- understand what makes a visualization interactive,
+- create interactive charts with Plotly Express,
+- use hover and zoom to explore data,
+- compare Plotly with Matplotlib and Seaborn,
+- recognize when interactive charts improve analysis.
+
+### Continue Your Journey
+
+Next, you will learn **Choosing the Right Chart**, where you will bring together everything you have learned and match chart types to analytical questions.

@@ -1,0 +1,277 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import choosingTheRightChartQuiz from '@site/src/data/quizzes/data-viz/choosing-the-right-chart';
+
+# Choosing the Right Chart
+
+### Story Time
+
+You have now learned many important chart types:
+
+- bar charts,
+- line charts,
+- scatter plots,
+- histograms,
+- boxplots,
+- heatmaps,
+- Seaborn comparison charts,
+- Plotly interactive charts.
+
+But knowing how to create charts is only part of becoming a strong data analyst.
+
+You also need to know **which chart fits which question**.
+
+A chart is useful only when it helps the viewer understand the data clearly. If the wrong chart is chosen, even correct data can become confusing or misleading.
+
+In this lesson, you will learn how to match chart types to data questions so that your visualizations communicate clearly and accurately.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- explain why chart choice matters,
+- identify the main question a visualization is trying to answer,
+- choose suitable charts for comparison, trend, relationship, and distribution,
+- recognize when a chart is a poor fit,
+- select chart types more confidently in real analysis tasks.
+
+### Why This Topic Matters
+
+Choosing a chart should begin with the analytical question.
+
+A good analyst first asks:
+
+- What am I trying to show?
+- What kind of data do I have?
+- What should the viewer notice first?
+
+The best chart depends on the purpose of the visualization, the type of variables involved, and the message you want the audience to understand.
+
+### Start with the Question
+
+Before creating a chart, ask:
+
+1. Am I comparing categories?
+2. Am I showing change over time?
+3. Am I exploring a relationship between variables?
+4. Am I studying a distribution?
+5. Am I showing values across a grid or matrix?
+6. Do I need interactivity for exploration?
+
+These questions help you choose a chart based on purpose, not habit.
+
+### Four Core Analytical Questions
+
+Most beginner chart choices can be organized around four major goals:
+
+- **comparison**
+- **trend**
+- **relationship**
+- **distribution**
+
+If you identify which of these goals matches your question, choosing a chart becomes much easier.
+
+### When to Use a Bar Chart
+
+Use a **bar chart** when your main goal is to compare categories.
+
+Examples:
+
+- compare average math score by gender,
+- compare total sales by region,
+- compare number of students in different lunch groups.
+
+Bar charts are best when the x-axis represents categories and the viewer needs to compare magnitudes across those groups.
+
+### When to Use a Line Chart
+
+Use a **line chart** when your main goal is to show change over time.
+
+Examples:
+
+- monthly revenue,
+- daily temperature,
+- yearly enrollment trends.
+
+Line charts are useful when the x-axis represents an ordered sequence, especially time, and the viewer needs to follow movement or trend.
+
+### When to Use a Scatter Plot
+
+Use a **scatter plot** when your main goal is to study the relationship between two numerical variables.
+
+Examples:
+
+- reading score vs writing score,
+- height vs weight,
+- hours studied vs exam score.
+
+Scatter plots help reveal patterns, associations, clusters, and unusual points.
+
+### When to Use a Histogram
+
+Use a **histogram** when you want to study the distribution of one numerical variable.
+
+Examples:
+
+- distribution of math scores,
+- distribution of ages,
+- distribution of salaries.
+
+Histograms help you understand where values are concentrated, how spread out they are, and whether the distribution appears balanced or skewed.
+
+### When to Use a Boxplot
+
+Use a **boxplot** when you want a compact summary of a numerical distribution or when you want to compare distributions across groups.
+
+Examples:
+
+- reading score distribution by gender,
+- salary distribution by department.
+
+Boxplots are useful for showing median, spread, quartiles, and possible outliers.
+
+### When to Use a Heatmap
+
+Use a **heatmap** when values are arranged in a matrix or grid and color can help reveal patterns quickly.
+
+Examples:
+
+- correlation matrix,
+- activity by hour and day,
+- performance across categories and periods.
+
+Heatmaps are especially useful for spotting high and low regions, clusters, or intensity patterns.
+
+### When to Use Interactive Charts
+
+Use **interactive charts** when the viewer may benefit from hovering, zooming, or exploring details more closely.
+
+Examples:
+
+- dashboards,
+- exploratory notebooks,
+- interactive presentations,
+- dense scatter plots.
+
+Interactivity is useful when the audience needs to inspect exact values or explore regions of interest.
+
+### A Simple Decision Guide
+
+Here is a practical way to think about chart selection:
+
+- **Compare categories** → Bar chart
+- **Show change over time** → Line chart
+- **Show relationship between two numerical variables** → Scatter plot
+- **Show distribution of one numerical variable** → Histogram
+- **Compare distributions across groups** → Boxplot
+- **Show values across a matrix** → Heatmap
+- **Support exploration and interaction** → Plotly chart
+
+This decision guide is not the only way to choose a chart, but it is a strong starting point for beginners.
+
+### Example: Asking the Right Question
+
+Suppose you have student performance data.
+
+If your question is:
+
+- “Which gender has the higher average math score?” → bar chart
+- “How do scores change over months?” → line chart
+- “Do reading and writing scores increase together?” → scatter plot
+- “How are math scores distributed?” → histogram
+- “How do reading score distributions differ by gender?” → boxplot
+- “How strongly are numerical variables related?” → heatmap
+
+The dataset may be the same, but the chart changes depending on the question.
+
+### Why the Wrong Chart Causes Problems
+
+A poor chart choice can confuse the viewer.
+
+For example:
+
+- using a line chart for unordered categories can suggest a false sequence,
+- using a bar chart for a distribution may hide important shape details,
+- using a scatter plot when there are no two numerical variables may not make sense,
+- using too many colors or chart elements can distract from the main message.
+
+The right chart helps the audience understand the data faster and more accurately.
+
+### Chart Choice Is About Communication
+
+A chart is not only for displaying data.
+
+It is also a communication tool.
+
+That means your goal is not just to “make a chart.” Your goal is to help the viewer answer a question, notice a pattern, or understand a conclusion.
+
+This is why strong analysts think about chart choice before they think about styling.
+
+### Google Colab Activity
+
+Using a dataset in Google Colab, write down five different questions you could ask about the data.
+
+For each question:
+
+- choose the most suitable chart type,
+- explain why that chart is a good fit.
+
+This activity helps you practice choosing charts intentionally rather than automatically.
+
+### Practice Exercise
+
+For each question below, choose the best chart:
+
+- Which lunch group appears most often?
+- How do monthly sales change over time?
+- Is there a relationship between reading score and writing score?
+- How are mathematics scores distributed?
+- How do reading score distributions differ across gender?
+
+Then explain your choice in one sentence each.
+
+<Quiz title="Check Your Understanding" questions={choosingTheRightChartQuiz} />
+
+### Challenge Exercise
+
+Choose one dataset and write at least six different analytical questions about it.
+
+Then create a mini chart-planning table with:
+
+- the question,
+- the type of variables involved,
+- the best chart choice,
+- a brief reason.
+
+This challenge will help you think like an analyst before writing any plotting code.
+
+### Common Mistakes
+
+#### Choosing a Chart Before Defining the Question
+
+Always begin with the question. If you do not know what you want to show, it is much harder to choose the right chart.
+
+#### Using a Familiar Chart for Every Problem
+
+Many beginners overuse bar charts because they feel familiar. But not every question is a comparison question.
+
+#### Ignoring the Type of Data
+
+Chart choice depends on whether your variables are categorical, numerical, ordered, or time-based.
+
+#### Making the Chart More Complex Than Necessary
+
+A simple chart that answers the question clearly is better than a complex chart that looks impressive but confuses the viewer.
+
+### Key Takeaways
+
+In this lesson, you learned how to:
+
+- choose charts based on the analytical question,
+- match chart types to comparison, trend, relationship, and distribution tasks,
+- recognize when a chart is a poor fit,
+- think more clearly about data communication,
+- select visualizations more intentionally.
+
+### Continue Your Journey
+
+Next, you will learn **Designing Effective Visualisations**, where you will focus on clarity, readability, and good visual communication.

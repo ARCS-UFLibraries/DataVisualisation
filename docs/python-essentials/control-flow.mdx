@@ -1,0 +1,379 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import controlFlowQuiz from '@site/src/data/quizzes/python-essentials/control-flow';
+
+# Control Flow
+
+### Story Time
+
+So far, you have learned how to store values, work with different data types, and use collections such as lists. Now you are ready for something more powerful: telling Python how to make decisions and repeat tasks.
+
+Imagine you are working with student exam scores. You may want to check whether a score is above a target, print only selected values, or repeat the same task for every student in a list. Control flow gives your program that ability.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Explain what control flow means in Python.
+- Use comparison operators to compare values.
+- Write `if`, `elif`, and `else` statements.
+- Use `for` loops to repeat tasks over a sequence.
+- Use `while` loops to repeat tasks while a condition is true.
+- Use `break` and `continue` to control loop behavior.
+
+### Why It Matters
+
+Programs do not become useful just by storing data. They become useful when they can respond to conditions and process repeated tasks automatically.
+
+In data analysis, you often need to:
+
+- check whether a value meets a condition,
+- repeat the same step for many rows of data,
+- stop a process early,
+- or skip unwanted values.
+
+This is why control flow is one of the most important ideas in Python.
+
+### Comparison Operators
+
+Comparison operators compare two values and return a Boolean value: either `True` or `False`.
+
+| Operator | Meaning | Example |
+| --- | --- | --- |
+| `==` | Equal to | `5 == 5` |
+| `!=` | Not equal to | `5 != 3` |
+| `>` | Greater than | `10 > 4` |
+| `<` | Less than | `8 < 12` |
+| `>=` | Greater than or equal to | `18 >= 18` |
+| `<=` | Less than or equal to | `7 <= 9` |
+
+#### Example
+
+```python
+age = 20
+print(age >= 18)
+```
+
+Output:
+
+```python
+True
+```
+
+### Conditional Statements
+
+Conditional statements allow a program to choose what to do based on a condition.
+
+#### The `if` Statement
+
+Use `if` when you want code to run only when a condition is true.
+
+```python
+age = 20
+
+if age >= 18:
+    print("Eligible to vote")
+```
+
+Output:
+
+```python
+Eligible to vote
+```
+
+Indentation matters in Python. The indented line belongs to the `if` block.
+
+#### The `if...else` Statement
+
+Use `else` when you want one action if the condition is true and another action if it is false.
+
+```python
+age = 16
+
+if age >= 18:
+    print("Eligible")
+else:
+    print("Not eligible")
+```
+
+Output:
+
+```python
+Not eligible
+```
+
+#### The `if...elif...else` Statement
+
+Use `elif` when you need to check multiple conditions in order. The word `elif` is short for “else if”.
+
+```python
+marks = 84
+
+if marks >= 90:
+    print("Grade A")
+elif marks >= 75:
+    print("Grade B")
+else:
+    print("Grade C")
+```
+
+Output:
+
+```python
+Grade B
+```
+
+### Repeating Tasks with Loops
+
+Loops repeat a block of code. This is useful when you want to perform the same action many times.
+
+Instead of writing this:
+
+```python
+print("Python")
+print("Python")
+print("Python")
+```
+
+you can use a loop.
+
+### The `for` Loop
+
+A `for` loop is useful when you want to go through a sequence, such as a list or a range of numbers.
+
+```python
+for i in range(5):
+    print(i)
+```
+
+Output:
+
+```python
+0
+1
+2
+3
+4
+```
+
+#### Looping Through a List
+
+```python
+students = ["Emma", "Alex", "Sophia"]
+
+for student in students:
+    print(student)
+```
+
+Output:
+
+```python
+Emma
+Alex
+Sophia
+```
+
+Use a `for` loop when you already know the collection or sequence you want to move through.
+
+### The `while` Loop
+
+A `while` loop repeats as long as a condition stays true.
+
+```python
+count = 1
+
+while count <= 5:
+    print(count)
+    count += 1
+```
+
+Output:
+
+```python
+1
+2
+3
+4
+5
+```
+
+Use a `while` loop when repetition depends on a condition rather than a fixed list or range.
+
+### Using `break`
+
+The `break` statement stops a loop immediately, even if the loop has more work to do.
+
+```python
+for number in range(10):
+    if number == 5:
+        break
+
+    print(number)
+```
+
+Output:
+
+```python
+0
+1
+2
+3
+4
+```
+
+### Using `continue`
+
+The `continue` statement skips the current iteration and moves to the next one.
+
+```python
+for number in range(6):
+    if number == 3:
+        continue
+
+    print(number)
+```
+
+Output:
+
+```python
+0
+1
+2
+4
+5
+```
+
+### Worked Example
+
+Suppose you have a list of student math scores and you want to display only scores above 80.
+
+```python
+scores =[6][7][8][9]
+
+for score in scores:
+    if score > 80:
+        print(score)
+```
+
+Output:
+
+```python
+82
+91
+88
+```
+
+This is a simple example of how control flow supports data analysis. Your program repeats a task for every value in the list and applies a condition to decide what to display.
+
+### Practice
+
+Try this in Google Colab:
+
+```python
+scores =[7][8][9][6]
+```
+
+Complete these tasks:
+
+1. Display every score.
+2. Display only scores greater than 80.
+3. Count how many scores are greater than 80.
+
+One possible starting point:
+
+```python
+scores =[8][9][6][7]
+
+count_above_80 = 0
+
+for score in scores:
+    print(score)
+
+for score in scores:
+    if score > 80:
+        print(score)
+        count_above_80 += 1
+
+print("Number of scores above 80:", count_above_80)
+```
+
+### Challenge
+
+Imagine each value in the list below is a student’s reading score.
+
+```python
+reading_scores =[10][11][12][13]
+```
+
+Write a program that:
+
+1. Displays only the scores greater than or equal to 80.
+2. Counts how many scores are greater than or equal to 80.
+3. Prints `"Strong performance"` if the count is 3 or more, otherwise prints `"Needs more review"`.
+
+### Common Mistakes
+
+#### Forgetting indentation
+
+Incorrect:
+
+```python
+if age >= 18:
+print("Eligible")
+```
+
+Correct:
+
+```python
+if age >= 18:
+    print("Eligible")
+```
+
+#### Using `=` instead of `==`
+
+Incorrect:
+
+```python
+if age = 18:
+```
+
+Correct:
+
+```python
+if age == 18:
+```
+
+#### Infinite `while` loops
+
+Incorrect:
+
+```python
+count = 1
+
+while count <= 5:
+    print(count)
+```
+
+This loop never ends because `count` never changes.
+Correct:
+
+```python
+count = 1
+
+while count <= 5:
+    print(count)
+    count += 1
+```
+
+<Quiz title="Check Your Understanding" questions={controlFlowQuiz} />
+
+### Key Takeaways
+
+- Comparison operators return `True` or `False`.
+- `if`, `elif`, and `else` help programs make decisions.
+- `for` loops are useful for iterating over sequences.
+- `while` loops repeat while a condition remains true.
+- `break` stops a loop, and `continue` skips to the next iteration.
+
+### Continue Your Journey
+
+Next, you will learn about **Functions**, which help you organize code into reusable blocks.

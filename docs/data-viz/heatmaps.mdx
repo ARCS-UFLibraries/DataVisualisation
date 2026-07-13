@@ -1,0 +1,324 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import heatmapsQuiz from '@site/src/data/quizzes/data-viz/heatmaps';
+
+# Heatmaps
+
+### Story Time
+
+So far, you have learned how to compare categories, show trends, explore relationships, and study distributions.
+
+Now you are ready for a chart that helps you notice patterns quickly across a grid of values: the **heatmap**.
+
+A heatmap uses color to represent numerical values. Instead of reading every number one by one, you can often spot stronger, weaker, higher, or lower areas almost immediately.
+
+In this lesson, you will learn how heatmaps work, when to use them, and how to create them in Python using Seaborn.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- explain what a heatmap is,
+- understand how color represents value,
+- create a heatmap with Seaborn,
+- read patterns, clusters, and intensity differences,
+- interpret a simple correlation heatmap,
+- avoid common mistakes when using color-based charts.
+
+### Why This Topic Matters
+
+As datasets grow, tables of numbers can become difficult to read.
+
+A heatmap helps by turning values into color patterns, making it easier to spot:
+
+- high and low values,
+- repeated patterns,
+- clusters,
+- stronger and weaker relationships.
+
+This makes heatmaps useful in many areas of analysis, especially when your data can be arranged in a matrix or table format. 
+
+### What Is a Heatmap?
+
+A heatmap is a chart that displays values in a grid, where each cell is colored according to its value.
+
+Usually:
+
+- rows represent one dimension,
+- columns represent another dimension,
+- color shows the value inside each cell.
+
+The most important idea is this: **color encodes magnitude**. Stronger or higher values usually appear with darker or more intense colors, while lower values appear lighter or less intense, depending on the color palette used. 
+
+### When Should You Use a Heatmap?
+
+Use a heatmap when:
+
+- your data can be arranged as a matrix,
+- you want to compare many values at once,
+- patterns are easier to see through color than through raw numbers.
+
+For example, heatmaps are often used for:
+
+- correlation matrices,
+- attendance patterns by day and hour,
+- values across categories and time,
+- confusion matrices in machine learning.
+
+Heatmaps are especially useful when the goal is to find patterns, not just report exact numbers. 
+
+### Why Seaborn Is Useful Here
+
+While Matplotlib can create many chart types, Seaborn makes heatmaps easier to build and style.
+
+Seaborn provides a dedicated `heatmap()` function for visualizing matrix-like data. 
+
+To use it, you first import Seaborn:
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+```
+
+### Your First Heatmap
+
+Let’s start with a small matrix of values.
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+data = [
+   ,[5][6][7]
+   ,[8][9][10]
+[11][12][13]
+]
+
+sns.heatmap(data)
+plt.show()
+```
+
+This creates a simple heatmap where each cell is colored according to its value.
+
+### Adding Labels and a Title
+
+A heatmap becomes easier to interpret when the rows and columns have labels.
+
+```python
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame(
+    [
+       ,[6][7][5]
+       ,[9][10][8]
+[12][13][11]
+    ],
+    index=["Math", "Reading", "Writing"],
+    columns=["Test 1", "Test 2", "Test 3"]
+)
+
+sns.heatmap(df)
+plt.title("Scores Across Tests")
+plt.show()
+```
+
+Now the heatmap is much more informative because the axes tell us what each row and column mean.
+
+### Adding Annotations
+
+Sometimes it is helpful to display the actual values inside the cells.
+
+Seaborn supports this with the `annot=True` argument. 
+```python
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame(
+    [
+       ,[7][5][6]
+       ,[10][8][9]
+[13][11][12]
+    ],
+    index=["Math", "Reading", "Writing"],
+    columns=["Test 1", "Test 2", "Test 3"]
+)
+
+sns.heatmap(df, annot=True)
+plt.title("Scores Across Tests")
+plt.show()
+```
+
+This lets you see both the exact values and the color pattern.
+
+### Understanding Color Intensity
+
+When reading a heatmap, pay attention to how color changes across cells.
+
+In many heatmaps:
+
+- darker or more intense cells represent larger values,
+- lighter cells represent smaller values.
+
+However, this depends on the color palette, so always make sure you understand what the colors mean in the specific chart. 
+
+### Reading a Heatmap as an Analyst
+
+When interpreting a heatmap, ask:
+
+1. What do the rows represent?  
+2. What do the columns represent?  
+3. What does the color scale mean?  
+4. Which cells show the highest values?  
+5. Which cells show the lowest values?  
+6. Are there visible patterns, clusters, or repeated structures?
+
+A good interpretation goes beyond saying “this cell is dark.” It explains what the darker area means in the context of the data.
+
+### Example: Student Scores Across Subjects and Tests
+
+```python
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame(
+    [
+       ,[5][6][7]
+       ,[8][9][10]
+[11][12][13]
+    ],
+    index=["Math", "Reading", "Writing"],
+    columns=["Test 1", "Test 2", "Test 3"]
+)
+
+sns.heatmap(df, annot=True, cmap="Blues")
+plt.title("Scores Across Subjects and Tests")
+plt.show()
+```
+
+A useful interpretation might be:
+
+- scores increase from Test 1 to Test 3 across all subjects,
+- Test 3 cells are darker, indicating higher values,
+- writing scores remain lower than math and reading across the three tests.
+
+### Correlation Heatmaps
+
+One common use of heatmaps in data analysis is the **correlation heatmap**.
+
+A correlation heatmap displays the correlation values between multiple numerical variables as a color-coded matrix, helping you spot stronger and weaker relationships more easily. 
+
+For example, if you have numerical columns such as math score, reading score, and writing score, you can compute their correlation matrix and visualize it with a heatmap.
+
+```python
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({
+    "math_score":,[14][15][6][10][5]
+    "reading_score":,[16][17][7][9][8]
+    "writing_score":[18][19][20][21][22]
+})
+
+corr = df.corr()
+
+sns.heatmap(corr, annot=True, cmap="coolwarm")
+plt.title("Correlation Heatmap")
+plt.show()
+```
+
+This chart helps you compare how strongly the numerical variables relate to one another.
+
+### How to Read a Correlation Heatmap
+
+In a correlation heatmap:
+
+- each cell represents the correlation between two variables,
+- stronger relationships often appear with more intense colors,
+- weaker relationships appear lighter,
+- the diagonal usually shows each variable correlated with itself.
+
+You should focus on which variable pairs appear most strongly related and whether the relationship is positive or negative, depending on the color scale used. 
+
+### Choosing a Color Palette
+
+Color choice matters in a heatmap.
+
+A sequential palette such as `"Blues"` works well when values move from low to high.
+
+A diverging palette such as `"coolwarm"` is often useful when the data has a meaningful center, such as correlation values ranging from negative to positive. Seaborn allows heatmap customization through arguments such as annotation, tick labeling, masking, and other formatting options. 
+
+### Google Colab Activity
+
+Create a small heatmap in Google Colab using a simple matrix of values.
+
+Then create a correlation heatmap using three numerical columns from a dataset.
+
+For each heatmap, write 2–3 sentences describing the main pattern you observe.
+
+### Practice Exercise
+
+Using a small DataFrame, create a heatmap with:
+
+- row labels,
+- column labels,
+- annotations,
+- a clear title.
+
+Then answer:
+
+- Which cells contain the highest values?
+- Which cells contain the lowest values?
+- Is there any visible pattern across rows or columns?
+
+### Check Your Understanding
+
+<Quiz title="Check Your Understanding" questions={heatmapsQuiz} />
+
+### Challenge Exercise
+
+Create a correlation heatmap using a dataset with several numerical variables.
+
+Your heatmap should include:
+
+- a readable color palette,
+- annotations,
+- a title,
+- a short written interpretation.
+
+Your interpretation should identify at least one stronger relationship and explain what the heatmap suggests.
+
+### Common Mistakes
+
+#### Using a Heatmap Without Explaining the Colors
+
+Color is the main encoding in a heatmap, so the viewer must understand what the colors represent. Darker does not always mean “better”; it means higher or more intense according to the scale. 
+
+#### Choosing a Confusing Color Palette
+
+A poor palette can make the chart harder to read. The palette should match the meaning of the data. Sequential palettes are often better for ordered magnitudes, while diverging palettes are better for values around a midpoint. 
+#### Treating the Heatmap Like a Table
+
+A heatmap is not just a colored table. Its value comes from pattern recognition, so focus on clusters, gradients, and concentration rather than reading each cell separately. 
+
+#### Overusing Annotations
+
+Annotations can help with small heatmaps, but too many numbers can make larger heatmaps cluttered and difficult to read. 
+
+### Key Takeaways
+
+In this lesson, you learned how to:
+
+- understand what a heatmap is,
+- use color to represent values in a grid,
+- create heatmaps with Seaborn,
+- interpret patterns and intensity differences,
+- read a simple correlation heatmap,
+- choose color settings more thoughtfully.
+
+### Continue Your Journey
+
+Next, you will learn **Comparative Visualisations with Seaborn**, where you will use Seaborn to create cleaner and more expressive statistical charts.

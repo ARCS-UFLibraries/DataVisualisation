@@ -1,0 +1,330 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import barChartsQuiz from '@site/src/data/quizzes/data-viz/bar-charts';
+
+# Bar Charts
+
+### Story Time
+
+In the previous lesson, you created your first charts using Matplotlib.
+
+Now you are ready to work with one of the most useful chart types in data analysis: the **bar chart**.
+
+Bar charts are especially helpful when you want to compare categories. In the Students Performance dataset, many important questions are comparison questions, such as which gender has the higher average mathematics score or which lunch group appears most often.
+
+In this lesson, you will learn how to create, read, and interpret bar charts in Python.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- explain when bar charts should be used,
+- create a basic bar chart with Matplotlib,
+- label and customize a bar chart,
+- use bar charts to compare categories,
+- interpret what a bar chart shows,
+- recognize common mistakes when using bar charts.
+
+### Why This Topic Matters
+
+Many real analytical questions involve categories rather than continuous time or numerical relationships.
+
+For example:
+
+- Which group has the highest average score?
+- Which category appears most often?
+- How do departments compare?
+- Which product sold the most?
+
+Bar charts make these comparisons easy to understand because the length or height of each bar represents the value for one category. They are one of the most common ways to compare categorical data. 
+### What Is a Bar Chart?
+
+A bar chart displays values for different categories using rectangular bars.
+
+Usually:
+
+- the x-axis shows the categories,
+- the y-axis shows the values.
+
+For example, if you want to compare average math score by gender, the categories are `Female` and `Male`, and the bar heights represent the average score for each category. 
+
+### When Should You Use a Bar Chart?
+
+Use a bar chart when you want to compare values across categories.
+
+Examples include:
+
+- average mathematics score by gender,
+- number of students in each lunch category,
+- average writing score by parental education level,
+- total sales by product category.
+
+A bar chart is a strong choice when the values represent separate groups rather than continuous time. If the goal is to show change over time, a line chart is often a better option. 
+
+### Your First Bar Chart
+
+Let’s create a simple bar chart with Matplotlib.
+
+```python
+import matplotlib.pyplot as plt
+
+categories = ["Female", "Male"]
+values = [63.6, 68.7]
+
+plt.bar(categories, values)
+plt.show()
+```
+
+This creates two bars, one for each category.
+
+The height of each bar shows the value associated with that category.
+
+### Understanding What the Bar Chart Shows
+
+In the example above:
+
+- the `Male` bar is taller than the `Female` bar,
+- this suggests that the average mathematics score is higher for male students,
+- the chart is answering a comparison question.
+
+When reading a bar chart, focus on the height of the bars and what those differences mean.
+
+### Adding a Title and Axis Labels
+
+As with other charts, labels make bar charts much easier to understand.
+
+```python
+import matplotlib.pyplot as plt
+
+categories = ["Female", "Male"]
+values = [63.6, 68.7]
+
+plt.bar(categories, values)
+plt.title("Average Mathematics Score by Gender")
+plt.xlabel("Gender")
+plt.ylabel("Average Math Score")
+plt.show()
+```
+
+Titles and labels provide context, helping the viewer understand what categories and values are being shown.
+
+### Customizing a Bar Chart
+
+You can customize the appearance of a bar chart using optional arguments.
+
+```python
+import matplotlib.pyplot as plt
+
+categories = ["Female", "Male"]
+values = [63.6, 68.7]
+
+plt.bar(categories, values, color=["#0021A5", "#FA4616"])
+plt.title("Average Mathematics Score by Gender")
+plt.xlabel("Gender")
+plt.ylabel("Average Math Score")
+plt.show()
+```
+
+This example changes the colors of the bars.
+
+Styling can improve readability, but it should not distract from the message of the chart.
+
+### Example: Counting Categories
+
+Bar charts are also useful when you want to show how many observations belong to each category.
+
+Suppose you count the number of students in each lunch group:
+
+```python
+import matplotlib.pyplot as plt
+
+lunch_types = ["Standard", "Free/Reduced"]
+counts = 
+
+plt.bar(lunch_types, counts)
+plt.title("Number of Students by Lunch Type")
+plt.xlabel("Lunch Type")
+plt.ylabel("Number of Students")
+plt.show()
+```
+
+This chart helps you compare category frequencies.
+
+A good interpretation might be:
+
+- the `Standard` group has more students than the `Free/Reduced` group,
+- the difference between the groups is clearly visible,
+- the chart is useful for comparing counts, not trends or relationships.
+
+### Reading a Bar Chart as an Analyst
+
+When interpreting a bar chart, ask yourself:
+
+1. What categories are being compared?  
+2. What value does each bar represent?  
+3. Which category is highest?  
+4. Which category is lowest?  
+5. Are the differences small or large?  
+6. What conclusion can I state in one sentence?
+
+For example:
+
+> Students in the `Male` category have a higher average mathematics score than students in the `Female` category.
+
+That is more useful than simply saying, “This is a bar chart.”
+
+### Comparing More Categories
+
+Bar charts become even more useful when there are several categories.
+
+For example, you might compare average writing score across parental education levels:
+
+```python
+import matplotlib.pyplot as plt
+
+education_levels = [
+    "Some High School",
+    "High School",
+    "Some College",
+    "Associate's",
+    "Bachelor's",
+    "Master's"
+]
+
+avg_writing_scores =[4][5][6][7][8][9]
+
+plt.figure(figsize=(10, 4))
+plt.bar(education_levels, avg_writing_scores)
+plt.title("Average Writing Score by Parent Education Level")
+plt.xlabel("Parent Education Level")
+plt.ylabel("Average Writing Score")
+plt.xticks(rotation=45)
+plt.show()
+```
+
+This chart compares multiple categories at once.
+
+The rotated x-axis labels help make long category names easier to read.
+
+### Interpreting a Multi-Category Bar Chart
+
+When a bar chart has many categories, interpretation often involves ranking:
+
+- which category has the highest value,
+- which category has the lowest value,
+- whether the categories are close together or clearly separated.
+
+For example, if `Master's` has the highest average writing score, you can say:
+
+> Students whose parents have a master’s degree show the highest average writing score among the listed education groups.
+
+### Adding Value Labels to Bars
+
+Sometimes it helps to show the numeric value directly on top of each bar.
+
+Matplotlib provides a helper for adding bar labels to bar containers. 
+
+```python
+import matplotlib.pyplot as plt
+
+categories = ["Female", "Male"]
+values = [63.6, 68.7]
+
+bars = plt.bar(categories, values)
+plt.title("Average Mathematics Score by Gender")
+plt.ylabel("Average Math Score")
+
+plt.bar_label(bars, fmt="%.1f")
+plt.show()
+```
+
+This can make the chart easier to read, especially when the exact values matter.
+
+### Worked Example
+
+Suppose you want to compare the average reading score for students in different lunch categories.
+
+```python
+import matplotlib.pyplot as plt
+
+lunch = ["Standard", "Free/Reduced"]
+avg_reading =[5][10]
+
+plt.bar(lunch, avg_reading, color=["steelblue", "orange"])
+plt.title("Average Reading Score by Lunch Type")
+plt.xlabel("Lunch Type")
+plt.ylabel("Average Reading Score")
+plt.show()
+```
+
+A useful interpretation would be:
+
+- students in the `Standard` lunch category have a higher average reading score,
+- the difference between the two categories is visible,
+- the chart supports a comparison between categorical groups.
+
+### Google Colab Activity
+
+Using the Students Performance dataset, create bar charts for the following:
+
+1. average mathematics score by gender,  
+2. average reading score by lunch type,  
+3. number of students in each race/ethnicity group.
+
+For each chart, write 1–2 sentences describing the main comparison you observe.
+
+### Practice Exercise
+
+Create a bar chart showing average writing score by parental education level.
+
+Then answer:
+
+- Which category has the highest average writing score?
+- Which category has the lowest average writing score?
+- Are the differences large or relatively small?
+
+<Quiz title="Check Your Understanding" questions={barChartsQuiz} />
+
+### Challenge Exercise
+
+Choose a categorical variable from the Students Performance dataset and create a bar chart that tells a clear story.
+
+Your chart should include:
+
+- a meaningful title,
+- axis labels,
+- readable category names,
+- a short written interpretation.
+
+Try to make the chart understandable even for someone who has not seen the dataset before.
+
+### Common Mistakes
+
+#### Using a Bar Chart for the Wrong Question
+
+Bar charts are best for comparing categories. If the data represents time or a continuous sequence, a line chart may be more appropriate. 
+
+#### Forgetting Labels
+
+Without a title and axis labels, the viewer may not understand what the categories or values represent. Clear labeling is essential. 
+
+#### Overcrowding the X-Axis
+
+If there are too many categories or the labels are too long, the chart becomes hard to read. Rotating labels or reducing the number of categories can help.
+
+#### Describing the Bars Without Interpreting Them
+
+Do not stop at “the blue bar is taller.” Go one step further and explain what that means in the context of the data.
+
+### Key Takeaways
+
+In this lesson, you learned how to:
+
+- use bar charts to compare categories,
+- create bar charts with Matplotlib,
+- label and customize them,
+- interpret highest, lowest, and relative differences across groups,
+- avoid common mistakes when working with categorical comparisons.
+
+### Continue Your Journey
+
+Next, you will learn **Line Charts**, which are especially useful for showing how values change over time or across an ordered sequence.

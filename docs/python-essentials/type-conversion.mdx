@@ -1,0 +1,361 @@
+# Type Conversion
+
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import quiz from '@site/src/data/quizzes/python-essentials/type-conversion.ts';
+
+Learn how to convert values from one data type to another so Python can use them correctly in calculations, analysis, and output.
+
+**Skill Level:** Beginner  
+**Prerequisites:** Variables, Data Types  
+**Estimated Time:** 20 minutes
+
+### Story Time
+
+In the previous lesson, you learned that Python stores different kinds of information using different data types. However, real data is not always stored in the form we need.
+
+For example, a number entered by a user may arrive as text. A value from a CSV file may look numeric but still be stored as a string. Before Python can calculate, compare, or analyze these values, we often need to convert them.
+
+That process is called **type conversion**. It is an important skill because data analysis often begins with turning raw values into the correct format for computation.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Explain what type conversion is.
+- Convert between common Python data types.
+- Use built-in conversion functions such as `int()`, `float()`, `str()`, and `bool()`.
+- Recognize situations where type conversion is needed.
+- Avoid common beginner mistakes when converting values.
+
+### Why This Matters
+
+Data is rarely stored exactly the way we need it. User input is commonly returned as text, and imported data files often contain values that must be converted before analysis.
+
+If Python expects a number but receives a string instead, calculations may fail or produce unexpected results. Learning type conversion now will help you work more confidently with datasets later in the course.
+
+### What Is Type Conversion?
+
+Type conversion is the process of changing a value from one data type into another.
+
+For example:
+
+```python
+age = "21"
+print(type(age))
+```
+
+Output:
+
+```python
+<class 'str'>
+```
+
+Even though `"21"` looks like a number, Python treats it as text because it is inside quotation marks.
+
+### Converting to an Integer
+
+Use the `int()` function when you want to convert a value into a whole number.
+
+```python
+age = "21"
+age = int(age)
+
+print(age)
+print(type(age))
+```
+
+Output:
+
+```python
+21
+<class 'int'>
+```
+
+This is useful when a value should be treated as a count, age, or any other whole-number quantity.
+
+### Converting to a Float
+
+Use the `float()` function when a value should be stored as a decimal number.
+
+```python
+height = "172.5"
+height = float(height)
+
+print(height)
+print(type(height))
+```
+
+Output:
+
+```python
+172.5
+<class 'float'>
+```
+
+This is common when working with measurements, averages, prices, and percentages.
+
+### Converting Numbers to Strings
+
+Use the `str()` function to turn a number into text.
+
+```python
+score = 95
+score = str(score)
+
+print(score)
+print(type(score))
+```
+
+Output:
+
+```python
+95
+<class 'str'>
+```
+
+This is useful when you want to combine numbers with messages or labels in output.
+
+### Converting to a Boolean
+
+Use the `bool()` function to convert a value into `True` or `False`.
+
+```python
+print(bool(1))
+print(bool(0))
+```
+
+Output:
+
+```python
+True
+False
+```
+
+Some common examples are:
+
+| Value | Result |
+|-------|--------|
+| `bool(1)` | `True` |
+| `bool(0)` | `False` |
+| `bool("")` | `False` |
+| `bool("Python")` | `True` |
+
+In Python, many values have a truth value. Zero and empty strings are treated as `False`, while many other values are treated as `True`.
+
+### A Note About `"True"` and `"False"`
+
+This is a common beginner confusion. The string `"True"` is still text, not a Boolean value.
+
+For example:
+
+```python
+print(bool("False"))
+```
+
+Output:
+
+```python
+True
+```
+
+That happens because the string is not empty. In Python, a non-empty string converts to `True`, even if the text inside it says `"False"`.
+
+So if your data contains the text `"True"` or `"False"`, you should not assume that `bool()` will interpret the meaning of the word. You may need to compare the string directly or clean it before conversion.
+
+### Common Conversion Functions
+
+| Function | Converts To |
+|----------|-------------|
+| `int()` | Integer |
+| `float()` | Float |
+| `str()` | String |
+| `bool()` | Boolean |
+
+These are the conversion functions you will use most often in beginner Python programs.
+
+### Worked Example
+
+```python
+age = "22"
+height = "168.5"
+
+age = int(age)
+height = float(height)
+
+print(age)
+print(height)
+
+print(type(age))
+print(type(height))
+```
+
+Output:
+
+```python
+22
+168.5
+<class 'int'>
+<class 'float'>
+```
+
+This example shows how text values can be converted into numeric values so they can be used properly in calculations.
+
+### Why Conversion Is Important
+
+Consider this code:
+
+```python
+age = input("Enter your age: ")
+print(age + 5)
+```
+
+This produces an error because `input()` returns text, not a number.
+
+Correct version:
+
+```python
+age = int(input("Enter your age: "))
+print(age + 5)
+```
+
+Now Python can perform numerical addition because the input has been converted to an integer.
+
+### Quick Check
+
+Predict the output before running the code:
+
+```python
+number = "50"
+
+print(type(number))
+
+number = int(number)
+
+print(type(number))
+```
+
+This is a simple way to check whether you understand how conversion changes a value.
+
+### Practice
+
+Create the following variables as strings:
+
+```python
+age = "20"
+height = "170.2"
+```
+
+Convert them into the appropriate data types and display both the value and the type.
+
+You can use this pattern:
+
+```python
+age = "20"
+height = "170.2"
+
+age = int(age)
+height = float(height)
+
+print(age, type(age))
+print(height, type(height))
+```
+
+### Try It Yourself
+
+Convert the following values:
+
+```python
+price = "45.99"
+students = "120"
+marks = 88
+```
+
+Tasks:
+
+- Convert `price` to a float.
+- Convert `students` to an integer.
+- Convert `marks` to a string.
+- Display the data type after each conversion.
+
+### Challenge
+
+A survey dataset contains the following values as text:
+
+```python
+age = "24"
+gpa = "3.85"
+graduated = "True"
+```
+
+Convert each value into the most appropriate data type.
+
+Then think carefully about `graduated`. Should `"True"` be converted using `bool()`, or should it be handled another way?
+
+This is an important question because real datasets often contain text values that look like Boolean values but need extra cleaning before they can be used safely.
+
+### Common Mistakes
+
+#### Trying to convert non-numeric text into an integer
+
+```python
+number = "Python"
+int(number)
+```
+
+This causes a `ValueError` because `"Python"` is not a numeric string.
+
+#### Forgetting to store the converted value
+
+Incorrect:
+
+```python
+age = "20"
+int(age)
+
+print(type(age))
+```
+
+Output:
+
+```python
+<class 'str'>
+```
+
+Correct:
+
+```python
+age = int(age)
+print(type(age))
+```
+
+Output:
+
+```python
+<class 'int'>
+```
+
+The conversion must be assigned back to a variable if you want the change to be saved.
+
+#### Assuming `input()` returns numbers
+
+```python
+age = input("Age: ")
+```
+
+`input()` always returns a string, even when the user types digits.
+
+If you want to do arithmetic with the result, convert it first.
+
+### Key Takeaways
+
+- Type conversion changes a value from one data type into another.
+- `int()`, `float()`, `str()`, and `bool()` are common Python conversion functions.
+- `input()` returns a string, so conversion is often needed before calculations.
+- Non-empty strings such as `"False"` can still convert to `True` with `bool()`, so Boolean-like text should be handled carefully.
+- Type conversion is an essential skill for preparing data for analysis.
+
+<Quiz questions={quiz} />
+
+### Continue Your Journey
+
+In the next lesson, you will explore **built-in functions**, which will help you perform useful tasks more efficiently in Python.

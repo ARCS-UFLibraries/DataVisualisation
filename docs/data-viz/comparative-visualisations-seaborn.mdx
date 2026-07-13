@@ -1,0 +1,282 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import comparativeVisualisationsWithSeabornQuiz from '@site/src/data/quizzes/data-viz/comparative-visualisations-with-seaborn';
+
+# Comparative Visualisations with Seaborn
+
+### Story Time
+
+Until now, you have mainly created charts using Matplotlib and used Seaborn for heatmaps.
+
+Now it is time to use Seaborn more fully for **comparative visualisation**.
+
+In real data analysis, we often want charts that compare groups clearly and quickly. Seaborn is especially helpful here because it provides cleaner defaults, simpler syntax for statistical plots, and strong support for working directly with dataset columns. 
+In this lesson, you will learn how Seaborn helps you compare categories and distributions more effectively.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- explain why Seaborn is useful for comparative visualisation,
+- create comparative charts with Seaborn,
+- use `barplot()`, `countplot()`, and `boxplot()`,
+- compare groups using a DataFrame and column names,
+- interpret category differences more clearly,
+- choose an appropriate Seaborn plot for a comparison question.
+
+### Why This Topic Matters
+
+Many questions in data analysis are comparison questions.
+
+For example:
+
+- Which group has the highest average score?
+- How many students belong to each category?
+- Which group has the wider spread of values?
+- How do groups differ across a second category?
+
+Seaborn makes these comparisons easier because it offers high-level chart functions designed for statistical graphics and group-based comparisons. 
+
+### Why Use Seaborn Instead of Only Matplotlib?
+
+Matplotlib gives you detailed control, but Seaborn often makes common statistical charts easier to create.
+
+Compared with plain Matplotlib, Seaborn is often preferred for quick, attractive, and statistically oriented plots with less code. It also works naturally with DataFrames and can map variables directly by column name. 
+
+That means you can focus more on the data question and less on plotting setup.
+
+### Importing Seaborn
+
+You usually import Seaborn like this:
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+```
+
+Seaborn is built on top of Matplotlib, so you will often use both libraries together. 
+
+### Seaborn and DataFrames
+
+One of Seaborn’s biggest advantages is that it works smoothly with DataFrames.
+
+Instead of passing separate lists for every chart, you can often write code like this:
+
+```python
+sns.barplot(data=df, x="gender", y="math_score")
+```
+
+This makes your code easier to read because it directly reflects the dataset columns you are analyzing.
+
+### Seaborn Bar Plot
+
+A Seaborn `barplot()` is useful when you want to compare a summary statistic, often the mean, across categories.
+
+```python
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({
+    "gender": ["Female", "Female", "Male", "Male"],
+    "math_score":[4][5][6][7]
+})
+
+sns.barplot(data=df, x="gender", y="math_score")
+plt.title("Average Math Score by Gender")
+plt.show()
+```
+
+A bar plot is useful when the question is something like:
+
+- Which category has the higher average?
+- How do group means compare?
+
+Seaborn bar plots commonly summarize the values in each category, making them different from a simple count chart. 
+
+### Interpreting a Seaborn Bar Plot
+
+Suppose the `Male` bar is higher than the `Female` bar.
+
+A useful interpretation would be:
+
+- the average mathematics score for male students is higher in this sample,
+- the chart compares group averages rather than individual student scores.
+
+This is important because the plot shows a summary, not every raw observation.
+
+### Seaborn Count Plot
+
+A `countplot()` is useful when you want to count how many observations fall into each category.
+
+```python
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({
+    "lunch": ["Standard", "Standard", "Free/Reduced", "Standard", "Free/Reduced"]
+})
+
+sns.countplot(data=df, x="lunch")
+plt.title("Count of Students by Lunch Type")
+plt.show()
+```
+
+A count plot can be thought of as a histogram for a categorical variable because it shows the number of observations in each category. 
+
+### Interpreting a Count Plot
+
+A count plot answers questions such as:
+
+- Which category appears most often?
+- Which category appears least often?
+- Are category counts balanced or uneven?
+
+For example:
+
+> The `Standard` lunch group appears more often than the `Free/Reduced` group in this dataset.
+
+That is a stronger interpretation than just naming the tallest bar.
+
+### Seaborn Box Plot
+
+Seaborn also provides `boxplot()` for comparing distributions across categories.
+
+```python
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({
+    "gender": ["Female", "Female", "Female", "Male", "Male", "Male"],
+    "reading_score":[6][7][8][9][10][11]
+})
+
+sns.boxplot(data=df, x="gender", y="reading_score")
+plt.title("Reading Score Distribution by Gender")
+plt.show()
+```
+
+This is useful when the question is not only about average difference, but also about spread, median, and possible outliers. 
+
+### Bar Plot vs Count Plot vs Box Plot
+
+These three Seaborn charts answer different comparison questions.
+
+Use **`barplot()`** when you want to compare a summary value such as an average across groups. 
+
+Use **`countplot()`** when you want to compare how many observations belong to each category. 
+
+Use **`boxplot()`** when you want to compare the distribution of a numerical variable across groups, including median, spread, and possible outliers. 
+
+### Adding a Second Grouping Variable
+
+Seaborn also makes it easier to compare groups using color with a second categorical variable.
+
+This is often done with the `hue` argument.
+
+```python
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({
+    "gender": ["Female", "Female", "Male", "Male"],
+    "test_preparation": ["Completed", "None", "Completed", "None"],
+    "math_score":[8][9][12][13]
+})
+
+sns.barplot(data=df, x="gender", y="math_score", hue="test_preparation")
+plt.title("Average Math Score by Gender and Test Preparation")
+plt.show()
+```
+
+The `hue` argument adds another layer of comparison by using color to separate a second category.
+
+### Reading Comparative Plots More Carefully
+
+When reading Seaborn comparison charts, ask:
+
+1. What is being compared?  
+2. Is the chart showing counts, averages, or full distributions?  
+3. Which groups are highest or lowest?  
+4. Are the differences small or large?  
+5. Is there a second grouping variable shown through color?
+
+These questions help students move beyond “chart reading” into actual data interpretation.
+
+### Example: Choosing the Right Seaborn Plot
+
+Suppose you are working with the Students Performance dataset.
+
+- Want to compare **average math score by gender** → `barplot()`
+- Want to compare **number of students by lunch type** → `countplot()`
+- Want to compare **reading score distribution by gender** → `boxplot()`
+
+Choosing the right plot depends on the type of question you are trying to answer.
+
+### Google Colab Activity
+
+Using a dataset in Google Colab, create:
+
+1. a `barplot()` for average score by category,  
+2. a `countplot()` for category frequency,  
+3. a `boxplot()` for score distribution by group.
+
+Then write 1–2 sentences explaining what each plot reveals that the others do not.
+
+### Practice Exercise
+
+Using the Students Performance dataset, create the following:
+
+- a Seaborn bar plot for average math score by gender,
+- a Seaborn count plot for lunch type,
+- a Seaborn box plot for reading score by gender.
+
+For each plot, write a short interpretation.
+
+<Quiz title="Check Your Understanding" questions={comparativeVisualisationsWithSeabornQuiz} />
+
+### Challenge Exercise
+
+Choose one question from your dataset that involves comparing groups.
+
+Then decide whether `barplot()`, `countplot()`, or `boxplot()` is the best choice.
+
+Create the chart and write a short explanation of:
+
+- why you chose that plot,
+- what the chart shows,
+- what conclusion a viewer can draw from it.
+
+### Common Mistakes
+
+#### Using the Wrong Plot for the Question
+
+A count plot shows category frequency, not averages. A bar plot often shows a summary statistic. A box plot shows distribution. Choosing the wrong chart can lead to the wrong interpretation. 
+
+#### Forgetting What the Plot Summarizes
+
+Some Seaborn charts summarize the data rather than showing every raw point. Be clear about whether the chart displays counts, averages, or distributions. 
+
+#### Adding Too Many Colors
+
+Using `hue` can be helpful, but too many categories can make the chart hard to read. Use color only when it adds a meaningful second comparison.
+
+#### Treating Seaborn as Just “Prettier Matplotlib”
+
+Seaborn is not only about appearance. Its real value is that it makes statistical comparison plots easier to create and interpret. 
+
+### Key Takeaways
+
+In this lesson, you learned how to:
+
+- use Seaborn for comparative visualisation,
+- create bar plots, count plots, and box plots,
+- compare groups more efficiently using DataFrames,
+- choose the right Seaborn plot for the question,
+- interpret grouped statistical charts more clearly.
+
+### Continue Your Journey
+
+Next, you will learn **Interactive Visualisations with Plotly**, where you will create charts that users can explore dynamically.

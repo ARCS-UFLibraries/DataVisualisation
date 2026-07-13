@@ -1,0 +1,305 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import understandingDataFramesQuiz from '@site/src/data/quizzes/working-with-data/understanding-dataframes';
+
+# Understanding DataFrames
+
+### Story Time
+
+You have learned how to read CSV and Excel files into Pandas.
+
+Each time you load a dataset, Pandas stores it in a structure called a **DataFrame**. If you understand how DataFrames are organized, it becomes much easier to filter data, perform calculations, and build visualizations.
+
+In this lesson, you will get comfortable with the basic structure of a DataFrame.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Explain what a DataFrame is.
+- Describe the structure of a DataFrame.
+- Identify rows, columns, indexes, and values.
+- Display basic information about a DataFrame.
+- Understand how Pandas organizes tabular data.
+
+### Why This Topic Matters
+
+Every dataset you load with Pandas becomes a DataFrame.
+
+The DataFrame is the central object you will work with throughout the rest of this guide. When you select rows, choose columns, compute averages, or create charts, you will almost always start from a DataFrame.
+
+Understanding this structure now will make all later steps feel more natural.
+
+### What Is a DataFrame?
+
+A **DataFrame** is a two‑dimensional table used to store data.
+
+It is similar to:
+
+- a spreadsheet in Microsoft Excel, or  
+- a table in a database.
+
+Each DataFrame consists of:
+
+- **Rows** – observations or records  
+- **Columns** – variables or attributes  
+- **An index** – labels for the rows  
+- **Values** – the actual data stored in each cell  
+
+Example:
+
+| Index | Name   | Math | Reading | Writing |
+|------:|--------|-----:|--------:|--------:|
+| 0     | Emma   | 72   | 72      | 74      |
+| 1     | Alex   | 69   | 90      | 88      |
+| 2     | Sophia | 90   | 95      | 93      |
+
+### Rows and Columns
+
+A **row** represents one observation or record.
+
+In the Students Performance dataset, each row represents one student.
+
+A **column** represents one variable or attribute, such as:
+
+- gender  
+- lunch type  
+- math score  
+- reading score  
+- writing score  
+
+Rows and columns together form the grid of data in the DataFrame.
+
+### The Index
+
+Every row has an index, which is a label used to identify that row.
+
+By default, Pandas starts indexing from **0**:
+
+| Index | Student |
+|------:|---------|
+| 0     | Emma    |
+| 1     | Alex    |
+| 2     | Sophia  |
+
+The index helps Pandas keep track of rows when you select, slice, or join data.
+
+### Loading the Dataset
+
+```python
+import pandas as pd
+
+df = pd.read_csv("students_performance.csv")
+```
+
+Here, `df` is a DataFrame containing the Students Performance dataset.
+
+Once loaded, you can inspect and work with the data using Pandas functions and attributes.
+
+### Viewing the First Rows
+
+Use `head()` to preview the start of the dataset:
+
+```python
+df.head()
+```
+
+By default, this displays the first **five** rows. It is a quick way to check that the data loaded correctly.
+
+### Viewing Information About the DataFrame
+
+Use the `info()` method to see a summary of the DataFrame:
+
+```python
+df.info()
+```
+
+Example output (simplified):
+
+```text
+RangeIndex: 1000 entries, 0 to 999
+Data columns (total 8 columns):
+  gender
+  race/ethnicity
+  ...
+  math score
+  reading score
+  writing score
+```
+
+`info()` provides:
+
+- number of rows  
+- number of columns  
+- data types  
+- information about missing values  
+- memory usage  
+
+This is helpful for understanding the overall structure of the dataset.
+
+### Displaying the Shape
+
+Use the `shape` attribute to see the dimensions of the DataFrame:
+
+```python
+df.shape
+```
+
+Output:
+
+```text
+(1000, 8)
+```
+
+This means:
+
+- 1000 rows  
+- 8 columns  
+
+### Viewing Column Names
+
+Use the `columns` attribute to list all column names:
+
+```python
+df.columns
+```
+
+Example output (simplified):
+
+```text
+Index([
+  'gender',
+  'race/ethnicity',
+  'parental level of education',
+  'lunch',
+  'test preparation course',
+  'math score',
+  'reading score',
+  'writing score'
+])
+```
+
+This is useful when you want to select or rename columns.
+
+### Viewing the Index
+
+Use the `index` attribute to inspect the index:
+
+```python
+df.index
+```
+
+Example output:
+
+```text
+RangeIndex(start=0, stop=1000, step=1)
+```
+
+This tells you how rows are labeled in the DataFrame.
+
+### Worked Example
+
+```python
+import pandas as pd
+
+df = pd.read_csv("students_performance.csv")
+
+print(df.shape)
+print(df.columns)
+
+df.head()
+```
+
+After running this code, consider:
+
+- How many rows are in the dataset?  
+- How many columns are present?  
+- Which columns contain exam scores?  
+- Which columns contain categorical information (such as text)?  
+
+These questions help you begin to understand the structure of the data.
+
+### Google Colab Activity
+
+Load the Students Performance dataset in Google Colab.
+
+Run the following commands:
+
+```python
+df.head()
+df.info()
+df.shape
+df.columns
+df.index
+```
+
+Observe how each command provides different information about the DataFrame.
+
+### Practice Exercise
+
+Using the Students Performance dataset, answer these questions:
+
+1. How many students are included?  
+2. How many variables are recorded?  
+3. List all column names.  
+4. Which columns contain numerical values?  
+5. Which columns contain text?  
+
+Write your answers in your notebook or in a text cell in Colab.
+
+### Check Your Understanding
+
+<Quiz title="Check Your Understanding" questions={understandingDataFramesQuiz} />
+
+### Independent Exercise
+
+Choose another dataset from the Dataset Library.
+
+Load it into a DataFrame and investigate:
+
+- number of rows  
+- number of columns  
+- column names  
+- data types  
+
+Compare your observations with what you saw in the Students Performance dataset. Notice how different datasets can still share a similar structure.
+
+### Common Mistakes
+
+#### Confusing Rows and Columns
+
+Remember:
+
+- Rows represent **observations**.  
+- Columns represent **variables**.
+
+#### Forgetting That Indexing Starts at Zero
+
+The first row has index **0**, not **1**. This zero‑based indexing is common in many programming languages.
+
+#### Confusing `shape` and `head()`
+
+```python
+df.shape
+```
+
+returns the dimensions of the dataset (rows, columns).
+
+```python
+df.head()
+```
+
+returns the first few rows of the dataset.
+
+They serve different purposes and are both useful.
+
+### Key Takeaways
+
+In this lesson, you learned that:
+
+- A DataFrame is a two‑dimensional table similar to a spreadsheet or database table.  
+- DataFrames are made up of rows, columns, an index, and values.  
+- `head()`, `info()`, `shape`, `columns`, and `index` help you inspect the structure of a DataFrame.  
+
+### Continue Your Journey
+
+Next, you will learn how to **explore your data** by looking at summary statistics and basic patterns in the DataFrame.

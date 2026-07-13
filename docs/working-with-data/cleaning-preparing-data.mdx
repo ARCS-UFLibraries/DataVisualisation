@@ -1,0 +1,389 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import cleaningDataQuiz from '@site/src/data/quizzes/working-with-data/cleaning-and-preparing-data';
+
+# Cleaning & Preparing Data
+
+### Story Time
+
+You can now select, filter, and sort data in your DataFrames.
+
+In real projects, the next challenge is that datasets are often **messy**: column names are long or inconsistent, data types are wrong, some values are missing, and there may be duplicate records. Before you can trust your results, you need to clean and prepare the data.
+
+In this lesson, you will walk through a basic data cleaning workflow using the Students Performance dataset.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Create new columns from existing data.
+- Rename columns to improve readability.
+- Convert data to appropriate data types.
+- Detect and handle missing values.
+- Identify and remove duplicate records.
+- Work with date and time data.
+- Apply a basic data cleaning workflow before analysis.
+
+### Why This Topic Matters
+
+Real-world datasets are rarely perfect.
+
+Before creating visualizations or building machine learning models, analysts spend a significant amount of time preparing data. Typical cleaning tasks include:
+
+- creating useful variables  
+- fixing inconsistent column names  
+- correcting data types  
+- handling missing values  
+- removing duplicate records  
+- formatting dates  
+
+Data cleaning is one of the most important steps in every data analysis project.
+
+---
+
+### A Typical Data Cleaning Workflow
+
+When you receive a new dataset, it helps to follow a consistent workflow:
+
+1. Explore the dataset.  
+2. Rename confusing columns.  
+3. Verify data types.  
+4. Handle missing values.  
+5. Remove duplicate records.  
+6. Create useful new variables.  
+7. Save the cleaned dataset.
+
+You will see each of these steps in action with the Students Performance dataset.
+
+---
+
+### Creating New Columns
+
+Existing columns often contain enough information to calculate new, more useful variables.
+
+#### Average Exam Score
+
+Suppose you want the average exam score across math, reading, and writing:
+
+```python
+df["average score"] = (
+    df["math score"] +
+    df["reading score"] +
+    df["writing score"]
+) / 3
+```
+
+Preview the updated DataFrame:
+
+```python
+df.head()
+```
+
+The new `average score` column is now part of the DataFrame and can be used in filters, groupings, and visualizations.
+
+#### Pass/Fail Example
+
+You can also create a pass/fail indicator based on the average:
+
+```python
+df["passed"] = df["average score"] >= 60
+```
+
+Example:
+
+| Average Score | Passed |
+|--------------:|:------:|
+| 72.6          | True   |
+| 83.2          | True   |
+| 48.1          | False  |
+
+Derived variables like these are very common in real-world analysis.
+
+---
+
+### Renaming Columns
+
+Datasets often contain long or inconsistent column names, which can make code harder to read.
+
+Current column:
+
+```text
+parental level of education
+```
+
+Rename it to a shorter, consistent name:
+
+```python
+df.rename(
+    columns={
+        "parental level of education": "parent_education"
+    },
+    inplace=True
+)
+```
+
+Check the updated column names:
+
+```python
+df.columns
+```
+
+Short, meaningful names make your code more readable and easier to maintain. You can also apply patterns such as replacing spaces with underscores for all columns.
+
+---
+
+### Changing Data Types
+
+Always verify that columns use appropriate data types.
+
+Use `info()` to inspect types:
+
+```python
+df.info()
+```
+
+If a numeric column was imported as text, convert it:
+
+```python
+df["math score"] = df["math score"].astype(int)
+```
+
+Common conversions include:
+
+```python
+df["math score"] = df["math score"].astype(int)
+df["reading score"] = df["reading score"].astype(float)
+df["gender"] = df["gender"].astype(str)
+df["passed"] = df["passed"].astype(bool)
+```
+
+Correct data types are important for calculations, filtering, and plotting.
+
+---
+
+### Handling Missing Values
+
+Missing values are common in real datasets.
+
+#### Detecting Missing Values
+
+Count missing values per column:
+
+```python
+df.isnull().sum()
+```
+
+Display rows that contain at least one missing value:
+
+```python
+df[df.isnull().any(axis=1)]
+```
+
+#### Handling Missing Values
+
+There is no single “correct” approach; the best method depends on your analysis.
+
+Common options include:
+
+- **Filling with a statistic**, such as the mean:
+
+  ```python
+  df["math score"] = df["math score"].fillna(
+      df["math score"].mean()
+  )
+  ```
+
+- **Dropping incomplete records**:
+
+  ```python
+  df = df.dropna()
+  ```
+
+In practice, analysts often treat different columns differently (for example, filling numeric scores with a mean and leaving categorical values as “Unknown”).
+
+---
+
+### Removing Duplicate Records
+
+Duplicate rows can distort counts, averages, and other summaries.
+
+#### Detecting Duplicates
+
+Count duplicate rows:
+
+```python
+df.duplicated().sum()
+```
+
+#### Removing Duplicates
+
+Remove duplicate rows:
+
+```python
+df = df.drop_duplicates()
+```
+
+After removing duplicates, it is good practice to check how many records remain so you understand the impact of cleaning.
+
+---
+
+### Working with Dates
+
+Many datasets include dates for events such as exams, registrations, or transactions.
+
+#### Converting Text to Datetime
+
+Suppose you have a column named `date` stored as text:
+
+```python
+df["date"] = pd.to_datetime(df["date"])
+```
+
+This converts the column to a proper datetime type.
+
+#### Extracting Date Parts
+
+You can then create new columns for year, month, and day:
+
+```python
+df["year"] = df["date"].dt.year
+df["month"] = df["date"].dt.month
+df["day"] = df["date"].dt.day
+```
+
+Date features are frequently used in business and research to study trends over time.
+
+---
+
+### Worked Example
+
+Imagine a dataset with the following issues:
+
+- long column names  
+- missing mathematics scores  
+- duplicate student records  
+- exam date stored as text  
+
+A simple cleaning plan might be:
+
+1. Rename long columns (for example, `parental level of education` → `parent_education`).  
+2. Convert the exam date column to datetime using `pd.to_datetime()`.  
+3. Fill missing mathematics scores with the mean or another appropriate value.  
+4. Remove duplicate rows with `drop_duplicates()`.  
+5. Create an `average score` column from the three exam scores.
+
+This sequence prepares the dataset for more advanced analysis and visualization.
+
+---
+
+### Data Cleaning Checklist
+
+Before beginning analysis, ask yourself:
+
+- Have I inspected the dataset (`head()`, `info()`, `describe()`, `isnull().sum()`)?  
+- Are the column names meaningful and consistent?  
+- Are the data types correct for each column?  
+- Are there missing values, and how will I handle them?  
+- Are there duplicate records, and should I remove them?  
+- Do I need additional calculated columns such as totals or averages?
+
+Documenting your answers helps you communicate your cleaning decisions to others.
+
+---
+
+### Google Colab Activity
+
+Using the Students Performance dataset, complete these tasks:
+
+1. Create an `average score` column.  
+2. Rename the parental education column to a shorter name.  
+3. Check data types using `df.info()`.  
+4. Determine whether missing values exist.  
+5. Check for duplicate rows.  
+6. Save the cleaned dataset to a new file.
+
+---
+
+### Practice Exercise
+
+Prepare the dataset for analysis by:
+
+- creating a `total score` column (sum of math, reading, and writing),  
+- creating an `average score` column,  
+- renaming at least two columns to clearer names,  
+- checking and, if necessary, correcting data types,  
+- verifying missing values and deciding how to handle them,  
+- removing duplicates if needed.
+
+Write down each step you performed, including any code you used.
+
+---
+
+<Quiz title="Check Your Understanding" questions={cleaningDataQuiz} />
+
+---
+
+### Challenge Exercise
+
+Imagine this dataset will be shared with another researcher.
+
+Prepare it so that it is:
+
+- easy to understand (clear column names and documentation),  
+- free of duplicate records,  
+- properly formatted (correct data types),  
+- ready for visualization and further analysis.
+
+Export the cleaned dataset:
+
+```python
+df.to_csv(
+    "students_clean.csv",
+    index=False
+)
+```
+
+---
+
+### Common Mistakes
+
+#### Ignoring Missing Values
+
+Failing to check for missing values can lead to misleading statistics. Always inspect `df.isnull().sum()` and decide how to handle missing data before analysis.
+
+#### Renaming Columns Inconsistently
+
+Using inconsistent naming patterns (for example, mixing spaces and underscores) makes code harder to read. Choose short, descriptive names and apply them consistently.
+
+#### Changing Data Types Without Verification
+
+Converting data types blindly can introduce errors. Run:
+
+```python
+df.info()
+```
+
+before and after conversions to confirm that types are what you expect.
+
+#### Forgetting to Save the Cleaned Dataset
+
+Data cleaning takes time. If you forget to save the cleaned version, you may have to repeat work later. Use `to_csv()` or another export method to store the cleaned dataset.
+
+---
+
+### Key Takeaways
+
+In this lesson, you learned how to:
+
+- create new columns and derived variables,  
+- rename columns for readability,  
+- convert data types,  
+- detect and handle missing values,  
+- identify and remove duplicates,  
+- work with date and time data,  
+- apply a basic data cleaning workflow before analysis.
+
+---
+
+### Continue Your Journey
+
+Next, you will learn **Grouping & Summarizing Data**, where you will use groupby operations and aggregations to answer questions such as average scores by gender or lunch type.

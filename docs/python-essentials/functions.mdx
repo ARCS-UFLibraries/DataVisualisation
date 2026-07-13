@@ -1,0 +1,403 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import functionsQuiz from '@site/src/data/quizzes/python-essentials/functions';
+
+# Functions
+
+### Story Time
+
+You have now learned how to store data, work with collections, and control the flow of a program. The next step is learning how to organize your code so that you do not repeat the same logic again and again.
+
+Imagine you are analysing student scores. You may need to calculate an average score many times, display the same type of message for different students, or reuse a piece of code in several places. Functions make this possible.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Explain what a function is.
+- Create your own functions using `def`.
+- Pass information into functions using parameters.
+- Return values from functions.
+- Explain the difference between printing and returning.
+- Understand the idea of variable scope.
+
+### Why It Matters
+
+As programs grow, repeated code becomes difficult to manage. Functions help you write cleaner, shorter, and more organized programs by grouping related steps together.
+
+In data analysis, functions are useful when you want to:
+
+- repeat the same calculation,
+- reuse code on different inputs,
+- make notebooks easier to read,
+- and break larger problems into smaller steps.
+
+### What Is a Function?
+
+A function is a reusable block of code that performs a specific task.
+
+Instead of writing the same code many times, you can place it inside a function and call that function whenever you need it.
+
+### Creating Your First Function
+
+Use the `def` keyword to define a function.
+
+```python
+def greet():
+    print("Welcome to Python!")
+```
+
+At this point, the function has been defined, but it has not run yet.
+
+To execute the function, you must call it:
+
+```python
+greet()
+```
+
+Output:
+
+```python
+Welcome to Python!
+```
+
+### Calling a Function More Than Once
+
+One of the main benefits of functions is reusability.
+
+```python
+def greet():
+    print("Welcome!")
+
+greet()
+greet()
+greet()
+```
+
+Output:
+
+```python
+Welcome!
+Welcome!
+Welcome!
+```
+
+You write the code once, then use it as many times as needed.
+
+### Functions with Parameters
+
+Functions can receive information. These inputs are called parameters.
+
+```python
+def greet(name):
+    print("Hello", name)
+```
+
+Calling the function:
+
+```python
+greet("Emma")
+```
+
+Output:
+
+```python
+Hello Emma
+```
+
+You can call the same function again with a different value:
+
+```python
+greet("Alex")
+```
+
+Output:
+
+```python
+Hello Alex
+```
+
+The function stays the same, but the input changes.
+
+### Functions with Multiple Parameters
+
+A function can accept more than one parameter.
+
+```python
+def student(name, course):
+    print(name, "is enrolled in", course)
+
+student("Emma", "Data Visualization")
+```
+
+Output:
+
+```python
+Emma is enrolled in Data Visualization
+```
+
+This is useful when a task depends on more than one piece of information.
+
+### Returning Values
+
+Some functions print output, but others send a value back to the program. This is called returning a value.
+
+```python
+def square(number):
+    return number * number
+```
+
+Calling the function:
+
+```python
+result = square(5)
+print(result)
+```
+
+Output:
+
+```python
+25
+```
+
+The returned value can be stored in a variable, reused later, or passed into another function.
+
+### Printing vs Returning
+
+Printing and returning are not the same.
+
+This function only prints:
+
+```python
+def add(a, b):
+    print(a + b)
+```
+
+This function returns a value:
+
+```python
+def add(a, b):
+    return a + b
+```
+
+When you print a value, it appears on the screen. When you return a value, the program can keep using it later.
+
+For example:
+
+```python
+total = add(4, 6)
+print(total)
+```
+
+This works only when the function returns the result.
+
+### Variable Scope
+
+Variables created inside a function belong to that function’s local scope and can only be used there.
+
+```python
+def example():
+    message = "Hello"
+    print(message)
+
+example()
+```
+
+Output:
+
+```python
+Hello
+```
+
+Trying to use `message` outside the function causes an error because it does not exist outside that function.
+
+```python
+print(message)
+```
+
+Output:
+
+```python
+NameError
+```
+
+Understanding scope helps you avoid bugs and makes your code easier to reason about.
+
+@## Worked Example
+
+Suppose you want a reusable function to calculate the area of a rectangle.
+
+```python
+def area(length, width):
+    return length * width
+
+result = area(8, 5)
+print(result)
+```
+
+Output:
+
+```python
+40
+```
+
+This function is useful because you can call it with different values whenever you need to calculate an area.
+
+#@# Google Colab Activity
+
+Create a function that accepts a student’s name and prints a welcome message.
+
+Example:
+
+```python
+Welcome, Emma!
+```
+
+Then call the function using at least three different names.
+
+You could begin like this:
+
+```python
+def welcome_student(name):
+    print("Welcome,", name + "!")
+
+welcome_student("Emma")
+welcome_student("Alex")
+welcome_student("Sophia")
+```
+
+#@# Practice
+
+Create a function called `calculate_average()`.
+
+The function should:
+
+1. Accept three marks.
+2. Return the average.
+3. Let you store the result in a variable.
+
+Example:
+
+```python
+average = calculate_average(80, 85, 90)
+print(average)
+```
+
+Expected output:
+
+```python
+85.0
+```
+
+One possible solution:
+
+```python
+def calculate_average(mark1, mark2, mark3):
+    return (mark1 + mark2 + mark3) / 3
+
+average = calculate_average(80, 85, 90)
+print(average)
+```
+
+#@# Challenge
+
+Create a function called `student_summary()`.
+
+The function should:
+
+1. Accept a student name and three scores.
+2. Calculate the average score.
+3. Return a sentence such as:
+
+```python
+Emma has an average score of 85.0
+```
+
+This challenge combines parameters, calculations, and returned values in one function.
+
+### Common Mistakes
+
+#### Forgetting to call the function
+
+Incorrect:
+
+```python
+def greet():
+    print("Hello")
+```
+
+The function is defined, but it never runs.
+
+Correct:
+
+```python
+greet()
+```
+
+### Forgetting parentheses
+
+Incorrect:
+
+```python
+greet
+```
+
+Correct:
+
+```python
+greet()
+```
+
+### Forgetting the `return` keyword
+
+Incorrect:
+
+```python
+def square(x):
+    x * x
+```
+
+Correct:
+
+```python
+def square(x):
+    return x * x
+```
+
+Without `return`, Python does not send the calculated result back in a useful way.
+
+#### Mixing up printing and returning
+
+Printing shows a value on the screen.
+
+Returning sends the value back to the program so it can be stored or reused.
+
+<Quiz title="Check Your Understanding" questions={functionsQuiz} />
+
+### Key Takeaways
+
+- Functions are reusable blocks of code.
+- You define functions with `def` and run them by calling them.
+- Parameters allow functions to receive input values.
+- `return` sends a value back to the program.
+- Variables created inside a function usually belong only to that function’s local scope.
+
+### Python Essentials Complete
+
+You have now completed the Python Essentials module.
+
+You can now work with:
+
+- variables,
+- data types,
+- type conversion,
+- built-in functions,
+- input and output,
+- collections,
+- control flow,
+- and functions.
+
+These topics provide the foundation for working with real datasets in the next part of the course.
+
+### Continue Your Journey
+
+Next, you will begin **Working with Data**, where you will start using Python to explore and analyse datasets.

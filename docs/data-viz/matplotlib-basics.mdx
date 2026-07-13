@@ -1,0 +1,301 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import matplotlibBasicsQuiz from '@site/src/data/quizzes/data-viz/matplotlib-basics';
+
+# Matplotlib Basics
+
+### Story Time
+
+In the previous lesson, you learned why data visualisation matters and how charts can help answer questions about comparison, trend, distribution, and relationship.
+
+Now it is time to create your first real charts in Python.
+
+In this lesson, you will use **Matplotlib**, one of the most important plotting libraries in Python. It is the foundation for many other visualization tools, and it will help you understand how charts are built and customized in Google Colab.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- import Matplotlib in Python,
+- create a simple plot,
+- add a title and axis labels,
+- customize basic chart appearance,
+- display charts in Google Colab,
+- begin reading and interpreting a Matplotlib chart.
+
+### Why This Topic Matters
+
+Matplotlib is one of the core libraries for creating visualizations in Python.
+
+It gives you control over how a chart looks and helps you build the basic plotting skills you will use throughout this module. Even when you later use Seaborn or Plotly, understanding Matplotlib will make those tools easier to learn.
+
+Just as importantly, this lesson connects chart creation with chart interpretation. A chart is only useful if someone can understand what it shows.
+
+### Getting Started with Matplotlib
+
+To use Matplotlib, you usually import the `pyplot` module like this:
+
+```python
+import matplotlib.pyplot as plt
+```
+
+The name `plt` is a common alias that makes plotting commands shorter and easier to write.
+
+In many notebook environments, plots appear directly below the code cell. In notebook workflows, `%matplotlib inline` is commonly used to render Matplotlib plots directly in the notebook output area. 
+
+```python
+%matplotlib inline
+```
+
+In Google Colab, plots generally display directly in the notebook output, so students mainly need to focus on writing the plotting code and calling `plt.show()` when needed. 
+
+### Your First Plot
+
+A basic line plot can be created with `plt.plot()`.
+
+```python
+import matplotlib.pyplot as plt
+
+x =[4]
+y =[5][6][7][8]
+
+plt.plot(x, y)
+plt.show()
+```
+
+This creates a simple line connecting the points in the order they appear.
+
+You can think of `x` as the positions along the horizontal axis and `y` as the values on the vertical axis.
+
+### Understanding What the Plot Shows
+
+Suppose the values represent four tests taken by a student.
+
+In that case, this line plot suggests that the student’s score is increasing over time:
+
+- Test 1: 50  
+- Test 2: 60  
+- Test 3: 70  
+- Test 4: 80  
+
+So even this very simple chart already tells a story. The main pattern is an upward trend.
+
+That is the key habit to develop: after creating a plot, pause and ask, **What is this chart telling me?**
+
+### Adding a Title and Axis Labels
+
+A chart becomes much easier to understand when you label it clearly.
+
+Use:
+
+- `plt.title()` for the title,
+- `plt.xlabel()` for the x-axis label,
+- `plt.ylabel()` for the y-axis label. 
+
+```python
+import matplotlib.pyplot as plt
+
+x =[4]
+y =[6][7][8][5]
+
+plt.plot(x, y)
+plt.title("Student Score Trend")
+plt.xlabel("Test Number")
+plt.ylabel("Score")
+plt.show()
+```
+
+Now the chart is much easier to interpret because the viewer knows what the numbers represent.
+
+### Why Labels Matter
+
+Without labels, a chart can be confusing.
+
+For example, if you only see the numbers 1, 2, 3, and 4 on the x-axis, you may not know whether they represent:
+
+- test numbers,
+- months,
+- semesters,
+- categories,
+- or something else.
+
+Good visualization is not only about drawing lines or bars. It is also about giving enough context for the chart to be read correctly.
+
+### Customizing Basic Appearance
+
+Matplotlib allows you to change the appearance of a plot using extra arguments.
+
+For example:
+
+```python
+import matplotlib.pyplot as plt
+
+x =[4]
+y =[7][8][5][6]
+
+plt.plot(x, y, color="green", marker="o", linestyle="--")
+plt.title("Student Score Trend")
+plt.xlabel("Test Number")
+plt.ylabel("Score")
+plt.show()
+```
+
+In this chart:
+
+- `color="green"` changes the line color,
+- `marker="o"` adds circular markers,
+- `linestyle="--"` changes the line style.
+
+These features can make a chart easier to read, but they should be used to improve clarity, not decoration.
+
+### Reading the Customized Chart
+
+When interpreting the chart above, you should still focus on the data first:
+
+- the scores increase from left to right,
+- the trend appears steady,
+- there are no sudden drops,
+- each marker represents one observation.
+
+The styling supports interpretation, but it does not replace it.
+
+### Creating a Figure
+
+Sometimes you may want more control over the size of the chart.
+
+You can do this with `plt.figure()`:
+
+```python
+import matplotlib.pyplot as plt
+
+x =[4]
+y =[8][5][6][7]
+
+plt.figure(figsize=(8, 4))
+plt.plot(x, y)
+plt.title("Student Score Trend")
+plt.xlabel("Test Number")
+plt.ylabel("Score")
+plt.show()
+```
+
+The `figsize` argument changes the width and height of the chart.
+
+This is useful when a chart looks too small, too crowded, or needs to fit better in a report or notebook.
+
+### Common Plotting Workflow
+
+A simple Matplotlib workflow often looks like this:
+
+1. Import Matplotlib.  
+2. Prepare your data.  
+3. Create a plot with `plt.plot()` or another plotting function.  
+4. Add a title and labels.  
+5. Display the chart with `plt.show()`.
+
+As you learn more chart types, this structure will stay familiar.
+
+### Worked Example
+
+Suppose you want to visualize the average mathematics score for four study sessions.
+
+```python
+import matplotlib.pyplot as plt
+
+sessions =[4]
+avg_scores =[9][10][11][12]
+
+plt.plot(sessions, avg_scores, marker="o")
+plt.title("Average Mathematics Score by Study Session")
+plt.xlabel("Study Session")
+plt.ylabel("Average Score")
+plt.show()
+```
+
+A strong interpretation might be:
+
+- the average score increases across study sessions,
+- the improvement appears consistent,
+- the chart suggests a positive trend between study session number and average score.
+
+Notice that the chart does not prove causation, but it does clearly show a pattern.
+
+### Google Colab Activity
+
+In Google Colab, create a simple line plot using your own small lists of values.
+
+Then improve it by:
+
+1. adding a title,  
+2. adding x-axis and y-axis labels,  
+3. changing the marker style,  
+4. changing the color of the line.
+
+After plotting, write 2–3 sentences describing what the chart shows.
+
+### Practice Exercise
+
+Create a chart that shows the scores of one student across five tests.
+
+Your tasks:
+
+- create an `x` list for test numbers,
+- create a `y` list for scores,
+- plot the line,
+- add a title,
+- label both axes,
+- choose a marker.
+
+Then answer:
+
+- Is the student improving, declining, or staying consistent?
+- Is the change steady or irregular?
+
+<Quiz title="Check Your Understanding" questions={matplotlibBasicsQuiz} />
+
+### Challenge Exercise
+
+Imagine you are showing a chart to another student who has never seen your code.
+
+Create a Matplotlib chart that is easy to understand without explanation.
+
+Your chart should include:
+
+- a meaningful title,
+- clear axis labels,
+- readable plotting choices,
+- a short written interpretation below the chart.
+
+The goal is not only to generate the chart, but to make it understandable to someone else.
+
+### Common Mistakes
+
+#### Forgetting to Import Matplotlib
+
+If you do not import `matplotlib.pyplot as plt`, your plotting code will not work.
+
+#### Creating a Plot Without Labels
+
+A chart without a title or axis labels is much harder to understand. Always add enough information so the viewer knows what the chart represents.
+
+#### Focusing Only on Style
+
+Changing colors and markers can be useful, but styling should support clarity. The most important part of a chart is still the message in the data.
+
+#### Making a Plot Without Interpreting It
+
+Do not stop after calling `plt.show()`. Ask yourself what trend, pattern, or message the chart reveals.
+
+### Key Takeaways
+
+In this lesson, you learned how to:
+
+- import and use Matplotlib,
+- create a simple plot,
+- add titles and axis labels,
+- customize basic appearance,
+- display plots in Google Colab,
+- read and interpret a basic line chart.
+
+### Continue Your Journey
+
+Next, you will learn **Bar Charts**, which are one of the most useful chart types for comparing categories such as gender, lunch type, or parental education level.

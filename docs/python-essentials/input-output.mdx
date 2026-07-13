@@ -1,0 +1,367 @@
+# Input and Output
+
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import quiz from '@site/src/data/quizzes/python-essentials/input-output.ts';
+
+Learn how to display information to users and collect input from them so your Python programs can interact instead of always doing the same thing.
+
+**Skill Level:** Beginner  
+**Prerequisites:** Variables, Data Types, Type Conversion, Built-in Functions  
+**Estimated Time:** 20 minutes
+
+### Story Time
+
+Up to this point, each program you wrote produced the same result every time it ran. That is useful for practicing basics, but real programs rarely behave that way.
+
+Interactive programs ask users questions, accept input, and respond based on what the user enters. This is the foundation of calculators, survey forms, small tools, and many data collection workflows.
+
+In this lesson, you will learn how to display messages (output) and accept user responses (input) so your programs can begin to feel interactive .
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Explain the difference between input and output.
+- Display information using the `print()` function.
+- Collect information from users using the `input()` function.
+- Convert user input into appropriate data types.
+- Build simple interactive Python programs.
+
+### What Is Output?
+
+**Output** is information a program displays to the user.
+
+In Python, output is usually displayed using the `print()` function.
+
+```python
+print("Welcome to Python!")
+```
+
+Output:
+
+```python
+Welcome to Python!
+```
+
+You will use output to show messages, results, and instructions.
+
+### Displaying Variables
+
+Variables can also be displayed using `print()`.
+
+```python
+name = "Emma"
+print(name)
+```
+
+Output:
+
+```python
+Emma
+```
+
+You can print multiple values:
+
+```python
+name = "Emma"
+age = 22
+
+print(name)
+print(age)
+```
+
+Output:
+
+```python
+Emma
+22
+```
+
+Or combine values in a single `print()` call:
+
+```python
+print(name, age)
+```
+
+### What Is Input?
+
+**Input** is information provided by the user while a program is running.
+
+Python uses the `input()` function to collect user input:
+
+```python
+name = input("Enter your name: ")
+print(name)
+```
+
+Example interaction:
+
+```python
+Enter your name: Emma
+Emma
+```
+
+Here, the prompt (`"Enter your name: "`) helps the user understand what to type.
+
+### Storing User Input
+
+You usually store the result of `input()` in a variable so you can use it later in your program.
+
+```python
+city = input("Enter your city: ")
+print(city)
+```
+
+Example:
+
+```python
+Enter your city: Gainesville
+Gainesville
+```
+
+Once stored, the value can be printed, combined with other text, or used in decisions later.
+
+### Understanding `input()`
+
+One important rule:
+
+`input()` always returns a **string**, even if the user enters digits.
+
+```python
+age = input("Enter your age: ")
+print(type(age))
+```
+
+Output:
+
+```python
+<class 'str'>
+```
+
+That is why type conversion is often needed when working with user input.
+
+### Converting User Input
+
+If you want to perform calculations, convert the input first.
+
+```python
+age = int(input("Enter your age: "))
+print(age + 1)
+```
+
+Example interaction:
+
+```python
+Enter your age: 21
+22
+```
+
+Now `age` is an integer, so addition works correctly.
+
+### Printing Multiple Values
+
+Python allows multiple values inside `print()`:
+
+```python
+name = "Emma"
+course = "Python"
+
+print(name, course)
+```
+
+Output:
+
+```python
+Emma Python
+```
+
+You can also combine text with variables:
+
+```python
+name = "Emma"
+print("Welcome", name)
+```
+
+Output:
+
+```python
+Welcome Emma
+```
+
+Later in the course, you will learn more advanced formatting, but this simple pattern is enough for now.
+
+### Worked Example
+
+```python
+name = input("What is your name? ")
+age = int(input("How old are you? "))
+
+print("Hello", name)
+print("Next year you will be", age + 1)
+```
+
+Example interaction:
+
+```python
+What is your name? Emma
+How old are you? 22
+Hello Emma
+Next year you will be 23
+```
+
+This shows how input, conversion, and output can work together in a small interactive program.
+
+### Quick Check
+
+Predict the output before running the code:
+
+```python
+number = int(input("Enter a number: "))
+print(number * 2)
+```
+
+What happens if the user enters:
+
+```python
+5
+```
+
+Then test your prediction in Google Colab.
+
+### Practice
+
+Create a program that asks the user for:
+
+- Name
+- Favorite subject
+- Age
+
+Then display the information back to the user.
+
+Example pattern:
+
+```python
+name = input("Name: ")
+subject = input("Favorite subject: ")
+age = int(input("Age: "))
+
+print("You are", name)
+print("You enjoy", subject)
+print("You are", age, "years old")
+```
+
+### Try It Yourself
+
+Write a program that asks the user for:
+
+- University name
+- Degree program
+- Graduation year
+
+Display the information in a readable format.
+
+Example output:
+
+```python
+University: University of Florida
+Degree: Applied Data Science
+Graduation Year: 2027
+```
+
+You can use multiple `print()` calls, or combine labels and variables in one call.
+
+### Challenge
+
+Create a simple BMI information collector.
+
+Ask the user for:
+
+- Name
+- Age
+- Height (cm)
+- Weight (kg)
+
+Display the information in a neat format.
+
+Example structure:
+
+```python
+name = input("Name: ")
+age = int(input("Age: "))
+height_cm = float(input("Height (cm): "))
+weight_kg = float(input("Weight (kg): "))
+
+print("Name:", name)
+print("Age:", age)
+print("Height (cm):", height_cm)
+print("Weight (kg):", weight_kg)
+```
+
+You do not need to calculate BMI yet. That will come later when you learn arithmetic operators.
+
+### Common Mistakes
+
+#### Forgetting to convert numeric input
+
+Incorrect:
+
+```python
+age = input("Age: ")
+print(age + 5)
+```
+
+This produces an error because `age` is a string.
+
+Correct:
+
+```python
+age = int(input("Age: "))
+print(age + 5)
+```
+
+#### Forgetting quotation marks in prompts
+
+Incorrect:
+
+```python
+input(Enter your name)
+```
+
+Correct:
+
+```python
+input("Enter your name")
+```
+
+Prompt text must be inside quotation marks so Python treats it as a string.
+
+#### Forgetting to store the input
+
+Incorrect:
+
+```python
+input("Enter your city: ")
+```
+
+If you do not assign the result to a variable, you cannot use it later.
+
+Correct:
+
+```python
+city = input("Enter your city: ")
+```
+
+Now `city` can be printed, combined with other text, or used in later calculations.
+
+### Key Takeaways
+
+- Output is information shown to the user, typically using `print()`.
+- Input is information provided by the user, collected with `input()`.
+- `input()` always returns a string, so numeric input must be converted before calculations.
+- Combining `print()`, `input()`, and type conversion allows you to build simple interactive programs.
+
+<Quiz questions={quiz} />
+
+### Continue Your Journey
+
+In the next lesson, you will learn about **Collections**, which allow Python to store multiple values together in structures such as lists.

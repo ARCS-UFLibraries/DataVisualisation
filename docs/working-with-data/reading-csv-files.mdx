@@ -1,0 +1,244 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import readingCsvFilesQuiz from '@site/src/data/quizzes/working-with-data/reading-csv-files';
+
+# Reading CSV Files
+
+### Story Time
+
+You now know how to use Pandas and how to import libraries.
+
+Imagine you are given a file containing exam scores for an entire class. The file is in CSV format, and you want to explore the data in Python instead of scrolling through rows in a spreadsheet.
+
+In this lesson, you will learn how to load that CSV file into a Pandas DataFrame so you can start your analysis.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Explain what a CSV file is.
+- Load a CSV file using Pandas.
+- Store the data in a DataFrame.
+- Display the first few rows of a dataset.
+- Recognize common errors when loading CSV files.
+
+### Why This Topic Matters
+
+Most real-world datasets are stored as files.
+
+Before you can clean, analyze, or visualize data, you first need to load it into Python. One of the most common formats you will encounter is **CSV (Comma-Separated Values)**, because it is simple and widely supported.
+
+Understanding how to read CSV files is an essential first step in working with real datasets.
+
+### What Is a CSV File?
+
+A CSV file stores data in rows and columns.
+
+- Each row represents one record.
+- Each column represents one attribute or variable.
+
+Example:
+
+| Name  | Age | GPA |
+|-------|-----|-----|
+| Emma  | 21  | 3.8 |
+| Alex  | 22  | 3.5 |
+| Sophia| 20  | 3.9 |
+
+CSV files are popular because they are lightweight, easy to create, and compatible with many tools including spreadsheets, databases, and programming languages.
+
+### Our Dataset
+
+Throughout this module, you will use the **Students Performance in Exams** dataset.
+
+It contains information such as:
+
+- Gender  
+- Race/Ethnicity  
+- Parental level of education  
+- Lunch type  
+- Test preparation course  
+- Math score  
+- Reading score  
+- Writing score  
+
+Your goal in this lesson is to load this dataset into Python so that you can begin exploring it with Pandas.
+
+### Reading a CSV File
+
+To read a CSV file, use the `read_csv()` function from the Pandas library:
+
+```python
+import pandas as pd
+
+df = pd.read_csv("students_performance.csv")
+```
+
+Here:
+
+- `pd` refers to the Pandas library.  
+- `read_csv()` reads the file into memory.  
+- `df` is a DataFrame that contains the dataset.
+
+### Viewing the First Few Rows
+
+Use the `head()` function to preview the dataset:
+
+```python
+df.head()
+```
+
+By default, `head()` displays the **first five rows**.
+
+This is useful for quickly checking that the file loaded correctly and that the columns look as expected.
+
+### Viewing More Rows
+
+You can ask for more rows by passing a number to `head()`:
+
+```python
+df.head(10)
+```
+
+This displays the first ten rows of the DataFrame.
+
+### Viewing the Last Rows
+
+To see the end of the dataset, use the `tail()` function:
+
+```python
+df.tail()
+```
+
+By default, `tail()` displays the **last five rows**.
+
+This can help you check if the dataset ends where you expect and whether any unusual values appear at the end.
+
+### Understanding the DataFrame
+
+Once the CSV file is loaded, it becomes a **DataFrame** inside Python.
+
+You can think of a DataFrame as a spreadsheet living in your program:
+
+- Each row represents one observation.
+- Each column represents one variable.
+
+You will learn more about DataFrames in later lessons, but for now it is enough to understand that `df` is your in‑memory table.
+
+### Worked Example
+
+```python
+import pandas as pd
+
+df = pd.read_csv("students_performance.csv")
+
+df.head()
+```
+
+As you look at the output, consider:
+
+- How many columns do you see?  
+- What information does each column contain?  
+- Which columns appear to contain numerical data?  
+- Which columns contain text?
+
+These questions help you start understanding the structure of the dataset.
+
+### Google Colab Activity
+
+1. Upload the Students Performance dataset to Google Colab.  
+2. Import Pandas.  
+3. Read the dataset into a DataFrame.  
+4. Display the first five rows using `head()`.  
+5. Display the last five rows using `tail()`.
+
+Focus on getting comfortable with the steps: upload, import, read, preview.
+
+### Practice Exercise
+
+Load the dataset into a DataFrame named `students`:
+
+```python
+import pandas as pd
+
+students = pd.read_csv("students_performance.csv")
+```
+
+Then display:
+
+- The first five rows  
+- The first ten rows  
+- The last five rows  
+
+Compare the outputs and notice how the number of rows changes.
+
+<Quiz title="Check Your Understanding" questions={readingCsvFilesQuiz} />
+
+### Independent Exercise
+
+Suppose a colleague gives you a CSV file named `employee_data.csv`.
+
+Without referring to your notes, write the Python code needed to:
+
+- Import Pandas  
+- Read the CSV file  
+- Store it in a DataFrame named `employees`  
+- Display the first five rows  
+
+Try typing the code directly in a notebook and run it to confirm it works.
+
+### Common Mistakes
+
+#### Forgetting to Import Pandas
+
+Incorrect:
+
+```python
+df = pd.read_csv("students_performance.csv")
+```
+
+This will cause an error because `pd` is not defined.
+
+Correct:
+
+```python
+import pandas as pd
+
+df = pd.read_csv("students_performance.csv")
+```
+
+#### Incorrect File Name
+
+```python
+pd.read_csv("student.csv")
+```
+
+If the file name or path is wrong, Python will raise a `FileNotFoundError`. Always check the file name and make sure the file is in the expected location.
+
+#### Forgetting Quotation Marks
+
+Incorrect:
+
+```python
+pd.read_csv(students_performance.csv)
+```
+
+Correct:
+
+```python
+pd.read_csv("students_performance.csv")
+```
+
+File names must be provided as strings, enclosed in quotes.
+
+### Key Takeaways
+
+In this lesson, you learned that:
+
+- A CSV file stores data in rows and columns.  
+- Pandas can read CSV files using `pd.read_csv()`.  
+- The loaded data is stored in a DataFrame.  
+- `head()` and `tail()` help you preview the beginning and end of a dataset.  
+
+### Continue Your Journey
+
+Next, you will learn how to read **Excel files**, so you can work with datasets stored in spreadsheet formats as well.

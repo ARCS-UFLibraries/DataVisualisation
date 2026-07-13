@@ -1,0 +1,280 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import exploringDatasetQuiz from '@site/src/data/quizzes/working-with-data/exploring-data';
+
+# Exploring a Dataset
+
+### Story Time
+
+You now know how to load datasets into Pandas and how DataFrames are structured.
+
+Before you start creating charts or building models, you need to understand what your dataset looks like. Professional data analysts begin by exploring the data: they check sample records, look at the size of the dataset, inspect data types, and review basic statistics.
+
+In this lesson, you will learn a simple workflow for exploring any dataset you load into Pandas.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Inspect the contents of a dataset.
+- Understand the size and structure of a dataset.
+- Identify data types.
+- Generate summary statistics.
+- Detect potential data quality issues before analysis.
+
+### Why This Topic Matters
+
+It is risky to analyze a dataset that you do not understand.
+
+Before running calculations or building visualizations, analysts typically ask:
+
+- How many records are there?  
+- What variables are available?  
+- Which columns contain numbers?  
+- Are there missing values?  
+- Does the data appear reasonable?  
+
+This initial exploration helps you spot potential issues and guides the rest of your analysis.
+
+### A Typical Exploration Workflow
+
+When working with a new dataset, it is helpful to follow a consistent exploratory pattern:
+
+```python
+df.head()
+df.info()
+df.shape
+df.describe()
+```
+
+These four commands provide a quick overview of the dataset:
+
+- `head()` shows sample records.  
+- `info()` summarizes structure and types.  
+- `shape` shows the dimensions.  
+- `describe()` summarizes numerical columns.
+
+### Viewing Sample Records
+
+Use `head()` to display the first few rows:
+
+```python
+df.head()
+```
+
+By default, this shows the first **five** rows.
+
+To show more rows:
+
+```python
+df.head(10)
+```
+
+To view the last rows:
+
+```python
+df.tail()
+```
+
+These previews help you confirm that the data loaded correctly and that the values look reasonable.
+
+### Understanding the Structure
+
+Use `info()` to see a structural summary:
+
+```python
+df.info()
+```
+
+This displays:
+
+- number of rows  
+- number of columns  
+- column names  
+- data types  
+- information about missing values  
+- memory usage  
+
+It is often one of the first commands analysts run when they receive a new dataset.
+
+### Understanding the Size
+
+Use `shape` to see the dimensions:
+
+```python
+df.shape
+```
+
+Example output:
+
+```text
+(1000, 8)
+```
+
+This means:
+
+- 1000 rows (observations)  
+- 8 columns (variables)
+
+### Summary Statistics
+
+Use `describe()` to view summary statistics for numerical columns:
+
+```python
+df.describe()
+```
+
+Example for a math score column:
+
+| Statistic | Math Score |
+|-----------|-----------:|
+| Count     | 1000       |
+| Mean      | 66.09      |
+| Std       | 15.16      |
+| Min       | 0          |
+| Max       | 100        |
+
+The output includes:
+
+- count  
+- mean  
+- standard deviation  
+- minimum  
+- quartiles  
+- maximum  
+
+These statistics help you understand the typical values and spread of your numerical data.
+
+### Viewing Column Names
+
+Use `columns` to list all variables:
+
+```python
+df.columns
+```
+
+This returns the names of all columns and is useful when you start selecting or renaming variables.
+
+### Counting Missing Values
+
+Use `isnull().sum()` to count missing values per column:
+
+```python
+df.isnull().sum()
+```
+
+For the Students Performance dataset, each column should have zero missing values.
+
+Later in this guide, you will work with datasets that do contain missing values and learn how to handle them.
+
+### Worked Example
+
+```python
+import pandas as pd
+
+df = pd.read_csv("students_performance.csv")
+
+df.head()
+df.info()
+df.describe()
+df.shape
+```
+
+After running the code, answer:
+
+- How many students are included?  
+- Which columns are numerical?  
+- Are there any missing values?  
+- What is the average math score?  
+
+These questions help you turn the exploratory output into useful understanding.
+
+### Data Analysis Tip
+
+Whenever you receive a new dataset, start with:
+
+```python
+df.head()
+df.info()
+df.describe()
+df.shape
+```
+
+Making this a habit will help you understand the structure of the data before performing any analysis.
+
+### Google Colab Activity
+
+Load the Students Performance dataset in Google Colab.
+
+Run each of the following commands:
+
+```python
+df.head()
+df.tail()
+df.info()
+df.describe()
+df.shape
+df.columns
+df.isnull().sum()
+```
+
+Observe how each command provides a different kind of information about the dataset.
+
+### Practice Exercise
+
+Using the Students Performance dataset, answer:
+
+1. How many rows are in the dataset?  
+2. How many columns are present?  
+3. Which columns contain numerical values?  
+4. Which column has the highest average value?  
+5. Are there any missing values?  
+
+Record your answers before moving to the next lesson.
+
+<Quiz title="Check Your Understanding" questions={exploringDatasetQuiz} />
+
+### Independent Exercise
+
+Load another dataset from the Dataset Library.
+
+Without referring to your notes, investigate:
+
+- number of rows  
+- number of columns  
+- column names  
+- numerical variables  
+- missing values  
+
+Summarize your observations in a few sentences.
+
+### Common Mistakes
+
+#### Using `head()` Instead of `describe()`
+
+Remember:
+
+- `head()` displays sample records.  
+- `describe()` summarizes numerical data.
+
+They serve different purposes.
+
+#### Assuming All Columns Are Numerical
+
+Datasets usually contain a mix of numerical and categorical variables. Always inspect data types (for example, using `info()`) before performing calculations.
+
+#### Skipping Dataset Exploration
+
+Jumping directly into analysis can lead to incorrect assumptions and misleading results. Spend a few minutes exploring every new dataset before writing analysis code.
+
+### Key Takeaways
+
+In this lesson, you learned:
+
+- How to inspect a dataset using `head()`, `tail()`, `info()`, `describe()`, and `shape`.  
+- How to understand the structure and size of a dataset.  
+- How to generate summary statistics for numerical columns.  
+- How to identify missing values and potential data quality issues.  
+
+### Continue Your Journey
+
+Next, you will learn how to **select rows and columns**, which is the first step in focusing on specific parts of your dataset during analysis.

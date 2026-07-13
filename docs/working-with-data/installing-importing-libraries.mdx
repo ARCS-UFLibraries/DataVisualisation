@@ -1,0 +1,270 @@
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import installingLibrariesQuiz from '@site/src/data/quizzes/working-with-data/installing-importing-libraries';
+
+# Installing and Importing Libraries
+
+### Story Time
+
+You have just learned about Pandas and seen how it can help you work with data.
+
+Now imagine you want to add more tools: one for numerical calculations, one for charts, and one for interactive visualizations. You could try to write everything yourself, but that would be slow and error‑prone.
+
+Instead, Python lets you install and import libraries that already solve these problems.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Explain what a Python library is.
+- Install external libraries using `pip`.
+- Import libraries into a Python program.
+- Understand aliases such as `pd` and `np`.
+- Identify commonly used libraries in data science.
+
+### Why This Topic Matters
+
+Python becomes much more powerful when you use libraries.
+
+Rather than writing every feature from scratch, you can reuse code that other developers have packaged into tools for tasks like:
+
+- Reading CSV files
+- Performing mathematical calculations
+- Creating charts
+- Building machine learning models
+
+Throughout this course, you will rely on these libraries to work with data efficiently.
+
+### What Is a Library?
+
+A library is a collection of pre-written code designed to perform specific tasks.
+
+Instead of writing everything yourself, you can import a library and use its functions in your program.
+
+You can think of a library as a toolbox:
+
+- The toolbox contains many tools.
+- Each tool is designed for a particular job.
+- You take the tool you need and use it when required.
+
+### Common Python Libraries
+
+Here are some libraries you will use often in data work:
+
+| Library        | Purpose                   |
+|---------------|---------------------------|
+| Pandas        | Data analysis             |
+| NumPy         | Numerical computing       |
+| Matplotlib    | Static visualizations     |
+| Seaborn       | Statistical visualizations|
+| Plotly        | Interactive visualizations|
+
+Together, these libraries form the foundation of many data science workflows.
+
+### Installing Libraries
+
+Most Python libraries can be installed using `pip`, which is Python’s package manager.
+
+Example:
+
+```bash
+pip install pandas
+```
+
+To install several libraries at once:
+
+```bash
+pip install pandas numpy matplotlib seaborn plotly
+```
+
+#### Google Colab
+
+Google Colab already includes many popular libraries, including Pandas, NumPy, Matplotlib, Seaborn, and Plotly.
+
+In most cases, **you do not need to install them manually**. You only need to import them in your notebook.
+
+### Importing Libraries
+
+Installing a library makes it available on your system.
+
+Importing a library allows you to use it in your current Python program.
+
+Example:
+
+```python
+import pandas
+```
+
+After importing, you can call functions from the library in your code.
+
+### Using Aliases
+
+Many libraries are imported using standard aliases to keep code short and readable.
+
+```python
+import pandas as pd
+```
+
+Here:
+
+- `pandas` is the library name.
+- `pd` is the alias used in your code.
+
+Instead of writing:
+
+```python
+pandas.read_csv()
+```
+
+you can write:
+
+```python
+pd.read_csv()
+```
+
+This alias is a widely used convention in Python data analysis.
+
+### Common Import Statements
+
+You will often see imports like these in data projects:
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+```
+
+Over time, these names will become familiar, and you will know which library to use for each task.
+
+### Importing Specific Functions
+
+Sometimes, you only need a single function from a library.
+
+Example:
+
+```python
+from math import sqrt
+
+print(sqrt(25))
+```
+
+Output:
+
+```text
+5.0
+```
+
+This pattern lets you use `sqrt` directly without writing `math.sqrt`.
+
+### Worked Example
+
+```python
+import pandas as pd
+import numpy as np
+
+print("Pandas Version:", pd.__version__)
+print("NumPy Version:", np.__version__)
+```
+
+This simple program checks that both libraries are available and shows which versions are installed.
+
+### Google Colab Activity
+
+Run the following code in Google Colab:
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+```
+
+If no errors appear, the libraries have been imported successfully.
+
+### Practice Exercise
+
+Answer these questions:
+
+1. What is the difference between **installing** and **importing** a library?
+2. Why do most Python programs use aliases such as `pd` and `np`?
+3. Which library would you use to create an interactive chart?
+
+Discuss your answers with a classmate or note them in your notebook.
+
+<Quiz title="Check Your Understanding" questions={installingLibrariesQuiz} />
+
+### Independent Exercise
+
+Research one Python library that is **not** covered in this guide.
+
+Find out:
+
+- What problem does it solve?
+- Who commonly uses it?
+- One example application.
+
+Summarize your findings in two or three sentences.
+
+### Common Mistakes
+
+#### Forgetting to Import a Library
+
+Incorrect:
+
+```python
+df = pd.read_csv("students.csv")
+```
+
+This will produce an error because `pd` has not been defined.
+
+Correct:
+
+```python
+import pandas as pd
+
+df = pd.read_csv("students.csv")
+```
+
+#### Confusing Installation and Importing
+
+Installing:
+
+```bash
+pip install pandas
+```
+
+Importing:
+
+```python
+import pandas as pd
+```
+
+Installing is usually done once per environment. Importing is done in every Python program that uses the library.
+
+#### Using a Non-Standard Alias
+
+Incorrect:
+
+```python
+import pandas as my_library
+```
+
+This is valid Python, but it makes your code harder for others to read. Using common aliases such as `pd` and `np` helps keep code consistent.
+
+### Key Takeaways
+
+In this lesson, you learned that:
+
+- A library is a collection of pre-written code for specific tasks.
+- `pip` is used to install libraries.
+- Libraries must be imported in each program that uses them.
+- Aliases like `pd`, `np`, `plt`, `sns`, and `px` are common in data science code.
+- Core libraries such as Pandas, NumPy, Matplotlib, Seaborn, and Plotly are used throughout this guide.
+
+### Continue Your Journey
+
+You are now ready to start working with real datasets.
+
+The next topic is **Reading CSV Files**, where you will learn how to load tabular data into Pandas DataFrames.

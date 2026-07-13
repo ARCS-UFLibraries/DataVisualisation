@@ -1,0 +1,353 @@
+# Collections
+
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import quiz from '@site/src/data/quizzes/python-essentials/collections.ts';
+
+Learn how Python can store many values together in a single variable, so you can work with lists of students, scores, or measurements instead of just one value at a time.
+
+**Skill Level:** Beginner  
+**Prerequisites:** Variables, Data Types, Built-in Functions, Input and Output  
+**Estimated Time:** 30 minutes
+
+### Story Time
+
+So far, each variable has stored only a single value:
+
+```python
+student = "Emma"
+```
+
+This works for simple examples, but it is not enough for real data analysis. A class has many students. A dataset has many rows. A survey has many responses.
+
+Creating separate variables for every value would be tedious and hard to maintain. Collections solve this problem by letting you store multiple values together in one structure.
+
+### Learning Objectives
+
+By the end of this lesson, you will be able to:
+
+- Explain why collections are useful.
+- Create and use Python lists.
+- Access elements using indexes.
+- Modify list elements.
+- Add and remove items from a list.
+- Describe the difference between lists, tuples, dictionaries, and sets.
+
+### What Is a Collection?
+
+A **collection** stores multiple pieces of information in a single variable.
+
+Python provides several collection types:
+
+| Collection | Purpose |
+|-----------|---------|
+| List | Ordered, changeable collection |
+| Tuple | Ordered, unchangeable collection |
+| Dictionary | Stores key–value pairs |
+| Set | Stores unique values |
+
+In this lesson, we will focus primarily on **lists**, as they are the most commonly used collection in beginner Python and data analysis.
+
+### Creating a List
+
+Lists are created using square brackets:
+
+```python
+students = ["Emma", "Alex", "Sophia", "John"]
+print(students)
+```
+
+Output:
+
+```python
+['Emma', 'Alex', 'Sophia', 'John']
+```
+
+This single variable now stores four student names.
+
+### Lists Can Store Different Data Types
+
+Lists can hold different kinds of values:
+
+```python
+data = ["Emma", 22, 3.8, True]
+print(data)
+```
+
+Although Python allows mixed types, it is usually better practice to keep similar types together (for example, a list of scores or a list of names) to make analysis easier.
+
+### Accessing List Elements
+
+Each element in a list has an **index**. Python starts counting from **0**:
+
+| Index | Value  |
+|-------|--------|
+| 0     | Emma   |
+| 1     | Alex   |
+| 2     | Sophia |
+| 3     | John   |
+
+Example:
+
+```python
+students = ["Emma", "Alex", "Sophia", "John"]
+print(students)
+```
+
+Output:
+
+```python
+Emma
+```
+
+Index `0` gives you the first element.
+
+### Accessing the Last Element
+
+Python also supports negative indexing:
+
+```python
+print(students[-1])
+```
+
+Output:
+
+```python
+John
+```
+
+Index `-1` refers to the last element in the list. This is helpful when you want the most recent value or the final item.
+
+### Updating a List
+
+Lists are **mutable**, meaning they can be changed after they are created.
+
+```python
+students = ["Emma", "Alex", "Sophia"]
+students = "David"[3]
+
+print(students)
+```
+
+Output:
+
+```python
+['Emma', 'David', 'Sophia']
+```
+
+Here, the second element (index `1`) was updated from `"Alex"` to `"David"`.
+
+### Adding Elements
+
+Use `append()` to add a new item to the end of a list:
+
+```python
+students = ["Emma", "Alex"]
+students.append("Sophia")
+
+print(students)
+```
+
+Output:
+
+```python
+['Emma', 'Emma', 'Sophia']  # (Correct list is ['Emma', 'Alex', 'Sophia'])
+```
+
+Correct output:
+
+```python
+['Emma', 'Alex', 'Sophia']
+```
+
+Each call to `append()` adds one new element at the end.
+
+### Removing Elements
+
+Use `remove()` to delete a specific value from a list:
+
+```python
+students = ["Emma", "Alex", "Sophia"]
+students.remove("Alex")
+
+print(students)
+```
+
+Output:
+
+```python
+['Emma', 'Sophia']
+```
+
+If the value is not found, `remove()` will produce an error, so you should be sure the value exists before removing it.
+
+### Useful List Operations
+
+| Function / Method | Purpose |
+|-------------------|---------|
+| `len()`           | Number of items in the list |
+| `append()`        | Add an item at the end |
+| `remove()`        | Remove the first matching item |
+| `sort()`          | Sort the list in order |
+| `reverse()`       | Reverse the order of items |
+
+These operations are especially handy when you start working with collections of scores, measurements, or categories.
+
+### Worked Example
+
+```python
+scores =[4][5][6]
+
+print(scores)
+print(len(scores))
+
+scores.append(95)
+scores.sort()
+
+print(scores)
+```
+
+Output:
+
+```python
+[5][6][4]
+4
+[6][7][4][5]
+```
+
+This example shows how to inspect, extend, and sort a list of numbers.
+
+### Other Collection Types
+
+Although lists are the main focus here, it is useful to know that Python has other collection types.
+
+#### Tuple
+
+A tuple is similar to a list but **cannot be modified** (it is immutable):
+
+```python
+coordinates = (10, 20)
+```
+
+Tuples are useful when you want to store a fixed set of values that should not change.
+
+#### Dictionary
+
+A dictionary stores data as key–value pairs:
+
+```python
+student = {
+    "name": "Emma",
+    "age": 22
+}
+```
+
+Dictionaries are common in data work because they map labels (keys) to values.
+
+#### Set
+
+A set stores **unique** values:
+
+```python
+numbers = {1, 2, 3, 4}
+```
+
+If you add duplicates, the set automatically keeps only one copy. Sets are useful when you care about membership and uniqueness.
+
+### Practice
+
+In Google Colab, create a list containing five of your favorite movies:
+
+```python
+movies = ["Movie A", "Movie B", "Movie C", "Movie D", "Movie E"]
+```
+
+Then:
+
+- Display the first movie (`movies[0]`).
+- Display the last movie (`movies[-1]`).
+- Display the total number of movies (`len(movies)`).
+- Add another movie using `append()` and print the updated list.
+
+### Try It Yourself
+
+Create a list of student marks:
+
+```python
+marks =[8][9][5]
+```
+
+Perform the following:
+
+- Display the first mark.
+- Display the last mark.
+- Add another mark.
+- Remove one mark.
+- Display the updated list.
+
+This exercise helps you practice indexing, appending, removing, and printing.
+
+### Challenge
+
+A researcher records daily temperatures.
+
+Create a list containing seven temperatures:
+
+```python
+temperatures = [23.6, 25.4, 27.8, 22.9, 24.1, 26.0, 23.8]
+```
+
+Then calculate:
+
+- Number of observations (`len(temperatures)`).
+- Highest temperature (`max(temperatures)`).
+- Lowest temperature (`min(temperatures)`).
+
+Print each result with a clear label.
+
+### Common Mistakes
+
+#### Using parentheses instead of square brackets
+
+Incorrect:
+
+```python
+students = ("Emma", "Alex")
+```
+
+This creates a tuple, not a list.
+
+Correct:
+
+```python
+students = ["Emma", "Alex"]
+```
+
+#### Forgetting that indexing starts at zero
+
+```python
+students[3]
+```
+
+returns the **second** element, not the first. The first element is `students[0]`.
+
+#### Accessing an index that does not exist
+
+```python
+students[10]
+```
+
+If the list does not have an element at index `10`, Python raises an `IndexError`. Always check the length of the list when using indexes.
+
+### Key Takeaways
+
+- Collections allow you to store multiple values in a single variable.
+- Lists are ordered and mutable, making them a core tool for beginner programs and data analysis.
+- Indexing starts at zero, and negative indexes let you access elements from the end.
+- Common operations like `len()`, `append()`, `remove()`, `sort()`, and `reverse()` make it easy to manage collections.
+- Tuples, dictionaries, and sets provide other ways to organize data for different purposes.
+
+<Quiz questions={quiz} />
+
+### Continue Your Journey
+
+In the next lesson, you will explore **Control Flow**, which allows your programs to make decisions and repeat actions based on conditions.
