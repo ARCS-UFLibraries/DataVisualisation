@@ -1,5 +1,13 @@
-import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz';
 import barChartsQuiz from '@site/src/data/quizzes/data-viz/bar-charts';
+
+import InfoCallout from '@site/src/components/InfoCallout';
+import ResourceCards from '@site/src/components/ResourceCards';
+import ChartPlayground from '@site/src/components/ChartPlayground';
+import ChartShowcaseCard from '@site/src/components/ChartShowcaseCard';
+import ChartComparePanel from '@site/src/components/ChartComparePanel';
+import ChartInsightCallout from '@site/src/components/ChartInsightCallout';
+import MiniChartTabs from '@site/src/components/MiniChartTabs';
 
 # Bar Charts
 
@@ -24,18 +32,10 @@ By the end of this lesson, you will be able to:
 - interpret what a bar chart shows,
 - recognize common mistakes when using bar charts.
 
-### Why This Topic Matters
+<InfoCallout title="Why This Topic Matters" variant="why">
+Bar charts are one of the fastest ways to compare categories clearly. They are useful when you want to answer questions such as which group is highest, which group is lowest, and whether the differences are small or large.
+</InfoCallout>
 
-Many real analytical questions involve categories rather than continuous time or numerical relationships.
-
-For example:
-
-- Which group has the highest average score?
-- Which category appears most often?
-- How do departments compare?
-- Which product sold the most?
-
-Bar charts make these comparisons easy to understand because the length or height of each bar represents the value for one category. They are one of the most common ways to compare categorical data. 
 ### What Is a Bar Chart?
 
 A bar chart displays values for different categories using rectangular bars.
@@ -45,7 +45,21 @@ Usually:
 - the x-axis shows the categories,
 - the y-axis shows the values.
 
-For example, if you want to compare average math score by gender, the categories are `Female` and `Male`, and the bar heights represent the average score for each category. 
+For example, if you want to compare average math score by gender, the categories are `Female` and `Male`, and the bar heights represent the average score for each category.
+
+<ChartShowcaseCard
+  title="A Bar Chart Answers a Comparison Question"
+  description="This lesson is not only about drawing bars. It is about learning how to compare groups and explain what the differences mean."
+>
+  <ChartInsightCallout
+    title="What to notice"
+    items={[
+      'Each bar represents one category.',
+      'The height of the bar represents the value for that category.',
+      'The main task is to compare heights and explain the difference clearly.',
+    ]}
+  />
+</ChartShowcaseCard>
 
 ### When Should You Use a Bar Chart?
 
@@ -58,7 +72,7 @@ Examples include:
 - average writing score by parental education level,
 - total sales by product category.
 
-A bar chart is a strong choice when the values represent separate groups rather than continuous time. If the goal is to show change over time, a line chart is often a better option. 
+A bar chart is a strong choice when the values represent separate groups rather than continuous time. If the goal is to show change over time, a line chart is often a better option.
 
 ### Your First Bar Chart
 
@@ -87,6 +101,56 @@ In the example above:
 - the chart is answering a comparison question.
 
 When reading a bar chart, focus on the height of the bars and what those differences mean.
+
+<MiniChartTabs
+  items={[
+    {
+      label: 'Gender',
+      title: 'Average Mathematics Score by Gender',
+      description: 'A simple example with two categories.',
+      content: (
+        <ChartInsightCallout
+          title="Interpretation"
+          items={[
+            'This chart compares two groups only.',
+            'The taller bar indicates the higher average score.',
+            'This is a clean use case for a bar chart because the question is categorical.',
+          ]}
+        />
+      ),
+    },
+    {
+      label: 'Lunch',
+      title: 'Number of Students by Lunch Type',
+      description: 'A frequency comparison across categories.',
+      content: (
+        <ChartInsightCallout
+          title="Interpretation"
+          items={[
+            'Bar charts can show counts as well as averages.',
+            'This helps answer which category appears more often.',
+            'The visual difference should support a direct comparison statement.',
+          ]}
+        />
+      ),
+    },
+    {
+      label: 'Education',
+      title: 'Average Writing Score by Parent Education Level',
+      description: 'A multi-category comparison with longer labels.',
+      content: (
+        <ChartInsightCallout
+          title="Interpretation"
+          items={[
+            'When categories increase, readability becomes more important.',
+            'Rotating labels can help with long names.',
+            'The chart allows ranking from highest to lowest group.',
+          ]}
+        />
+      ),
+    },
+  ]}
+/>
 
 ### Adding a Title and Axis Labels
 
@@ -128,6 +192,17 @@ This example changes the colors of the bars.
 
 Styling can improve readability, but it should not distract from the message of the chart.
 
+<ChartPlayground title="Explore How Bar Charts Work" />
+
+<ChartInsightCallout
+  title="Try this"
+  items={[
+    'Increase one value and see how that bar becomes taller.',
+    'Make two values close together and compare how small differences look.',
+    'Turn value labels on and off to see how labels support interpretation.',
+  ]}
+/>
+
 ### Example: Counting Categories
 
 Bar charts are also useful when you want to show how many observations belong to each category.
@@ -138,7 +213,7 @@ Suppose you count the number of students in each lunch group:
 import matplotlib.pyplot as plt
 
 lunch_types = ["Standard", "Free/Reduced"]
-counts = 
+counts =[5]
 
 plt.bar(lunch_types, counts)
 plt.title("Number of Students by Lunch Type")
@@ -190,7 +265,7 @@ education_levels = [
     "Master's"
 ]
 
-avg_writing_scores =[4][5][6][7][8][9]
+avg_writing_scores = [63.5, 66.0, 68.2, 69.9, 73.1, 75.4]
 
 plt.figure(figsize=(10, 4))
 plt.bar(education_levels, avg_writing_scores)
@@ -221,7 +296,7 @@ For example, if `Master's` has the highest average writing score, you can say:
 
 Sometimes it helps to show the numeric value directly on top of each bar.
 
-Matplotlib provides a helper for adding bar labels to bar containers. 
+Matplotlib provides a helper for adding bar labels to bar containers.
 
 ```python
 import matplotlib.pyplot as plt
@@ -247,7 +322,7 @@ Suppose you want to compare the average reading score for students in different 
 import matplotlib.pyplot as plt
 
 lunch = ["Standard", "Free/Reduced"]
-avg_reading =[5][10]
+avg_reading = [72.4, 65.8]
 
 plt.bar(lunch, avg_reading, color=["steelblue", "orange"])
 plt.title("Average Reading Score by Lunch Type")
@@ -262,15 +337,57 @@ A useful interpretation would be:
 - the difference between the two categories is visible,
 - the chart supports a comparison between categorical groups.
 
+<ChartComparePanel
+  left={{
+    title: 'Less Effective',
+    note: 'This version is harder to read because the viewer gets less context.',
+    children: (
+      <ChartInsightCallout
+        title="Problems"
+        items={[
+          'No clear title.',
+          'Missing axis labels.',
+          'The reader has to guess what the bars represent.',
+        ]}
+      />
+    ),
+  }}
+  right={{
+    title: 'More Effective',
+    note: 'This version gives the reader enough information to understand the comparison quickly.',
+    children: (
+      <ChartInsightCallout
+        title="Improvements"
+        items={[
+          'A meaningful title explains the purpose of the chart.',
+          'Axis labels make categories and values clear.',
+          'The viewer can interpret the message more confidently.',
+        ]}
+      />
+    ),
+  }}
+/>
+
 ### Google Colab Activity
 
 Using the Students Performance dataset, create bar charts for the following:
 
-1. average mathematics score by gender,  
-2. average reading score by lunch type,  
+1. average mathematics score by gender,
+2. average reading score by lunch type,
 3. number of students in each race/ethnicity group.
 
 For each chart, write 1–2 sentences describing the main comparison you observe.
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice this lesson in a live notebook.',
+      href: 'https://colab.research.google.com/',
+      label: 'Notebook',
+    },
+  ]}
+/>
 
 ### Practice Exercise
 
@@ -301,11 +418,11 @@ Try to make the chart understandable even for someone who has not seen the datas
 
 #### Using a Bar Chart for the Wrong Question
 
-Bar charts are best for comparing categories. If the data represents time or a continuous sequence, a line chart may be more appropriate. 
+Bar charts are best for comparing categories. If the data represents time or a continuous sequence, a line chart may be more appropriate.
 
 #### Forgetting Labels
 
-Without a title and axis labels, the viewer may not understand what the categories or values represent. Clear labeling is essential. 
+Without a title and axis labels, the viewer may not understand what the categories or values represent. Clear labeling is essential.
 
 #### Overcrowding the X-Axis
 
@@ -314,6 +431,10 @@ If there are too many categories or the labels are too long, the chart becomes h
 #### Describing the Bars Without Interpreting Them
 
 Do not stop at “the blue bar is taller.” Go one step further and explain what that means in the context of the data.
+
+<InfoCallout title="Common Mistake" variant="warning">
+A bar chart should help the reader compare categories quickly. If the labels are unclear or the chart is crowded, the comparison becomes harder instead of easier.
+</InfoCallout>
 
 ### Key Takeaways
 

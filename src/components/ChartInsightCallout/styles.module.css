@@ -1,0 +1,20 @@
+.callout {
+  margin: 1rem 0 1.75rem;
+  padding: 1rem 1.1rem;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(46,109,246,0.06), rgba(46,109,246,0.02));
+  border: 1px solid rgba(46,109,246,0.18);
+}
+
+.callout h4 {
+  margin-bottom: 0.6rem;
+}
+
+.callout ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.callout li {
+  margin-bottom: 0.4rem;
+}

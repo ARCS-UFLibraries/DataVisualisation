@@ -1,0 +1,127 @@
+/* ==========================================================
+   NAVBAR
+   ========================================================== */
+
+/* ---------- Navbar ---------- */
+
+.navbar {
+
+  height: 72px;
+
+  background: var(--surface-primary);
+
+  border-bottom: 1px solid var(--border-color);
+
+  box-shadow: var(--shadow-xs);
+
+  padding: 0 1rem;
+
+}
+
+/* ---------- Logo ---------- */
+
+.navbar__brand {
+
+  font-size: 1.1rem;
+
+  font-weight: 700;
+
+  color: var(--ifm-color-primary);
+
+}
+
+.navbar__logo img {
+
+  height: 38px;
+
+  transition: .25s ease;
+
+}
+
+.navbar__logo:hover img {
+
+  transform: scale(1.05);
+
+}
+
+/* ---------- Links ---------- */
+
+.navbar__link {
+
+  color: var(--text-secondary);
+
+  font-weight: 500;
+
+  font-size: .95rem;
+
+  border-radius: 8px;
+
+  padding: .45rem .75rem;
+
+  transition: .2s ease;
+
+}
+
+.navbar__link:hover {
+
+  color: var(--ifm-color-primary);
+
+  background: #EEF4FF;
+
+}
+
+.navbar__link--active {
+
+  color: var(--ifm-color-primary);
+
+  font-weight: 600;
+
+}
+
+/* ---------- Search ---------- */
+
+.navbar__search input {
+
+  border-radius: 10px;
+
+  border: 1px solid var(--border-color);
+
+  background: #F8FAFC;
+
+  transition: .2s;
+
+}
+
+.navbar__search input:focus {
+
+  border-color: var(--ifm-color-primary);
+
+  box-shadow: 0 0 0 3px rgba(0,33,165,.12);
+
+}
+
+/* ---------- GitHub / Right Items ---------- */
+
+.navbar__items--right .navbar__item {
+
+  margin-left: .5rem;
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:996px){
+
+.navbar{
+
+padding:0 .5rem;
+
+}
+
+.navbar__logo img{
+
+height:32px;
+
+}
+
+}

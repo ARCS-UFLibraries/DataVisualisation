@@ -1,0 +1,184 @@
+/* ==========================================================
+   CALLOUTS
+   ========================================================== */
+
+/* ---------- Base ---------- */
+
+.callout {
+
+  border-radius: 12px;
+
+  padding: 1.2rem 1.4rem;
+
+  margin: 1.75rem 0;
+
+  border-left: 5px solid;
+
+  box-shadow: var(--shadow-xs);
+
+}
+
+.callout h3,
+.callout h4 {
+
+  margin-top: 0;
+
+  margin-bottom: .75rem;
+
+  border: none;
+
+  padding: 0;
+
+}
+
+.callout p:last-child,
+.callout ul:last-child,
+.callout ol:last-child {
+
+  margin-bottom: 0;
+
+}
+
+/* ==========================================================
+   INFO
+   ========================================================== */
+
+.callout-info{
+
+  background:#EEF4FF;
+
+  border-color:var(--ifm-color-primary);
+
+}
+
+.callout-info h3{
+
+  color:var(--ifm-color-primary);
+
+}
+
+/* ==========================================================
+   SUCCESS
+   ========================================================== */
+
+.callout-success{
+
+  background:#ECFDF3;
+
+  border-color:#16A34A;
+
+}
+
+.callout-success h3{
+
+  color:#15803D;
+
+}
+
+/* ==========================================================
+   WARNING
+   ========================================================== */
+
+.callout-warning{
+
+  background:#FFF7ED;
+
+  border-color:#EA580C;
+
+}
+
+.callout-warning h3{
+
+  color:#C2410C;
+
+}
+
+/* ==========================================================
+   TIP
+   ========================================================== */
+
+.callout-tip{
+
+  background:#F5F3FF;
+
+  border-color:#7C3AED;
+
+}
+
+.callout-tip h3{
+
+  color:#6D28D9;
+
+}
+
+/* ==========================================================
+   EXAMPLE
+   ========================================================== */
+
+.callout-example{
+
+  background:#F8FAFC;
+
+  border-color:#475569;
+
+}
+
+.callout-example h3{
+
+  color:#334155;
+
+}
+
+/* ==========================================================
+   CHALLENGE
+   ========================================================== */
+
+.callout-challenge{
+
+  background:#FFF7ED;
+
+  border-color:var(--accent-color);
+
+}
+
+.callout-challenge h3{
+
+  color:var(--accent-color);
+
+}
+
+/* ==========================================================
+   OBJECTIVES
+   ========================================================== */
+
+.callout-objectives{
+
+  background:#EFF6FF;
+
+  border-color:#2563EB;
+
+}
+
+.callout-objectives h3{
+
+  color:#1D4ED8;
+
+}
+
+/* ==========================================================
+   TAKEAWAYS
+   ========================================================== */
+
+.callout-summary{
+
+  background:#F8FAFC;
+
+  border-color:#64748B;
+
+}
+
+.callout-summary h3{
+
+  color:#334155;
+
+}

@@ -1,0 +1,156 @@
+/* ==========================================================
+   LESSON LAYOUT
+   ========================================================== */
+
+/* ---------- Lesson Container ---------- */
+
+.theme-doc-markdown {
+
+  max-width: 960px;
+
+  margin: 0 auto;
+
+}
+
+/* ---------- First Paragraph ---------- */
+
+.theme-doc-markdown>p:first-of-type {
+
+  font-size: 1.15rem;
+
+  color: var(--text-secondary);
+
+  line-height: 1.9;
+
+  margin-bottom: 2rem;
+
+}
+
+/* ---------- Section Spacing ---------- */
+
+.theme-doc-markdown h2 {
+
+  margin-top: 3.5rem;
+
+}
+
+.theme-doc-markdown h3 {
+
+  margin-top: 2.2rem;
+
+}
+
+/* ---------- Lists ---------- */
+
+.theme-doc-markdown ul,
+.theme-doc-markdown ol {
+
+  margin-top: 1rem;
+
+  margin-bottom: 1.5rem;
+
+}
+
+.theme-doc-markdown li {
+
+  padding: .15rem 0;
+
+}
+
+/* ---------- Images ---------- */
+
+.theme-doc-markdown img {
+
+  display: block;
+
+  margin: 2rem auto;
+
+  border-radius: 12px;
+
+  box-shadow: var(--shadow-sm);
+
+}
+
+/* ---------- Videos ---------- */
+
+.theme-doc-markdown iframe {
+
+  width: 100%;
+
+  min-height: 500px;
+
+  border-radius: 12px;
+
+  margin: 2rem 0;
+
+  border: none;
+
+}
+
+/* ---------- Horizontal Rule ---------- */
+
+.theme-doc-markdown hr {
+
+  margin: 4rem 0;
+
+}
+
+/* ---------- Pagination ---------- */
+
+.pagination-nav {
+
+  margin-top: 5rem;
+
+}
+
+.pagination-nav__link {
+
+  border-radius: 12px;
+
+  border: 1px solid var(--border-color);
+
+  background: white;
+
+  transition: .25s;
+
+}
+
+.pagination-nav__link:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-sm);
+
+}
+
+/* ---------- Tables ---------- */
+
+.theme-doc-markdown table {
+
+  margin: 2rem 0;
+
+}
+
+/* ---------- Admonitions ---------- */
+
+.theme-admonition {
+
+  margin: 2rem 0;
+
+}
+
+/* ---------- Smooth Anchor ---------- */
+
+.anchor {
+
+  scroll-margin-top: 90px;
+
+}
+
+/* ---------- Selection ---------- */
+
+.theme-doc-markdown ::selection {
+
+  background: rgba(0,33,165,.12);
+
+}

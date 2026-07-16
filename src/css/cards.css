@@ -1,0 +1,206 @@
+/* ==========================================================
+   CARDS
+   ========================================================== */
+
+/* ---------- Base Card ---------- */
+
+.card {
+
+  background: var(--surface-primary);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-md);
+
+  padding: 1.5rem;
+
+  margin: 1.5rem 0;
+
+  box-shadow: var(--shadow-xs);
+
+  transition: var(--transition-normal);
+
+}
+
+.card:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-md);
+
+}
+
+/* ---------- Card Header ---------- */
+
+.card h2,
+.card h3 {
+
+  margin-top: 0;
+
+  border: none;
+
+  padding: 0;
+
+}
+
+/* ---------- Grid ---------- */
+
+.card-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+  gap: 1.5rem;
+
+  margin: 2rem 0;
+
+}
+
+/* ---------- Small Card ---------- */
+
+.card-small {
+
+  background: var(--surface-primary);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-md);
+
+  padding: 1rem;
+
+  transition: .25s;
+
+}
+
+.card-small:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-sm);
+
+}
+
+/* ---------- Feature Card ---------- */
+
+.feature-card {
+
+  text-align: center;
+
+  padding: 2rem;
+
+  background: white;
+
+  border: 1px solid var(--border-color);
+
+  border-radius: var(--radius-lg);
+
+  transition: .25s;
+
+}
+
+.feature-card:hover {
+
+  transform: translateY(-4px);
+
+  box-shadow: var(--shadow-md);
+
+}
+
+.feature-card h3 {
+
+  margin-top: 1rem;
+
+  margin-bottom: .75rem;
+
+}
+
+.feature-card p {
+
+  margin-bottom: 0;
+
+}
+
+/* ---------- Lesson Cards ---------- */
+
+.lesson-card {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 1.2rem 1.5rem;
+
+  border-radius: var(--radius-md);
+
+  background: white;
+
+  border: 1px solid var(--border-color);
+
+  transition: .25s;
+
+}
+
+.lesson-card:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-sm);
+
+}
+
+.lesson-card-title {
+
+  font-weight: 600;
+
+  color: var(--text-primary);
+
+}
+
+.lesson-card-description {
+
+  color: var(--text-secondary);
+
+  font-size: .95rem;
+
+}
+
+/* ---------- Dataset Card ---------- */
+
+.dataset-card {
+
+  border-left: 5px solid var(--ifm-color-primary);
+
+}
+
+/* ---------- Resource Card ---------- */
+
+.resource-card {
+
+  border-left: 5px solid var(--accent-color);
+
+}
+
+/* ---------- Clickable ---------- */
+
+.card-link {
+
+  text-decoration: none;
+
+  color: inherit;
+
+  display: block;
+
+}
+
+.card-link:hover {
+
+  text-decoration: none;
+
+  color: inherit;
+
+}

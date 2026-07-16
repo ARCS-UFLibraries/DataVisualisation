@@ -1,39 +1,200 @@
 /* ==========================================================
-   PAGE LAYOUT
+   LAYOUT
    ========================================================== */
 
-html {
+/* ---------- Body ---------- */
+
+html,
+body {
+
+  background: var(--surface-secondary);
 
   scroll-behavior: smooth;
 
 }
 
-body {
+/* ---------- Navbar Offset ---------- */
 
-  background: var(--background-page);
+.main-wrapper {
+
+  padding-top: 0;
 
 }
 
-/* Main documentation content */
+/* ---------- Main Content ---------- */
 
 .container {
 
-  max-width: 1500px;
+  max-width: 1400px;
 
 }
 
-/* Reading width */
+/* ---------- Documentation ---------- */
 
 .theme-doc-markdown {
 
   max-width: var(--content-width);
 
+  margin: 0 auto;
+
 }
 
-/* Better spacing */
+/* ---------- Doc Page ---------- */
 
-main {
+.theme-doc-page {
 
-  padding-bottom: 4rem;
+  background: var(--surface-secondary);
+
+}
+
+/* ---------- Article ---------- */
+
+article {
+
+  background: var(--surface-primary);
+
+  border-radius: var(--radius-lg);
+
+  padding: 3rem;
+
+  box-shadow: var(--shadow-sm);
+
+  border: 1px solid var(--border-color);
+
+}
+
+/* ---------- Content ---------- */
+
+.theme-doc-markdown {
+
+  width: 100%;
+
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+
+  margin-top: 5rem;
+
+}
+
+/* ---------- Images ---------- */
+
+.theme-doc-markdown img {
+
+  display: block;
+
+  margin: 2rem auto;
+
+  max-width: 100%;
+
+}
+
+/* ---------- Videos ---------- */
+
+iframe {
+
+  width: 100%;
+
+  min-height: 500px;
+
+  border-radius: var(--radius-md);
+
+  border: none;
+
+  box-shadow: var(--shadow-md);
+
+}
+
+/* ---------- Horizontal Rule ---------- */
+
+hr {
+
+  margin: 4rem 0;
+
+}
+
+/* ---------- Pagination ---------- */
+
+.pagination-nav {
+
+  margin-top: 4rem;
+
+}
+
+.pagination-nav__link {
+
+  border-radius: var(--radius-md);
+
+  border: 1px solid var(--border-color);
+
+  box-shadow: var(--shadow-xs);
+
+  transition: var(--transition-normal);
+
+}
+
+.pagination-nav__link:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-md);
+
+}
+
+/* ---------- TOC ---------- */
+
+.table-of-contents {
+
+  font-size: .9rem;
+
+}
+
+.table-of-contents__link {
+
+  transition: var(--transition-fast);
+
+}
+
+.table-of-contents__link:hover {
+
+  color: var(--ifm-color-primary);
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:996px){
+
+article{
+
+padding:2rem;
+
+border-radius:0;
+
+box-shadow:none;
+
+border:none;
+
+}
+
+.theme-doc-markdown{
+
+max-width:100%;
+
+}
+
+}
+
+/* ---------- Large Screens ---------- */
+
+@media (min-width:1600px){
+
+.container{
+
+max-width:1600px;
+
+}
 
 }

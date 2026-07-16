@@ -1,0 +1,68 @@
+.wrapper {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+}
+
+.header h3 {
+  margin-bottom: 0.35rem;
+}
+
+.loading {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-color-emphasis-700);
+}
+
+.header p {
+  margin-bottom: 1rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+.controls input[type='range'] {
+  width: 100%;
+}
+
+.controls input[type='color'] {
+  width: 100%;
+  min-height: 42px;
+  padding: 0.25rem;
+  border-radius: 10px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-color);
+}
+
+.checkbox {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.55rem !important;
+  margin-top: 1.75rem;
+}
+
+.chartBox {
+  min-height: 380px;
+}
+
+:global(.js-plotly-plot),
+:global(.plot-container) {
+  width: 100% !important;
+}

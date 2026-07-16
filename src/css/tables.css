@@ -1,0 +1,110 @@
+/* ==========================================================
+   TABLES
+   ========================================================== */
+
+/* ---------- Wrapper ---------- */
+
+.table-wrapper,
+.theme-doc-markdown table {
+
+  width: 100%;
+
+  margin: 2rem 0;
+
+  border-collapse: separate;
+
+  border-spacing: 0;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  border: 1px solid var(--border-color);
+
+  box-shadow: var(--shadow-xs);
+
+  background: white;
+
+}
+
+/* ---------- Header ---------- */
+
+.theme-doc-markdown table thead {
+
+  background: var(--ifm-color-primary);
+
+}
+
+.theme-doc-markdown table th {
+
+  color: white;
+
+  font-weight: 600;
+
+  font-size: .95rem;
+
+  padding: .9rem 1rem;
+
+  border: none;
+
+  text-align: left;
+
+}
+
+/* ---------- Cells ---------- */
+
+.theme-doc-markdown table td {
+
+  padding: .9rem 1rem;
+
+  border-top: 1px solid var(--border-color);
+
+  color: var(--text-secondary);
+
+}
+
+/* ---------- Zebra ---------- */
+
+.theme-doc-markdown table tbody tr:nth-child(even) {
+
+  background: #F8FAFC;
+
+}
+
+/* ---------- Hover ---------- */
+
+.theme-doc-markdown table tbody tr:hover {
+
+  background: #EEF4FF;
+
+}
+
+/* ---------- First / Last ---------- */
+
+.theme-doc-markdown table tr:last-child td:first-child {
+
+  border-bottom-left-radius: 12px;
+
+}
+
+.theme-doc-markdown table tr:last-child td:last-child {
+
+  border-bottom-right-radius: 12px;
+
+}
+
+/* ---------- Responsive ---------- */
+
+.table-responsive {
+
+  overflow-x: auto;
+
+}
+
+/* ---------- Small Text ---------- */
+
+.theme-doc-markdown table td code{
+
+font-size:.88rem;
+
+}

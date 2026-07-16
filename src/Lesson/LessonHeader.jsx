@@ -1,24 +1,46 @@
 import React from "react";
-import "./LessonHeader.css";
+import styles from "./LessonHeader.module.css";
 
 export default function LessonHeader({
+  module,
   title,
   description,
-  level,
+  difficulty,
   duration,
+  prerequisites,
 }) {
   return (
-    <div className="lesson-header">
+    <section className={styles.header}>
+
+      <div className={styles.module}>
+        {module}
+      </div>
+
       <h1>{title}</h1>
 
-      <p className="lesson-description">
+      <p className={styles.description}>
         {description}
       </p>
 
-      <div className="lesson-meta">
-        <span>Level: {level}</span>
-        <span>Estimated Time: {duration}</span>
+      <div className={styles.meta}>
+
+        <div className={styles.item}>
+          📘
+          <span>{difficulty}</span>
+        </div>
+
+        <div className={styles.item}>
+          ⏱
+          <span>{duration}</span>
+        </div>
+
+        <div className={styles.item}>
+          📚
+          <span>{prerequisites}</span>
+        </div>
+
       </div>
-    </div>
+
+    </section>
   );
 }

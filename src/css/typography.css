@@ -6,23 +6,23 @@
 
 body {
 
-    font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-    color: var(--text-primary);
+  color: var(--text-primary);
 
-    font-size: 17px;
+  font-size: 16px;
 
-    line-height: 1.8;
+  line-height: 1.8;
 
-    text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
 
-    -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
 
 }
 
@@ -30,145 +30,357 @@ body {
 
 .theme-doc-markdown {
 
-    font-size: 17px;
+  font-size: 1.05rem;
 
 }
 
-/* ---------- Page Title ---------- */
+.theme-doc-markdown>*:first-child {
+
+  margin-top: 0;
+
+}
+
+/* ==========================================================
+   HEADINGS
+   ========================================================== */
 
 h1 {
 
-    color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
 
-    font-size: 2.5rem;
+  font-size: 2rem;
 
-    font-weight: 700;
+  font-weight: 700;
 
-    margin-top: .5rem;
+  line-height: 1.2;
 
-    margin-bottom: 1.5rem;
+  letter-spacing: -.02em;
 
-    line-height: 1.2;
+  margin-bottom: 1.2rem;
 
 }
 
-/* ---------- Section Heading ---------- */
+h1::after {
+
+  content: "";
+
+  display: block;
+
+  width: 70px;
+
+  height: 4px;
+
+  margin-top: .8rem;
+
+  border-radius: 999px;
+
+  background: var(--accent-color);
+
+}
 
 h2 {
 
-    color: var(--text-primary);
+  color: var(--text-primary);
 
-    font-size: 1.8rem;
+  font-size: 1.5rem;
 
-    font-weight: 650;
+  font-weight: 650;
 
-    margin-top: 3.5rem;
+  margin-top: 3rem;
 
-    margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 
-    padding-bottom: .4rem;
+  padding-bottom: .4rem;
 
-    border-bottom: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
 
 }
-
-/* ---------- Sub Heading ---------- */
 
 h3 {
 
-    color: var(--text-primary);
+  color: var(--text-primary);
 
-    font-size: 1.35rem;
+  font-size: 1.25rem;
 
-    font-weight: 600;
+  font-weight: 600;
 
-    margin-top: 2.5rem;
+  margin-top: 2rem;
 
-    margin-bottom: .8rem;
+  margin-bottom: .75rem;
 
 }
-
-/* ---------- Small Heading ---------- */
 
 h4 {
 
-    font-size: 1.1rem;
+  color: var(--text-primary);
 
-    font-weight: 600;
+  font-size: 1.05rem;
 
-    margin-top: 2rem;
+  font-weight: 600;
+
+  margin-top: 1.75rem;
+
+  margin-bottom: .5rem;
 
 }
 
-/* ---------- Paragraph ---------- */
+/* ==========================================================
+   PARAGRAPHS
+   ========================================================== */
 
 p {
 
-    color: var(--text-primary);
+  color: var(--text-secondary);
 
-    margin-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
 
 }
 
-/* ---------- Lists ---------- */
+/* ==========================================================
+   LISTS
+   ========================================================== */
 
 ul,
 ol {
 
-    margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
 
-    padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
 
 }
 
 li {
 
-    margin: .45rem 0;
+  color: var(--text-secondary);
+
+  margin: .45rem 0;
 
 }
 
-/* ---------- Links ---------- */
+li p {
+
+  margin: 0;
+
+}
+
+/* ==========================================================
+   LINKS
+   ========================================================== */
 
 a {
 
-    font-weight: 500;
+  color: var(--ifm-color-primary);
 
-    transition: var(--transition-fast);
+  font-weight: 500;
+
+  transition: var(--transition-fast);
 
 }
 
 a:hover {
 
-    text-decoration: none;
+  color: var(--accent-color);
+
+  text-decoration: none;
 
 }
 
-/* ---------- Horizontal Rule ---------- */
-
-hr {
-
-    border: none;
-
-    border-top: 1px solid var(--border-color);
-
-    margin: 3rem 0;
-
-}
-
-/* ---------- Bold ---------- */
+/* ==========================================================
+   BOLD
+   ========================================================== */
 
 strong {
 
-    color: var(--text-primary);
+  color: var(--text-primary);
 
-    font-weight: 650;
+  font-weight: 650;
 
 }
 
-/* ---------- Images ---------- */
+/* ==========================================================
+   HORIZONTAL RULE
+   ========================================================== */
+
+hr {
+
+  border: none;
+
+  border-top: 1px solid var(--border-color);
+
+  margin: 4rem 0;
+
+}
+
+/* ==========================================================
+   BLOCKQUOTE
+   ========================================================== */
+
+blockquote {
+
+  background: var(--info-bg);
+
+  border-left: 5px solid var(--ifm-color-primary);
+
+  padding: 1rem 1.5rem;
+
+  border-radius: var(--radius-md);
+
+  margin: 2rem 0;
+
+  color: var(--text-secondary);
+
+}
+
+blockquote p {
+
+  margin: 0;
+
+}
+
+/* ==========================================================
+   INLINE CODE
+   ========================================================== */
+
+code {
+
+  background: #F6F8FA;
+
+  color: #24292F;
+
+  border: 1px solid #D0D7DE;
+
+  border-radius: 6px;
+
+  padding: .15rem .38rem;
+
+  font-size: .9em;
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    Consolas,
+    monospace;
+
+  font-weight: 500;
+
+}
+
+/* Don't style fenced code blocks like inline code */
+
+pre code {
+
+  background: transparent;
+
+  border: none;
+
+  padding: 0;
+
+  color: inherit;
+
+  font-size: inherit;
+
+  font-family: inherit;
+
+}
+
+/* ==========================================================
+   IMAGES
+   ========================================================== */
 
 img {
 
-    border-radius: var(--radius-md);
+  max-width: 100%;
+
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--shadow-sm);
+
+}
+
+/* ==========================================================
+   TABLE OF CONTENTS
+   ========================================================== */
+
+.table-of-contents {
+
+  font-size: .9rem;
+
+}
+
+.table-of-contents__link {
+
+  color: var(--text-light);
+
+  transition: var(--transition-fast);
+
+}
+
+.table-of-contents__link:hover {
+
+  color: var(--ifm-color-primary);
+
+}
+
+.table-of-contents__link--active {
+
+  color: var(--ifm-color-primary);
+
+  font-weight: 600;
+
+}
+
+/* ==========================================================
+   ADMONITIONS
+   ========================================================== */
+
+.theme-admonition {
+
+  border: none;
+
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--shadow-xs);
+
+}
+
+/* ==========================================================
+   TEXT SELECTION
+   ========================================================== */
+
+::selection {
+
+  background: #DBEAFE;
+
+  color: #111827;
+
+}
+
+/* ==========================================================
+   SCROLLBAR
+   ========================================================== */
+
+::-webkit-scrollbar {
+
+  width: 10px;
+
+}
+
+::-webkit-scrollbar-track {
+
+  background: #F3F4F6;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+  background: #CBD5E1;
+
+  border-radius: 999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+  background: #94A3B8;
 
 }
