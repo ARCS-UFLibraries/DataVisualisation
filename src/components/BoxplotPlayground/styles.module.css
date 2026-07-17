@@ -1,0 +1,131 @@
+.wrapper {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+}
+
+.header h3 {
+  margin-bottom: 0.35rem;
+}
+
+.header p {
+  margin-bottom: 1rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.editorPanel {
+  margin-bottom: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+.editorHeader {
+  padding: 0.65rem 0.9rem;
+  background: #111827;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.codeEditor {
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.codeLine {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.95rem;
+}
+
+.codeLabel {
+  color: #93c5fd;
+  font-weight: 600;
+}
+
+.staticCode {
+  color: #e5e7eb;
+}
+
+.codeInput {
+  flex: 1;
+  min-width: 260px;
+  background: #1e293b;
+  color: #f8fafc;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  font-family: inherit;
+}
+
+.controls {
+  padding: 0 0.9rem 0.9rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.4rem;
+  font-weight: 600;
+}
+
+.helperText {
+  margin: 0;
+  padding: 0 0.9rem 0.9rem;
+  color: #cbd5e1;
+  font-size: 0.92rem;
+}
+
+.errorText {
+  margin: 0;
+  padding: 0 0.9rem 0.9rem;
+  color: #fca5a5;
+  font-size: 0.92rem;
+}
+
+.chartBox {
+  min-height: 380px;
+  margin-bottom: 1rem;
+}
+
+.outputPanel h4 {
+  margin-bottom: 0.6rem;
+}
+
+.generatedCode {
+  margin: 0;
+  padding: 1rem;
+  border-radius: 14px;
+  overflow-x: auto;
+  background: #111827;
+  color: #e5e7eb;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.loading {
+  padding: 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-color-emphasis-700);
+}
+
+:global(.js-plotly-plot),
+:global(.plot-container) {
+  width: 100% !important;
+}

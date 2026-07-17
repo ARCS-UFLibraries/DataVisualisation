@@ -1,6 +1,9 @@
 import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import interactiveVisualisationsPlotlyQuiz from '@site/src/data/quizzes/data-viz/interactive-visualisations-plotly';
 
+import PlotlyPlayground from '@site/src/components/PlotlyPlayground';
+import ResourceCards from '@site/src/components/ResourceCards';
+
 # Interactive Visualisations with Plotly
 
 ### Story Time
@@ -131,7 +134,7 @@ import pandas as pd
 
 df = pd.DataFrame({
     "month": ["Jan", "Feb", "Mar", "Apr"],
-    "sales":[1][2][3][4]
+    "sales": [120, 150, 170, 160]
 })
 
 fig = px.line(df, x="month", y="sales", title="Monthly Sales Trend")
@@ -149,8 +152,8 @@ import plotly.express as px
 import pandas as pd
 
 df = pd.DataFrame({
-    "reading_score":,[5][6][7][8][9][10]
-    "writing_score":,[11][12][13][14][15][16]
+    "reading_score": [60, 68, 72, 75, 81, 88],
+    "writing_score": [58, 66, 70, 74, 83, 90],
     "student": ["A", "B", "C", "D", "E", "F"]
 })
 
@@ -178,8 +181,8 @@ import plotly.express as px
 import pandas as pd
 
 df = pd.DataFrame({
-    "reading_score":,[6][7][5]
-    "writing_score":,[12][13][11]
+    "reading_score": [60, 68, 72],
+    "writing_score": [58, 66, 70],
     "student": ["A", "B", "C"],
     "group": ["G1", "G1", "G2"]
 })
@@ -228,7 +231,7 @@ import pandas as pd
 
 df = pd.DataFrame({
     "group": ["A", "B", "C"],
-    "score":[15][17][18]
+    "score": [72, 81, 77]
 })
 
 fig = px.bar(
@@ -259,6 +262,19 @@ In Google Colab, create:
 3. an interactive scatter plot.
 
 For each chart, interact with it by hovering and zooming, then write 1–2 sentences explaining what the interactive features helped you notice.
+
+### Practice in Colab
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice interactive bar, line, and scatter charts with Plotly Express.',
+      href: 'https://colab.research.google.com/github/YOUR-USERNAME/YOUR-REPO/blob/main/notebooks/interactive-visualisations-plotly.ipynb',
+      label: 'Notebook',
+    },
+  ]}
+/>
 
 ### Practice Exercise
 

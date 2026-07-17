@@ -1,6 +1,9 @@
 import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import histogramsQuiz from '@site/src/data/quizzes/data-viz/histograms';
 
+import HistogramPlayground from '@site/src/components/HistogramPlayground';
+import ResourceCards from '@site/src/components/ResourceCards';
+
 # Histograms
 
 ### Story Time
@@ -105,6 +108,7 @@ plt.xlabel("Math Score")
 plt.ylabel("Frequency")
 plt.show()
 ```
+<HistogramPlayground title="Edit the Code and Watch the Histogram Change" />
 
 Now the chart clearly communicates what variable is being shown and what the bar heights represent.
 
@@ -276,6 +280,19 @@ Then write a short interpretation that answers:
 - Where are most scores concentrated?
 - Does the distribution seem narrow or wide?
 - Are there any unusually low or high values?
+
+### Practice in Colab
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice histograms with short runnable examples and exercises.',
+      href: 'https://colab.research.google.com/github/YOUR-USERNAME/YOUR-REPO/blob/main/notebooks/histograms.ipynb',
+      label: 'Notebook',
+    },
+  ]}
+/>
 
 ### Practice Exercise
 

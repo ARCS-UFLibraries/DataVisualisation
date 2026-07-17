@@ -89,50 +89,63 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Docs',
+            title: "Guide",
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: "Getting Started",
+                to: "/docs/getting-started",
+              },
+              {
+                label: "Python Essentials",
+                to: "/docs/python-essentials",
+              },
+              {
+                label: "Working with Data",
+                to: "/docs/working-with-data",
+              },
+              {
+                label: "Data Visualization",
+                to: "/docs/data-viz",
               },
             ],
           },
           {
-            title: 'Community',
+            title: "Resources",
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: "Datasets",
+                to: "/docs/datasets",
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: "Learning Resources",
+                to: "/docs/learning-resources",
               },
               {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                label: "FAQs",
+                to: "/docs/FAQs",
               },
             ],
           },
           {
-            title: 'More',
+            title: "Project",
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/ARCS-UFLibraries/DataVisualisation',
+                label: "GitHub",
+                href: "https://github.com/ARCS-UFLibraries/DataVisualisation",
+              },
+              {
+                label: "Report an Issue",
+                href: "https://github.com/ARCS-UFLibraries/DataVisualisation/issues",
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `© ${new Date().getFullYear()} Data Visualisation Guide • University of Florida Libraries`,
       },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
-      },
+
     }),
 };
 

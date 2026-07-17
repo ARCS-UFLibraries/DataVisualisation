@@ -1,6 +1,9 @@
 import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import heatmapsQuiz from '@site/src/data/quizzes/data-viz/heatmaps';
 
+import HeatmapPlayground from '@site/src/components/HeatmapPlayground';
+import ResourceCards from '@site/src/components/ResourceCards';
+
 # Heatmaps
 
 ### Story Time
@@ -110,15 +113,15 @@ import matplotlib.pyplot as plt
 
 df = pd.DataFrame(
     [
-       ,[6][7][5]
-       ,[9][10][8]
-[12][13][11]
+        [65, 70, 75],
+        [68, 72, 78],
+        [66, 74, 80]
     ],
     index=["Math", "Reading", "Writing"],
     columns=["Test 1", "Test 2", "Test 3"]
 )
 
-sns.heatmap(df)
+sns.heatmap(df, annot=True, cmap="Blues")
 plt.title("Scores Across Tests")
 plt.show()
 ```
@@ -187,7 +190,7 @@ df = pd.DataFrame(
     [
        ,[5][6][7]
        ,[8][9][10]
-[11][12][13]
+        [11][12][13]
     ],
     index=["Math", "Reading", "Writing"],
     columns=["Test 1", "Test 2", "Test 3"]
@@ -203,6 +206,8 @@ A useful interpretation might be:
 - scores increase from Test 1 to Test 3 across all subjects,
 - Test 3 cells are darker, indicating higher values,
 - writing scores remain lower than math and reading across the three tests.
+
+<HeatmapPlayground title="Edit the Code and Watch the Heatmap Change" />
 
 ### Correlation Heatmaps
 
@@ -258,6 +263,17 @@ Create a small heatmap in Google Colab using a simple matrix of values.
 Then create a correlation heatmap using three numerical columns from a dataset.
 
 For each heatmap, write 2–3 sentences describing the main pattern you observe.
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice heatmaps with short runnable examples and exercises.',
+      href: 'https://colab.research.google.com/github/YOUR-USERNAME/YOUR-REPO/blob/main/notebooks/heatmaps.ipynb',
+      label: 'Notebook',
+    },
+  ]}
+/>
 
 ### Practice Exercise
 

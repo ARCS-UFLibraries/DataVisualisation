@@ -1,5 +1,7 @@
 import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import scatterPlotsQuiz from '@site/src/data/quizzes/data-viz/scatter-plots';
+import ScatterPlayground from '@site/src/components/ScatterPlayground';
+import ResourceCards from '@site/src/components/ResourceCards';
 
 # Scatter Plots
 
@@ -41,7 +43,8 @@ Examples include:
 - advertising spend and sales,
 - temperature and electricity usage.
 
-A scatter plot makes these relationships easier to see by plotting each observation as a point. It helps analysts understand whether two variables tend to move together and whether the relationship appears strong, weak, or unclear.
+A scatter plot makes these relationships easier to see by plotting each observation as a point. It helps analysts understand whether two variables tend to move together and whether the relationship appears strong, weak, or unclear. [web:835][web:844]
+
 ### What Is a Scatter Plot?
 
 A scatter plot shows pairs of numerical values on an x-y coordinate system.
@@ -57,6 +60,7 @@ For example, one point might represent a student with:
 - writing score = 75
 
 So every dot on the chart corresponds to one row of data.
+
 ### When Should You Use a Scatter Plot?
 
 Use a scatter plot when:
@@ -80,8 +84,8 @@ You can create a scatter plot in Matplotlib with `plt.scatter()`.
 ```python
 import matplotlib.pyplot as plt
 
-reading =[5][6][7][8][9][10]
-writing =[11][12][13][14][15][16]
+reading = 
+writing = 
 
 plt.scatter(reading, writing)
 plt.show()
@@ -92,7 +96,7 @@ This creates a scatter plot where:
 - the x-axis shows reading scores,
 - the y-axis shows writing scores.
 
-Each point represents one student or one observation. 
+Each point represents one student or one observation. [web:834][web:844]
 
 ### Adding a Title and Axis Labels
 
@@ -101,8 +105,8 @@ As with other charts, labels make the plot easier to interpret.
 ```python
 import matplotlib.pyplot as plt
 
-reading =[6][7][8][9][10][5]
-writing =[12][13][14][15][16][11]
+reading = 
+writing = 
 
 plt.scatter(reading, writing)
 plt.title("Reading Score vs Writing Score")
@@ -111,7 +115,9 @@ plt.ylabel("Writing Score")
 plt.show()
 ```
 
-Titles and axis labels help viewers understand what each axis represents, which is essential for correct interpretation. 
+Titles and axis labels help viewers understand what each axis represents, which is essential for correct interpretation. [web:834]
+
+<ScatterPlayground title="Edit the Code and Watch the Scatter Plot Change" />
 
 ### Interpreting the Direction of a Relationship
 
@@ -126,7 +132,7 @@ This means:
 - as x increases,
 - y also tends to increase.
 
-For example, if students with higher reading scores also tend to have higher writing scores, the scatter plot will show an upward pattern. 
+For example, if students with higher reading scores also tend to have higher writing scores, the scatter plot will show an upward pattern.
 
 #### Negative Relationship
 
@@ -137,7 +143,7 @@ This means:
 - as x increases,
 - y tends to decrease.
 
-An example might be a case where more absences are associated with lower scores. 
+An example might be a case where more absences are associated with lower scores.
 
 #### No Clear Relationship
 
@@ -152,7 +158,7 @@ The **strength** of the relationship depends on how closely the points follow a 
 - If the points are tightly grouped around an upward or downward path, the relationship is stronger.
 - If the points are spread widely, the relationship is weaker.
 
-When reading a scatter plot, try not to focus on one point alone. Look at the overall arrangement of the points. 
+When reading a scatter plot, try not to focus on one point alone. Look at the overall arrangement of the points. [web:837][web:840]
 
 ### Outliers and Unusual Points
 
@@ -175,8 +181,8 @@ Suppose you create a scatter plot of reading and writing scores.
 ```python
 import matplotlib.pyplot as plt
 
-reading =[7][8][9][10][17][18][5][6]
-writing =[13][19][20][21][22][23][24][12]
+reading = 
+writing = 
 
 plt.scatter(reading, writing)
 plt.title("Reading Score vs Writing Score")
@@ -198,8 +204,8 @@ Now imagine a different scatter plot:
 ```python
 import matplotlib.pyplot as plt
 
-hours_studied =[25][26]
-quiz_score =[8][9][22][27][28][29][6][7]
+hours_studied = 
+quiz_score = 
 
 plt.scatter(hours_studied, quiz_score)
 plt.title("Hours Studied vs Quiz Score")
@@ -223,8 +229,8 @@ You can adjust the color, size, and transparency of points.
 ```python
 import matplotlib.pyplot as plt
 
-reading =[9][10][17][18][5][6][7][8]
-writing =[19][20][21][22][23][24][12][13]
+reading = 
+writing = 
 
 plt.scatter(reading, writing, color="purple", s=80, alpha=0.7)
 plt.title("Reading Score vs Writing Score")
@@ -239,7 +245,7 @@ In this example:
 - `s=80` changes the point size,
 - `alpha=0.7` makes points slightly transparent.
 
-These choices can improve readability, especially when many points overlap.
+These choices can improve readability, especially when many points overlap. [web:834][web:844]
 
 ### Reading a Scatter Plot as an Analyst
 
@@ -282,6 +288,19 @@ Then write 2–3 sentences that describe:
 - the strength of the relationship,
 - whether any outliers appear.
 
+### Practice in Colab
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice scatter plots with short runnable examples and exercises.',
+      href: 'YOUR_COLAB_NOTEBOOK_LINK',
+      label: 'Notebook',
+    },
+  ]}
+/>
+
 <Quiz title="Check Your Understanding" questions={scatterPlotsQuiz} />
 
 ### Challenge Exercise
@@ -301,18 +320,19 @@ Try to explain not just what the chart is, but what it suggests about the relati
 
 #### Using a Scatter Plot with Categorical Variables
 
-Scatter plots are meant for two numerical variables. If one variable is categorical, another chart type is usually better. 
+Scatter plots are meant for two numerical variables. If one variable is categorical, another chart type is usually better. [web:844]
 
 #### Looking at Individual Points Only
 
 The value of a scatter plot comes from the overall pattern, not just one or two dots. Look for direction, strength, and clustering.
+
 #### Assuming Correlation Means Causation
 
 A scatter plot may show that two variables are related, but it does not prove that one causes the other.
 
 #### Ignoring Outliers
 
-Unusual points can be important. They may reflect errors, rare cases, or important exceptions that deserve attention. 
+Unusual points can be important. They may reflect errors, rare cases, or important exceptions that deserve attention.
 
 ### Key Takeaways
 

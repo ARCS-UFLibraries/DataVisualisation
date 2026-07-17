@@ -1,6 +1,9 @@
 import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import boxplotsQuiz from '@site/src/data/quizzes/data-viz/boxplots';
 
+import BoxplotPlayground from '@site/src/components/BoxplotPlayground';
+import ResourceCards from '@site/src/components/ResourceCards';
+
 # Boxplots
 
 ### Story Time
@@ -108,7 +111,6 @@ math_scores =[5][6][7][8][9][10][11][12][13][14][15][16][17][18][19][20][21]
 plt.boxplot(math_scores)
 plt.show()
 ```
-
 This creates a single boxplot summarizing the distribution of mathematics scores.
 
 ### Adding a Title and Axis Labels
@@ -123,8 +125,9 @@ plt.title("Boxplot of Mathematics Scores")
 plt.ylabel("Math Score")
 plt.show()
 ```
-
 The title and axis label make the plot easier to interpret.
+
+<BoxplotPlayground title="Edit the Code and Watch the Boxplot Change" />
 
 ### Reading a Single Boxplot
 
@@ -223,6 +226,19 @@ Write 2–3 sentences that describe:
 - which group has the higher median,
 - which group has greater spread,
 - whether any possible outliers appear.
+
+### Practice in Colab
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice boxplots with short runnable examples and exercises.',
+      href: 'https://colab.research.google.com/github/YOUR-USERNAME/YOUR-REPO/blob/main/notebooks/boxplots.ipynb',
+      label: 'Notebook',
+    },
+  ]}
+/>
 
 ### Practice Exercise
 
