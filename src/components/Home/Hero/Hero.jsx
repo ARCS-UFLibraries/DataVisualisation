@@ -29,7 +29,7 @@ export default function Hero() {
 
           <Link
             className={styles.button}
-            to="/docs/getting-started/welcome-python"
+            to="/docs/getting-started/index.mdx"
           >
             Start Learning
           </Link>
