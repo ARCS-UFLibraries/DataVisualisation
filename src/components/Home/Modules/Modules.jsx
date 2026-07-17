@@ -6,22 +6,22 @@ const modules = [
   {
     title: "Getting Started",
     lessons: "Learn Google Colab, Python basics, and prepare your environment.",
-    link: "/docs/getting-started/index.mdx",
+    link: "/docs/getting-started",
   },
   {
     title: "Python Essentials",
     lessons: "Variables, data types, functions, collections, loops, and control flow.",
-    link: "/docs/python-essentials/index.mdx",
+    link: "/docs/python-essentials",
   },
   {
     title: "Working with Data",
     lessons: "Load, clean, explore, transform, and analyse real-world datasets.",
-    link: "/docs/working-with-data/index.mdx",
+    link: "/docs/working-with-data",
   },
   {
     title: "Data Visualization",
     lessons: "Create professional charts with Matplotlib, Seaborn, and Plotly.",
-    link: "/docs/data-viz/index.mdx",
+    link: "/docs/data-viz",
   },
 ];
 
