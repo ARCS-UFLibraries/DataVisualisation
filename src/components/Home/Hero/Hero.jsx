@@ -39,8 +39,8 @@ export default function Hero() {
         <div className={styles.right}>
 
           <img
-            src={require('@site/static/img/Getting-started/img.jpg').default} 
-            alt="Homepage Illustration"
+            src={require('@site/static/img/Homepage.png').default}
+            alt="Homepage"
           />
 
         </div>
