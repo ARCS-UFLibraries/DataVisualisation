@@ -11,7 +11,7 @@ const modules = [
   {
     title: "Python Essentials",
     lessons: "Variables, data types, functions, collections, loops, and control flow.",
-    link: "/docs/python-essentials/index.mdx"",
+    link: "/docs/python-essentials/index.mdx",
   },
   {
     title: "Working with Data",
