@@ -39,8 +39,8 @@ export default function Hero() {
         <div className={styles.right}>
 
           <img
-            src="src\components\Home\Gallery\Homepage.png"
-            alt="Home page Illustration"
+            src="/DataVisualisation/img/homepage.png"
+            alt="Homepage Illustration"
           />
 
         </div>
