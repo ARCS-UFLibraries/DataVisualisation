@@ -2,6 +2,7 @@
 
 import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import quiz from '@site/src/data/quizzes/python-essentials/built-in-functions.ts';
+import ResourceCards from '@site/src/components/ResourceCards';
 
 Learn how to use Python’s built-in functions so you can perform useful tasks with just a single line of code.
 
@@ -9,7 +10,7 @@ Learn how to use Python’s built-in functions so you can perform useful tasks w
 **Prerequisites:** Variables, Data Types, Type Conversion  
 **Estimated Time:** 20 minutes
 
-### Story Time
+## Story Time
 
 As you write more programs, you will often need to count letters in a word, find the largest value in a list, or round a decimal number. Writing the logic for each of these tasks from scratch would take time.
 
@@ -17,7 +18,7 @@ Instead, Python provides many ready-made functions you can call directly. These 
 
 Learning how to read and use these functions now will make later lessons on data analysis and visualization feel much more natural.
 
-### Learning Objectives
+## What You’ll Learn
 
 By the end of this lesson, you will be able to:
 
@@ -26,7 +27,7 @@ By the end of this lesson, you will be able to:
 - Read function syntax and understand arguments.
 - Apply functions to solve simple problems in your own code.
 
-### What Is a Function?
+## What Is a Function?
 
 A **function** is a reusable piece of code that performs a specific task.
 
@@ -42,7 +43,7 @@ The `print()` function displays information on the screen.
 
 Functions help you avoid repeating the same logic over and over.
 
-### Function Syntax
+## Function Syntax
 
 Most functions follow a simple pattern:
 
@@ -61,7 +62,7 @@ print("Python")
 
 Some functions accept multiple arguments (separated by commas), while others do not require any arguments at all.
 
-### Common Built-in Functions
+## Common Built-in Functions
 
 Here are several built-in functions you will use frequently:
 
@@ -81,7 +82,7 @@ Here are several built-in functions you will use frequently:
 
 These are especially helpful when you begin working with datasets and user input.
 
-### The `print()` Function
+## The `print()` Function
 
 ```python
 print("Hello, World!")
@@ -95,7 +96,7 @@ Hello, World!
 
 `print()` displays information on the screen. It is useful for showing messages, results, and intermediate outputs as your program runs.
 
-### The `type()` Function
+## The `type()` Function
 
 ```python
 age = 21
@@ -110,7 +111,7 @@ Output:
 
 `type()` shows you the data type of a value or variable. This is helpful when you are not sure how Python is interpreting your data.
 
-### The `len()` Function
+## The `len()` Function
 
 `len()` returns the length of an object.
 
@@ -128,7 +129,7 @@ Output:
 It also works with lists:
 
 ```python
-numbers =[4][5][6]
+numbers =[2][3][4]
 print(len(numbers))
 ```
 
@@ -140,10 +141,10 @@ Output:
 
 `len()` works with collections such as strings, lists, and other sequence types. It does not work with plain numbers.
 
-### The `max()` Function
+## The `max()` Function
 
 ```python
-marks =[7][8][9]
+marks = 
 print(max(marks))
 ```
 
@@ -155,10 +156,10 @@ Output:
 
 `max()` returns the largest value in a collection. This is useful for finding top scores or maximum measurements.
 
-### The `min()` Function
+## The `min()` Function
 
 ```python
-marks =[8][9][7]
+marks = 
 print(min(marks))
 ```
 
@@ -170,7 +171,7 @@ Output:
 
 `min()` returns the smallest value in a collection.
 
-### The `round()` Function
+## The `round()` Function
 
 ```python
 value = 3.14159
@@ -185,7 +186,7 @@ Output:
 
 The first argument is the number to round, and the second argument is how many decimal places to keep. If you omit the second argument, Python rounds to the nearest whole number.
 
-### The `input()` Function
+## The `input()` Function
 
 ```python
 name = input("Enter your name: ")
@@ -199,11 +200,11 @@ Important:
 - `input()` always returns text.
 - If you want to perform calculations, you will need to convert the input into a numeric type first, such as with `int()` or `float()`.
 
-### Worked Example
+## Worked Example
 
 ```python
 student = "Emma"
-marks =[10][8]
+marks = 
 
 print(student)
 print(len(student))
@@ -224,7 +225,7 @@ Emma
 
 This example shows how built-in functions can quickly answer questions about your data: length, highest value, lowest value, and type.
 
-### Quick Check
+## Quick Check
 
 Predict the output before running this code:
 
@@ -235,7 +236,18 @@ print(len(city))
 
 Then run it in Google Colab to confirm your prediction.
 
-### Practice
+## Practice in the Notebook
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice this lesson in a live notebook.',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/built_in_functions_lesson.ipynb',
+      label: 'Notebook'
+    }
+  ]}
+/>
 
 Create a variable containing your own name:
 
@@ -257,12 +269,12 @@ print(len(name))
 print(type(name))
 ```
 
-### Try It Yourself
+## Try It Yourself
 
 Create the following list:
 
 ```python
-scores =[11][12][8]
+scores = 
 ```
 
 Use built-in functions to determine:
@@ -273,7 +285,7 @@ Use built-in functions to determine:
 
 Print each result with a short label so the output is easy to read.
 
-### Challenge
+## Challenge
 
 A researcher records daily temperatures:
 
@@ -289,9 +301,9 @@ Use built-in functions to determine:
 
 Then round the highest temperature to one decimal place using `round()`.
 
-### Common Mistakes
+## Common Mistakes
 
-#### Forgetting parentheses
+### Forgetting parentheses
 
 Incorrect:
 
@@ -307,7 +319,7 @@ print()
 
 Without parentheses, you are referring to the function object itself, not calling the function.
 
-#### Using `len()` with numbers
+### Using `len()` with numbers
 
 Incorrect:
 
@@ -317,7 +329,7 @@ len(25)
 
 `len()` works with collections (like strings and lists), not with plain integers.
 
-#### Confusing `type` and `type()`
+### Confusing `type` and `type()`
 
 Incorrect:
 
@@ -333,16 +345,17 @@ print(type(age))
 
 `type` by itself refers to the built-in type object. You must use `type()` with parentheses and an argument to see the data type of a value.
 
-### Key Takeaways
+## Key Takeaways
 
 - A function is reusable code that performs a specific task.
 - Built-in functions such as `print()`, `type()`, `len()`, `max()`, `min()`, `round()`, and `input()` make common tasks simple.
 - `input()` always returns a string, which often must be converted before calculations.
 - Understanding function syntax helps you read documentation and apply new functions as you learn more Python.
 
+## Self Evaluation
 
 <Quiz questions={quiz} />
 
-### Continue Your Journey
+## Continue Your Journey
 
 In the next lesson, you will explore **Input and Output** in more detail, learning how to interact with users and display results in clearer ways.

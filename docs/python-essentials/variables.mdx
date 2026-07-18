@@ -5,11 +5,15 @@ sidebar_position: 1
 
 import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import variablesQuiz from '@site/src/data/quizzes/python-essentials/variables';
-
+import ResourceCards from '@site/src/components/ResourceCards';
 
 # Variables
 
-### Story Time
+**Prerequisites:** None – this lesson assumes no prior Python experience.  
+**Learning time:** 25–35 minutes.  
+**Difficulty:** Beginner.
+
+## Story Time
 
 Imagine you are analysing student exam scores for a class.
 
@@ -17,7 +21,7 @@ You need to keep track of information such as a student’s name, student ID, ex
 
 This is why variables matter. Variables allow you to store information once and use it whenever you need it. They are one of the first building blocks in Python, and you will use them throughout the course when working with data, creating visualizations, and solving real problems.
 
-### Learning Objectives
+## What You’ll Learn
 
 By the end of this lesson, you will be able to:
 
@@ -27,13 +31,7 @@ By the end of this lesson, you will be able to:
 - Update variable values.
 - Use variables in simple programs.
 
-### Why This Topic Matters
-
-Variables help programmers store and reuse information in a clear and organized way.
-
-Before you can work with datasets, tables, or charts, you need a way to save values in your program. Variables make that possible. They help you write code that is easier to read, easier to update, and easier to understand.
-
-### Lesson
+## Lesson
 
 A variable is a named location that stores a value.
 
@@ -55,7 +53,7 @@ temperature -> 38.2
 
 The program remembers the value by using the variable name.
 
-### Creating Variables
+## Creating Variables
 
 You create a variable by writing a name, followed by the equals sign, followed by a value.
 
@@ -73,7 +71,7 @@ In this example:
 
 Each variable name helps describe the information being stored.
 
-### Variable Assignment
+## Variable Assignment
 
 In Python, the equals sign (`=`) means assign the value on the right to the variable on the left.
 
@@ -89,7 +87,7 @@ You should read this as:
 
 This process is called assignment.
 
-### Displaying Variables
+## Displaying Variables
 
 Once a variable has been created, you can display its value using `print()`.
 
@@ -106,7 +104,7 @@ Alex
 
 This tells Python to display the value stored in the variable `name`.
 
-### Updating Variables
+## Updating Variables
 
 Variables can change over time.
 
@@ -124,7 +122,7 @@ Output:
 
 The new value replaces the old one. This is useful when information changes, such as an updated score or a corrected value.
 
-### Naming Variables
+## Naming Variables
 
 Good variable names make code easier to read and understand.
 
@@ -146,7 +144,7 @@ temp12345
 
 Choose names that clearly describe the information being stored.
 
-### Example
+## Example
 
 Suppose a hospital records the temperature of a patient.
 
@@ -183,7 +181,18 @@ In this example:
 
 Because the variable names are meaningful, the code is easier to understand.
 
-### Practice
+## Practice in the Notebook
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice this lesson in a live notebook.',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/variables_lesson.ipynb',
+      label: 'Notebook'
+    }
+  ]}
+/>
 
 Open the accompanying notebook and complete the following tasks:
 
@@ -215,13 +224,13 @@ A weather station records the following information:
 
 Create appropriate variables and display the information in a readable format.
 
-### Self Evaluation
+## Self Evaluation
 
 <Quiz title="Check Your Understanding" questions={variablesQuiz} />
 
-### Common Mistakes
+## Common Mistakes
 
-#### Forgetting quotation marks
+### Forgetting quotation marks
 
 Incorrect:
 
@@ -235,7 +244,7 @@ Correct:
 name = "Alex"
 ```
 
-#### Using spaces in variable names
+### Using spaces in variable names
 
 Incorrect:
 
@@ -249,7 +258,7 @@ Correct:
 student_name = "Emma"
 ```
 
-#### Starting variable names with numbers
+### Starting variable names with numbers
 
 Incorrect:
 
@@ -263,7 +272,7 @@ Correct:
 students2 = 50
 ```
 
-### Key Takeaways
+## Key Takeaways
 
 In this lesson, you learned that:
 
@@ -273,7 +282,6 @@ In this lesson, you learned that:
 - Variable values can be updated.
 - Clear variable names make code easier to understand.
 
-### Continue Your Journey
+## Continue Your Journey
 
 Now that you know how to store information in variables, the next step is to understand the different kinds of values Python can store.
-

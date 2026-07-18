@@ -2,6 +2,7 @@
 
 import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import quiz from '@site/src/data/quizzes/python-essentials/data-types.ts';
+import ResourceCards from '@site/src/components/ResourceCards';
 
 Learn how Python stores different kinds of information so you can write clearer programs and begin working with real data.
 
@@ -9,7 +10,7 @@ Learn how Python stores different kinds of information so you can write clearer 
 **Prerequisites:** Variables  
 **Estimated Time:** 20 minutes
 
-### Story Time
+## Story Time
 
 In the previous lesson, you learned that a variable can store information. Now the next question is: what kind of information is being stored?
 
@@ -17,7 +18,7 @@ Not all values are the same. A student's name is text, an exam score might be a 
 
 Python needs to recognize these differences so it can work with data correctly. Understanding data types is one of the first steps toward writing useful programs and analyzing real datasets.
 
-### Learning Objectives
+## What You’ll Learn
 
 By the end of this lesson, you will be able to:
 
@@ -27,13 +28,7 @@ By the end of this lesson, you will be able to:
 - Use the `type()` function to inspect a value.
 - Recognize common beginner mistakes when working with data types.
 
-### Why This Matters
-
-Data analysis depends on working with values in the right form. If Python thinks a number is text, or text is being treated like a number, the result can be confusing or incorrect.
-
-As you move through this course, you will work with names, scores, categories, dates, and measurements. Learning data types now will make it easier to clean data, analyze patterns, and build visualizations later.
-
-### What Is a Data Type?
+## What Is a Data Type?
 
 A **data type** tells Python what kind of value is stored in a variable.
 
@@ -48,7 +43,7 @@ is_student = True
 
 These are all variables, but they do not store the same kind of information. One stores text, one stores a whole number, one stores a decimal number, and one stores a true-or-false value.
 
-### Four Common Data Types
+## Four Common Data Types
 
 In this course, you will frequently use these four Python data types:
 
@@ -61,7 +56,7 @@ In this course, you will frequently use these four Python data types:
 
 These are enough to begin writing meaningful beginner programs and understanding how values behave in Python.
 
-### Strings
+## Strings
 
 A string, written as `str`, stores text.
 
@@ -78,7 +73,7 @@ Data Visualization
 
 Strings must be written inside quotation marks. Without quotation marks, Python will not treat the value as text.
 
-### Integers
+## Integers
 
 An integer, written as `int`, stores a whole number.
 
@@ -95,7 +90,7 @@ Output:
 
 Integers do not include decimal points. They are often used for counts, ages, and quantities.
 
-### Floating-Point Numbers
+## Floating-Point Numbers
 
 A floating-point number, written as `float`, stores a number with a decimal point.
 
@@ -112,7 +107,7 @@ Output:
 
 Floats are useful for measurements, averages, percentages, and calculations where decimal values matter.
 
-### Boolean Values
+## Boolean Values
 
 A Boolean, written as `bool`, stores one of only two values:
 
@@ -134,7 +129,7 @@ True
 
 Booleans are useful when a program needs to make decisions, check conditions, or track whether something is true or false.
 
-### Using `type()`
+## Using `type()`
 
 Python provides the `type()` function to show the data type of a value or variable.
 
@@ -164,7 +159,7 @@ Output:
 
 This is a helpful tool when you are unsure how Python is interpreting a value.
 
-### Worked Example
+## Worked Example
 
 The following example checks the type of several variables at once:
 
@@ -191,7 +186,7 @@ Output:
 
 This example shows that different kinds of values can be stored in different variables, and Python keeps track of each type automatically.
 
-### Quick Check
+## Quick Check
 
 Before moving on, try identifying the data type of each value on your own.
 
@@ -204,7 +199,18 @@ Before moving on, try identifying the data type of each value on your own.
 
 You can test your answers in Google Colab using `type()`.
 
-### Practice
+## Practice in the Notebook
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice this lesson in a live notebook.',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/data_types_lesson.ipynb',
+      label: 'Notebook'
+    }
+  ]}
+/>
 
 Create the following variables in Google Colab:
 
@@ -229,7 +235,7 @@ print(type(gpa))
 print(type(enjoys_programming))
 ```
 
-### Try It Yourself
+## Try It Yourself
 
 Now create variables for the following:
 
@@ -241,7 +247,7 @@ Now create variables for the following:
 
 Print both the value and the data type of each variable.
 
-### Challenge
+## Challenge
 
 A library stores information about books. Create variables for:
 
@@ -254,9 +260,9 @@ Then display both the values and their data types.
 
 This is good practice because it helps you think about how real information is represented in a program.
 
-### Common Mistakes
+## Common Mistakes
 
-#### Forgetting quotation marks
+### Forgetting quotation marks
 
 Incorrect:
 
@@ -272,7 +278,7 @@ city = "Gainesville"
 
 Without quotation marks, Python does not recognize `Gainesville` as a text value.
 
-#### Writing numbers as text
+### Writing numbers as text
 
 ```python
 age = "21"
@@ -286,7 +292,7 @@ Correct:
 age = 21
 ```
 
-#### Incorrect Boolean capitalization
+### Incorrect Boolean capitalization
 
 Incorrect:
 
@@ -302,7 +308,7 @@ registered = True
 
 Python is case-sensitive, so Boolean values must begin with a capital letter.
 
-### Key Takeaways
+## Key Takeaways
 
 - A data type tells Python what kind of value is stored in a variable.
 - Four common beginner data types are `str`, `int`, `float`, and `bool`.
@@ -310,8 +316,10 @@ Python is case-sensitive, so Boolean values must begin with a capital letter.
 - The `type()` function helps you check how Python is interpreting a value.
 - Understanding data types will help you write more accurate programs and prepare you for working with real datasets.
 
+## Self Evaluation
+
 <Quiz questions={quiz} />
 
-### Continue Your Journey
+## Continue Your Journey
 
 In the next lesson, you will learn about **type conversion**, which allows you to change one data type into another when needed.

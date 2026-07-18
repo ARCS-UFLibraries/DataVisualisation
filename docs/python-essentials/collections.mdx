@@ -2,6 +2,7 @@
 
 import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import quiz from '@site/src/data/quizzes/python-essentials/collections.ts';
+import ResourceCards from '@site/src/components/ResourceCards';
 
 Learn how Python can store many values together in a single variable, so you can work with lists of students, scores, or measurements instead of just one value at a time.
 
@@ -9,7 +10,7 @@ Learn how Python can store many values together in a single variable, so you can
 **Prerequisites:** Variables, Data Types, Built-in Functions, Input and Output  
 **Estimated Time:** 30 minutes
 
-### Story Time
+## Story Time
 
 So far, each variable has stored only a single value:
 
@@ -21,7 +22,7 @@ This works for simple examples, but it is not enough for real data analysis. A c
 
 Creating separate variables for every value would be tedious and hard to maintain. Collections solve this problem by letting you store multiple values together in one structure.
 
-### Learning Objectives
+## What You’ll Learn
 
 By the end of this lesson, you will be able to:
 
@@ -32,7 +33,7 @@ By the end of this lesson, you will be able to:
 - Add and remove items from a list.
 - Describe the difference between lists, tuples, dictionaries, and sets.
 
-### What Is a Collection?
+## What Is a Collection?
 
 A **collection** stores multiple pieces of information in a single variable.
 
@@ -47,7 +48,7 @@ Python provides several collection types:
 
 In this lesson, we will focus primarily on **lists**, as they are the most commonly used collection in beginner Python and data analysis.
 
-### Creating a List
+## Creating a List
 
 Lists are created using square brackets:
 
@@ -64,7 +65,7 @@ Output:
 
 This single variable now stores four student names.
 
-### Lists Can Store Different Data Types
+## Lists Can Store Different Data Types
 
 Lists can hold different kinds of values:
 
@@ -75,7 +76,7 @@ print(data)
 
 Although Python allows mixed types, it is usually better practice to keep similar types together (for example, a list of scores or a list of names) to make analysis easier.
 
-### Accessing List Elements
+## Accessing List Elements
 
 Each element in a list has an **index**. Python starts counting from **0**:
 
@@ -101,11 +102,12 @@ Emma
 
 Index `0` gives you the first element.
 
-### Accessing the Last Element
+## Accessing the Last Element
 
 Python also supports negative indexing:
 
 ```python
+students = ["Emma", "Alex", "Sophia", "John"]
 print(students[-1])
 ```
 
@@ -117,13 +119,13 @@ John
 
 Index `-1` refers to the last element in the list. This is helpful when you want the most recent value or the final item.
 
-### Updating a List
+## Updating a List
 
 Lists are **mutable**, meaning they can be changed after they are created.
 
 ```python
 students = ["Emma", "Alex", "Sophia"]
-students = "David"[3]
+students = "David"[2]
 
 print(students)
 ```
@@ -136,7 +138,7 @@ Output:
 
 Here, the second element (index `1`) was updated from `"Alex"` to `"David"`.
 
-### Adding Elements
+## Adding Elements
 
 Use `append()` to add a new item to the end of a list:
 
@@ -150,18 +152,12 @@ print(students)
 Output:
 
 ```python
-['Emma', 'Emma', 'Sophia']  # (Correct list is ['Emma', 'Alex', 'Sophia'])
-```
-
-Correct output:
-
-```python
 ['Emma', 'Alex', 'Sophia']
 ```
 
 Each call to `append()` adds one new element at the end.
 
-### Removing Elements
+## Removing Elements
 
 Use `remove()` to delete a specific value from a list:
 
@@ -180,7 +176,7 @@ Output:
 
 If the value is not found, `remove()` will produce an error, so you should be sure the value exists before removing it.
 
-### Useful List Operations
+## Useful List Operations
 
 | Function / Method | Purpose |
 |-------------------|---------|
@@ -192,10 +188,10 @@ If the value is not found, `remove()` will produce an error, so you should be su
 
 These operations are especially handy when you start working with collections of scores, measurements, or categories.
 
-### Worked Example
+## Worked Example
 
 ```python
-scores =[4][5][6]
+scores = 
 
 print(scores)
 print(len(scores))
@@ -209,18 +205,18 @@ print(scores)
 Output:
 
 ```python
-[5][6][4]
-4
-[6][7][4][5]
+
+3
+
 ```
 
 This example shows how to inspect, extend, and sort a list of numbers.
 
-### Other Collection Types
+## Other Collection Types
 
 Although lists are the main focus here, it is useful to know that Python has other collection types.
 
-#### Tuple
+### Tuple
 
 A tuple is similar to a list but **cannot be modified** (it is immutable):
 
@@ -230,7 +226,7 @@ coordinates = (10, 20)
 
 Tuples are useful when you want to store a fixed set of values that should not change.
 
-#### Dictionary
+### Dictionary
 
 A dictionary stores data as key–value pairs:
 
@@ -243,7 +239,7 @@ student = {
 
 Dictionaries are common in data work because they map labels (keys) to values.
 
-#### Set
+### Set
 
 A set stores **unique** values:
 
@@ -253,7 +249,18 @@ numbers = {1, 2, 3, 4}
 
 If you add duplicates, the set automatically keeps only one copy. Sets are useful when you care about membership and uniqueness.
 
-### Practice
+## Practice in the Notebook
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice this lesson in a live notebook.',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/collections_lesson.ipynb',
+      label: 'Notebook'
+    }
+  ]}
+/>
 
 In Google Colab, create a list containing five of your favorite movies:
 
@@ -268,12 +275,12 @@ Then:
 - Display the total number of movies (`len(movies)`).
 - Add another movie using `append()` and print the updated list.
 
-### Try It Yourself
+## Try It Yourself
 
 Create a list of student marks:
 
 ```python
-marks =[8][9][5]
+marks = 
 ```
 
 Perform the following:
@@ -286,7 +293,7 @@ Perform the following:
 
 This exercise helps you practice indexing, appending, removing, and printing.
 
-### Challenge
+## Challenge
 
 A researcher records daily temperatures.
 
@@ -304,9 +311,9 @@ Then calculate:
 
 Print each result with a clear label.
 
-### Common Mistakes
+## Common Mistakes
 
-#### Using parentheses instead of square brackets
+### Using parentheses instead of square brackets
 
 Incorrect:
 
@@ -322,23 +329,23 @@ Correct:
 students = ["Emma", "Alex"]
 ```
 
-#### Forgetting that indexing starts at zero
+### Forgetting that indexing starts at zero
+
+```python
+students[2]
+```
+
+returns the **second** element, not the first. The first element is `students[0]`.
+
+### Accessing an index that does not exist
 
 ```python
 students[3]
 ```
 
-returns the **second** element, not the first. The first element is `students[0]`.
-
-#### Accessing an index that does not exist
-
-```python
-students[10]
-```
-
 If the list does not have an element at index `10`, Python raises an `IndexError`. Always check the length of the list when using indexes.
 
-### Key Takeaways
+## Key Takeaways
 
 - Collections allow you to store multiple values in a single variable.
 - Lists are ordered and mutable, making them a core tool for beginner programs and data analysis.
@@ -346,8 +353,10 @@ If the list does not have an element at index `10`, Python raises an `IndexError
 - Common operations like `len()`, `append()`, `remove()`, `sort()`, and `reverse()` make it easy to manage collections.
 - Tuples, dictionaries, and sets provide other ways to organize data for different purposes.
 
+## Self Evaluation
+
 <Quiz questions={quiz} />
 
-### Continue Your Journey
+## Continue Your Journey
 
 In the next lesson, you will explore **Control Flow**, which allows your programs to make decisions and repeat actions based on conditions.
