@@ -1,17 +1,24 @@
 import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import selectingRowsColumnsQuiz from '@site/src/data/quizzes/working-with-data/selecting-rows-and-columns';
+import ResourceCards from '@site/src/components/ResourceCards';
 
 # Selecting Rows and Columns
 
-### Story Time
+Learn how to select specific rows and columns in a Pandas DataFrame so you can focus on the parts of your dataset that matter for each analysis.
 
-The Students Performance dataset contains many columns, but most analysis questions focus on just a few of them.
+**Skill Level:** Beginner  
+**Prerequisites:** Exploring a Dataset  
+**Estimated Time:** 25 minutes
+
+## Story Time
+
+The StudentsPerformance dataset contains many columns, but most analysis questions focus on just a few of them.[file:42]
 
 For example, if you only want to study mathematics scores or compare all exam scores, you do not need every column in the DataFrame. Learning how to select specific rows and columns helps you work with just the information you need.
 
 In this lesson, you will learn how to select columns and rows using Pandas.
 
-### Learning Objectives
+## What You’ll Learn
 
 By the end of this lesson, you will be able to:
 
@@ -20,7 +27,7 @@ By the end of this lesson, you will be able to:
 - Use `.loc[]` and `.iloc[]`.
 - Extract subsets of a dataset for analysis.
 
-### Why This Topic Matters
+## Why This Topic Matters
 
 Most real analyses focus on subsets of the data.
 
@@ -30,7 +37,7 @@ You might want only exam scores, only students who took a test preparation cours
 - reduce distraction from unrelated variables, and  
 - prepare focused datasets for each question.
 
-### Analysis Question
+## Analysis Question
 
 Suppose we want to answer:
 
@@ -38,7 +45,7 @@ Suppose we want to answer:
 
 To answer this question, we only need one column from the DataFrame.
 
-### Selecting a Single Column
+## Selecting a Single Column
 
 Use square brackets with the column name:
 
@@ -57,7 +64,7 @@ Example output:
 
 Because only one column is selected, the result is a **Series**.
 
-### Selecting Multiple Columns
+## Selecting Multiple Columns
 
 To compare all exam scores, select several columns at once:
 
@@ -75,7 +82,7 @@ Example output:
 
 Notice the **double** square brackets: one set for the DataFrame selection, and one set for the list of column names.
 
-### Selecting Rows by Position with `iloc`
+## Selecting Rows by Position with `iloc`
 
 Use `iloc[]` when you want to select rows by their integer positions:
 
@@ -93,7 +100,7 @@ df.iloc[0:5]
 
 This returns rows from position 0 up to, but not including, position 5 (the first five rows).
 
-### Selecting Rows and Columns Together with `iloc`
+## Selecting Rows and Columns Together with `iloc`
 
 You can select rows and columns at the same time:
 
@@ -106,7 +113,7 @@ This means:
 - rows from position 0 to 4 (first five rows)  
 - columns from position 0 to 2 (first three columns)
 
-### Selecting Rows by Label with `loc`
+## Selecting Rows by Label with `loc`
 
 Use `loc[]` when you want to select rows by their **labels** (index values):
 
@@ -124,7 +131,7 @@ df.loc[0:4]
 
 With `loc`, both the start and end labels are included.
 
-### Selecting Specific Columns with `loc`
+## Selecting Specific Columns with `loc`
 
 You can also select columns by name using `loc`:
 
@@ -145,19 +152,19 @@ Example output:
 | Female | 69         |
 | Male   | 90         |
 
-### Difference Between `loc` and `iloc`
+## Difference Between `loc` and `iloc`
 
-| Function | Uses            |
-|----------|-----------------|
-| `loc[]`  | Labels (index, column names) |
-| `iloc[]` | Integer positions            |
+| Function | Uses                          |
+|----------|-------------------------------|
+| `loc[]`  | Labels (index, column names)  |
+| `iloc[]` | Integer positions             |
 
 In practice:
 
 - use `loc[]` when working with labels you recognize,  
 - use `iloc[]` when you want to slice by numeric positions.
 
-### Worked Example
+## Worked Example
 
 Question:
 
@@ -185,9 +192,20 @@ df.loc[:4, ["gender", "reading score"]]
 
 These examples show how row and column selection can be combined.
 
-### Google Colab Activity
+## Practice in the Notebook
 
-Using the Students Performance dataset, perform the following tasks:
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice selecting rows and columns in the StudentsPerformance DataFrame.',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/selecting_rows_columns_lesson.ipynb',
+      label: 'Notebook'
+    }
+  ]}
+/>
+
+Using the StudentsPerformance dataset in Colab, perform the following tasks:
 
 1. Display only the mathematics score.  
 2. Display mathematics and reading scores.  
@@ -197,7 +215,7 @@ Using the Students Performance dataset, perform the following tasks:
 
 Try each selection in a separate code cell and observe the outputs.
 
-### Practice Exercise
+## Practice Exercise
 
 Answer the following questions using Python:
 
@@ -209,9 +227,7 @@ Answer the following questions using Python:
 
 Write the code for each task and run it to confirm your selections.
 
-<Quiz title="Check Your Understanding" questions={selectingRowsColumnsQuiz} />
-
-### Independent Exercise
+## Independent Exercise
 
 Suppose a university administrator wants to review only:
 
@@ -226,9 +242,9 @@ Write code to:
 
 This is a realistic example of preparing a focused view for a specific audience.
 
-### Common Mistakes
+## Common Mistakes
 
-#### Using Single Brackets for Multiple Columns
+### Using Single Brackets for Multiple Columns
 
 Incorrect:
 
@@ -244,14 +260,14 @@ df[["math score", "reading score"]]
 
 Multiple column names must be provided as a list inside the brackets.
 
-#### Confusing `loc` and `iloc`
+### Confusing `loc` and `iloc`
 
 Remember:
 
 - `loc[]` uses labels (index values and column names).  
 - `iloc[]` uses integer positions.
 
-#### Forgetting That Indexing Starts at Zero
+### Forgetting That Indexing Starts at Zero
 
 ```python
 df.iloc
@@ -259,7 +275,7 @@ df.iloc
 
 returns the first row, not the second. Pandas uses zero‑based indexing.
 
-### Key Takeaways
+## Key Takeaways
 
 In this lesson, you learned:
 
@@ -268,6 +284,10 @@ In this lesson, you learned:
 - How to combine row and column selections.  
 - How to extract subsets of a dataset for focused analysis.  
 
-### Continue Your Journey
+## Self Evaluation
+
+<Quiz title="Check Your Understanding" questions={selectingRowsColumnsQuiz} />
+
+## Continue Your Journey
 
 Next, you will learn **Filtering Data**, where you’ll use conditions to select rows that meet specific criteria (such as students with scores above a certain threshold).

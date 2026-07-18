@@ -1,9 +1,16 @@
 import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import sortingDataQuiz from '@site/src/data/quizzes/working-with-data/sorting-data';
+import ResourceCards from '@site/src/components/ResourceCards';
 
 # Sorting Data
 
-### Story Time
+Learn how to sort your DataFrame by one or more columns so you can quickly see highest and lowest values and understand rankings in your dataset.
+
+**Skill Level:** Beginner  
+**Prerequisites:** Filtering Data  
+**Estimated Time:** 20 minutes
+
+## Story Time
 
 You can now filter datasets to focus on specific groups of students.
 
@@ -11,7 +18,7 @@ Often, the next question is about **ranking**: who scored the highest, who score
 
 In this lesson, you will learn how to sort your DataFrame by one or more columns.
 
-### Learning Objectives
+## What You’ll Learn
 
 By the end of this lesson, you will be able to:
 
@@ -20,7 +27,7 @@ By the end of this lesson, you will be able to:
 - Identify the highest and lowest values in a dataset.
 - Prepare data for reporting and visualization.
 
-### Why This Topic Matters
+## Why This Topic Matters
 
 Imagine your instructor asks:
 
@@ -30,9 +37,9 @@ or:
 
 > Which students have the lowest Reading scores?  
 
-Sorting the dataset lets you answer these questions quickly, without manually searching through rows. Sorting helps reveal patterns, rankings, and extreme values that are important in analysis and reporting.
+Sorting the dataset lets you answer these questions quickly, without manually searching through rows. Sorting helps reveal patterns, rankings, and extreme values that are important in analysis and reporting.[file:42]
 
-### Analysis Question
+## Analysis Question
 
 Consider this question:
 
@@ -40,7 +47,7 @@ Consider this question:
 
 Sorting the `math score` column in descending order will help you find the answer.
 
-### Sorting a Column
+## Sorting a Column
 
 Use `sort_values()` to sort by a single column:
 
@@ -50,7 +57,7 @@ df.sort_values("math score")
 
 This sorts the DataFrame in **ascending** order, so the smallest values appear first.
 
-### Descending Order
+## Descending Order
 
 To see the highest scores first, set `ascending=False`:
 
@@ -63,7 +70,7 @@ df.sort_values(
 
 Now the rows are ordered from highest math score to lowest.
 
-### Sorting Multiple Columns
+## Sorting Multiple Columns
 
 You can sort by more than one column at a time.
 
@@ -80,9 +87,9 @@ This sorts:
 - first by gender, and  
 - within each gender, by math score in ascending order.
 
-### Mixed Sorting
+## Mixed Sorting
 
-Each column can have its own sorting order.
+Each column can have its own sorting order:
 
 ```python
 df.sort_values(
@@ -96,9 +103,9 @@ This sorts:
 - gender alphabetically (ascending)  
 - math score from highest to lowest (descending) within each gender  
 
-This is useful when you want a stable group ordering but still highlight top performers inside each group.
+This is useful when you want a stable group ordering but still highlight top scores inside each group.
 
-### Worked Example
+## Worked Example
 
 Question:
 
@@ -121,21 +128,30 @@ df.sort_values(
 ).head(5)
 ```
 
-These examples show how sorting and `head()` can be combined to find top or bottom performers.
+These examples show how sorting and `head()` can be combined to find top or bottom values.
 
-### Google Colab Activity
+## Practice in the Notebook
 
-Using the Students Performance dataset, sort the DataFrame by:
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Sort the StudentsPerformance dataset by exam scores.',
+      href: 'https://colab.research.google.com/', 
+      label: 'Notebook'
+    }
+  ]}
+/>
 
-- mathematics score  
-- reading score  
-- writing score  
+Using the StudentsPerformance dataset in Colab:[file:42]
 
-For each sort, display the top five students.
+- Sort the DataFrame by mathematics score and show the top five students.  
+- Sort by reading score and show the top five students.  
+- Sort by writing score and show the top five students.
 
 Write each operation in a separate cell and compare the results.
 
-### Practice Exercise
+## Practice Exercise
 
 Answer the following questions:
 
@@ -146,9 +162,7 @@ Answer the following questions:
 
 Use `sort_values()` for each question and inspect the outputs.
 
-<Quiz title="Check Your Understanding" questions={sortingDataQuiz} />
-
-### Independent Exercise
+## Independent Exercise
 
 A principal wants a list of students ranked by performance.
 
@@ -160,9 +174,9 @@ Sort the dataset by:
 
 Compare the three rankings and decide which one you think best represents overall academic performance. Write a short explanation of your reasoning.
 
-### Common Mistakes
+## Common Mistakes
 
-#### Forgetting `ascending=False`
+### Forgetting `ascending=False`
 
 ```python
 df.sort_values("math score")
@@ -177,7 +191,7 @@ df.sort_values(
 )
 ```
 
-#### Assuming the Original DataFrame Changes Automatically
+### Assuming the Original DataFrame Changes Automatically
 
 ```python
 sorted_df = df.sort_values("math score")
@@ -189,7 +203,7 @@ creates a **new** sorted DataFrame. The original `df` remains unchanged unless y
 df = df.sort_values("math score")
 ```
 
-### Key Takeaways
+## Key Takeaways
 
 In this lesson, you learned:
 
@@ -197,6 +211,10 @@ In this lesson, you learned:
 - How to use ascending and descending order.  
 - How sorting reveals rankings and extreme values in a dataset.  
 
-### Continue Your Journey
+## Self Evaluation
+
+<Quiz title="Check Your Understanding" questions={sortingDataQuiz} />
+
+## Continue Your Journey
 
 Next, you will learn **Creating New Columns**, which will let you add derived values such as total scores or averages to your DataFrames.

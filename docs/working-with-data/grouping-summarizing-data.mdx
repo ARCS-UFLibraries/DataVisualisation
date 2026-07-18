@@ -1,17 +1,24 @@
 import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import groupingDataQuiz from '@site/src/data/quizzes/working-with-data/grouping-and-summarizing-data';
+import ResourceCards from '@site/src/components/ResourceCards';
 
 # Grouping & Summarizing Data
 
-### Story Time
+Learn how to group data in Pandas and calculate summary statistics so you can understand patterns across different categories in your dataset.
 
-You have cleaned and prepared the Students Performance dataset.
+**Skill Level:** Beginner  
+**Prerequisites:** Cleaning & Preparing Data  
+**Estimated Time:** 30 minutes
+
+## Story Time
+
+You have cleaned and prepared the StudentsPerformance dataset.
 
 Now you are ready to move beyond individual rows and look at **patterns across groups**. Instead of asking “What is this student’s score?”, you start asking questions like “Do students who completed the test preparation course perform better?” or “Which lunch type is associated with higher reading scores?”.
 
 In this lesson, you will learn how to group data and calculate summary statistics for each group.
 
-### Learning Objectives
+## What You’ll Learn
 
 By the end of this lesson, you will be able to:
 
@@ -21,7 +28,7 @@ By the end of this lesson, you will be able to:
 - Perform multiple aggregations.
 - Generate meaningful insights from grouped data.
 
-### Why This Topic Matters
+## Why This Topic Matters
 
 Looking at individual rows is useful, but many analytical questions require you to summarize groups of observations.
 
@@ -34,9 +41,7 @@ For example:
 
 Grouping allows you to answer these questions efficiently and to see patterns that are hidden in the overall dataset.
 
----
-
-### What Is Grouping?
+## What Is Grouping?
 
 Grouping divides a dataset into categories and then performs calculations on each category separately.
 
@@ -48,9 +53,7 @@ Instead of calculating one overall average mathematics score, you can calculate 
 
 This often reveals differences between groups that are not visible when you look only at the full dataset.
 
----
-
-### The `groupby()` Function
+## The `groupby()` Function
 
 The basic syntax is:
 
@@ -60,9 +63,7 @@ df.groupby("column")
 
 On its own, this does not calculate anything. It creates groups that you can then summarize using methods like `mean()`, `count()`, or `agg()`.
 
----
-
-### Average Mathematics Score by Gender
+## Average Mathematics Score by Gender
 
 To compute the average mathematics score for each gender:
 
@@ -79,9 +80,7 @@ Example output:
 
 This tells you how performance differs between male and female students in mathematics.
 
----
-
-### Average Reading Score by Lunch Type
+## Average Reading Score by Lunch Type
 
 To compare reading performance across lunch categories:
 
@@ -91,9 +90,7 @@ df.groupby("lunch")["reading score"].mean()
 
 This helps you see whether students with different lunch types tend to have different average reading scores.
 
----
-
-### Counting Records with `groupby().size()`
+## Counting Records with `groupby().size()`
 
 Sometimes you only need to know how many observations belong to each category.
 
@@ -104,15 +101,13 @@ df.groupby("gender").size()
 Example output:
 
 ```text
-Female    518
-Male      482
+female    518
+male      482
 ```
 
 This shows the number of students in each gender group.
 
----
-
-### Counting Values with `value_counts()`
+## Counting Values with `value_counts()`
 
 Another common way to count values is `value_counts()`:
 
@@ -123,15 +118,13 @@ df["gender"].value_counts()
 Example output:
 
 ```text
-Female    518
-Male      482
+female    518
+male      482
 ```
 
 `value_counts()` is a quick way to count categories in a single column.
 
----
-
-### Multiple Aggregations with `agg()`
+## Multiple Aggregations with `agg()`
 
 You can calculate several statistics at once.
 
@@ -150,11 +143,9 @@ Example output:
 
 This richer summary shows not only the average but also how scores are distributed within each group.
 
----
+## Grouping by Multiple Columns
 
-### Grouping by Multiple Columns
-
-You can group by more than one variable at the same time.
+You can group by more than one variable at the same time:
 
 ```python
 df.groupby(
@@ -169,9 +160,7 @@ Now the data is grouped by:
 
 This produces a more detailed analysis, such as average math scores for each gender–lunch combination.
 
----
-
-### Summary Statistics for Groups
+## Summary Statistics for Groups
 
 You can also apply `describe()` to grouped data:
 
@@ -190,9 +179,7 @@ For each gender, this returns:
 
 This is helpful when you want a full statistical summary for each group.
 
----
-
-### Exploring Unique Values
+## Exploring Unique Values
 
 To inspect categorical variables, it is useful to see unique values and how many there are.
 
@@ -210,9 +197,7 @@ df["parental level of education"].nunique()
 
 These functions help you understand the categories available for grouping.
 
----
-
-### Worked Example
+## Worked Example
 
 Question:
 
@@ -233,9 +218,7 @@ After running this, interpret the results:
 
 This kind of grouped summary supports data‑driven conclusions.
 
----
-
-### Data Analysis Tip
+## Data Analysis Tip
 
 Grouping is most useful when the groups have a meaningful interpretation.
 
@@ -250,22 +233,29 @@ Examples of useful grouping variables include:
 
 Always think about the question you are trying to answer before deciding how to group the data.
 
----
+## Practice in the Notebook
 
-### Google Colab Activity
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Group and summarize the StudentsPerformance dataset.',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/grouping_summarizing_data_lesson.ipynb', 
+      label: 'Notebook'
+    }
+  ]}
+/>
 
-Using the Students Performance dataset, calculate:
+Using the StudentsPerformance dataset in Colab:
 
-- average mathematics score by gender  
-- average reading score by lunch type  
-- number of students in each race/ethnicity group  
-- average writing score by parental education level  
+- Calculate average mathematics score by gender.  
+- Calculate average reading score by lunch type.  
+- Count how many students are in each race/ethnicity group.  
+- Calculate average writing score by parental education level.
 
 Run each calculation in a separate cell and note what you learn from each grouped summary.
 
----
-
-### Practice Exercise
+## Practice Exercise
 
 Answer the following questions:
 
@@ -277,13 +267,11 @@ Answer the following questions:
 
 Write the code and your answers in your notebook or Colab.
 
----
+## Self Evaluation
 
 <Quiz title="Check Your Understanding" questions={groupingDataQuiz} />
 
----
-
-### Challenge Exercise
+## Challenge Exercise
 
 The school principal wants a summary report.
 
@@ -296,23 +284,21 @@ Prepare a table showing, for each gender:
 
 Which group performed better overall? Support your conclusion using the summary table and a short written interpretation.
 
----
+## Common Mistakes
 
-### Common Mistakes
-
-#### Forgetting to Specify the Column
+### Forgetting to Specify the Column
 
 ```python
 df.groupby("gender").mean()
 ```
 
-This summarizes **every** numeric column, which may be more than you need. If you only want mathematics scores, use:
+summarizes **every** numeric column, which may be more than you need. If you only want mathematics scores, use:
 
 ```python
 df.groupby("gender")["math score"].mean()
 ```
 
-#### Confusing `groupby()` with `value_counts()`
+### Confusing `groupby()` with `value_counts()`
 
 Use:
 
@@ -330,13 +316,11 @@ df.groupby("gender")["math score"].mean()
 
 to calculate statistics (such as averages) for each group.
 
-#### Grouping Before Understanding the Dataset
+### Grouping Before Understanding the Dataset
 
 If you group columns you do not understand, you may get summaries that are hard to interpret. Explore the dataset first, then choose grouping variables that are meaningful for your analysis.
 
----
-
-### Key Takeaways
+## Key Takeaways
 
 In this lesson, you learned how to:
 
@@ -346,8 +330,6 @@ In this lesson, you learned how to:
 - perform multiple aggregations,  
 - explore categorical variables and answer analytical questions using grouped data.
 
----
-
-### Continue Your Journey
+## Continue Your Journey
 
 Next, you will learn **Exporting Data**, where you will save your cleaned and summarized DataFrames to files so they can be shared or used in other tools.
