@@ -44,11 +44,11 @@ A heatmap helps by turning values into color patterns, making it easier to spot:
 - clusters  
 - stronger and weaker relationships  
 
-This makes heatmaps useful in many areas of analysis, especially when your data can be arranged in a matrix or table format.[web:92][web:95]
+This makes heatmaps useful in many areas of analysis, especially when your data can be arranged in a matrix or table format.
 
 ## What Is a Heatmap?
 
-A heatmap is a chart that displays values in a grid, where each cell is colored according to its value.[web:96]
+A heatmap is a chart that displays values in a grid, where each cell is colored according to its value.
 
 Usually:
 
@@ -56,7 +56,7 @@ Usually:
 - columns represent another dimension  
 - color shows the value inside each cell  
 
-The most important idea is this: **color encodes magnitude**. Stronger or higher values usually appear with darker or more intense colors, while lower values appear lighter or less intense, depending on the color palette used.[web:91]
+The most important idea is this: **color encodes magnitude**. Stronger or higher values usually appear with darker or more intense colors, while lower values appear lighter or less intense, depending on the color palette used.
 
 ## When Should You Use a Heatmap?
 
@@ -71,7 +71,7 @@ For example, heatmaps are often used for:
 - correlation matrices  
 - attendance patterns by day and hour  
 - values across categories and time  
-- confusion matrices in machine learning[web:93][web:92]  
+- confusion matrices in machine learning
 
 Heatmaps are especially useful when the goal is to find patterns, not just report exact numbers.
 
@@ -79,7 +79,7 @@ Heatmaps are especially useful when the goal is to find patterns, not just repor
 
 While Matplotlib can create many chart types, Seaborn makes heatmaps easier to build and style.
 
-Seaborn provides a dedicated `heatmap()` function for visualizing matrix-like data.[web:85]
+Seaborn provides a dedicated `heatmap()` function for visualizing matrix-like data.
 
 To use it, you first import Seaborn:
 
@@ -132,13 +132,13 @@ plt.title("Scores Across Tests")
 plt.show()
 ```
 
-Now the heatmap is much more informative because the axes tell us what each row and column mean, and annotations show the actual values.[web:89][web:96]
+Now the heatmap is much more informative because the axes tell us what each row and column mean, and annotations show the actual values.
 
 ## Adding Annotations
 
 Sometimes it is helpful to display the actual values inside the cells.
 
-Seaborn supports this with the `annot=True` argument.[web:89]
+Seaborn supports this with the `annot=True` argument.
 
 ```python
 import seaborn as sns
@@ -171,7 +171,7 @@ In many heatmaps:
 - darker or more intense cells represent larger values  
 - lighter cells represent smaller values  
 
-However, this depends on the color palette, so always make sure you understand what the colors mean in the specific chart.[web:91]
+However, this depends on the color palette, so always make sure you understand what the colors mean in the specific chart.
 
 ## Reading a Heatmap as an Analyst
 
@@ -220,7 +220,7 @@ A useful interpretation might be:
 
 One common use of heatmaps in data analysis is the **correlation heatmap**.
 
-A correlation heatmap displays the correlation values between multiple numerical variables as a color-coded matrix, helping you spot stronger and weaker relationships more easily.[web:93]
+A correlation heatmap displays the correlation values between multiple numerical variables as a color-coded matrix, helping you spot stronger and weaker relationships more easily.
 
 For example, if you have numerical columns such as math score, reading score, and writing score, you can compute their correlation matrix and visualize it with a heatmap.
 
@@ -242,7 +242,7 @@ plt.title("Correlation Heatmap")
 plt.show()
 ```
 
-This chart helps you compare how strongly the numerical variables relate to one another.[web:93]
+This chart helps you compare how strongly the numerical variables relate to one another.
 
 ## How to Read a Correlation Heatmap
 
@@ -253,16 +253,16 @@ In a correlation heatmap:
 - weaker relationships appear lighter  
 - the diagonal usually shows each variable correlated with itself  
 
-You should focus on which variable pairs appear most strongly related and whether the relationship is positive or negative, depending on the color scale used.[web:93]
+You should focus on which variable pairs appear most strongly related and whether the relationship is positive or negative, depending on the color scale used.
 
 ## Choosing a Color Palette
 
 Color choice matters in a heatmap.
 
-- A **sequential** palette such as `"Blues"` works well when values move from low to high.[web:96]  
-- A **diverging** palette such as `"coolwarm"` is often useful when the data has a meaningful center, such as correlation values ranging from negative to positive.[web:87][web:93]  
+- A **sequential** palette such as `"Blues"` works well when values move from low to high. 
+- A **diverging** palette such as `"coolwarm"` is often useful when the data has a meaningful center, such as correlation values ranging from negative to positive.
 
-Seaborn allows heatmap customization through arguments such as `cmap`, `annot`, and `center`, as well as tick labels and color bar options.[web:96][web:88]
+Seaborn allows heatmap customization through arguments such as `cmap`, `annot`, and `center`, as well as tick labels and color bar options.
 
 ## Google Colab Activity
 
@@ -323,7 +323,7 @@ Color is the main encoding in a heatmap, so the viewer must understand what the 
 
 ### Choosing a Confusing Color Palette
 
-A poor palette can make the chart harder to read. The palette should match the meaning of the data. Sequential palettes are often better for ordered magnitudes, while diverging palettes are better for values around a midpoint.[web:87][web:91]
+A poor palette can make the chart harder to read. The palette should match the meaning of the data. Sequential palettes are often better for ordered magnitudes, while diverging palettes are better for values around a midpoint.
 
 ### Treating the Heatmap Like a Table
 
@@ -331,7 +331,7 @@ A heatmap is not just a colored table. Its value comes from pattern recognition,
 
 ### Overusing Annotations
 
-Annotations can help with small heatmaps, but too many numbers can make larger heatmaps cluttered and difficult to read.[web:89]
+Annotations can help with small heatmaps, but too many numbers can make larger heatmaps cluttered and difficult to read.
 
 ## Key Takeaways
 

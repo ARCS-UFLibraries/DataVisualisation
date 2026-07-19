@@ -32,7 +32,7 @@ By the end of this lesson, you will be able to:
 
 ## Why This Topic Matters
 
-Many questions in data analysis are comparison questions.[web:110]
+Many questions in data analysis are comparison questions.
 
 For example:
 
@@ -41,13 +41,13 @@ For example:
 - Which group has the wider spread of values?  
 - How do groups differ across a second category?  
 
-Seaborn makes these comparisons easier because it offers high-level chart functions designed for statistical graphics and group-based comparisons.[web:110]
+Seaborn makes these comparisons easier because it offers high-level chart functions designed for statistical graphics and group-based comparisons.
 
 ## Why Use Seaborn Instead of Only Matplotlib?
 
 Matplotlib gives you detailed control, but Seaborn often makes common statistical charts easier to create.
 
-Compared with plain Matplotlib, Seaborn is often preferred for quick, attractive, and statistically oriented plots with less code. It also works naturally with DataFrames and can map variables directly by column name.[web:110]
+Compared with plain Matplotlib, Seaborn is often preferred for quick, attractive, and statistically oriented plots with less code. It also works naturally with DataFrames and can map variables directly by column name.
 
 That means you can focus more on the data question and less on plotting setup.
 
@@ -60,7 +60,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 ```
 
-Seaborn is built on top of Matplotlib, so you will often use both libraries together.[web:110]
+Seaborn is built on top of Matplotlib, so you will often use both libraries together.
 
 ## Seaborn and DataFrames
 
@@ -72,11 +72,11 @@ Instead of passing separate lists for every chart, you can often write code like
 sns.barplot(data=df, x="gender", y="math_score")
 ```
 
-This makes your code easier to read because it directly reflects the dataset columns you are analyzing.[web:101]
+This makes your code easier to read because it directly reflects the dataset columns you are analyzing.
 
 ## Seaborn Bar Plot
 
-A Seaborn `barplot()` is useful when you want to compare a summary statistic, often the mean, across categories.[web:101]
+A Seaborn `barplot()` is useful when you want to compare a summary statistic, often the mean, across categories.
 
 ```python
 import seaborn as sns
@@ -98,7 +98,7 @@ A bar plot is useful when the question is something like:
 - Which category has the higher average?  
 - How do group means compare?  
 
-Seaborn bar plots commonly summarize the values in each category, making them different from a simple count chart.[web:101]
+Seaborn bar plots commonly summarize the values in each category, making them different from a simple count chart.
 
 ## Interpreting a Seaborn Bar Plot
 
@@ -113,7 +113,7 @@ This is important because the plot shows a summary, not every raw observation.
 
 ## Seaborn Count Plot
 
-A `countplot()` is useful when you want to count how many observations fall into each category.[web:100]
+A `countplot()` is useful when you want to count how many observations fall into each category.
 
 ```python
 import seaborn as sns
@@ -129,7 +129,7 @@ plt.title("Count of Students by Lunch Type")
 plt.show()
 ```
 
-A count plot can be thought of as a histogram for a categorical variable because it shows the number of observations in each category.[web:100]
+A count plot can be thought of as a histogram for a categorical variable because it shows the number of observations in each category.
 
 ## Interpreting a Count Plot
 
@@ -147,7 +147,7 @@ That is a stronger interpretation than just naming the tallest bar.
 
 ## Seaborn Box Plot
 
-Seaborn also provides `boxplot()` for comparing distributions across categories.[web:113]
+Seaborn also provides `boxplot()` for comparing distributions across categories.
 
 ```python
 import seaborn as sns
@@ -168,7 +168,7 @@ This is useful when the question is not only about average difference, but also 
 
 ## Bar Plot vs Count Plot vs Box Plot
 
-These three Seaborn charts answer different comparison questions.[web:110]
+These three Seaborn charts answer different comparison questions.
 
 - Use **`barplot()`** when you want to compare a summary value such as an average across groups.  
 - Use **`countplot()`** when you want to compare how many observations belong to each category.  
@@ -178,7 +178,7 @@ These three Seaborn charts answer different comparison questions.[web:110]
 
 Seaborn also makes it easier to compare groups using color with a second categorical variable.
 
-This is often done with the `hue` argument.[web:108][web:105]
+This is often done with the `hue` argument.
 
 ```python
 import seaborn as sns
@@ -196,7 +196,7 @@ plt.title("Average Math Score by Gender and Test Preparation")
 plt.show()
 ```
 
-The `hue` argument adds another layer of comparison by using color to separate a second category.[web:114]
+The `hue` argument adds another layer of comparison by using color to separate a second category.
 
 ## Reading Comparative Plots More Carefully
 
@@ -218,7 +218,7 @@ Suppose you are working with the Students Performance dataset.
 - Want to compare **number of students by lunch type** → `countplot()`  
 - Want to compare **reading score distribution by gender** → `boxplot()`  
 
-Choosing the right plot depends on the type of question you are trying to answer.[web:110]
+Choosing the right plot depends on the type of question you are trying to answer.
 
 ## Google Colab Activity
 
@@ -266,11 +266,11 @@ Some Seaborn charts summarize the data rather than showing every raw point. Be c
 
 ### Adding Too Many Colors
 
-Using `hue` can be helpful, but too many categories can make the chart hard to read. Use color only when it adds a meaningful second comparison.[web:105]
+Using `hue` can be helpful, but too many categories can make the chart hard to read. Use color only when it adds a meaningful second comparison.
 
 ### Treating Seaborn as Just “Prettier Matplotlib”
 
-Seaborn is not only about appearance. Its real value is that it makes statistical comparison plots easier to create and interpret.[web:110]
+Seaborn is not only about appearance. Its real value is that it makes statistical comparison plots easier to create and interpret.
 
 ## Key Takeaways
 

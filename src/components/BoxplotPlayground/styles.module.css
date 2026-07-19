@@ -68,20 +68,14 @@
   font-family: inherit;
 }
 
-.controls {
-  padding: 0 0.9rem 0.9rem;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.checkbox {
-  flex-direction: row;
-  align-items: center;
-  gap: 0.55rem;
-  margin-top: 0.4rem;
-  font-weight: 600;
+.codeInputSmall {
+  width: 90px;
+  background: #1e293b;
+  color: #f8fafc;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  font-family: inherit;
 }
 
 .helperText {
