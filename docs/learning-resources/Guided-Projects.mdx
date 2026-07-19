@@ -1,0 +1,506 @@
+# Guided Case Studies
+
+Skill Level: Beginner
+
+In this page, you will complete **two guided projects**:
+
+1. Student Performance (exam scores)  
+2. Better Life Index (country-level quality of life and life satisfaction)
+
+Both will walk you through loading data, simple cleaning, basic analysis, visualization, and interpretation.
+
+## Guided Case Study 1: Student Performance
+
+### Project Overview
+
+In this guided project, you will act as a data analyst helping a school understand which factors relate to student exam performance.
+
+**Main question:**  
+How do factors like gender, lunch type, and test preparation relate to student scores?
+
+You will:
+
+- load and explore a real dataset,
+- compute summary statistics,
+- create visualizations,
+- and write short interpretations of what you find.
+
+### Dataset and Setup
+
+We will use the **Students Performance in Exams** dataset from Kaggle:
+
+- [Students Performance in Exams](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams)
+
+#### Step 1: Download the Dataset
+
+1. Open the Kaggle dataset page.  
+2. Download `StudentsPerformance.csv` to your computer.
+
+#### Step 2: Upload to Google Colab
+
+1. Open a new notebook in Google Colab.  
+2. Use the **Upload** button in the left file browser to upload `StudentsPerformance.csv`.
+
+#### Step 3: Load with Pandas
+
+```python
+import pandas as pd
+
+df = pd.read_csv("StudentsPerformance.csv")
+df.head()
+```
+
+Check that the first few rows look reasonable.
+
+### Understand the Columns
+
+This dataset includes columns like:
+
+- `gender`
+- `race/ethnicity`
+- `parental level of education`
+- `lunch`
+- `test preparation course`
+- `math score`, `reading score`, `writing score` (column names may vary slightly)
+
+#### Quick Exercise
+
+In your own words, write down 2–3 questions you might answer using these columns.  
+Examples:
+
+- “Do students who complete test preparation have higher scores?”  
+- “Is there a difference in average scores by lunch type?”
+
+### Simple Cleaning
+
+Even if the dataset is mostly clean, it’s useful to:
+
+#### Step 1: Check Missing Values
+
+```python
+df.isna().sum()
+```
+
+If all zeros, you can move on. If not, note which columns have missing data.
+
+#### Step 2: Rename Columns (Optional)
+
+To make column names easier to work with:
+
+```python
+df = df.rename(columns={
+    "race/ethnicity": "race_ethnicity",
+    "parental level of education": "parent_education",
+    "test preparation course": "test_preparation"
+})
+```
+
+#### Step 3: Create an Average Score Column
+
+```python
+df["avg_score"] = df[["math score", "reading score", "writing score"]].mean(axis=1)
+df.head()
+```
+
+This gives you a single summary score for each student.
+
+### Descriptive Statistics
+
+#### Overall Summary
+
+```python
+df.describe()
+```
+Look at the summary for `math score`, `reading score`, `writing score`, and `avg_score`.
+
+#### Grouped Averages
+
+By gender:
+
+```python
+df.groupby("gender")["avg_score"].mean()
+```
+
+By lunch type:
+
+```python
+df.groupby("lunch")["avg_score"].mean()
+```
+
+##### Interpretation Prompts
+
+- Which gender group has the higher average `avg_score`?  
+- How do average scores differ between lunch types?
+
+Write 1–2 sentences for each question based on the numbers you see.
+
+### Core Visualizations
+
+We will create three key charts and interpret them.
+
+#### 1. Bar Chart: Average Score by Gender
+
+```python
+import matplotlib.pyplot as plt
+
+df.groupby("gender")["avg_score"].mean().plot(kind="bar")
+plt.title("Average Score by Gender")
+plt.ylabel("Average Score")
+plt.xlabel("Gender")
+plt.show()
+```
+
+**Your task:**  
+Describe what this chart suggests in 2–3 sentences.  
+Consider:
+
+- Which bar is higher?
+- Is the difference large or small?
+
+#### 2. Boxplot: Score Distribution by Lunch Type
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.boxplot(data=df, x="lunch", y="avg_score")
+plt.title("Score Distribution by Lunch Type")
+plt.xlabel("Lunch Type")
+plt.ylabel("Average Score")
+plt.show()
+```
+
+**Your task:**  
+
+- Which lunch group seems to have higher scores overall?  
+- Does one group show a wider spread in scores?
+
+Write a short paragraph explaining what you see.
+
+#### 3. Scatter Plot: Math vs Reading Scores
+
+```python
+sns.scatterplot(data=df, x="math score", y="reading score")
+plt.title("Math Score vs Reading Score")
+plt.xlabel("Math Score")
+plt.ylabel("Reading Score")
+plt.show()
+```
+
+**Your task:**  
+
+- Does there appear to be a positive relationship between math and reading scores?  
+- Do higher math scores tend to come with higher reading scores?
+
+Explain briefly using the pattern of points.
+
+### Guided Questions
+
+Use your tables and charts to answer these:
+
+1. How do average scores differ by gender?  
+2. How do average scores differ by lunch type?  
+3. Does completing the test preparation course appear to be associated with higher scores?
+   ```python
+   df.groupby("test_preparation")["avg_score"].mean()
+   ```
+4. Do math and reading scores show evidence of a positive relationship?
+
+Write 2–3 sentences for each question.
+
+### Wrap-Up and Reflection
+
+Consider these reflection prompts:
+
+- If the school had limited resources, which group would you prioritize for extra support, based on your analysis?  
+- What limitations does this dataset have (for example, missing context, only one school, etc.)?  
+- What additional data would you want to collect to make stronger conclusions?
+
+Write a short reflection (one paragraph) summarizing what you learned about student performance in this case study.
+
+---
+
+## Guided Case Study 2: Better Life Index (Quality of Life)
+
+### Project Overview
+
+In this guided project, you will analyze country-level quality of life and life satisfaction indicators to understand how different dimensions (such as income, health, and work-life balance) relate to overall wellbeing.
+
+**Main question:**  
+How do different aspects of life (income, health, community, etc.) relate to life satisfaction across countries?
+
+You will:
+
+- load and clean a real-world dataset,
+- handle column names and missing values,
+- compute summary statistics,
+- create visualizations,
+- and interpret patterns across countries.
+
+### Dataset and Setup
+
+We will use the **Better Life Index 2024** dataset from Kaggle:
+
+- [Better Life Index 2024](https://www.kaggle.com/datasets/darrylljk/better-life-index-2024-life-satisfaction)
+
+Download the main CSV file (for example, `better_life_index_2024.csv`, depending on the exact file name on Kaggle).
+
+#### Step 1: Download the Dataset
+
+1. Open the Kaggle dataset page.  
+2. Download the Better Life Index CSV file to your computer.
+
+#### Step 2: Upload to Google Colab
+
+1. Open a new notebook in Google Colab.  
+2. Upload your Better Life Index CSV file.
+
+#### Step 3: Load with Pandas
+
+```python
+import pandas as pd
+
+bli = pd.read_csv("better_life_index_2024.csv")  # adjust filename as needed
+bli.head()
+```
+
+Check the first few rows and note the columns.
+
+### Inspect and Clean the Data
+
+This dataset typically includes:
+
+- a country column,
+- an overall life satisfaction or better life index score,
+- multiple indicator columns (income, jobs, health, education, environment, etc.).
+
+#### Step 1: Check Column Names
+
+```python
+bli.columns
+```
+
+Identify key columns, for example:
+
+- `Country`
+- `Life Satisfaction`
+- `Income`
+- `Jobs`
+- `Health`
+- `Education`
+- `Environment`
+- `Work-Life Balance`
+- `Community`
+
+(The exact names may differ; adjust based on what you see.)
+
+#### Step 2: Rename Columns for Easier Use
+
+Create cleaner, Python-friendly names:
+
+```python
+bli = bli.rename(columns={
+    "Country": "country",
+    "Life Satisfaction": "life_satisfaction",
+    "Income": "income",
+    "Jobs": "jobs",
+    "Health": "health",
+    "Education": "education",
+    "Environment": "environment",
+    "Work-Life Balance": "work_life_balance",
+    "Community": "community"
+    # add or adjust keys based on the actual dataset
+})
+
+bli.head()
+```
+
+#### Step 3: Check for Missing Values
+
+```python
+bli.isna().sum()
+```
+
+Note which columns have missing data.
+
+For this guided project, we’ll create a cleaned version that drops rows missing key indicators:
+
+```python
+key_cols = ["life_satisfaction", "income", "health", "education", "community"]
+bli_clean = bli.dropna(subset=key_cols)
+
+bli_clean.isna().sum()
+bli_clean.shape
+```
+
+You now have a cleaned dataset called `bli_clean`.
+
+### Basic Descriptive Statistics
+
+#### Overall Summary
+
+```python
+bli_clean.describe()
+```
+
+Look at:
+
+- average life satisfaction,
+- average income,
+- average health and education scores.
+
+#### Top and Bottom Countries by Life Satisfaction
+
+Top 10:
+
+```python
+top10_bli = bli_clean.sort_values("life_satisfaction", ascending=False).head(10)
+top10_bli[["country", "life_satisfaction"]]
+```
+
+Bottom 10:
+
+```python
+bottom10_bli = bli_clean.sort_values("life_satisfaction").head(10)
+bottom10_bli[["country", "life_satisfaction"]]
+```
+
+##### Interpretation Prompts
+
+- Which countries appear at the top and bottom of the life satisfaction list?  
+- Do you recognize any patterns (for example, similar regions or economic levels)?
+
+Write a short comment on what you notice.
+
+### Core Visualizations
+
+We will create a few charts to understand relationships between life satisfaction and key indicators.
+
+#### 1. Bar Chart: Top 10 Countries by Life Satisfaction
+
+```python
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8, 5))
+plt.barh(top10_bli["country"], top10_bli["life_satisfaction"])
+plt.gca().invert_yaxis()
+plt.title("Top 10 Countries by Life Satisfaction")
+plt.xlabel("Life Satisfaction")
+plt.show()
+```
+
+**Your task:**  
+
+- Which countries stand out at the top?  
+- How different are their scores from one another?
+
+#### 2. Scatter Plot: Income vs Life Satisfaction
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.scatterplot(
+    data=bli_clean,
+    x="income",
+    y="life_satisfaction"
+)
+plt.title("Income vs Life Satisfaction")
+plt.xlabel("Income")
+plt.ylabel("Life Satisfaction")
+plt.show()
+```
+
+**Your task:**  
+
+- Does life satisfaction tend to increase with income?  
+- Are there countries that have relatively high satisfaction but moderate income, or the opposite?
+
+Describe the general pattern.
+
+#### 3. Scatter Plot: Health vs Life Satisfaction
+
+```python
+sns.scatterplot(
+    data=bli_clean,
+    x="health",
+    y="life_satisfaction"
+)
+plt.title("Health vs Life Satisfaction")
+plt.xlabel("Health")
+plt.ylabel("Life Satisfaction")
+plt.show()
+```
+
+**Your task:**  
+
+- Does better health seem associated with higher life satisfaction?  
+- How strong does the relationship appear?
+
+Write a brief interpretation.
+
+#### 4. Scatter Plot: Community vs Life Satisfaction
+
+```python
+sns.scatterplot(
+    data=bli_clean,
+    x="community",
+    y="life_satisfaction"
+)
+plt.title("Community vs Life Satisfaction")
+plt.xlabel("Community")
+plt.ylabel("Life Satisfaction")
+plt.show()
+```
+
+**Your task:**  
+
+- Do stronger community scores appear to relate to higher life satisfaction?  
+- Are there countries with strong community but moderate satisfaction?
+
+### Guided Questions
+
+Use your tables and charts to answer these:
+
+1. How would you describe the relationship between income and life satisfaction?  
+2. How would you describe the relationship between health and life satisfaction?  
+3. How does community relate to life satisfaction in this dataset?  
+4. Which factor (income, health, community) appears most clearly related to life satisfaction in your charts?
+
+Write 2–3 sentences for each question.
+
+### Data Cleaning Reflection
+
+Think about the cleaning steps you took:
+
+- renaming columns,
+- dropping rows with missing values in key columns.
+
+Reflect briefly:
+
+- Why did renaming columns make your analysis easier?  
+- What are the pros and cons of dropping rows versus trying to fill missing values?
+
+Write a short paragraph summarizing your thoughts on data cleaning in this project.
+
+### Wrap-Up and Reflection
+
+Consider:
+
+- If you were advising policymakers on improving quality of life, which indicators would you emphasize based on your analysis?  
+- What important aspects of wellbeing might be missing from this dataset?  
+- What additional data (for example, inequality, mental health, environmental quality) would you want to make stronger conclusions?
+
+Write one paragraph reflecting on what you learned about country-level quality of life and life satisfaction.
+
+---
+
+## Next Steps
+
+After completing both guided case studies:
+
+- Choose one **Beginner Project** from the Practice Projects page.  
+- Apply the same workflow: load data, clean/rename columns, explore with summaries and charts, and write interpretations.  
+- Publish your notebooks and results on GitHub as part of your growing portfolio.
+
+Question for you: for the Better Life Index guided project, do you want to add one optional “challenge” where students compare life satisfaction across a few chosen regions or income groups to push their grouping/aggregation skills a bit further?

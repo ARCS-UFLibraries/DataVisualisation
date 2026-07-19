@@ -102,8 +102,8 @@ const sidebars = {
       items: [
         "learning-resources/development-tools",
         "learning-resources/git-github",
+        "learning-resources/Guided-Projects",
         "learning-resources/practice-projects",
-        "learning-resources/student-performance-case-study",
       ],
     },
 
