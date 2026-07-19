@@ -6,7 +6,13 @@ import ResourceCards from '@site/src/components/ResourceCards';
 
 # Histograms
 
-### Story Time
+Learn how to use histograms to understand the distribution of a numerical variable.
+
+**Skill Level:** Beginner  
+**Prerequisites:** Scatter Plots  
+**Estimated Time:** 25 minutes
+
+## Story Time
 
 You have already learned how to compare categories with bar charts, show trends with line charts, and explore relationships with scatter plots.
 
@@ -16,91 +22,91 @@ Now we move to a different kind of analytical question:
 
 For example:
 
-- Are most mathematics scores clustered in the middle?
-- Are reading scores spread widely or narrowly?
-- Are there unusually low or high scores?
-- Does the data appear balanced, skewed, or uneven?
+- Are most mathematics scores clustered in the middle?  
+- Are reading scores spread widely or narrowly?  
+- Are there unusually low or high scores?  
+- Does the data appear balanced, skewed, or uneven?  
 
 Histograms help answer these questions.
 
 In this lesson, you will learn how to create histograms with Matplotlib and how to interpret what they reveal about a variable’s distribution.
 
-### Learning Objectives
+## Learning Objectives
 
 By the end of this lesson, you will be able to:
 
-- explain when a histogram should be used,
-- create a histogram with Matplotlib,
-- understand the role of bins,
-- interpret shape, center, and spread,
-- identify possible outliers or unusual patterns,
-- distinguish a histogram from a bar chart.
+- explain when a histogram should be used  
+- create a histogram with Matplotlib  
+- understand the role of bins  
+- interpret shape, center, and spread  
+- identify possible outliers or unusual patterns  
+- distinguish a histogram from a bar chart  
 
-### Why This Topic Matters
+## Why This Topic Matters
 
 Many important data-analysis questions involve a single numerical variable.
 
 Examples include:
 
-- How are exam scores distributed?
-- Are most values concentrated in one range?
-- Is the data spread out or tightly grouped?
-- Are there unusually high or low observations?
+- How are exam scores distributed?  
+- Are most values concentrated in one range?  
+- Is the data spread out or tightly grouped?  
+- Are there unusually high or low observations?  
 
-A histogram helps answer these questions by grouping numerical values into ranges and showing how many observations fall into each range. This makes it easier to study the overall distribution of the data.
+A histogram helps answer these questions by grouping numerical values into ranges called bins and showing how many observations fall into each range.[web:61][web:68] This makes it easier to study the overall distribution of the data.
 
-### What Is a Histogram?
+## What Is a Histogram?
 
 A histogram is a chart used to display the distribution of a numerical variable.
 
 It works by:
 
-- dividing the range of values into intervals called **bins**,
-- counting how many observations fall into each bin,
-- drawing bars to represent those counts.
+- dividing the range of values into intervals called **bins**  
+- counting how many observations fall into each bin  
+- drawing bars to represent those counts  
 
-The x-axis shows ranges of values, and the y-axis shows frequency, or how many observations fall in each range. 
+The x-axis shows ranges of values, and the y-axis shows frequency, or how many observations fall in each range.[web:61]
 
-### When Should You Use a Histogram?
+## When Should You Use a Histogram?
 
 Use a histogram when:
 
-- you are working with **one numerical variable**,
-- you want to understand how the values are distributed,
-- you want to inspect shape, concentration, spread, or possible outliers.
+- you are working with **one numerical variable**  
+- you want to understand how the values are distributed  
+- you want to inspect shape, concentration, spread, or possible outliers  
 
 For example:
 
 - mathematics scores → histogram  
 - reading scores → histogram  
 - age → histogram  
-- salary → histogram
+- salary → histogram  
 
-A histogram is not for comparing categories. That is one of the key differences between histograms and bar charts. 
+A histogram is used for **distribution** questions, while a bar chart is used for **comparison** questions across categories.[web:67][web:69]
 
-### Your First Histogram
+## Your First Histogram
 
-You can create a histogram in Matplotlib with `plt.hist()`.
+You can create a histogram in Matplotlib with `plt.hist()`.[web:61]
 
 ```python
 import matplotlib.pyplot as plt
 
-math_scores =[5][6][7][8][9][10][11][12][13][14][15][16]
+math_scores =[5][6][7][8][9][3]
 
 plt.hist(math_scores)
 plt.show()
 ```
 
-This groups the score values into bins and displays how many values fall into each range. 
+This groups the score values into bins and displays how many values fall into each range.
 
-### Adding a Title and Axis Labels
+## Adding a Title and Axis Labels
 
 As with other charts, labels help the viewer interpret the plot more clearly.
 
 ```python
 import matplotlib.pyplot as plt
 
-math_scores =[6][7][8][9][10][11][12][13][14][15][16][5]
+math_scores =[6][7][8][9][5][3]
 
 plt.hist(math_scores)
 plt.title("Distribution of Mathematics Scores")
@@ -108,13 +114,14 @@ plt.xlabel("Math Score")
 plt.ylabel("Frequency")
 plt.show()
 ```
+
 <HistogramPlayground title="Edit the Code and Watch the Histogram Change" />
 
 Now the chart clearly communicates what variable is being shown and what the bar heights represent.
 
-### Understanding Bins
+## Understanding Bins
 
-Bins are the score ranges used to group the data.
+Bins are the score ranges used to group the data.[web:61][web:68]
 
 For example, one bin might include values from 50 to 60, another from 60 to 70, and another from 70 to 80.
 
@@ -123,7 +130,7 @@ Matplotlib chooses default bins automatically, but you can also set the number o
 ```python
 import matplotlib.pyplot as plt
 
-math_scores =[7][8][9][10][11][12][13][14][15][16][5][6]
+math_scores =[7][8][9][5][6][3]
 
 plt.hist(math_scores, bins=5)
 plt.title("Distribution of Mathematics Scores")
@@ -134,39 +141,39 @@ plt.show()
 
 The choice of bins affects how the distribution looks, so it is important to remember that different bin settings can change the visual appearance of the histogram.
 
-### What a Histogram Helps You See
+## What a Histogram Helps You See
 
 A histogram helps you understand several important features of a distribution:
 
 - **shape** — Is the distribution balanced, skewed, or uneven?  
 - **center** — Where do most values seem to be concentrated?  
 - **spread** — Are the values tightly grouped or widely spread out?  
-- **unusual values** — Are there very low or very high observations? 
+- **unusual values** — Are there very low or very high observations?  
 
 These ideas are central to descriptive data analysis.
 
-### Reading the Shape of a Histogram
+## Reading the Shape of a Histogram
 
 When reading a histogram, the first thing to notice is the overall shape.
 
 You might ask:
 
-- Is there one main peak?
-- Are there two peaks?
-- Is the data concentrated in the center?
-- Is the distribution skewed to one side?
+- Is there one main peak?  
+- Are there two peaks?  
+- Is the data concentrated in the center?  
+- Is the distribution skewed to one side?  
 
-A histogram with most values clustered in the middle and fewer values at the ends may look roughly balanced. A histogram with a long tail on one side may appear skewed. 
+A histogram with most values clustered in the middle and fewer values at the ends may look roughly balanced. A histogram with a long tail on one side may appear skewed.
 
-### Understanding Center
+## Understanding Center
 
 The center of a distribution is the area where many values seem to cluster.
 
 For example, if most bars are tallest around scores from 65 to 75, that suggests the center of the distribution is in that range.
 
-A histogram does not directly calculate the mean or median, but it gives a useful visual impression of where most values lie. 
+A histogram does not directly calculate the mean or median, but it gives a useful visual impression of where most values lie.
 
-### Understanding Spread
+## Understanding Spread
 
 Spread refers to how widely the data values are distributed.
 
@@ -174,47 +181,47 @@ If most bars are packed into a narrow range, the spread is smaller.
 
 If the values extend across many bins from low to high, the spread is larger.
 
-Understanding spread helps analysts judge whether the data is tightly grouped or highly variable. 
+Understanding spread helps analysts judge whether the data is tightly grouped or highly variable.
 
-### Spotting Unusual Values
+## Spotting Unusual Values
 
 A histogram can also suggest possible outliers or unusual observations.
 
 For example, if most scores are between 60 and 85 but one or two scores appear far away from the rest, those values may deserve closer attention.
 
-Histograms do not label outliers as precisely as some other charts, but they can still reveal unusual gaps or extremes in the data. 
+Histograms do not label outliers as precisely as some other charts, but they can still reveal unusual gaps or extremes in the data.
 
-### Histogram vs Bar Chart
+## Histogram vs Bar Chart
 
 Histograms and bar charts may look similar, but they are used for different purposes.
 
 A **bar chart** is used for:
 
-- categories,
-- grouped comparisons,
-- separate labels such as gender or lunch type.
+- categories  
+- grouped comparisons  
+- separate labels such as gender or lunch type  
 
 A **histogram** is used for:
 
-- one numerical variable,
-- grouped ranges of values,
-- studying distribution.
+- one numerical variable  
+- grouped ranges of values  
+- studying distribution  
 
 For example:
 
 - gender counts → bar chart  
-- mathematics score distribution → histogram
+- mathematics score distribution → histogram  
 
-Also, histogram bars usually touch because the bins represent continuous ranges of values. 
+Also, histogram bars usually touch because the bins represent continuous ranges of values, while bar chart bars are separated to show distinct categories.[web:64][web:67]
 
-### Example: Mathematics Scores
+## Example: Mathematics Scores
 
 Suppose you want to study the distribution of mathematics scores.
 
 ```python
 import matplotlib.pyplot as plt
 
-math_scores =[11][12][13][15][16][17][18][19][20][21][22][23][24][25][26][6][7]
+math_scores =[10][2][8][9][5][6][7]
 
 plt.hist(math_scores, bins=6, color="skyblue", edgecolor="black")
 plt.title("Distribution of Mathematics Scores")
@@ -225,18 +232,18 @@ plt.show()
 
 A useful interpretation might be:
 
-- most scores fall in the middle to upper-middle range,
-- there are fewer very low and very high scores,
-- the distribution appears concentrated around the center rather than spread evenly across all values.
+- most scores fall in the middle to upper-middle range  
+- there are fewer very low and very high scores  
+- the distribution appears concentrated around the center rather than spread evenly across all values  
 
-### Example: A Wider Spread
+## Example: A Wider Spread
 
 Now imagine a second set of scores:
 
 ```python
 import matplotlib.pyplot as plt
 
-scores =[13][14][15][16][27][28][29][30][5][6][7][11]
+scores =[11][8][9][5][7]
 
 plt.hist(scores, bins=6, color="orange", edgecolor="black")
 plt.title("Distribution of Scores")
@@ -247,11 +254,11 @@ plt.show()
 
 A strong interpretation might be:
 
-- the scores are spread across a wider range,
-- there is more variation in the data,
-- the distribution does not appear as tightly clustered.
+- the scores are spread across a wider range  
+- there is more variation in the data  
+- the distribution does not appear as tightly clustered  
 
-### Reading a Histogram as an Analyst
+## Reading a Histogram as an Analyst
 
 When interpreting a histogram, ask:
 
@@ -261,7 +268,7 @@ When interpreting a histogram, ask:
 4. Where are most values concentrated?  
 5. Is the distribution narrow or wide?  
 6. Does the shape appear balanced or skewed?  
-7. Are there unusually low or high values?
+7. Are there unusually low or high values?  
 
 For example:
 
@@ -269,84 +276,84 @@ For example:
 
 That is a stronger interpretation than simply saying, “The histogram has bars.”
 
-### Google Colab Activity
+## Google Colab Activity
 
 Using the Students Performance dataset, create a histogram for:
 
-- mathematics score
+- mathematics score  
 
 Then write a short interpretation that answers:
 
-- Where are most scores concentrated?
-- Does the distribution seem narrow or wide?
-- Are there any unusually low or high values?
+- Where are most scores concentrated?  
+- Does the distribution seem narrow or wide?  
+- Are there any unusually low or high values?  
 
-### Practice in Colab
+## Practice in Colab
 
 <ResourceCards
   items={[
     {
       title: 'Open in Google Colab',
       description: 'Practice histograms with short runnable examples and exercises.',
-      href: 'https://colab.research.google.com/github/YOUR-USERNAME/YOUR-REPO/blob/main/notebooks/histograms.ipynb',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/data-viz/histograms_lesson.ipynb',
       label: 'Notebook',
     },
   ]}
 />
 
-### Practice Exercise
+## Practice Exercise
 
 Create a histogram for reading score.
 
 Then answer:
 
-- What score range appears most common?
-- Does the distribution seem balanced or skewed?
-- Is the spread smaller or larger than you expected?
+- What score range appears most common?  
+- Does the distribution seem balanced or skewed?  
+- Is the spread smaller or larger than you expected?  
 
 <Quiz title="Check Your Understanding" questions={histogramsQuiz} />
 
-### Challenge Exercise
+## Challenge Exercise
 
 Choose one numerical variable from your dataset and create a histogram that clearly shows its distribution.
 
 Your chart should include:
 
-- a meaningful title,
-- clear axis labels,
-- an appropriate number of bins,
-- a short written interpretation.
+- a meaningful title  
+- clear axis labels  
+- an appropriate number of bins  
+- a short written interpretation  
 
 Your interpretation should mention shape, concentration, and spread.
 
-### Common Mistakes
+## Common Mistakes
 
-#### Confusing a Histogram with a Bar Chart
+### Confusing a Histogram with a Bar Chart
 
-A histogram shows the distribution of one numerical variable using value ranges. A bar chart compares categories. They may look similar, but they answer different questions. 
+A histogram shows the distribution of one numerical variable using value ranges. A bar chart compares categories.[web:67][web:69] They may look similar, but they answer different questions.
 
-#### Using Too Few or Too Many Bins
+### Using Too Few or Too Many Bins
 
-The number of bins can change how the distribution appears. Too few bins can hide detail, while too many bins can make the chart look noisy. 
+The number of bins can change how the distribution appears.[web:61] Too few bins can hide detail, while too many bins can make the chart look noisy.
 
-#### Looking Only at the Tallest Bar
+### Looking Only at the Tallest Bar
 
 The histogram should be read as a whole. Focus on the overall shape, center, and spread, not just one bar.
 
-#### Forgetting to Interpret the Distribution
+### Forgetting to Interpret the Distribution
 
 Do not stop after creating the plot. Ask what the histogram suggests about clustering, spread, and unusual values.
 
-### Key Takeaways
+## Key Takeaways
 
 In this lesson, you learned how to:
 
-- create histograms with Matplotlib,
-- use histograms to study the distribution of one numerical variable,
-- understand the role of bins,
-- interpret shape, center, spread, and possible unusual values,
-- distinguish histograms from bar charts.
+- create histograms with Matplotlib  
+- use histograms to study the distribution of one numerical variable  
+- understand the role of bins  
+- interpret shape, center, spread, and possible unusual values  
+- distinguish histograms from bar charts  
 
-### Continue Your Journey
+## Continue Your Journey
 
 Next, you will learn **Boxplots**, which provide another powerful way to summarize distributions and identify outliers.

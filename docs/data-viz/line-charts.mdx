@@ -7,7 +7,13 @@ import LinePlayground from '@site/src/components/LinePlayground';
 
 # Line Charts
 
-### Story Time
+Learn how to use line charts to show how values change over time or across an ordered sequence.
+
+**Skill Level:** Beginner  
+**Prerequisites:** Bar Charts  
+**Estimated Time:** 25 minutes
+
+## Story Time
 
 In the previous lesson, you learned how bar charts help compare categories.
 
@@ -17,48 +23,48 @@ This is where line charts become useful. In data analysis, we often want to stud
 
 In this lesson, you will learn how to create, read, and interpret line charts using Matplotlib.
 
-### Learning Objectives
+## Learning Objectives
 
 By the end of this lesson, you will be able to:
 
-- explain when line charts should be used,
-- create a basic line chart with Matplotlib,
-- add titles, labels, and markers,
-- interpret upward, downward, and fluctuating trends,
-- distinguish line charts from bar charts,
-- identify common mistakes when working with trend data.
+- explain when line charts should be used  
+- create a basic line chart with Matplotlib  
+- add titles, labels, and markers  
+- interpret upward, downward, and fluctuating trends  
+- distinguish line charts from bar charts  
+- identify common mistakes when working with trend data  
 
 <InfoCallout title="Why This Topic Matters" variant="why">
 Many important analytical questions involve change. Line charts help you see whether values go up, down, stay flat, or fluctuate across time or sequence, which is essential for understanding trends.
 </InfoCallout>
 
-### What Is a Line Chart?
+## What Is a Line Chart?
 
 A line chart displays data as a series of points connected by lines.
 
 Usually:
 
-- the x-axis shows time or an ordered sequence,
-- the y-axis shows the measured value.
+- the x-axis shows time or an ordered sequence  
+- the y-axis shows the measured value  
 
 Each point represents one observation, and the connecting line helps you see how the values move from one point to the next.
 
-### When Should You Use a Line Chart?
+## When Should You Use a Line Chart?
 
 Use a line chart when your x-axis follows a meaningful order.
 
 Common examples include:
 
-- days,
-- weeks,
-- months,
-- years,
-- test sessions,
-- steps in a process.
+- days  
+- weeks  
+- months  
+- years  
+- test sessions  
+- steps in a process  
 
 A line chart is best when you want to show trend. If the goal is to compare separate categories such as gender or lunch type, a bar chart is usually more appropriate.
 
-### Your First Line Chart
+## Your First Line Chart
 
 You can create a simple line chart with `plt.plot()`.
 
@@ -74,13 +80,13 @@ plt.show()
 
 This chart connects the points in order, making it easier to see how the sales values change from month to month.
 
-### Understanding What the Line Chart Shows
+## Understanding What the Line Chart Shows
 
 In the example above:
 
-- sales increase from January to February,
-- decrease slightly from February to March,
-- then increase again from March to April.
+- sales increase from January to February  
+- decrease slightly from February to March  
+- then increase again from March to April  
 
 This means the trend is generally upward, but not perfectly smooth.
 
@@ -96,7 +102,7 @@ Change the values list to create different trend shapes:
 Then describe each trend in one sentence.
 </InfoCallout>
 
-### Adding a Title and Axis Labels
+## Adding a Title and Axis Labels
 
 As with any chart, titles and labels make the visual easier to interpret.
 
@@ -115,7 +121,7 @@ plt.show()
 
 Now the viewer can immediately understand what the chart represents.
 
-### Adding Markers
+## Adding Markers
 
 Markers make it easier to see each individual data point.
 
@@ -132,14 +138,14 @@ plt.ylabel("Sales")
 plt.show()
 ```
 
-Using markers is especially helpful when the number of points is small, because it makes each observation easier to identify. Matplotlib’s `marker` and `markersize` options give you control over how points appear on a line. [web:811][web:814]
+Using markers is especially helpful when the number of points is small, because it makes each observation easier to identify.
 
-### Customizing a Line Chart
+## Customizing a Line Chart
 
 Matplotlib also allows you to customize the line color, style, and marker design.
 
 ```python
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt;
 
 months = ["Jan", "Feb", "Mar", "Apr"]
 sales = 
@@ -159,13 +165,13 @@ plt.show()
 
 In this chart:
 
-- `color="blue"` changes the line color,
-- `linestyle="--"` creates a dashed line,
-- `marker="o"` adds circular markers.
+- `color="blue"` changes the line color  
+- `linestyle="--"` creates a dashed line  
+- `marker="o"` adds circular markers  
 
-These settings can improve clarity, but they should not distract from the trend itself. [web:807][web:811]
+These settings can improve clarity, but they should not distract from the trend itself.
 
-### Reading a Line Chart as an Analyst
+## Reading a Line Chart as an Analyst
 
 When interpreting a line chart, ask:
 
@@ -174,7 +180,7 @@ When interpreting a line chart, ask:
 3. Is the trend going upward, downward, or staying flat?  
 4. Are there sudden changes?  
 5. Are there repeated ups and downs?  
-6. What is the main takeaway in one sentence?
+6. What is the main takeaway in one sentence?  
 
 For example:
 
@@ -182,14 +188,14 @@ For example:
 
 That interpretation is more useful than simply stating that the chart contains four points.
 
-### Example: Student Scores Across Test Sessions
+## Example: Student Scores Across Test Sessions
 
 Suppose a student takes four tests and you want to visualize the scores.
 
 ```python
 import matplotlib.pyplot as plt
 
-tests = 
+tests =[1][2][3][4]
 scores = 
 
 plt.plot(tests, scores, marker="o")
@@ -201,19 +207,19 @@ plt.show()
 
 A good interpretation might be:
 
-- the student’s scores increase across the four tests,
-- the improvement is steady,
-- the chart suggests a positive trend in performance.
+- the student’s scores increase across the four tests  
+- the improvement is steady  
+- the chart suggests a positive trend in performance  
 
-### Example: Fluctuating Trend
+## Example: Fluctuating Trend
 
 Not every line chart shows steady improvement.
 
 ```python
 import matplotlib.pyplot as plt
 
-weeks = 
-attendance = 
+weeks =[2][3][4][5][1]
+attendance =[6][7][8][9][10]
 
 plt.plot(weeks, attendance, marker="o")
 plt.title("Weekly Attendance")
@@ -226,37 +232,37 @@ This chart does not show a simple increase or decrease.
 
 Instead, attendance fluctuates from week to week. A good interpretation would mention both the variation and the lack of a consistent trend.
 
-### Line Chart vs Bar Chart
+## Line Chart vs Bar Chart
 
 Students often confuse line charts and bar charts, so it is important to know the difference.
 
 Use a line chart when:
 
-- the x-axis is ordered,
-- you want to show change or trend,
-- you want to focus on movement across points.
+- the x-axis is ordered  
+- you want to show change or trend  
+- you want to focus on movement across points  
 
 Use a bar chart when:
 
-- the x-axis contains separate categories,
-- you want to compare groups,
-- the order is not about continuous progression.
+- the x-axis contains separate categories  
+- you want to compare groups  
+- the order is not about continuous progression  
 
 For example:
 
 - average score by gender → bar chart  
-- average score by month → line chart
+- average score by month → line chart  
 
-### Google Colab Activity
+## Google Colab Activity
 
 Create a simple line chart in Google Colab using a list of five ordered values.
 
 Then improve the chart by:
 
-1. adding a title,  
-2. labeling both axes,  
-3. adding markers,  
-4. changing the line style or color.
+1. adding a title  
+2. labeling both axes  
+3. adding markers  
+4. changing the line style or color  
 
 After creating the chart, write a short interpretation of the trend.
 
@@ -265,25 +271,27 @@ After creating the chart, write a short interpretation of the trend.
     {
       title: 'Open in Google Colab',
       description: 'Practice this lesson in a live notebook.',
-      href: 'https://colab.research.google.com/',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/line_charts_lesson.ipynb', // replace with your actual notebook URL
       label: 'Notebook',
     },
   ]}
 />
 
-### Practice Exercise
+## Practice Exercise
 
 Create a line chart showing the average mathematics score across five study sessions.
 
 Then answer:
 
-- Is the trend increasing, decreasing, or fluctuating?
-- Is the change steady or irregular?
-- What is the main takeaway from the chart?
+- Is the trend increasing, decreasing, or fluctuating?  
+- Is the change steady or irregular?  
+- What is the main takeaway from the chart?  
+
+## Self Evaluation
 
 <Quiz title="Check Your Understanding" questions={lineChartsQuiz} />
 
-### Challenge Exercise
+## Challenge Exercise
 
 Imagine you are tracking the average quiz score of a class across six weeks.
 
@@ -291,28 +299,28 @@ Create a line chart that clearly shows the change over time.
 
 Your chart should include:
 
-- a meaningful title,
-- x-axis and y-axis labels,
-- markers,
-- a written interpretation that explains the overall pattern.
+- a meaningful title  
+- x-axis and y-axis labels  
+- markers  
+- a written interpretation that explains the overall pattern  
 
 The goal is to make the trend easy for another student to understand.
 
-### Common Mistakes
+## Common Mistakes
 
-#### Using a Line Chart for Unordered Categories
+### Using a Line Chart for Unordered Categories
 
 Line charts work best when the x-axis has a logical order, such as time or sequence. If the categories are separate and unordered, a bar chart is usually better.
 
-#### Forgetting to Label the Axes
+### Forgetting to Label the Axes
 
 Without clear labels, the viewer may not know what the line represents. Titles and axis labels are essential for interpretation.
 
-#### Focusing Only on Individual Points
+### Focusing Only on Individual Points
 
 A line chart is valuable because it highlights the overall trend. Do not only read one point at a time; also look at the shape of the line.
 
-#### Confusing Fluctuation with Overall Trend
+### Confusing Fluctuation with Overall Trend
 
 A line may go up and down while still showing a general increase or decrease overall. Strong interpretation looks at both local changes and the bigger pattern.
 
@@ -320,16 +328,16 @@ A line may go up and down while still showing a general increase or decrease ove
 Do not use a line chart just because it looks smooth. Use it when the x-axis has a meaningful order and you care about the overall pattern across that sequence.
 </InfoCallout>
 
-### Key Takeaways
+## Key Takeaways
 
 In this lesson, you learned how to:
 
-- use line charts to show change over time or sequence,
-- create line charts with Matplotlib,
-- add titles, labels, and markers,
-- interpret upward, downward, and fluctuating patterns,
-- choose between line charts and bar charts more effectively.
+- use line charts to show change over time or sequence  
+- create line charts with Matplotlib  
+- add titles, labels, and markers  
+- interpret upward, downward, and fluctuating patterns  
+- choose between line charts and bar charts more effectively  
 
-### Continue Your Journey
+## Continue Your Journey
 
-Next, you will learn Scatter Plots, which help you study relationships between two numerical variables.
+Next, you will learn **Scatter Plots**, which help you study relationships between two numerical variables.
