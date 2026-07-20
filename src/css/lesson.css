@@ -1,156 +1,226 @@
 /* ==========================================================
-   LESSON LAYOUT
-   ========================================================== */
+   LESSONS
+   Data Visualisation Guide
+========================================================== */
 
-/* ---------- Lesson Container ---------- */
+/* ==========================================================
+   LESSON INTRO
+========================================================== */
 
-.theme-doc-markdown {
-
-  max-width: 960px;
-
-  margin: 0 auto;
-
-}
-
-/* ---------- First Paragraph ---------- */
-
-.theme-doc-markdown>p:first-of-type {
-
-  font-size: 1.15rem;
-
-  color: var(--text-secondary);
-
-  line-height: 1.9;
-
+.lesson-intro {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--color-text-light);
   margin-bottom: 2rem;
-
 }
 
-/* ---------- Section Spacing ---------- */
+/* ==========================================================
+   LESSON METADATA
+========================================================== */
 
-.theme-doc-markdown h2 {
-
-  margin-top: 3.5rem;
-
+.lesson-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin: 1rem 0 2rem;
 }
 
-.theme-doc-markdown h3 {
+.lesson-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
 
-  margin-top: 2.2rem;
+  padding: .35rem .75rem;
 
+  background: #F8FAFC;
+  border: 1px solid #E5E7EB;
+  border-radius: 999px;
+
+  font-size: .85rem;
+  font-weight: 600;
+
+  color: var(--color-text-light);
 }
 
-/* ---------- Lists ---------- */
+/* ==========================================================
+   LEARNING OBJECTIVES
+========================================================== */
 
-.theme-doc-markdown ul,
-.theme-doc-markdown ol {
-
-  margin-top: 1rem;
-
-  margin-bottom: 1.5rem;
-
-}
-
-.theme-doc-markdown li {
-
-  padding: .15rem 0;
-
-}
-
-/* ---------- Images ---------- */
-
-.theme-doc-markdown img {
-
-  display: block;
-
-  margin: 2rem auto;
-
+.lesson-objectives {
+  background: #F8FBFF;
+  border-left: 4px solid var(--color-primary);
   border-radius: 12px;
-
-  box-shadow: var(--shadow-sm);
-
-}
-
-/* ---------- Videos ---------- */
-
-.theme-doc-markdown iframe {
-
-  width: 100%;
-
-  min-height: 500px;
-
-  border-radius: 12px;
-
+  padding: 1.25rem 1.5rem;
   margin: 2rem 0;
+}
 
+.lesson-objectives h2,
+.lesson-objectives h3 {
+  margin-top: 0;
+}
+
+.lesson-objectives ul {
+  margin: .75rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.lesson-objectives li {
+  margin-bottom: .45rem;
+}
+
+/* ==========================================================
+   SECTION DIVIDER
+========================================================== */
+
+.section-divider {
+  margin: 3rem 0;
   border: none;
-
+  border-top: 1px solid #E5E7EB;
 }
 
-/* ---------- Horizontal Rule ---------- */
+/* ==========================================================
+   PRACTICE SECTION
+========================================================== */
 
-.theme-doc-markdown hr {
-
-  margin: 4rem 0;
-
-}
-
-/* ---------- Pagination ---------- */
-
-.pagination-nav {
-
-  margin-top: 5rem;
-
-}
-
-.pagination-nav__link {
-
+.practice-section {
+  background: #FFFBEB;
+  border-left: 4px solid #F59E0B;
   border-radius: 12px;
-
-  border: 1px solid var(--border-color);
-
-  background: white;
-
-  transition: .25s;
-
-}
-
-.pagination-nav__link:hover {
-
-  transform: translateY(-2px);
-
-  box-shadow: var(--shadow-sm);
-
-}
-
-/* ---------- Tables ---------- */
-
-.theme-doc-markdown table {
-
+  padding: 1.25rem 1.5rem;
   margin: 2rem 0;
-
 }
 
-/* ---------- Admonitions ---------- */
+/* ==========================================================
+   SUMMARY
+========================================================== */
 
-.theme-admonition {
-
+.lesson-summary {
+  background: #F0FDF4;
+  border-left: 4px solid #16A34A;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
   margin: 2rem 0;
-
 }
 
-/* ---------- Smooth Anchor ---------- */
+/* ==========================================================
+   NEXT STEPS
+========================================================== */
 
-.anchor {
-
-  scroll-margin-top: 90px;
-
+.next-steps {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: #EEF4FF;
+  border-radius: 12px;
+  border: 1px solid #D6E4FF;
 }
 
-/* ---------- Selection ---------- */
+.next-steps h2,
+.next-steps h3 {
+  margin-top: 0;
+}
 
-.theme-doc-markdown ::selection {
+.next-steps ul {
+  margin-bottom: 0;
+}
 
-  background: rgba(0,33,165,.12);
+/* ==========================================================
+   ESTIMATED TIME
+========================================================== */
 
+.reading-time {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+
+  font-size: .85rem;
+  font-weight: 600;
+
+  color: var(--color-text-light);
+}
+
+/* ==========================================================
+   DIFFICULTY BADGES
+========================================================== */
+
+.badge {
+  display: inline-block;
+  padding: .25rem .65rem;
+  border-radius: 999px;
+
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+.badge--beginner {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.badge--intermediate {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+.badge--advanced {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+/* ==========================================================
+   LESSON NAVIGATION
+========================================================== */
+
+.lesson-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #E5E7EB;
+}
+
+/* ==========================================================
+   DARK MODE
+========================================================== */
+
+[data-theme='dark'] .lesson-meta span {
+  background: #1F2937;
+  border-color: #374151;
+  color: #D1D5DB;
+}
+
+[data-theme='dark'] .lesson-objectives {
+  background: rgba(59,130,246,.08);
+}
+
+[data-theme='dark'] .practice-section {
+  background: rgba(245,158,11,.08);
+}
+
+[data-theme='dark'] .lesson-summary {
+  background: rgba(34,197,94,.08);
+}
+
+[data-theme='dark'] .next-steps {
+  background: rgba(59,130,246,.08);
+  border-color: rgba(59,130,246,.25);
+}
+
+[data-theme='dark'] .badge--beginner {
+  background: rgba(22,163,74,.15);
+  color: #86EFAC;
+}
+
+[data-theme='dark'] .badge--intermediate {
+  background: rgba(245,158,11,.15);
+  color: #FCD34D;
+}
+
+[data-theme='dark'] .badge--advanced {
+  background: rgba(220,38,38,.15);
+  color: #FCA5A5;
+}
+
+[data-theme='dark'] .lesson-navigation {
+  border-color: #374151;
 }

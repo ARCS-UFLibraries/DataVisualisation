@@ -1,386 +1,367 @@
 /* ==========================================================
    TYPOGRAPHY
-   ========================================================== */
+   Data Visualisation Guide
+========================================================== */
 
-/* ---------- Body ---------- */
+/* ==========================================================
+   BODY
+========================================================== */
 
-body {
+.markdown {
 
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+    color: var(--text-primary);
 
-  color: var(--text-primary);
+    font-size: 1rem;
 
-  font-size: 16px;
+    line-height: 1.6;
 
-  line-height: 1.8;
-
-  text-rendering: optimizeLegibility;
-
-  -webkit-font-smoothing: antialiased;
-
-}
-
-/* ---------- Main Content ---------- */
-
-.theme-doc-markdown {
-
-  font-size: 1.05rem;
-
-}
-
-.theme-doc-markdown>*:first-child {
-
-  margin-top: 0;
+    font-weight: 400;
 
 }
 
 /* ==========================================================
    HEADINGS
-   ========================================================== */
+========================================================== */
 
-h1 {
+.markdown h1 {
 
-  color: var(--ifm-color-primary);
+    color: var(--color-primary);
 
-  font-size: 2rem;
+    font-size: clamp(2rem, 2vw, 2.5rem);
 
-  font-weight: 700;
+    font-weight: 700;
 
-  line-height: 1.2;
+    margin: 2rem 0 2rem;
 
-  letter-spacing: -.02em;
+    position: relative;
 
-  margin-bottom: 1.2rem;
-
-}
-
-h1::after {
-
-  content: "";
-
-  display: block;
-
-  width: 70px;
-
-  height: 4px;
-
-  margin-top: .8rem;
-
-  border-radius: 999px;
-
-  background: var(--accent-color);
+    letter-spacing: -.02em;
 
 }
 
-h2 {
+.markdown h1::after {
 
-  color: var(--text-primary);
+    content: "";
 
-  font-size: 1.5rem;
+    position: absolute;
 
-  font-weight: 650;
+    left: 0;
 
-  margin-top: 3rem;
+    bottom: -.7rem;
 
-  margin-bottom: 1rem;
+    width: 60px;
 
-  padding-bottom: .4rem;
+    height: 4px;
 
-  border-bottom: 2px solid var(--border-color);
+    background: var(--color-accent);
 
-}
-
-h3 {
-
-  color: var(--text-primary);
-
-  font-size: 1.25rem;
-
-  font-weight: 600;
-
-  margin-top: 2rem;
-
-  margin-bottom: .75rem;
+    border-radius: 999px;
 
 }
 
-h4 {
+.markdown h2 {
 
-  color: var(--text-primary);
+    color: var(--color-primary);
 
-  font-size: 1.05rem;
+    font-size: 1.5rem;
 
-  font-weight: 600;
+    font-weight: 500;
 
-  margin-top: 1.75rem;
+    margin-top: 1.5rem;
 
-  margin-bottom: .5rem;
+    margin-bottom: 0;
+
+}
+
+.markdown h3 {
+
+    color: black!;
+
+    font-size: 1.3rem;
+
+    font-weight: 500;
+
+    margin-top: 1rem;
+
+    margin-bottom: .8rem;
+
+}
+
+.markdown h4 {
+
+    color: var(--text-secondary);
+
+    font-size: 1.15rem;
+
+    font-weight: 700;
+
+    margin-top: 1.5rem;
+
+    margin-bottom: .6rem;
 
 }
 
 /* ==========================================================
    PARAGRAPHS
-   ========================================================== */
+========================================================== */
 
-p {
+.markdown p {
 
-  color: var(--text-secondary);
+    margin: 0.8rem 0;
 
-  margin-bottom: 1.25rem;
-
-}
-
-/* ==========================================================
-   LISTS
-   ========================================================== */
-
-ul,
-ol {
-
-  padding-left: 1.5rem;
-
-  margin-bottom: 1.5rem;
-
-}
-
-li {
-
-  color: var(--text-secondary);
-
-  margin: .45rem 0;
-
-}
-
-li p {
-
-  margin: 0;
+    color: var(--text-primary);
 
 }
 
 /* ==========================================================
    LINKS
-   ========================================================== */
+========================================================== */
 
-a {
+.markdown a {
 
-  color: var(--ifm-color-primary);
+    color: var(--link-color);
 
-  font-weight: 500;
+    font-weight: 500;
 
-  transition: var(--transition-fast);
+    text-decoration: none;
 
-}
-
-a:hover {
-
-  color: var(--accent-color);
-
-  text-decoration: none;
+    transition: color .2s ease;
 
 }
 
-/* ==========================================================
-   BOLD
-   ========================================================== */
+.markdown a:hover {
 
-strong {
+    color: var(--link-hover);
 
-  color: var(--text-primary);
-
-  font-weight: 650;
-
-}
-
-/* ==========================================================
-   HORIZONTAL RULE
-   ========================================================== */
-
-hr {
-
-  border: none;
-
-  border-top: 1px solid var(--border-color);
-
-  margin: 4rem 0;
-
-}
-
-/* ==========================================================
-   BLOCKQUOTE
-   ========================================================== */
-
-blockquote {
-
-  background: var(--info-bg);
-
-  border-left: 5px solid var(--ifm-color-primary);
-
-  padding: 1rem 1.5rem;
-
-  border-radius: var(--radius-md);
-
-  margin: 2rem 0;
-
-  color: var(--text-secondary);
-
-}
-
-blockquote p {
-
-  margin: 0;
+    text-decoration: underline;
 
 }
 
 /* ==========================================================
    INLINE CODE
-   ========================================================== */
+========================================================== */
 
-code {
+/* ==========================================================
+   INLINE CODE
+========================================================== */
 
-  background: #F6F8FA;
+.markdown code:not(pre code) {
 
-  color: #24292F;
+    background: #F4F8FF;
 
-  border: 1px solid #D0D7DE;
+    color: #C96A1B;
 
-  border-radius: 6px;
+    border: 1px solid #DCE9FF;
 
-  padding: .15rem .38rem;
+    padding: .18rem .45rem;
 
-  font-size: .9em;
+    border-radius: 6px;
 
-  font-family:
-    "JetBrains Mono",
-    "Fira Code",
-    Consolas,
-    monospace;
+    font-size: .9rem;
 
-  font-weight: 500;
+    font-family:
+        "JetBrains Mono",
+        Consolas,
+        monospace;
 
-}
-
-/* Don't style fenced code blocks like inline code */
-
-pre code {
-
-  background: transparent;
-
-  border: none;
-
-  padding: 0;
-
-  color: inherit;
-
-  font-size: inherit;
-
-  font-family: inherit;
+    font-weight: 500;
 
 }
 
 /* ==========================================================
-   IMAGES
-   ========================================================== */
+   LISTS
+========================================================== */
 
-img {
+.markdown ul,
+.markdown ol {
 
-  max-width: 100%;
+    margin: 1rem 0;
 
-  border-radius: var(--radius-md);
+    padding-left: 1.5rem;
 
-  box-shadow: var(--shadow-sm);
+}
+
+.markdown li {
+
+    margin: .45rem 0;
+
+    line-height: 1.75;
+
+}
+
+.markdown li::marker {
+
+    color: var(--color-primary);
 
 }
 
 /* ==========================================================
-   TABLE OF CONTENTS
-   ========================================================== */
+   BLOCKQUOTE
+========================================================== */
 
-.table-of-contents {
+.markdown blockquote {
 
-  font-size: .9rem;
+    margin: 1.5rem 0;
 
-}
+    padding: 1rem 1.25rem;
 
-.table-of-contents__link {
+    border-left: 4px solid var(--color-accent);
 
-  color: var(--text-light);
+    background: var(--surface-soft);
 
-  transition: var(--transition-fast);
+    color: var(--text-secondary);
 
-}
-
-.table-of-contents__link:hover {
-
-  color: var(--ifm-color-primary);
-
-}
-
-.table-of-contents__link--active {
-
-  color: var(--ifm-color-primary);
-
-  font-weight: 600;
+    border-radius: 8px;
 
 }
 
 /* ==========================================================
-   ADMONITIONS
-   ========================================================== */
+   HORIZONTAL RULE
+========================================================== */
 
-.theme-admonition {
+.markdown hr {
 
-  border: none;
+    border: none;
 
-  border-radius: var(--radius-md);
+    border-top: 1px solid var(--border-color);
 
-  box-shadow: var(--shadow-xs);
-
-}
-
-/* ==========================================================
-   TEXT SELECTION
-   ========================================================== */
-
-::selection {
-
-  background: #DBEAFE;
-
-  color: #111827;
+    margin: 3rem 0;
 
 }
 
 /* ==========================================================
-   SCROLLBAR
-   ========================================================== */
+   STRONG
+========================================================== */
 
-::-webkit-scrollbar {
+.markdown strong {
 
-  width: 10px;
+    color: var(--heading-color);
 
-}
-
-::-webkit-scrollbar-track {
-
-  background: #F3F4F6;
+    font-weight: 700;
 
 }
 
-::-webkit-scrollbar-thumb {
+/* ==========================================================
+   EMPHASIS
+========================================================== */
 
-  background: #CBD5E1;
+.markdown em {
 
-  border-radius: 999px;
+    color: var(--text-secondary);
 
 }
 
-::-webkit-scrollbar-thumb:hover {
+/* ==========================================================
+   SMALL TEXT
+========================================================== */
 
-  background: #94A3B8;
+.markdown small {
+
+    color: var(--text-muted);
+
+}
+
+/* ==========================================================
+   DARK MODE
+========================================================== */
+
+[data-theme='dark'] .markdown {
+
+    color: var(--text-primary);
+
+}
+
+[data-theme='dark'] .markdown h1 {
+
+    color: #8CB6FF;
+
+}
+
+[data-theme='dark'] .markdown h1::after {
+
+    background: #FF9A57;
+
+}
+
+[data-theme='dark'] .markdown h2 {
+
+    color: #8CB6FF;
+
+}
+
+[data-theme='dark'] .markdown h3 {
+
+    color: #FFFFFF;
+
+}
+
+[data-theme='dark'] .markdown h4 {
+
+    color: #CBD5E1;
+
+}
+
+[data-theme='dark'] .markdown a {
+
+    color: #93C5FD;
+
+}
+
+[data-theme='dark'] .markdown a:hover {
+
+    color: #FDBA74;
+
+}
+
+[data-theme='dark'] .markdown code:not(pre code) {
+
+    background: rgba(249,115,22,.18);
+
+    color: #FDBA74;
+
+    border: 1px solid rgba(249,115,22,.35);
+
+}
+
+[data-theme='dark'] .markdown blockquote {
+
+    background: #273244;
+
+    border-left-color: #FF9A57;
+
+    color: #CBD5E1;
+
+}
+
+[data-theme='dark'] .markdown hr {
+
+    border-top-color: #374151;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .markdown h1 {
+
+        font-size: 2rem;
+
+    }
+
+    .markdown h2 {
+
+        font-size: 1.55rem;
+
+    }
+
+    .markdown h3 {
+
+        font-size: 1.25rem;
+
+
+    }
 
 }

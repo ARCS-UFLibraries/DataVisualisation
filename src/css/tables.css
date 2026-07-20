@@ -1,110 +1,160 @@
 /* ==========================================================
    TABLES
-   ========================================================== */
+   Data Visualisation Guide
+========================================================== */
 
-/* ---------- Wrapper ---------- */
+/* ==========================================================
+   TABLE CONTAINER
+========================================================== */
 
 .table-wrapper,
-.theme-doc-markdown table {
-
+.markdown table {
   width: 100%;
-
-  margin: 2rem 0;
-
-  border-collapse: separate;
-
-  border-spacing: 0;
-
-  overflow: hidden;
-
-  border-radius: 12px;
-
-  border: 1px solid var(--border-color);
-
-  box-shadow: var(--shadow-xs);
-
-  background: white;
-
-}
-
-/* ---------- Header ---------- */
-
-.theme-doc-markdown table thead {
-
-  background: var(--ifm-color-primary);
-
-}
-
-.theme-doc-markdown table th {
-
-  color: white;
-
-  font-weight: 600;
-
-  font-size: .95rem;
-
-  padding: .9rem 1rem;
-
-  border: none;
-
-  text-align: left;
-
-}
-
-/* ---------- Cells ---------- */
-
-.theme-doc-markdown table td {
-
-  padding: .9rem 1rem;
-
-  border-top: 1px solid var(--border-color);
-
-  color: var(--text-secondary);
-
-}
-
-/* ---------- Zebra ---------- */
-
-.theme-doc-markdown table tbody tr:nth-child(even) {
-
-  background: #F8FAFC;
-
-}
-
-/* ---------- Hover ---------- */
-
-.theme-doc-markdown table tbody tr:hover {
-
-  background: #EEF4FF;
-
-}
-
-/* ---------- First / Last ---------- */
-
-.theme-doc-markdown table tr:last-child td:first-child {
-
-  border-bottom-left-radius: 12px;
-
-}
-
-.theme-doc-markdown table tr:last-child td:last-child {
-
-  border-bottom-right-radius: 12px;
-
-}
-
-/* ---------- Responsive ---------- */
-
-.table-responsive {
-
   overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+/* ==========================================================
+   TABLE
+========================================================== */
+
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 0.95rem;
+  background: #FFFFFF;
+  box-shadow: var(--shadow-xs);
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.markdown thead {
+  background: #F8FAFC;
+}
+
+.markdown th {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  font-weight: 700;
+  color: var(--color-primary);
+  border-bottom: 2px solid #E5E7EB;
+  white-space: nowrap;
+}
+
+/* ==========================================================
+   CELLS
+========================================================== */
+
+.markdown td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #EDF2F7;
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   ROWS
+========================================================== */
+
+.markdown tbody tr:nth-child(even) {
+  background: #FAFBFC;
+}
+
+.markdown tbody tr:hover {
+  background: #F2F7FF;
+  transition: background 150ms ease;
+}
+
+.markdown tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================================
+   INLINE CODE
+========================================================== */
+
+.markdown table code {
+  font-size: 0.87em;
+}
+
+/* ==========================================================
+   LINKS
+========================================================== */
+
+.markdown table a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.markdown table a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================
+   CAPTION
+========================================================== */
+
+.markdown table caption {
+  caption-side: bottom;
+  padding-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  text-align: left;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .markdown table {
+    font-size: 0.9rem;
+  }
+
+  .markdown th,
+  .markdown td {
+    padding: 0.75rem;
+  }
 
 }
 
-/* ---------- Small Text ---------- */
+/* ==========================================================
+   DARK MODE
+========================================================== */
 
-.theme-doc-markdown table td code{
+[data-theme='dark'] .markdown table {
+  background: #161B22;
+  border-color: #30363D;
+  box-shadow: none;
+}
 
-font-size:.88rem;
+[data-theme='dark'] .markdown thead {
+  background: #1C2128;
+}
 
+[data-theme='dark'] .markdown th {
+  color: #8CC8FF;
+  border-bottom-color: #30363D;
+}
+
+[data-theme='dark'] .markdown td {
+  border-bottom-color: #30363D;
+}
+
+[data-theme='dark'] .markdown tbody tr:nth-child(even) {
+  background: #1B2027;
+}
+
+[data-theme='dark'] .markdown tbody tr:hover {
+  background: #243040;
+}
+
+[data-theme='dark'] .markdown table caption {
+  color: #9CA3AF;
 }

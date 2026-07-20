@@ -51,6 +51,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+
         },
         blog: false,
         theme: {
@@ -63,8 +64,15 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        },
+      },
+
       colorMode: {
         respectPrefersColorScheme: true,
       },
@@ -82,17 +90,28 @@ const config = {
             label: 'Student Guide',
           },
           {
-            href: 'https://github.com/ARCS-UFLibraries/DataVisualisation',
-            label: 'GitHub',
-            position: 'right',
+            to: '/docs/datasets',
+            label: 'Datasets',
+            position: 'left',
+          },
+          {
+            to: '/docs/learning-resources',
+            label: 'Learning Resources',
+            position: 'left',
+          },
+          {
+            to: '/docs/FAQs',
+            label: 'FAQs',
+            position: 'left',
           },
         ],
       },
+        
       footer: {
         style: "dark",
         links: [
           {
-            title: "Guide",
+            title: "Student Guide",
             items: [
               {
                 label: "Getting Started",
@@ -133,7 +152,7 @@ const config = {
             title: "Project",
             items: [
               {
-                label: "GitHub",
+                label: "GitHub Repository",
                 href: "https://github.com/ARCS-UFLibraries/DataVisualisation",
               },
               {
@@ -145,7 +164,6 @@ const config = {
         ],
         copyright: `© ${new Date().getFullYear()} Data Visualisation Guide • University of Florida Libraries`,
       },
-
     }),
 };
 

@@ -1,184 +1,176 @@
 /* ==========================================================
-   CALLOUTS
-   ========================================================== */
+   CALLOUTS / ADMONITIONS
+   Data Visualisation Guide
+========================================================== */
 
-/* ---------- Base ---------- */
+/* ==========================================================
+   BASE
+========================================================== */
 
-.callout {
-
-  border-radius: 12px;
-
-  padding: 1.2rem 1.4rem;
-
-  margin: 1.75rem 0;
-
-  border-left: 5px solid;
-
-  box-shadow: var(--shadow-xs);
-
-}
-
-.callout h3,
-.callout h4 {
-
-  margin-top: 0;
-
-  margin-bottom: .75rem;
-
+.theme-admonition {
+  margin: 1.5rem 0;
   border: none;
-
-  padding: 0;
-
+  border-left: 5px solid;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-xs);
 }
 
-.callout p:last-child,
-.callout ul:last-child,
-.callout ol:last-child {
+/* ==========================================================
+   TITLE
+========================================================== */
 
+.theme-admonition-heading {
+  padding: .9rem 1.2rem;
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+.theme-admonition-heading h5,
+.theme-admonition-heading h4,
+.theme-admonition-heading h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.theme-admonition-content {
+  padding: 1rem 1.2rem;
+}
+
+.theme-admonition-content p:last-child {
   margin-bottom: 0;
-
 }
 
 /* ==========================================================
-   INFO
-   ========================================================== */
+   NOTE
+========================================================== */
 
-.callout-info{
-
-  background:#EEF4FF;
-
-  border-color:var(--ifm-color-primary);
-
+.alert--secondary {
+  border-left-color: #3B82F6;
+  background: #EFF6FF;
 }
 
-.callout-info h3{
-
-  color:var(--ifm-color-primary);
-
-}
-
-/* ==========================================================
-   SUCCESS
-   ========================================================== */
-
-.callout-success{
-
-  background:#ECFDF3;
-
-  border-color:#16A34A;
-
-}
-
-.callout-success h3{
-
-  color:#15803D;
-
-}
-
-/* ==========================================================
-   WARNING
-   ========================================================== */
-
-.callout-warning{
-
-  background:#FFF7ED;
-
-  border-color:#EA580C;
-
-}
-
-.callout-warning h3{
-
-  color:#C2410C;
-
+.alert--secondary .theme-admonition-heading {
+  background: rgba(59,130,246,.12);
+  color: #1D4ED8;
 }
 
 /* ==========================================================
    TIP
-   ========================================================== */
+========================================================== */
 
-.callout-tip{
-
-  background:#F5F3FF;
-
-  border-color:#7C3AED;
-
+.alert--success {
+  border-left-color: #16A34A;
+  background: #F0FDF4;
 }
 
-.callout-tip h3{
-
-  color:#6D28D9;
-
+.alert--success .theme-admonition-heading {
+  background: rgba(22,163,74,.12);
+  color: #15803D;
 }
 
 /* ==========================================================
-   EXAMPLE
-   ========================================================== */
+   IMPORTANT
+========================================================== */
 
-.callout-example{
-
-  background:#F8FAFC;
-
-  border-color:#475569;
-
+.alert--info {
+  border-left-color: #0891B2;
+  background: #ECFEFF;
 }
 
-.callout-example h3{
-
-  color:#334155;
-
+.alert--info .theme-admonition-heading {
+  background: rgba(8,145,178,.12);
+  color: #0E7490;
 }
 
 /* ==========================================================
-   CHALLENGE
-   ========================================================== */
+   WARNING
+========================================================== */
 
-.callout-challenge{
-
-  background:#FFF7ED;
-
-  border-color:var(--accent-color);
-
+.alert--warning {
+  border-left-color: #F59E0B;
+  background: #FFFBEB;
 }
 
-.callout-challenge h3{
-
-  color:var(--accent-color);
-
+.alert--warning .theme-admonition-heading {
+  background: rgba(245,158,11,.15);
+  color: #B45309;
 }
 
 /* ==========================================================
-   OBJECTIVES
-   ========================================================== */
+   DANGER
+========================================================== */
 
-.callout-objectives{
-
-  background:#EFF6FF;
-
-  border-color:#2563EB;
-
+.alert--danger {
+  border-left-color: #DC2626;
+  background: #FEF2F2;
 }
 
-.callout-objectives h3{
-
-  color:#1D4ED8;
-
+.alert--danger .theme-admonition-heading {
+  background: rgba(220,38,38,.12);
+  color: #B91C1C;
 }
 
 /* ==========================================================
-   TAKEAWAYS
-   ========================================================== */
+   LINKS
+========================================================== */
 
-.callout-summary{
-
-  background:#F8FAFC;
-
-  border-color:#64748B;
-
+.theme-admonition a {
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.callout-summary h3{
+.theme-admonition a:hover {
+  text-decoration: underline;
+}
 
-  color:#334155;
+/* ==========================================================
+   INLINE CODE
+========================================================== */
 
+.theme-admonition code {
+  background: rgba(0,0,0,.06);
+  border-radius: 6px;
+  padding: .15rem .35rem;
+  font-size: .9em;
+}
+
+/* ==========================================================
+   DARK MODE
+========================================================== */
+
+[data-theme='dark'] .theme-admonition {
+  box-shadow: none;
+}
+
+[data-theme='dark'] .alert--secondary {
+  background: rgba(59,130,246,.12);
+}
+
+[data-theme='dark'] .alert--success {
+  background: rgba(34,197,94,.10);
+}
+
+[data-theme='dark'] .alert--info {
+  background: rgba(6,182,212,.10);
+}
+
+[data-theme='dark'] .alert--warning {
+  background: rgba(245,158,11,.12);
+}
+
+[data-theme='dark'] .alert--danger {
+  background: rgba(239,68,68,.10);
+}
+
+[data-theme='dark'] .theme-admonition-heading {
+  color: #F8FAFC;
+}
+
+[data-theme='dark'] .theme-admonition code {
+  background: rgba(255,255,255,.08);
 }

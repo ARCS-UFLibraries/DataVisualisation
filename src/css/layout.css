@@ -1,200 +1,350 @@
 /* ==========================================================
    LAYOUT
-   ========================================================== */
+   Data Visualisation Guide
+========================================================== */
 
-/* ---------- Body ---------- */
+/* ==========================================================
+   ROOT LAYOUT
+========================================================== */
 
 html,
 body {
-
-  background: var(--surface-secondary);
-
-  scroll-behavior: smooth;
-
+  overflow-x: hidden;
 }
 
-/* ---------- Navbar Offset ---------- */
-
-.main-wrapper {
-
-  padding-top: 0;
-
-}
-
-/* ---------- Main Content ---------- */
+/* ==========================================================
+   MAIN CONTAINER
+========================================================== */
 
 .container {
-
-  max-width: 1400px;
-
-}
-
-/* ---------- Documentation ---------- */
-
-.theme-doc-markdown {
 
   max-width: var(--content-width);
 
   margin: 0 auto;
 
-}
+  padding-left: 1.5rem;
 
-/* ---------- Doc Page ---------- */
-
-.theme-doc-page {
-
-  background: var(--surface-secondary);
+  padding-right: 1.5rem;
 
 }
 
-/* ---------- Article ---------- */
+/* ==========================================================
+   DOC PAGE
+========================================================== */
 
-article {
+.main-wrapper {
 
-  background: var(--surface-primary);
+  background: var(--background-primary);
 
-  border-radius: var(--radius-lg);
-
-  padding: 3rem;
-
-  box-shadow: var(--shadow-sm);
-
-  border: 1px solid var(--border-color);
+  min-height: 100vh;
 
 }
 
-/* ---------- Content ---------- */
+/* ==========================================================
+   DOCUMENT CONTENT
+========================================================== */
 
 .theme-doc-markdown {
 
-  width: 100%;
+  max-width: var(--reading-width);
+
+  margin: 0;
 
 }
 
-/* ---------- Footer ---------- */
+/* ==========================================================
+   ARTICLE
+========================================================== */
 
-footer {
+article {
 
-  margin-top: 5rem;
+  margin: 0;
+
+  padding: 0;
 
 }
 
-/* ---------- Images ---------- */
+/* ==========================================================
+   DOC ITEM
+========================================================== */
+
+.theme-doc-markdown > * {
+
+  margin-top: 0;
+
+}
+
+/* ==========================================================
+   SECTION SPACING
+========================================================== */
+
+section {
+
+  margin-bottom: 2rem;
+
+}
+
+/* ==========================================================
+   PARAGRAPH GROUPS
+========================================================== */
+
+.theme-doc-markdown p + p {
+
+  margin-top: .2rem;
+
+}
+
+/* ==========================================================
+   IMAGES
+========================================================== */
 
 .theme-doc-markdown img {
 
-  display: block;
-
-  margin: 2rem auto;
-
-  max-width: 100%;
+  margin: 1.25rem auto;
 
 }
 
-/* ---------- Videos ---------- */
+/* ==========================================================
+   LISTS
+========================================================== */
+
+.theme-doc-markdown ul,
+.theme-doc-markdown ol {
+
+  margin: .8rem 0;
+
+}
+
+/* ==========================================================
+   TABLES
+========================================================== */
+
+.table-responsive {
+
+  margin: 1.2rem 0;
+
+}
+
+/* ==========================================================
+   CODE BLOCKS
+========================================================== */
+
+.theme-code-block {
+
+  margin: 1.25rem 0;
+
+}
+
+/* ==========================================================
+   DETAILS
+========================================================== */
+
+details {
+
+  margin: 1rem 0;
+
+}
+
+/* ==========================================================
+   ALERTS
+========================================================== */
+
+.alert {
+
+  margin: 1rem 0;
+
+}
+
+/* ==========================================================
+   PAGINATION
+========================================================== */
+
+.pagination-nav {
+
+  margin-top: 2.5rem;
+
+}
+
+/* ==========================================================
+   DOC FOOTER
+========================================================== */
+
+.theme-doc-footer {
+
+  margin-top: 2rem;
+
+}
+
+/* ==========================================================
+   BREADCRUMBS
+========================================================== */
+
+.theme-doc-breadcrumbs {
+
+  margin-bottom: .75rem;
+
+}
+
+/* ==========================================================
+   ANCHOR LINKS
+========================================================== */
+
+.hash-link {
+
+  opacity: 0;
+
+  transition: var(--transition);
+
+}
+
+h2:hover .hash-link,
+h3:hover .hash-link,
+h4:hover .hash-link {
+
+  opacity: 1;
+
+}
+
+/* ==========================================================
+   SIDEBAR LAYOUT
+========================================================== */
+
+.theme-doc-sidebar-container {
+
+  border-right: 1px solid var(--border-color);
+
+  background: var(--surface);
+
+}
+
+/* ==========================================================
+   DOC CONTENT AREA
+========================================================== */
+
+.theme-doc-sidebar-item-category-level-1 {
+
+  margin-bottom: .15rem;
+
+}
+
+/* ==========================================================
+   PAGE PADDING
+========================================================== */
+
+main {
+
+  padding-top: 1rem;
+
+  padding-bottom: 2rem;
+
+}
+
+/* ==========================================================
+   HERO SECTIONS
+========================================================== */
+
+.hero {
+
+  margin-bottom: 1.5rem;
+
+}
+
+/* ==========================================================
+   DIVIDERS
+========================================================== */
+
+.theme-doc-markdown hr {
+
+  margin: 2rem 0;
+
+}
+
+/* ==========================================================
+   EMBEDDED IFRAMES
+========================================================== */
 
 iframe {
 
   width: 100%;
 
-  min-height: 500px;
-
-  border-radius: var(--radius-md);
-
   border: none;
 
-  box-shadow: var(--shadow-md);
-
-}
-
-/* ---------- Horizontal Rule ---------- */
-
-hr {
-
-  margin: 4rem 0;
-
-}
-
-/* ---------- Pagination ---------- */
-
-.pagination-nav {
-
-  margin-top: 4rem;
-
-}
-
-.pagination-nav__link {
-
   border-radius: var(--radius-md);
 
-  border: 1px solid var(--border-color);
-
-  box-shadow: var(--shadow-xs);
-
-  transition: var(--transition-normal);
+  margin: 1rem 0;
 
 }
 
-.pagination-nav__link:hover {
+/* ==========================================================
+   YOUTUBE EMBEDS
+========================================================== */
 
-  transform: translateY(-2px);
+iframe[src*="youtube"] {
 
-  box-shadow: var(--shadow-md);
-
-}
-
-/* ---------- TOC ---------- */
-
-.table-of-contents {
-
-  font-size: .9rem;
+  aspect-ratio: 16 / 9;
 
 }
 
-.table-of-contents__link {
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
 
-  transition: var(--transition-fast);
+::-webkit-scrollbar {
 
-}
-
-.table-of-contents__link:hover {
-
-  color: var(--ifm-color-primary);
+  width: 10px;
 
 }
 
-/* ---------- Mobile ---------- */
+::-webkit-scrollbar-track {
 
-@media (max-width:996px){
-
-article{
-
-padding:2rem;
-
-border-radius:0;
-
-box-shadow:none;
-
-border:none;
+  background: var(--background-primary);
 
 }
 
-.theme-doc-markdown{
+::-webkit-scrollbar-thumb {
 
-max-width:100%;
+  background: var(--border-color);
+
+  border-radius: 20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+  background: var(--text-muted);
 
 }
 
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 996px) {
+
+  .container {
+
+    padding-left: 1rem;
+
+    padding-right: 1rem;
+
+  }
+
+  .theme-doc-markdown {
+
+    max-width: 100%;
+
+  }
+
 }
 
-/* ---------- Large Screens ---------- */
+@media (max-width: 768px) {
 
-@media (min-width:1600px){
+  main {
 
-.container{
+    padding-top: .75rem;
 
-max-width:1600px;
+    padding-bottom: 1.5rem;
 
-}
+  }
 
 }

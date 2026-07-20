@@ -45,8 +45,6 @@ Before creating visualizations or building machine learning models, analysts spe
 
 Data cleaning is one of the most important steps in every data analysis project.[web:4]
 
----
-
 ## A Typical Data Cleaning Workflow
 
 When you receive a new dataset, it helps to follow a consistent workflow:
@@ -60,8 +58,6 @@ When you receive a new dataset, it helps to follow a consistent workflow:
 7. Save the cleaned dataset.
 
 You will see each of these steps in action with the StudentsPerformance dataset.[file:42]
-
----
 
 ## Creating New Columns
 
@@ -105,8 +101,6 @@ Example:
 
 Derived variables like these are very common in real-world analysis.
 
----
-
 ## Renaming Columns
 
 Datasets often contain long or inconsistent column names, which can make code harder to read.
@@ -136,8 +130,6 @@ df.columns
 
 Short, meaningful names make your code more readable and easier to maintain. You can also apply patterns such as replacing spaces with underscores for all columns.
 
----
-
 ## Changing Data Types
 
 Always verify that columns use appropriate data types.
@@ -164,8 +156,6 @@ df["passed"] = df["passed"].astype(bool)
 ```
 
 Correct data types are important for calculations, filtering, and plotting.
-
----
 
 ## Handling Missing Values
 
@@ -209,8 +199,6 @@ Common options include:
 
 In practice, analysts often treat different columns differently (for example, filling numeric scores with a mean and leaving categorical values as “Unknown”).
 
----
-
 ## Removing Duplicate Records
 
 Duplicate rows can distort counts, averages, and other summaries.
@@ -232,8 +220,6 @@ df = df.drop_duplicates()
 ```
 
 After removing duplicates, it is good practice to check how many records remain so you understand the impact of cleaning.
-
----
 
 ## Working with Dates
 
@@ -261,8 +247,6 @@ df["day"] = df["date"].dt.day
 
 Date features are frequently used in business and research to study trends over time.
 
----
-
 ## Worked Example
 
 Imagine a dataset with the following issues:
@@ -282,8 +266,6 @@ A simple cleaning plan might be:
 
 This sequence prepares the dataset for more advanced analysis and visualization.
 
----
-
 ## Data Cleaning Checklist
 
 Before beginning analysis, ask yourself:
@@ -296,8 +278,6 @@ Before beginning analysis, ask yourself:
 - Do I need additional calculated columns such as totals or averages?
 
 Documenting your answers helps you communicate your cleaning decisions to others.
-
----
 
 ## Practice in the Notebook
 
@@ -321,8 +301,6 @@ Using the StudentsPerformance dataset, complete these tasks in Colab:[file:42]
 5. Determine whether missing values or duplicates exist.  
 6. Save the cleaned dataset to a new file.
 
----
-
 ## Practice Exercise
 
 Prepare the dataset for analysis by:
@@ -336,13 +314,9 @@ Prepare the dataset for analysis by:
 
 Write down each step you performed, including any code you used.
 
----
-
 ## Self Evaluation
 
 <Quiz title="Check Your Understanding" questions={cleaningDataQuiz} />
-
----
 
 ## Challenge Exercise
 
@@ -363,9 +337,6 @@ df.to_csv(
     index=False
 )
 ```
-
----
-
 ## Common Mistakes
 
 ### Ignoring Missing Values
@@ -390,8 +361,6 @@ before and after conversions to confirm that types are what you expect.
 
 Data cleaning takes time. If you forget to save the cleaned version, you may have to repeat work later. Use `to_csv()` or another export method to store the cleaned dataset.
 
----
-
 ## Key Takeaways
 
 In this lesson, you learned how to:
@@ -403,8 +372,6 @@ In this lesson, you learned how to:
 - identify and remove duplicates,  
 - work with date and time data,  
 - apply a basic data cleaning workflow before analysis.
-
----
 
 ## Continue Your Journey
 

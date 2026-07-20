@@ -82,7 +82,7 @@ Example output:
 
 Notice the **double** square brackets: one set for the DataFrame selection, and one set for the list of column names.
 
-## Selecting Rows by Position with `iloc`
+## Selecting Rows by Position with iloc
 
 Use `iloc[]` when you want to select rows by their integer positions:
 
@@ -100,7 +100,7 @@ df.iloc[0:5]
 
 This returns rows from position 0 up to, but not including, position 5 (the first five rows).
 
-## Selecting Rows and Columns Together with `iloc`
+## Selecting Rows and Columns Together with iloc
 
 You can select rows and columns at the same time:
 
@@ -113,7 +113,7 @@ This means:
 - rows from position 0 to 4 (first five rows)  
 - columns from position 0 to 2 (first three columns)
 
-## Selecting Rows by Label with `loc`
+## Selecting Rows by Label with loc
 
 Use `loc[]` when you want to select rows by their **labels** (index values):
 
@@ -131,7 +131,7 @@ df.loc[0:4]
 
 With `loc`, both the start and end labels are included.
 
-## Selecting Specific Columns with `loc`
+## Selecting Specific Columns with loc
 
 You can also select columns by name using `loc`:
 
@@ -152,7 +152,7 @@ Example output:
 | Female | 69         |
 | Male   | 90         |
 
-## Difference Between `loc` and `iloc`
+## Difference Between loc and iloc
 
 | Function | Uses                          |
 |----------|-------------------------------|
@@ -260,7 +260,7 @@ df[["math score", "reading score"]]
 
 Multiple column names must be provided as a list inside the brackets.
 
-### Confusing `loc` and `iloc`
+### Confusing loc and iloc
 
 Remember:
 

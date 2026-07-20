@@ -1,137 +1,167 @@
 /* ==========================================================
    SIDEBAR
-   ========================================================== */
+   Data Visualisation Guide
+========================================================== */
 
-/* Sidebar */
+/* ==========================================================
+   SIDEBAR CONTAINER
+========================================================== */
 
 .theme-doc-sidebar-container {
-
   border-right: 1px solid var(--border-color);
-
-  background: var(--surface-primary);
-
+  background: var(--surface);
 }
 
-/* Sidebar Menu */
-
-.menu {
-
+.theme-doc-sidebar-menu {
   padding: 1rem;
-
 }
 
-/* Category */
+/* ==========================================================
+   CATEGORY HEADINGS
+========================================================== */
 
 .menu__list-item-collapsible {
-
   border-radius: 10px;
-
-  margin-bottom: .35rem;
-
-  transition: .2s ease;
-
+  transition: all .2s ease;
 }
 
 .menu__list-item-collapsible:hover {
-
-  background: #F8FAFC;
-
+  background: var(--background-tertiary);
 }
-
-/* Category Label */
 
 .menu__link--sublist {
-
-  font-size: .96rem;
-
-  font-weight: 650;
-
-  color: var(--text-primary);
-
+  font-weight: 600;
+  color: var(--heading-color);
 }
 
-/* Lesson Links */
+/* ==========================================================
+   SIDEBAR LINKS
+========================================================== */
 
 .menu__link {
-
   border-radius: 8px;
-
-  padding: .55rem .8rem;
-
-  font-size: .93rem;
+  padding: .55rem .9rem;
 
   color: var(--text-secondary);
+  font-size: .94rem;
 
-  transition: .2s ease;
-
+  transition: all .2s ease;
 }
-
-/* Hover */
 
 .menu__link:hover {
-
   background: #EEF4FF;
-
-  color: var(--ifm-color-primary);
-
+  color: var(--color-primary);
+  text-decoration: none;
 }
 
-/* Active Lesson */
+/* ==========================================================
+   ACTIVE LINK
+========================================================== */
 
 .menu__link--active {
+  background: rgba(0,33,165,.08);
 
-  background: #EEF4FF;
-
-  color: var(--ifm-color-primary);
+  color: var(--color-primary);
 
   font-weight: 600;
 
-  border-left: 4px solid var(--accent-color);
-
-  padding-left: calc(.8rem - 4px);
-
+  position: relative;
 }
 
-/* Nested Lessons */
+.menu__link--active::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+
+  width: 4px;
+
+  border-radius: 999px;
+
+  background: var(--color-accent);
+}
+
+/* ==========================================================
+   NESTED ITEMS
+========================================================== */
 
 .menu__list .menu__list {
+  margin-left: .6rem;
 
-  margin-left: .65rem;
+  border-left: 1px solid var(--border-light);
 
-  padding-left: .75rem;
-
-  border-left: 1px solid #EEF2F7;
-
+  padding-left: .6rem;
 }
 
-/* Caret */
+/* ==========================================================
+   CARET
+========================================================== */
 
 .menu__caret:before {
-
-  transform: scale(.9);
-
+  transition: transform .2s ease;
 }
 
-/* Scrollbar */
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
 
-.theme-doc-sidebar-menu::-webkit-scrollbar {
-
+.theme-doc-sidebar-container::-webkit-scrollbar {
   width: 8px;
-
 }
 
-.theme-doc-sidebar-menu::-webkit-scrollbar-thumb {
-
+.theme-doc-sidebar-container::-webkit-scrollbar-thumb {
   background: #CBD5E1;
-
-  border-radius: 20px;
-
+  border-radius: 999px;
 }
 
-/* Sidebar Title */
+.theme-doc-sidebar-container::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
 
-.theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible {
+/* ==========================================================
+   DARK MODE
+========================================================== */
 
-  margin-top: .4rem;
+[data-theme='dark'] .theme-doc-sidebar-container {
+  background: var(--surface);
+  border-right-color: var(--border-color);
+}
 
+[data-theme='dark'] .menu__list-item-collapsible:hover {
+  background: rgba(255,255,255,.05);
+}
+
+[data-theme='dark'] .menu__link:hover {
+  background: rgba(255,255,255,.06);
+  color: white;
+}
+
+[data-theme='dark'] .menu__link--active {
+  background: rgba(255,255,255,.08);
+  color: white;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-container::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-container::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+}
+
+/* ==========================================================
+   FIX CARET ICONS
+========================================================== */
+
+.menu__caret::before {
+  opacity: 1 !important;
+  transform: none;
+  color: var(--text-secondary);
+}
+
+.menu__caret:hover::before {
+  color: var(--color-primary);
 }

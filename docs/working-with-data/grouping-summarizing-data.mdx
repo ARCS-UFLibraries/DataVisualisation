@@ -53,7 +53,7 @@ Instead of calculating one overall average mathematics score, you can calculate 
 
 This often reveals differences between groups that are not visible when you look only at the full dataset.
 
-## The `groupby()` Function
+## The groupby() Function
 
 The basic syntax is:
 
@@ -90,7 +90,7 @@ df.groupby("lunch")["reading score"].mean()
 
 This helps you see whether students with different lunch types tend to have different average reading scores.
 
-## Counting Records with `groupby().size()`
+## Counting Records with groupby().size()
 
 Sometimes you only need to know how many observations belong to each category.
 
@@ -107,7 +107,7 @@ male      482
 
 This shows the number of students in each gender group.
 
-## Counting Values with `value_counts()`
+## Counting Values with value_counts()
 
 Another common way to count values is `value_counts()`:
 
@@ -124,7 +124,7 @@ male      482
 
 `value_counts()` is a quick way to count categories in a single column.
 
-## Multiple Aggregations with `agg()`
+## Multiple Aggregations with agg()
 
 You can calculate several statistics at once.
 

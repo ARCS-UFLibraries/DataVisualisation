@@ -1,123 +1,201 @@
-/* ==========================================================
-   CODE BLOCKS
-   ========================================================== */
+/* INLINE CODE */
+code:not(pre code) {
+  background: #EEF4FF;
+  color: #1A56DB;
+  padding: rem 0.42rem;
+  border-radius: 5px;
+  border: 1px solid #C7D9FF;
+  font-size: 0.875em;
+  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
 
-.theme-code-block,
-.prism-code,
-pre {
-
-  margin: 1.25rem 0 !important;
-
-  border: 1px solid var(--border-color);
-
-  border-radius: 10px;
-
+/* BLOCK WRAPPER */
+.theme-code-block {
+  margin: 0.8rem 0;
+  border-radius: 12px;
   overflow: hidden;
+  border: 1px solid #E2E8F0;
+  background: #F6F8FA;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05);
+}
+p + .theme-code-block { margin-top: 0.5rem; }
+.theme-code-block + p  { margin-top: 0.875rem; }
 
-  box-shadow: var(--shadow-xs);
-
+/* TITLE BAR */
+.codeBlockTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ECEEF1;
+  border-bottom: 1px solid #D8DCE2;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #57606A;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
-/* Code area */
-
-.theme-code-block pre,
-.prism-code {
-
-  padding: 0.75rem !important;
-
+/* PRE */
+pre {
   margin: 0 !important;
-
-  background: #FCFCFD !important;
-
-  line-height: 1.6;
-
-  font-size: .9rem;
-
-  font-family:
-      "JetBrains Mono",
-      "Fira Code",
-      Consolas,
-      monospace;
-
+  padding: 0.75rem 1rem !important;
+  background: #F6F8FA !important;
+  color: #24292F !important;
+  overflow-x: auto;
+  border: none;
+  box-shadow: none;
+  line-height: 1.25;
 }
 
-/* Individual code lines */
-
-.token-line{
-
-    display:block;
-
-    padding:0 .25rem;
-
+/* CODE INSIDE PRE */
+pre code {
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font-size: 0.9rem;
+  line-height: inherit;
+  white-space: pre;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
-/* Inline code */
-
-:not(pre) > code{
-
-    background:#F3F4F6;
-
-    color:#374151;
-
-    border:1px solid var(--border-color);
-
-    border-radius:5px;
-
-    padding:.12rem .3rem;
-
-    font-size:.9em;
-
-    font-family:
-        "JetBrains Mono",
-        Consolas,
-        monospace;
-
+/* HIGHLIGHTED LINE */
+.theme-code-block-highlighted-line {
+  background: rgba(79, 114, 255, 0.09);
+  border-left: 3px solid var(--color-primary, #4F72FF);
+  margin-inline: -1.25rem;
+  padding-inline: 1.25rem;
+  display: block;
 }
 
-/* Remove duplicate styling */
-
-pre code{
-
-    background:transparent !important;
-
-    border:none !important;
-
-    padding:0 !important;
-
+/* COPY BUTTON */
+.clean-btn {
+  padding: 0.15rem !important;
+  border-radius: 6px;
+  opacity: 1;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  color: #57606A;
 }
 
-/* Copy Button */
-
-.clean-btn{
-
-    transition:.2s;
-
+.clean-btn:hover {
+  background: #E2E8F0;
 }
 
-.clean-btn:hover{
+/* SCROLLBAR */
+pre::-webkit-scrollbar          { height: 6px; }
+pre::-webkit-scrollbar-track    { background: transparent; }
+pre::-webkit-scrollbar-thumb    { background: #CBD5E1; border-radius: 99px; }
+pre::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
 
-    transform:scale(1.05);
+/* DARK MODE */
+[data-theme='dark'] .theme-code-block {
+  background: #0D1117;
+  border-color: #21262D;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.25);
+}
+[data-theme='dark'] .codeBlockTitle {
+  background: #161B22;
+  border-bottom-color: #21262D;
+  color: #8B949E;
+}
+[data-theme='dark'] pre { background: #0D1117 !important; color: #E6EDF3 !important; }
+[data-theme='dark'] code:not(pre code) {
+  background: #1C2A4A;
+  border-color: #2D4A8A;
+  color: #93C5FD;
+}
+[data-theme='dark'] .theme-code-block-highlighted-line {
+  background: rgba(255,255,255,0.055);
+  border-left-color: #58A6FF;
+}
+[data-theme='dark'] .clean-btn:hover { background: #21262D; }
+[data-theme='dark'] pre::-webkit-scrollbar-thumb { background: #30363D; }
+[data-theme='dark'] pre::-webkit-scrollbar-thumb:hover { background: #484F58; }
 
+/* ==========================================================
+   FORCE DARKER CODE TOKENS IN LIGHT MODE
+========================================================== */
+html[data-theme='light'] pre,
+html[data-theme='light'] pre code,
+html[data-theme='light'] .theme-code-block pre,
+html[data-theme='light'] .theme-code-block code {
+  color: #111827 !important;
 }
 
-/* Scroll */
-
-pre::-webkit-scrollbar{
-
-height:10px;
-
+/* Prism token overrides */
+html[data-theme='light'] .token.plain,
+html[data-theme='light'] .token.comment,
+html[data-theme='light'] .token.prolog,
+html[data-theme='light'] .token.doctype,
+html[data-theme='light'] .token.cdata {
+  color: #4B5563 !important;
 }
 
-pre::-webkit-scrollbar-thumb{
-
-background:#CBD5E1;
-
-border-radius:20px;
-
+html[data-theme='light'] .token.punctuation {
+  color: #111827 !important;
 }
 
-pre::-webkit-scrollbar-track{
+html[data-theme='light'] .token.property,
+html[data-theme='light'] .token.tag,
+html[data-theme='light'] .token.boolean,
+html[data-theme='light'] .token.number,
+html[data-theme='light'] .token.constant,
+html[data-theme='light'] .token.symbol,
+html[data-theme='light'] .token.deleted {
+  color: #92400E !important;
+}
 
-background:#F8FAFC;
+html[data-theme='light'] .token.selector,
+html[data-theme='light'] .token.attr-name,
+html[data-theme='light'] .token.string,
+html[data-theme='light'] .token.char,
+html[data-theme='light'] .token.builtin,
+html[data-theme='light'] .token.inserted {
+  color: #166534 !important;
+}
 
+html[data-theme='light'] .token.operator,
+html[data-theme='light'] .token.entity,
+html[data-theme='light'] .token.url,
+html[data-theme='light'] .token.variable {
+  color: #111827 !important;
+}
+
+html[data-theme='light'] .token.atrule,
+html[data-theme='light'] .token.attr-value,
+html[data-theme='light'] .token.keyword {
+  color: #1D4ED8 !important;
+}
+
+html[data-theme='light'] .token.function,
+html[data-theme='light'] .token.class-name {
+  color: #7C2D12 !important;
+}
+
+html[data-theme='light'] .token.regex,
+html[data-theme='light'] .token.important {
+  color: #B45309 !important;
+}
+
+/* Disable hover movement on copy button */
+.clean-btn,
+.clean-btn:hover,
+.clean-btn:focus,
+.clean-btn:active {
+  transform: none !important;
+  animation: none !important;
+}
+
+/* Disable icon movement */
+.clean-btn svg,
+.clean-btn:hover svg {
+  transform: none !important;
+  transition: none !important;
 }

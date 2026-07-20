@@ -1,224 +1,197 @@
 /* ==========================================================
-   DESIGN SYSTEM
-   ========================================================== */
+   DATA VISUALISATION GUIDE
+   Design Tokens
+   University of Florida Inspired
+========================================================== */
 
 :root {
 
-  /* ======================================================
-     BRAND
-     ====================================================== */
+  /* =======================================================
+     BRAND COLORS (UF)
+  ======================================================= */
 
-  --ifm-color-primary: #0021A5;
-  --ifm-color-primary-dark: #001b87;
-  --ifm-color-primary-darker: #001779;
-  --ifm-color-primary-darkest: #00115d;
+  --color-primary: #0021A5;
+  --color-primary-hover: #001A7A;
+  --color-primary-light: #3B82F6;
+  --color-primary-lighter: #1644B8;
+  --color-primary-minheadings: #010101;
 
-  --ifm-color-primary-light: #2143b7;
-  --ifm-color-primary-lighter: #3c5dc4;
-  --ifm-color-primary-lightest: #6885d8;
+  --color-accent: #FA4616;
+  --color-accent-hover: #D63A12;
 
-  --accent-color: #FA4616;
+  /* =======================================================
+     SEMANTIC COLORS
+  ======================================================= */
 
-  /* ======================================================
-     SURFACES
-     ====================================================== */
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-info: #06B6D4;
+  --color-purple: #8B5CF6;
 
-  --surface-primary: #FFFFFF;
-  --surface-secondary: #F8FAFC;
-  --surface-tertiary: #F1F5F9;
-  --surface-code: #F6F8FA;
+  /* =======================================================
+     LIGHT MODE
+  ======================================================= */
 
-  /* ======================================================
-     TEXT
-     ====================================================== */
+  --background-primary: #F8FAFC;
+  --background-secondary: #FFFFFF;
+  --background-tertiary: #EEF2F7;
 
-  --text-primary: #1F2937;
-  --text-secondary: #4B5563;
-  --text-light: #6B7280;
-  --text-muted: #9CA3AF;
+  --surface: #FFFFFF;
+  --surface-hover: #F5F7FA;
 
-  /* ======================================================
-     STATUS
-     ====================================================== */
+  --border-color: #D8DEE8;
+  --border-light: #E8EDF4;
 
-  --success: #16A34A;
-  --success-bg: #ECFDF3;
+  --text-primary: #1B2430;
+  --text-secondary: #4B5565;
+  --text-muted: #748092;
 
-  --warning: #D97706;
-  --warning-bg: #FEF3C7;
+  --heading-color: #0021A5;
 
-  --danger: #DC2626;
-  --danger-bg: #FEF2F2;
+  /* =======================================================
+     LINKS
+  ======================================================= */
 
-  --info: #2563EB;
-  --info-bg: #EFF6FF;
+  --link-color: var(--color-primary);
+  --link-hover: var(--color-accent);
 
-  /* ======================================================
-     BORDERS
-     ====================================================== */
+  /* =======================================================
+     CODE
+  ======================================================= */
 
-  --border-color: #E5E7EB;
-  --border-light: #F1F5F9;
+  --code-background: #F3F5F7;
+  --code-border: #E3E8EF;
 
-  /* ======================================================
+  /* =======================================================
+     CALLOUTS
+  ======================================================= */
+
+  --success-bg: #EDF8F1;
+  --warning-bg: #FFF8E7;
+  --danger-bg: #FDEDED;
+  --info-bg: #EEF6FF;
+
+  /* =======================================================
      SHADOWS
-     ====================================================== */
+  ======================================================= */
 
-  --shadow-xs: 0 1px 2px rgba(0,0,0,.04);
+  --shadow-xs: 0 1px 2px rgba(15,23,42,.04);
+  --shadow-sm: 0 2px 8px rgba(15,23,42,.06);
+  --shadow-md: 0 8px 20px rgba(15,23,42,.08);
+  --shadow-lg: 0 16px 40px rgba(15,23,42,.10);
 
-  --shadow-sm: 0 2px 8px rgba(0,0,0,.05);
-
-  --shadow-md: 0 6px 20px rgba(0,0,0,.08);
-
-  --shadow-lg: 0 12px 40px rgba(0,0,0,.12);
-
-  /* ======================================================
-     RADIUS
-     ====================================================== */
+  /* =======================================================
+     BORDER RADIUS
+  ======================================================= */
 
   --radius-xs: 6px;
-
   --radius-sm: 10px;
-
   --radius-md: 14px;
-
   --radius-lg: 18px;
-
   --radius-xl: 24px;
 
-  /* ======================================================
+  /* =======================================================
      SPACING
-     ====================================================== */
+  ======================================================= */
 
   --space-1: .25rem;
-
   --space-2: .5rem;
-
   --space-3: .75rem;
-
   --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+  --space-8: 2.5rem;
+  --space-9: 3rem;
+  --space-10: 4rem;
 
-  --space-5: 1.5rem;
+  /* =======================================================
+     TRANSITIONS
+  ======================================================= */
 
-  --space-6: 2rem;
+  --transition-fast: .15s ease;
+  --transition: .25s ease;
+  --transition-slow: .4s ease;
 
-  --space-7: 3rem;
+  /* =======================================================
+     CONTENT WIDTH
+  ======================================================= */
 
-  --space-8: 4rem;
+  --content-width: 1280px;
+  --reading-width: 820px;
 
-  --space-9: 6rem;
+  /* =======================================================
+     Docusaurus IFM Overrides
+  ======================================================= */
 
-  /* ======================================================
-     TYPOGRAPHY
-     ====================================================== */
+  --ifm-navbar-link-color: var(--text-secondary);
+  --ifm-navbar-link-hover-color: var(--color-primary);
 
-  --font-xs: .75rem;
+  --ifm-color-content: var(--text-primary);
+  --ifm-color-content-secondary: var(--text-secondary);
 
-  --font-sm: .875rem;
-
-  --font-md: 1rem;
-
-  --font-lg: 1.125rem;
-
-  --font-xl: 1.35rem;
-
-  --font-2xl: 1.7rem;
-
-  --font-3xl: 2.2rem;
-
-  /* ======================================================
-     LAYOUT
-     ====================================================== */
-
-  --content-width: 900px;
-
-  --content-wide: 1200px;
-
-  --sidebar-width: 320px;
-
-  --navbar-height: 70px;
-
-  /* ======================================================
-     ANIMATION
-     ====================================================== */
-
-  --transition-fast: .2s ease;
-
-  --transition-normal: .35s ease;
-
-  --transition-slow: .5s ease;
-
-  /* ======================================================
-     LAYERS
-     ====================================================== */
-
-  --z-navbar: 1000;
-
-  --z-sidebar: 900;
-
-  --z-dropdown: 1100;
-
-  --z-overlay: 1200;
-
+  --ifm-menu-color: var(--text-secondary);
 }
 
 /* ==========================================================
    DARK MODE
-   ========================================================== */
+========================================================== */
 
 [data-theme='dark'] {
 
-  /* ==========================
-     Brand
-     ========================== */
+  /* Backgrounds */
 
-  --color-primary: #4C7DFF;
-  --color-primary-hover: #6E95FF;
-  --color-primary-light: #8DAEFF;
+  --background-primary: #0F172A;
+  --background-secondary: #162133;
+  --background-tertiary: #1E293B;
 
-  --color-accent: #FA4616;
+  --surface: #1F2937;
+  --surface-hover: #283548;
 
-  --color-success: #22884C;
-  --color-warning: #F2A900;
-  --color-danger: #D32737;
+  /* Text */
 
-  /* ==========================
-     Background
-     ========================== */
+  --text-primary: #F8FAFC;
+  --text-secondary: #D5DCE6;
+  --text-muted: #9AA8BB;
 
-  --background: #121212;
-  --surface: #1E1E1E;
-  --surface-secondary: #272727;
-  --surface-hover: #313131;
+  --heading-color: #FFFFFF;
 
-  /* ==========================
-     Text
-     ========================== */
+  /* Borders */
 
-  --text-primary: #FFFFFF;
-  --text-secondary: #E5E5E5;
-  --text-muted: #9E9E9E;
+  --border-color: #334155;
+  --border-light: #475569;
 
-  /* ==========================
-     Borders
-     ========================== */
+  /* Links */
 
-  --border: #727272;
-  --border-light: #444444;
+  --link-color: #7EA6FF;
+  --link-hover: #FF8C66;
 
-  /* ==========================
-     Code
-     ========================== */
+  /* Code */
 
-  --code-background: #181818;
-  --code-border: #444444;
+  --code-background: #111827;
+  --code-border: #2C3A4F;
 
-  /* ==========================
-     Shadow
-     ========================== */
+  /* Callouts */
 
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
+  --success-bg: rgba(34,136,76,.15);
+  --warning-bg: rgba(242,169,0,.15);
+  --danger-bg: rgba(211,39,55,.15);
+  --info-bg: rgba(74,144,226,.15);
 
+  /* Shadows */
+
+  --shadow-xs: none;
+  --shadow-sm: 0 2px 10px rgba(0,0,0,.30);
+  --shadow-md: 0 10px 28px rgba(0,0,0,.40);
+  --shadow-lg: 0 18px 48px rgba(0,0,0,.50);
+
+  /* Docusaurus IFM Overrides */
+
+  --ifm-navbar-link-color: var(--text-secondary);
+  --ifm-navbar-link-hover-color: #FFFFFF;
+
+  --ifm-color-content: var(--text-primary);
+  --ifm-color-content-secondary: var(--text-secondary);
+
+  --ifm-menu-color: var(--text-secondary);
 }
