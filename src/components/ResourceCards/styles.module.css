@@ -1,15 +1,14 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-  margin: 1.25rem 0 1.75rem;
+  margin: 1rem 0 1.75rem;
 }
 
 .card {
   display: block;
-  padding: 1rem 1.1rem;
+  padding: 1rem 1rem;
   border-radius: 16px;
-  border: 1px solid var(--ifm-color-emphasis-200);
+  border: 1px solid var(--ifm-color-emphasis-1000);
   background: var(--ifm-background-surface-color);
   text-decoration: none;
   color: inherit;
@@ -34,7 +33,7 @@
 .label {
   display: inline-block;
   margin-bottom: 0.6rem;
-  padding: 0.2rem 0.55rem;
+  padding: 0rem 0.55rem;
   border-radius: 999px;
   background: var(--ifm-color-emphasis-200);
   font-size: 0.75rem;

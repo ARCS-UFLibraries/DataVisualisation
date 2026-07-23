@@ -158,3 +158,15 @@
 [data-theme='dark'] .markdown table caption {
   color: #9CA3AF;
 }
+
+table{
+
+font-size:.95rem;
+
+}
+
+tbody tr{
+
+transition:background .2s;
+
+}

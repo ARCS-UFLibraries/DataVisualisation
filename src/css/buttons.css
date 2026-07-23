@@ -203,3 +203,19 @@
   background: #2563EB;
   color: white;
 }
+
+.button--lesson{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:.45rem;
+
+padding:.65rem 1rem;
+
+border-radius:999px;
+
+font-weight:600;
+
+}

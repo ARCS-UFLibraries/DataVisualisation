@@ -65,7 +65,7 @@ const sidebars = {
         type: "doc",
         id: "data-viz/index",
       },
-      collapsed: false,
+      collapsed: true,
       items: [
         "data-viz/introduction-to-data-visualisation",
         "data-viz/matplotlib-basics",

@@ -100,7 +100,7 @@ section {
 
 .theme-doc-markdown img {
 
-  margin: 1.25rem auto;
+  margin: 1.25rem 1.25rem;
 
 }
 
@@ -326,6 +326,10 @@ iframe[src*="youtube"] {
     padding-left: 1rem;
 
     padding-right: 1rem;
+
+    padding-top: 1rem;
+
+    padding-bottom: 1rem;
 
   }
 

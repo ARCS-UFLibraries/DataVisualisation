@@ -68,7 +68,7 @@ const config = {
 
       docs: {
         sidebar: {
-          hideable: true,
+          hideable: true, 
           autoCollapseCategories: true,
         },
       },
@@ -103,6 +103,12 @@ const config = {
             to: '/docs/FAQs',
             label: 'FAQs',
             position: 'left',
+          },
+          {
+  
+            type: "html",
+            value: "",
+            position: 'right',
           },
         ],
       },
