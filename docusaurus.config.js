@@ -104,12 +104,6 @@ const config = {
             label: 'FAQs',
             position: 'left',
           },
-          {
-  
-            type: "html",
-            value: "",
-            position: 'right',
-          },
         ],
       },
         

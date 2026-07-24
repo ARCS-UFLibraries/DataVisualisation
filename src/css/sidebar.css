@@ -175,3 +175,20 @@
 .menu__caret:hover::before {
   color: var(--color-primary);
 }
+
+/* ===========================================
+   FULL-LENGTH SIDEBAR
+=========================================== */
+
+.theme-doc-sidebar-container {
+  position: relative !important;
+  top: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.theme-doc-sidebar-menu {
+  overflow: visible !important;
+  height: auto !important;
+}
