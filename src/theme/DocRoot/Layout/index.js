@@ -4,9 +4,10 @@ import AutoScrollSidebar from '@site/src/components/AutoScrollSidebar';
 
 export default function LayoutWrapper(props) {
   return (
-    <>
-      <AutoScrollSidebar />
-      <Layout {...props} />
-    </>
+      <>
+        <AutoScrollSidebar />
+        <Layout {...props} />
+      </>
+
   );
 }

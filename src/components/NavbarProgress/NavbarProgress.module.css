@@ -1,0 +1,85 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  z-index: 100;
+}
+
+.progressButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 8px;
+  color: var(--ifm-navbar-link-color);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  visibility: visible;
+  opacity: 1;
+}
+
+.label {
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.bar {
+  width: 80px;
+  height: 7px;
+  background: var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  overflow: hidden;
+  display: block;
+  flex-shrink: 0;
+}
+
+.fill {
+  height: 100%;
+  background: var(--ifm-color-primary);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.percentage {
+  font-weight: 600;
+  min-width: 35px;
+  display: inline-block;
+}
+
+.popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 360px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 1rem;
+}
+
+@media (max-width: 996px) {
+  .popover {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .label {
+    display: none;
+  }
+
+  .bar {
+    width: 60px;
+  }
+}

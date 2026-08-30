@@ -104,6 +104,10 @@ const config = {
             label: 'FAQs',
             position: 'left',
           },
+          // {
+          //   type: 'custom-progress',
+          //   position: 'right',
+          // },
         ],
       },
         
