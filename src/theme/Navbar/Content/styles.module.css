@@ -1,3 +1,7 @@
+.colorModeToggle {
+  margin-left: 2rem;
+}
+
 @media (max-width: 996px) {
   .colorModeToggle {
     display: none;
@@ -7,7 +11,14 @@
 /*
 Restore some Infima style that broke with CSS Cascade Layers
 See https://github.com/facebook/docusaurus/pull/11142
- */
-:global(.navbar__items--right) > :last-child {
+*/
+
+:global(.navbar__items--right) {
   padding-right: 0;
+}
+
+/* Move the complete right-side navbar group */
+:global(.navbar__items--right) {
+  position: relative;
+  left: 12rem;
 }
