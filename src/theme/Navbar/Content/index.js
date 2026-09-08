@@ -20,7 +20,7 @@ import NavbarSearch from '@theme/Navbar/Search';
 import NavbarItem from '@theme/NavbarItem';
 
 import NavbarProgress from '@site/src/components/NavbarProgress/NavbarProgress';
-
+import NavbarAuth from '@site/src/components/NavbarAuth/NavbarAuth';
 import styles from './styles.module.css';
 
 function useNavbarItems() {
@@ -101,6 +101,8 @@ export default function NavbarContent() {
           <NavbarItems items={rightItems} />
 
           <NavbarProgress />
+
+          <NavbarAuth />
 
           <NavbarColorModeToggle
             className={styles.colorModeToggle}

@@ -1,0 +1,30 @@
+.loginButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 1rem;
+  padding: 0.45rem 1rem;
+
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-primary);
+
+  background: var(--ifm-color-primary);
+  color: #ffffff !important;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.loginButton:hover {
+  color: #ffffff !important;
+  opacity: 0.9;
+  transform: translateY(-1px);
+  text-decoration: none;
+}

@@ -1,0 +1,231 @@
+.page {
+  min-height: calc(100vh - 60px);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding: 4rem 1.5rem;
+
+  background: var(--ifm-background-color);
+}
+
+.container {
+  width: min(500px, 100%);
+
+  padding: 2.5rem;
+
+  background: var(--ifm-background-surface-color);
+
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 20px;
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+
+  margin: 0 auto 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--ifm-color-primary-lightest);
+
+  font-size: 1.7rem;
+}
+
+.header h1 {
+  margin-bottom: 0.5rem;
+
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.header p {
+  margin: 0;
+
+  color: var(--ifm-color-emphasis-700);
+
+  line-height: 1.5;
+}
+
+/* Tabs */
+
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 4px;
+
+  padding: 4px;
+
+  margin-bottom: 2rem;
+
+  border-radius: 10px;
+
+  background: var(--ifm-color-emphasis-100);
+}
+
+.tab {
+  border: none;
+
+  padding: 0.75rem;
+
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: var(--ifm-color-emphasis-700);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.activeTab {
+  background: var(--ifm-background-surface-color);
+
+  color: var(--ifm-color-primary);
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Clerk */
+
+.formArea {
+  width: 100%;
+}
+
+.formArea :global(.cl-card) {
+  width: 100%;
+
+  padding: 0;
+
+  border: none;
+
+  box-shadow: none;
+
+  background: transparent;
+}
+
+/* Bottom text */
+
+.switchText {
+  margin-top: 1.5rem;
+
+  text-align: center;
+
+  font-size: 0.9rem;
+
+  color: var(--ifm-color-emphasis-700);
+}
+
+.switchText button {
+  border: none;
+
+  padding: 0;
+
+  background: transparent;
+
+  color: var(--ifm-color-primary);
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.switchText button:hover {
+  text-decoration: underline;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .page {
+    padding: 2rem 1rem;
+  }
+
+  .container {
+    padding: 1.5rem;
+
+    border-radius: 14px;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+  }
+}
+
+.classroomSection {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.classroomSection label {
+  display: block;
+
+  margin-bottom: 0.5rem;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.classroomSection label span {
+  color: var(--ifm-color-emphasis-600);
+  font-weight: 400;
+}
+
+.classroomInput {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 0.8rem 0.9rem;
+
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+
+  font-size: 1rem;
+
+  text-transform: uppercase;
+}
+
+.classroomInput:focus {
+  outline: none;
+
+  border-color: var(--ifm-color-primary);
+
+  box-shadow: 0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--ifm-color-primary) 15%,
+      transparent
+    );
+}
+
+.classroomSection p {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+
+  font-size: 0.8rem;
+
+  color: var(--ifm-color-emphasis-600);
+
+  line-height: 1.4;
+}

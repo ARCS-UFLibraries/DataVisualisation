@@ -14,11 +14,13 @@
     "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
+    "@clerk/react": "^6.14.8",
     "@docusaurus/core": "3.10.1",
     "@docusaurus/faster": "3.10.1",
     "@docusaurus/preset-classic": "3.10.1",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
+    "dotenv": "^17.4.2",
     "plotly.js-basic-dist-min": "^3.7.0",
     "plotly.js-dist-min": "^3.1.0",
     "prism-react-renderer": "^2.3.0",

@@ -3,7 +3,7 @@
 // (when paired with `@ts-check`).
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
-
+import "dotenv/config";
 import {themes as prismThemes} from 'prism-react-renderer';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -13,6 +13,10 @@ const config = {
   title: 'Data Visualisation Guide',
   tagline: 'Interactive learning resources for students',
   favicon: 'img/favicon.ico',
+
+  customFields: {
+    clerkPublishableKey: process.env.VITE_CLERK_PUBLISHABLE_KEY,
+  },
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
