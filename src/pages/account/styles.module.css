@@ -468,3 +468,17 @@
   font-weight: 700;
   font-size: 1.1rem;
 }
+
+.forgotPassword {
+  align-self: flex-end;
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: var(--ifm-color-primary);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+}
