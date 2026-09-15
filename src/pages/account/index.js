@@ -1,3 +1,4 @@
+import Layout from "@theme/Layout";
 import React, { useState, useEffect } from "react";
 import {
   useAuth,
@@ -741,6 +742,7 @@ export default function AccountPage() {
           </div>
         </div>
       </main>
+      
     );
   }
 
@@ -1052,6 +1054,10 @@ export default function AccountPage() {
   // =====================================================
 
   return (
+    <Layout
+      title="Account"
+      description="Log in or create your Data Visualisation Guide account"
+    >
     <main className={styles.page}>
       <div className={styles.container}>
 
@@ -1530,6 +1536,8 @@ export default function AccountPage() {
         <div id="clerk-captcha" />
       </div>
     </main>
+  </Layout>
+
   );
 }
 
