@@ -1,0 +1,54 @@
+.card {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  background: var(--ifm-background-surface-color);
+}
+
+.card h2 {
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  margin-bottom: 1rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+.button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--ifm-color-primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.message,
+.success {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.success {
+  color: #16803c;
+}

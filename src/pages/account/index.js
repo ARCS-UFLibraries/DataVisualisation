@@ -7,6 +7,7 @@ import {
 } from "@clerk/react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
+import JoinClassroom from "@site/src/components/Classroom/JoinClassroom";
 
 export default function AccountPage() {
   const [mode, setMode] = useState("login");
@@ -721,7 +722,7 @@ export default function AccountPage() {
 
       setIsSubmitting(false);
     }
-  };
+  }; 
 
   // =====================================================
   // SIGNED IN
@@ -729,23 +730,28 @@ export default function AccountPage() {
 
   if (isSignedIn) {
     return (
-      <main className={styles.page}>
-        <div className={styles.container}>
-          <div className={styles.header}>
-            <div className={styles.icon}>
-              ✅
+      <Layout
+        title="Account"
+        description="Your Data Visualisation Guide account"
+      >
+        <main className={styles.page}>
+          <div className={styles.container}>
+            <div className={styles.header}>
+              <div className={styles.icon}>
+                ✅
+              </div>
+
+              <h1>You are signed in</h1>
+
+              <p>Your account is active.</p>
             </div>
 
-            <h1>You are signed in</h1>
-
-            <p>Your account is active.</p>
+            <JoinClassroom />
           </div>
-        </div>
-      </main>
-      
+        </main>
+      </Layout>
     );
   }
-
   // =====================================================
   // FORGOT PASSWORD — EMAIL
   // =====================================================
