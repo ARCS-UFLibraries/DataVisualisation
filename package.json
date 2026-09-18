@@ -19,6 +19,7 @@
     "@docusaurus/faster": "3.10.1",
     "@docusaurus/preset-classic": "3.10.1",
     "@mdx-js/react": "^3.0.0",
+    "@supabase/supabase-js": "^2.116.0",
     "clsx": "^2.0.0",
     "dotenv": "^17.4.2",
     "plotly.js-basic-dist-min": "^3.7.0",

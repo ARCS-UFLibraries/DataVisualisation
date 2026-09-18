@@ -15,13 +15,19 @@ const config = {
   favicon: 'img/favicon.ico',
 
   customFields: {
-    clerkPublishableKey: process.env.VITE_CLERK_PUBLISHABLE_KEY,
-  },
+    clerkPublishableKey:
+      process.env.VITE_CLERK_PUBLISHABLE_KEY,
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
-  future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    supabaseUrl:
+      process.env.SUPABASE_URL,
+
+    supabasePublishableKey:
+      process.env.SUPABASE_PUBLISHABLE_KEY,
   },
+    // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+    future: {
+      v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    },
 
   // Set the production url of your site here
   url: 'https://arcs-uflibraries.github.io',

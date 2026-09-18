@@ -2,6 +2,8 @@ import React from "react";
 import { ClerkProvider } from "@clerk/react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { ProgressProvider } from "@site/src/context/ProgressContext";
+import { SupabaseProvider } from "@site/src/lib/supabaseClient";
+import ProfileSync from "@site/src/components/Supabase/ProfileSync";
 
 export default function Root({ children }) {
   const {
@@ -21,9 +23,12 @@ export default function Root({ children }) {
       signInFallbackRedirectUrl={siteUrl}
       signUpFallbackRedirectUrl={siteUrl}
     >
-      <ProgressProvider>
-        {children}
-      </ProgressProvider>
+      <SupabaseProvider>
+        <ProfileSync />
+        <ProgressProvider>
+          {children}
+        </ProgressProvider>
+      </SupabaseProvider>
     </ClerkProvider>
   );
 }
