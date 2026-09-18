@@ -5,6 +5,7 @@ import { SupabaseContext } from "@site/src/lib/supabaseClient";
 export default function ProfileSync() {
   const supabase = useContext(SupabaseContext);
   const { isLoaded, isSignedIn, user } = useUser();
+
   const syncedUserId = useRef(null);
 
   useEffect(() => {
@@ -19,8 +20,11 @@ export default function ProfileSync() {
 
     let cancelled = false;
 
-    const createProfile = async () => {
-      const { error } = await supabase
+    const syncUser = async () => {
+      // ---------------------------------------------
+      // 1. Create the student's profile
+      // ---------------------------------------------
+      const { error: profileError } = await supabase
         .from("profiles")
         .upsert(
           {
@@ -35,18 +39,55 @@ export default function ProfileSync() {
           }
         );
 
-      if (error) {
-        console.error("Profile sync failed:", error);
+      if (profileError) {
+        console.error(
+          "Profile sync failed:",
+          profileError
+        );
         return;
+      }
+
+      // ---------------------------------------------
+      // 2. Check whether a classroom code was
+      //    entered during signup
+      // ---------------------------------------------
+      const classroomCode =
+        user.unsafeMetadata?.classroomCode;
+
+      if (classroomCode) {
+        const { data, error: classroomError } =
+          await supabase.rpc(
+            "join_classroom_by_code",
+            {
+              p_code: String(classroomCode)
+                .trim()
+                .toUpperCase(),
+            }
+          );
+
+        if (classroomError) {
+          console.error(
+            "Automatic classroom join failed:",
+            classroomError
+          );
+        } else {
+          const classroom = data?.[0];
+
+          if (classroom) {
+            console.log(
+              `Automatically joined classroom: ${classroom.classroom_name}`
+            );
+          }
+        }
       }
 
       if (!cancelled) {
         syncedUserId.current = user.id;
-        console.log("Profile synced successfully.");
+        console.log("Profile sync completed.");
       }
     };
 
-    createProfile();
+    syncUser();
 
     return () => {
       cancelled = true;
