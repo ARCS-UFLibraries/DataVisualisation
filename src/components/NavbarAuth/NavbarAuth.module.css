@@ -179,3 +179,14 @@
 .logoutButton:hover {
   background: var(--ifm-color-emphasis-100);
 }
+
+.classroomJoined {
+  padding: 0.75rem 1rem;
+  color: var(--ifm-font-color-base);
+  font-size: 0.95rem;
+}
+
+.classroomCode {
+  margin-top: 0.25rem;
+  font-weight: 600;
+}

@@ -1,9 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import {
-  useUser,
-  SignOutButton,
-} from "@clerk/react";
+
+import { useUser, SignOutButton } from "@clerk/react";
+
+import { SupabaseContext } from "@site/src/lib/supabaseClient";
+
 import styles from "./NavbarAuth.module.css";
 
 export default function NavbarAuth() {
@@ -13,11 +20,14 @@ export default function NavbarAuth() {
 
   const { isSignedIn, user, isLoaded } = useUser();
 
+  const supabase = useContext(SupabaseContext);
+
   const [isOpen, setIsOpen] = useState(false);
+  const [joinedClassroom, setJoinedClassroom] = useState(null);
 
   const containerRef = useRef(null);
 
-  // Close the dropdown when clicking outside
+  // Close the dropdown when clicking outside it
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (
@@ -28,28 +38,67 @@ export default function NavbarAuth() {
       }
     };
 
-    document.addEventListener(
-      "mousedown",
-      handleOutsideClick
-    );
+    document.addEventListener("mousedown", handleOutsideClick);
 
     return () => {
-      document.removeEventListener(
-        "mousedown",
-        handleOutsideClick
-      );
+      document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
 
-  // Wait until Clerk has loaded
+  // Load the student's joined classroom
+  useEffect(() => {
+    if (!isLoaded || !isSignedIn || !user || !supabase) {
+      setJoinedClassroom(null);
+      return;
+    }
+
+    let cancelled = false;
+
+    const loadJoinedClassroom = async () => {
+      const { data, error } = await supabase
+        .from("classroom_members")
+        .select(`
+          classroom_id,
+          classrooms (
+            name,
+            code
+          )
+        `)
+        .eq("student_id", user.id)
+        .limit(1);
+
+      if (error) {
+        console.error(
+          "Unable to load joined classroom:",
+          error
+        );
+        return;
+      }
+
+      if (cancelled) return;
+
+      const membership = data?.[0];
+
+      if (membership?.classrooms) {
+        setJoinedClassroom(membership.classrooms);
+      } else {
+        setJoinedClassroom(null);
+      }
+    };
+
+    loadJoinedClassroom();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isLoaded, isSignedIn, user, supabase]);
+
+  // Wait until Clerk finishes loading
   if (!isLoaded) {
     return null;
   }
 
-  // =====================================================
-  // NOT LOGGED IN
-  // =====================================================
-
+  // Signed out
   if (!isSignedIn || !user) {
     const currentUrl =
       typeof window !== "undefined"
@@ -70,15 +119,10 @@ export default function NavbarAuth() {
     );
   }
 
-  // =====================================================
-  // LOGGED IN
-  // =====================================================
+  // Use the user's first name
+  const firstName = user.firstName || "Account";
 
-  // IMPORTANT:
-  // We use ONLY the first name entered by the user.
-  const firstName =
-    user.firstName || "Account";
-
+  // Account creation date
   const learningSince = user.createdAt
     ? new Date(user.createdAt).toLocaleDateString(
         undefined,
@@ -103,20 +147,15 @@ export default function NavbarAuth() {
       ref={containerRef}
       className={styles.accountContainer}
     >
-      {/* ACCOUNT BUTTON */}
-
+      {/* Account button */}
       <button
         type="button"
         className={styles.accountButton}
-        onClick={() =>
-          setIsOpen((previous) => !previous)
-        }
+        onClick={() => setIsOpen((previous) => !previous)}
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
-        <span>
-          Hi, {firstName}
-        </span>
+        <span>Hi, {firstName}</span>
 
         <span
           className={`${styles.chevron} ${
@@ -127,11 +166,9 @@ export default function NavbarAuth() {
         </span>
       </button>
 
-      {/* DROPDOWN */}
-
+      {/* Account dropdown */}
       {isOpen && (
         <div className={styles.accountMenu}>
-
           <div className={styles.accountHeader}>
             <div className={styles.accountGreeting}>
               Hi, {firstName}
@@ -150,8 +187,28 @@ export default function NavbarAuth() {
 
           <div className={styles.menuDivider} />
 
-          {/* CLERK SIGN OUT */}
+          {/* Classroom status */}
+          {joinedClassroom ? (
+            <div className={styles.classroomJoined}>
+              <div>Classroom joined</div>
 
+              <div className={styles.classroomCode}>
+                #{joinedClassroom.code}
+              </div>
+            </div>
+          ) : (
+            <a
+              href={`${baseUrl}account/`}
+              className={styles.logoutButton}
+              onClick={() => setIsOpen(false)}
+            >
+              Join a Classroom
+            </a>
+          )}
+
+          <div className={styles.menuDivider} />
+
+          {/* Logout */}
           <SignOutButton
             signOutOptions={{
               redirectUrl: currentPage,
@@ -165,7 +222,6 @@ export default function NavbarAuth() {
               Log out
             </button>
           </SignOutButton>
-
         </div>
       )}
     </div>
