@@ -1,1 +1,1 @@
-Deployed sute: https://arcs-uflibraries.github.io/DataVisualisation/
+Deployed site: https://arcs-uflibraries.github.io/DataVisualisation/
