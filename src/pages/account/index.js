@@ -16,6 +16,7 @@ export default function AccountPage() {
   const [name, setName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [classroomCode, setClassroomCode] = useState("");
 
   const [signupVerification, setSignupVerification] =
@@ -36,6 +37,7 @@ export default function AccountPage() {
   const [resetCode, setResetCode] = useState("");
   const [newPassword, setNewPassword] =
     useState("");
+  const [showNewPassword, setShowNewPassword] = useState(false);
 
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] =
@@ -229,6 +231,30 @@ export default function AccountPage() {
       if (!password) {
         setMessage(
           "Please enter a password."
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (password.length < 8) {
+        setMessage(
+          "Password must be at least 8 characters."
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (!/[A-Za-z]/.test(password)) {
+        setMessage(
+          "Password must contain at least one letter."
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (!/[0-9]/.test(password)) {
+        setMessage(
+          "Password must contain at least one number."
         );
         setIsSubmitting(false);
         return;
@@ -679,6 +705,30 @@ export default function AccountPage() {
         return;
       }
 
+      if (newPassword.length < 8) {
+        setMessage(
+          "Password must be at least 8 characters."
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (!/[A-Za-z]/.test(newPassword)) {
+        setMessage(
+          "Password must contain at least one letter."
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (!/[0-9]/.test(newPassword)) {
+        setMessage(
+          "Password must contain at least one number."
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
       const { error } =
         await signIn.resetPasswordEmailCode.submitPassword({
           password: newPassword,
@@ -1012,9 +1062,11 @@ export default function AccountPage() {
                   New Password
                 </label>
 
+              <div className={styles.passwordWrapper}></div>
+
                 <input
                   id="new-password"
-                  type="password"
+                  type={showNewPassword ? "text" : "password"}
                   value={newPassword}
                   onChange={(event) =>
                     setNewPassword(
@@ -1025,7 +1077,21 @@ export default function AccountPage() {
                   autoComplete="new-password"
                   className={styles.input}
                 />
+
+                <button
+                  type="button"
+                  className={styles.passwordToggle}
+                  onClick={() =>
+                    setShowNewPassword((previous) => !previous)
+                  }
+                >
+                  {showNewPassword ? "Hide" : "View"}
+                </button>
               </div>
+
+              <p className={styles.passwordHint}>
+                At least 8 characters, including one letter and one number.
+              </p>
 
               {message && (
                 <p
@@ -1166,20 +1232,30 @@ export default function AccountPage() {
                   <label htmlFor="login-password">
                     Password
                   </label>
+                </div>
 
+                <div className={styles.passwordWrapper}>
                   <input
                     id="login-password"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(event) =>
-                      setPassword(
-                        event.target.value
-                      )
+                      setPassword(event.target.value)
                     }
                     placeholder="Enter your password"
                     autoComplete="current-password"
                     className={styles.input}
                   />
+
+                  <button
+                    type="button"
+                    className={styles.passwordToggle}
+                    onClick={() =>
+                      setShowPassword((previous) => !previous)
+                    }
+                  >
+                    {showPassword ? "Hide" : "View"}
+                  </button>
                 </div>
 
                 <button
@@ -1360,6 +1436,7 @@ export default function AccountPage() {
                   <label htmlFor="signup-password">
                     Password
                   </label>
+                <div className={styles.passwordWrapper}>
 
                   <input
                     id="signup-password"
@@ -1374,6 +1451,22 @@ export default function AccountPage() {
                     autoComplete="new-password"
                     className={styles.input}
                   />
+
+                  <button
+                    type="button"
+                    className={styles.passwordToggle}
+                    onClick={() =>
+                      setShowPassword((previous) => !previous)
+                    }
+                  >
+                    {showPassword ? "Hide" : "View"}
+                  </button>
+                </div>
+
+                <p className={styles.passwordHint}>
+                  At least 8 characters, including one letter and one number.
+                </p>
+
                 </div>
 
                 <div

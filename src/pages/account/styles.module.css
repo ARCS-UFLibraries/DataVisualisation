@@ -482,3 +482,37 @@
 .forgotPassword:hover {
   text-decoration: underline;
 }
+
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.passwordWrapper .input {
+  padding-right: 4.5rem;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: var(--ifm-color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.passwordToggle:hover {
+  text-decoration: underline;
+}
+
+.passwordHint {
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+}
