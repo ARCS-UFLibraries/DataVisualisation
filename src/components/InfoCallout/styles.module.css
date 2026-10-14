@@ -1,6 +1,6 @@
 .callout {
-  margin: 1.25rem 0;
-  padding: 1rem 1.1rem;
+  margin: 0.75rem 0;
+  padding: .4rem 0.75rem;
   border-radius: 16px;
   border: 1px solid var(--ifm-color-emphasis-200);
   background: var(--ifm-background-surface-color);

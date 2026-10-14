@@ -65,7 +65,7 @@ const sidebars = {
         type: "doc",
         id: "data-viz/index",
       },
-      collapsed: false,
+      collapsed: true,
       items: [
         "data-viz/introduction-to-data-visualisation",
         "data-viz/matplotlib-basics",
@@ -102,8 +102,8 @@ const sidebars = {
       items: [
         "learning-resources/development-tools",
         "learning-resources/git-github",
+        "learning-resources/Guided-Projects",
         "learning-resources/practice-projects",
-        "learning-resources/student-performance-case-study",
       ],
     },
 

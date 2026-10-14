@@ -1,5 +1,8 @@
-import Quiz from '@site/src/components/HomepageFeatures/Quiz/Quiz.tsx';
+import Quiz from '@site/src/components/Quiz/Quiz.tsx';
 import interactiveVisualisationsPlotlyQuiz from '@site/src/data/quizzes/data-viz/interactive-visualisations-plotly';
+import ColabActivity from '@site/src/components/ColabActivity/ColabActivity';
+import PlotlyPlayground from '@site/src/components/PlotlyPlayground';
+import ResourceCards from '@site/src/components/ResourceCards';
 
 # Interactive Visualisations with Plotly
 
@@ -111,7 +114,7 @@ This is helpful because:
 
 ### Zooming and Panning
 
-Plotly charts also support zooming and panning.
+Plotly charts also support zooming and panning via the modebar tools.
 
 This means you can:
 
@@ -131,7 +134,7 @@ import pandas as pd
 
 df = pd.DataFrame({
     "month": ["Jan", "Feb", "Mar", "Apr"],
-    "sales":[1][2][3][4]
+    "sales":[3]
 })
 
 fig = px.line(df, x="month", y="sales", title="Monthly Sales Trend")
@@ -149,8 +152,8 @@ import plotly.express as px
 import pandas as pd
 
 df = pd.DataFrame({
-    "reading_score":,[5][6][7][8][9][10]
-    "writing_score":,[11][12][13][14][15][16]
+    "reading_score":,[4][5][6][7][8][9]
+    "writing_score":,[10][11][12][13][14][15]
     "student": ["A", "B", "C", "D", "E", "F"]
 })
 
@@ -178,8 +181,8 @@ import plotly.express as px
 import pandas as pd
 
 df = pd.DataFrame({
-    "reading_score":,[6][7][5]
-    "writing_score":,[12][13][11]
+    "reading_score":,[5][6][4]
+    "writing_score":,[11][12][10]
     "student": ["A", "B", "C"],
     "group": ["G1", "G1", "G2"]
 })
@@ -211,9 +214,7 @@ This makes interactivity especially useful for exploration and presentation.
 Each library has its strengths.
 
 **Matplotlib** is strong for foundational plotting and detailed control over static charts.
-
-**Seaborn** is strong for statistical charts and cleaner comparison plots with simpler syntax.
-
+**Seaborn** is strong for statistical charts and cleaner comparison plots with simpler syntax. 
 **Plotly** is strong for interactive exploration, especially when the audience may want to hover, zoom, pan, or inspect details dynamically.
 
 A good analyst chooses the right tool for the task.
@@ -228,7 +229,7 @@ import pandas as pd
 
 df = pd.DataFrame({
     "group": ["A", "B", "C"],
-    "score":[15][17][18]
+    "score":[6][8][16]
 })
 
 fig = px.bar(
@@ -246,9 +247,13 @@ This helps create interactive charts that are still clear and easy to interpret.
 
 ### Exporting Interactive Charts
 
-Plotly charts can also be saved and shared as HTML files.
+Plotly charts can also be saved and shared as HTML files, keeping all interactive features.
 
-This makes them useful for dashboards, notebooks, class projects, and interactive reports.
+```python
+fig.write_html("interactive_chart.html")
+```
+
+You can open the saved HTML file in any web browser to view and interact with the chart.
 
 ### Google Colab Activity
 
@@ -259,6 +264,20 @@ In Google Colab, create:
 3. an interactive scatter plot.
 
 For each chart, interact with it by hovering and zooming, then write 1–2 sentences explaining what the interactive features helped you notice.
+
+### Practice in Colab
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice interactive bar, line, and scatter charts with Plotly Express.',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/data-viz/interactive_visualisations_plotly_lesson.ipynb',
+      label: 'Notebook',
+    },
+  ]}
+/>
+<ColabActivity pageId="interactive_visualisations_plotly" />
 
 ### Practice Exercise
 

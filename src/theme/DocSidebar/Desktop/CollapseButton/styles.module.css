@@ -1,0 +1,44 @@
+:root {
+  --docusaurus-collapse-button-bg: transparent;
+  --docusaurus-collapse-button-bg-hover: rgb(0 0 0 / 10%);
+}
+
+[data-theme='dark']:root {
+  --docusaurus-collapse-button-bg: rgb(255 255 255 / 5%);
+  --docusaurus-collapse-button-bg-hover: rgb(255 255 255 / 10%);
+}
+
+@media (min-width: 997px) {
+
+  .collapseSidebarButton:focus {
+    background-color: var(--docusaurus-collapse-button-bg-hover);
+  }
+}
+
+.collapseSidebarButton {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  display: none !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.collapseSidebarButton:hover {
+  background: var(--ifm-hover-overlay);
+}
+
+.hamburger {
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.collapseSidebarButtonIcon {
+  display: none;
+}

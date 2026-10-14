@@ -3,7 +3,7 @@
 // (when paired with `@ts-check`).
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
-
+import "dotenv/config";
 import {themes as prismThemes} from 'prism-react-renderer';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -14,10 +14,20 @@ const config = {
   tagline: 'Interactive learning resources for students',
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
-  future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+  customFields: {
+    clerkPublishableKey:
+      process.env.VITE_CLERK_PUBLISHABLE_KEY,
+
+    supabaseUrl:
+      process.env.SUPABASE_URL,
+
+    supabasePublishableKey:
+      process.env.SUPABASE_PUBLISHABLE_KEY,
   },
+    // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+    future: {
+      v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    },
 
   // Set the production url of your site here
   url: 'https://arcs-uflibraries.github.io',
@@ -51,10 +61,15 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+
         },
         blog: false,
         theme: {
           customCss: './src/css/custom.css',
+        },
+        gtag: {
+          trackingID: "G-PDW0Y2GBFD",
+          anonymizeIP: true,
         },
       }),
     ],
@@ -63,8 +78,15 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+
+      docs: {
+        sidebar: {
+          hideable: true, 
+          autoCollapseCategories: true,
+        },
+      },
+
       colorMode: {
         respectPrefersColorScheme: true,
       },
@@ -82,56 +104,83 @@ const config = {
             label: 'Student Guide',
           },
           {
-            href: 'https://github.com/ARCS-UFLibraries/DataVisualisation',
-            label: 'GitHub',
-            position: 'right',
+            to: '/docs/datasets',
+            label: 'Datasets',
+            position: 'left',
           },
+          {
+            to: '/docs/learning-resources',
+            label: 'Learning Resources',
+            position: 'left',
+          },
+          {
+            to: '/docs/FAQs',
+            label: 'FAQs',
+            position: 'left',
+          },
+          // {
+          //   type: 'custom-progress',
+          //   position: 'right',
+          // },
         ],
       },
+        
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Docs',
+            title: "Student Guide",
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: "Getting Started",
+                to: "/docs/getting-started",
+              },
+              {
+                label: "Python Essentials",
+                to: "/docs/python-essentials",
+              },
+              {
+                label: "Working with Data",
+                to: "/docs/working-with-data",
+              },
+              {
+                label: "Data Visualization",
+                to: "/docs/data-viz",
               },
             ],
           },
           {
-            title: 'Community',
+            title: "Resources",
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: "Datasets",
+                to: "/docs/datasets",
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: "Learning Resources",
+                to: "/docs/learning-resources",
               },
               {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                label: "FAQs",
+                to: "/docs/FAQs",
               },
             ],
           },
           {
-            title: 'More',
+            title: "Project",
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/ARCS-UFLibraries/DataVisualisation',
+                label: "GitHub Repository",
+                href: "https://github.com/ARCS-UFLibraries/DataVisualisation",
+              },
+              {
+                label: "Report an Issue",
+                href: "https://github.com/ARCS-UFLibraries/DataVisualisation/issues",
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
+        copyright: `© ${new Date().getFullYear()} Data Visualisation Guide • University of Florida Libraries`,
       },
     }),
 };
