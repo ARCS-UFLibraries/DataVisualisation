@@ -27,7 +27,10 @@ export default function AccountPage() {
   const [loginVerification, setLoginVerification] =
     useState(false);
   const [loginCode, setLoginCode] = useState("");
-
+  
+  const [clientTrustVerification, setClientTrustVerification] =
+  useState(false);
+  const [clientTrustCode, setClientTrustCode] = useState("");
   const [forgotPassword, setForgotPassword] =
     useState(false);
   const [resetCodeSent, setResetCodeSent] =
@@ -422,6 +425,37 @@ export default function AccountPage() {
         return;
       }
 
+      if (signIn.status === "needs_client_trust") {
+        const emailCodeFactor =
+          signIn.supportedSecondFactors?.find(
+            (factor) => factor.strategy === "email_code"
+          );
+
+        if (!emailCodeFactor) {
+          setMessage(
+            "This account requires device verification, but email verification is not available."
+          );
+          setIsSubmitting(false);
+          return;
+        }
+
+        const { error: trustError } =
+          await signIn.mfa.sendEmailCode();
+
+        if (trustError) {
+          setMessage(
+            trustError.message ||
+              "Unable to send the device verification code."
+          );
+          setIsSubmitting(false);
+          return;
+        }
+
+        setClientTrustVerification(true);
+        setIsSubmitting(false);
+        return;
+      }
+
       if (signIn.status === "complete") {
         const { error: finalizeError } =
           await signIn.finalize();
@@ -452,7 +486,66 @@ export default function AccountPage() {
 
       setMessage(
         error?.message ||
-          "Something went wrong while signing in."
+          "Something went wrong while signing you in."
+      );
+
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleVerifyClientTrust = async (event) => {
+    event.preventDefault();
+
+    setMessage("");
+    setIsSubmitting(true);
+
+    try {
+      const { error } =
+        await signIn.mfa.verifyEmailCode({
+          code: clientTrustCode.trim(),
+        });
+
+      if (error) {
+        setMessage(
+          error.message ||
+            "The verification code is incorrect."
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
+      if (signIn.status !== "complete") {
+        setMessage(
+          `Login requires another step: ${signIn.status}`
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
+      const { error: finalizeError } =
+        await signIn.finalize();
+
+      if (finalizeError) {
+        setMessage(
+          finalizeError.message ||
+            "Unable to complete sign in."
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
+      setClientTrustVerification(false);
+      setClientTrustCode("");
+      goHome();
+    } catch (error) {
+      console.error(
+        "Device trust verification error:",
+        error
+      );
+
+      setMessage(
+        error?.message ||
+          "Something went wrong while verifying this device."
       );
 
       setIsSubmitting(false);
@@ -1162,7 +1255,8 @@ export default function AccountPage() {
 
         {/* TABS */}
         {!signupVerification &&
-          !loginVerification && (
+          !loginVerification &&
+          !clientTrustVerification && (
             <div className={styles.tabs}>
               <button
                 type="button"
@@ -1203,7 +1297,8 @@ export default function AccountPage() {
           {/* LOGIN */}
           {mode === "login" &&
             !loginVerification &&
-            !signupVerification && (
+            !signupVerification &&
+            !clientTrustVerification && (
               <form
                 className={styles.customForm}
                 onSubmit={handleLogin}
@@ -1331,6 +1426,76 @@ export default function AccountPage() {
               </form>
             )}
 
+          {/* DEVICE TRUST VERIFICATION */}
+          {clientTrustVerification &&
+            !signupVerification && (
+              <form
+                className={styles.customForm}
+                onSubmit={handleVerifyClientTrust}
+              >
+                <div className={styles.header}>
+                  <div className={styles.icon}>
+                    🔐
+                  </div>
+
+                  <h1>Verify this device</h1>
+
+                  <p>
+                    We sent a verification code to your email.
+                    Enter it below to finish signing in.
+                  </p>
+                </div>
+
+                <div className={styles.field}>
+                  <label htmlFor="client-trust-code">
+                    Verification Code
+                  </label>
+
+                  <input
+                    id="client-trust-code"
+                    type="text"
+                    value={clientTrustCode}
+                    onChange={(event) =>
+                      setClientTrustCode(
+                        event.target.value
+                      )
+                    }
+                    placeholder="Enter the code from your email"
+                    autoComplete="one-time-code"
+                    className={styles.input}
+                  />
+                </div>
+
+                {message && (
+                  <p className={styles.errorMessage}>
+                    {message}
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  className={styles.submitButton}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting
+                    ? "Verifying..."
+                    : "Verify & Log In"}
+                </button>
+
+                <button
+                  type="button"
+                  className={styles.secondaryButton}
+                  onClick={() => {
+                    setClientTrustVerification(false);
+                    setClientTrustCode("");
+                    setMessage("");
+                  }}
+                >
+                  Back to Log In
+                </button>
+              </form>
+          )}
+
           {/* LOGIN EMAIL CODE */}
           {loginVerification &&
             !signupVerification && (
@@ -1387,6 +1552,7 @@ export default function AccountPage() {
           {/* SIGN UP */}
           {mode === "signup" &&
             !signupVerification &&
+            !clientTrustVerification &&
             !loginVerification && (
               <form
                 className={styles.customForm}
