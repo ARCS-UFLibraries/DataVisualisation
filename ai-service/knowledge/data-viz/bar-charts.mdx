@@ -1,0 +1,318 @@
+import Quiz from '@site/src/components/Quiz/Quiz';
+import barChartsQuiz from '@site/src/data/quizzes/data-viz/bar-charts';
+import ColabActivity from '@site/src/components/ColabActivity/ColabActivity';
+import InfoCallout from '@site/src/components/InfoCallout';
+import ResourceCards from '@site/src/components/ResourceCards';
+import ChartPlayground from '@site/src/components/ChartPlayground';
+import ChartShowcaseCard from '@site/src/components/ChartShowcaseCard';
+import ChartComparePanel from '@site/src/components/ChartComparePanel';
+import ChartInsightCallout from '@site/src/components/ChartInsightCallout';
+import MiniChartTabs from '@site/src/components/MiniChartTabs';
+
+# Bar Charts
+
+<div className="lesson-meta">
+  <span className="badge badge--beginner">Beginner</span>
+  <span className="reading-time">Time: 25 minutes</span>
+  <span>Prerequisites: Matplotlib Basics</span>
+</div>
+
+Learn how to use bar charts to compare categories and communicate data-driven insights clearly and persuasively.
+
+---
+
+## Story Time
+
+In the previous lesson, you created your first plots using Matplotlib. Now you are ready to master one of the most essential charts in data analytics: the **bar chart**.
+
+Bar charts shine when comparing separate groups or categories. When exploring the *Students Performance* dataset, the most critical business and research questions are comparison questions—such as whether math scores differ significantly by test preparation or which lunch group has higher reading proficiency. In this lesson, you will learn to build, style, and critically interpret bar charts using Python.
+
+<div className="lesson-objectives">
+  <h3>Learning Objectives</h3>
+  <ul>
+    <li>Identify when a bar chart is the right visualization choice over line charts or histograms</li>
+    <li>Build single-category and multi-category bar charts using Matplotlib's <code>plt.bar()</code></li>
+    <li>Apply professional styling, readable colors, rotated tick labels, and direct value annotations</li>
+    <li>Write executive-level data summaries by reading bar heights, ranks, and relative gaps</li>
+    <li>Diagnose and correct common visualization pitfalls (such as cluttered axes and misleading baselines)</li>
+  </ul>
+</div>
+
+<InfoCallout title="Why This Topic Matters" variant="why">
+Bar charts provide immediate clarity. They are the fastest, most universally understood way to show rank, identify highest vs. lowest groups, and evaluate whether differences between categories are negligible or substantial.
+</InfoCallout>
+
+---
+
+## What Is a Bar Chart?
+
+A bar chart displays numerical values across distinct categories using proportional rectangular bars. Typically:
+* The **horizontal axis (x-axis)** displays the categorical groups (e.g., Male vs. Female, or education levels).
+* The **vertical axis (y-axis)** displays the measurement or count (e.g., Average Math Score).
+
+<ChartShowcaseCard
+  title="A Bar Chart Answers a Comparison Question"
+  description="Data visualization is not just about drawing shapes—it is about structuring information so the reader can spot differences instantly."
+>
+  <ChartInsightCallout
+    title="What to notice"
+    items={[
+      'Each bar represents one distinct category.',
+      'The height of each bar encodes the category value.',
+      'Your job as an analyst is to interpret the difference between bars, not merely state that they exist.',
+    ]}
+  />
+</ChartShowcaseCard>
+
+---
+
+## When Should You Use a Bar Chart?
+
+Use a bar chart whenever you are comparing values across **discrete, categorical groups**. 
+
+Common examples from data science and business:
+* **Average exam scores by gender** or test preparation status
+* **Student distribution** across lunch programs or majors
+* **Sales volume** broken down by product category or region
+* **Customer satisfaction scores** across branches
+
+<InfoCallout title="Chart Decision Rule" variant="tip">
+If your independent variable consists of separate categories (like departments or degrees), use a <strong>bar chart</strong>. If your data tracks continuous change over time (like daily stock prices or monthly temperatures), use a <strong>line chart</strong>.
+</InfoCallout>
+
+---
+
+## Your First Bar Chart
+
+Let’s create a foundational bar chart with Matplotlib comparing math scores between two groups:
+
+```python
+import matplotlib.pyplot as plt
+
+categories = ["Female", "Male"]
+values = [63.6, 68.7]
+
+plt.bar(categories, values)
+plt.show()
+```
+
+In just a few lines, Matplotlib draws two bars where the vertical height represents the average score of each group.
+
+<MiniChartTabs
+  items={[
+    {
+      label: 'Gender Comparison',
+      title: 'Average Mathematics Score by Gender',
+      description: 'A clean comparison between two distinct cohorts.',
+      content: (
+        <ChartInsightCallout
+          title="Analytical Interpretation"
+          items={[
+            'The Male group displays a higher average mathematics score (68.7 vs 63.6).',
+            'Because the category count is small, the comparison is immediate and requires minimal cognitive load.',
+          ]}
+        />
+      ),
+    },
+    {
+      label: 'Lunch Distribution',
+      title: 'Number of Students by Lunch Type',
+      description: 'A frequency count showing cohort representation.',
+      content: (
+        <ChartInsightCallout
+          title="Analytical Interpretation"
+          items={[
+            'Bar charts can represent frequencies (counts) as effectively as averages.',
+            'Standard lunch participants outnumber subsidized lunch participants by a noticeable margin.',
+          ]}
+        />
+      ),
+    },
+    {
+      label: 'Parental Education',
+      title: 'Writing Scores Across 6 Education Tiers',
+      description: 'Handling multi-category charts with ranked values.',
+      content: (
+        <ChartInsightCallout
+          title="Analytical Interpretation"
+          items={[
+            'As categories grow, ordering them or rotating labels ensures the chart remains clear.',
+            'Average writing score steadily increases with each higher tier of parental education.',
+          ]}
+        />
+      ),
+    },
+  ]}
+/>
+
+---
+
+## Professional Labeling & Styling
+
+Unlabeled charts confuse readers. Professional charts always include an informative title and labeled axes with units of measurement:
+
+```python
+import matplotlib.pyplot as plt
+
+categories = ["Female", "Male"]
+values = [63.6, 68.7]
+
+# Styling bars with university brand colors
+plt.bar(categories, values, color=["#0021A5", "#FA4616"], width=0.6)
+plt.title("Average Mathematics Score by Gender", fontsize=14, fontweight="bold", pad=12)
+plt.xlabel("Gender Group", fontsize=11)
+plt.ylabel("Average Mathematics Score (out of 100)", fontsize=11)
+plt.ylim(0, 80) # Setting a consistent baseline
+plt.show()
+```
+
+---
+
+## Interactive Playground: Experiment with Values
+
+Adjust the category labels and heights below to see how changes in data dynamically alter the visual story:
+
+<ChartPlayground title="Live Interactive Bar Chart Playground" />
+
+<ChartInsightCallout
+  title="Interactive Experiments to Try:"
+  items={[
+    'Change values to [20, 85] and notice how visual contrast highlights dramatic disparities.',
+    'Test [50, 50] to see how parity and balance are visually communicated.',
+    'Modify category names to see how longer text strings impact spacing on the x-axis.',
+  ]}
+/>
+
+---
+
+## Handling Multi-Category Charts & Long Labels
+
+When comparing multiple categories—such as six levels of parental education—labels can overlap. Matplotlib allows you to rotate tick labels and widen the figure size for optimal readability:
+
+```python
+import matplotlib.pyplot as plt
+
+education_levels = [
+    "Some High School", "High School", "Some College",
+    "Associate's", "Bachelor's", "Master's"
+]
+avg_writing_scores = [63.5, 66.0, 68.2, 69.9, 73.1, 75.4]
+
+plt.figure(figsize=(10, 5))
+bars = plt.bar(education_levels, avg_writing_scores, color="#0021A5")
+plt.title("Average Writing Score by Parental Education Level", fontsize=13, fontweight="bold")
+plt.xlabel("Parental Education Level")
+plt.ylabel("Average Writing Score")
+plt.xticks(rotation=30, ha="right")
+
+# Direct value labels on top of bars
+plt.bar_label(bars, fmt="%.1f", padding=3)
+plt.ylim(0, 85)
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## Evaluating Chart Effectiveness
+
+Notice how subtle design choices transform an amateur chart into a publication-ready visual:
+
+<ChartComparePanel
+  left={{
+    title: 'Poor Practice (Confusing)',
+    note: 'Lacks context, units, and clear hierarchy.',
+    children: (
+      <ChartInsightCallout
+        title="Flaws"
+        items={[
+          'Missing title: the reader does not know what is being tested.',
+          'Missing axis labels: are values counts, percentages, or grades?',
+          'Ambiguous color choices without a legend or purpose.',
+        ]}
+      />
+    ),
+  }}
+  right={{
+    title: 'Best Practice (Insightful)',
+    note: 'Clear titles, calibrated axes, and direct data labels.',
+    children: (
+      <ChartInsightCallout
+        title="Strengths"
+        items={[
+          'Explicit descriptive title and axis titles with units.',
+          'Value annotations (bar labels) remove the need to squint at the y-axis.',
+          'Proper margins and rotated labels ensure effortless reading.',
+        ]}
+      />
+    ),
+  }}
+/>
+
+---
+
+## Hands-On Practice
+
+Apply what you've learned in our live cloud environment:
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Create and customize bar charts on the real Students Performance dataset.',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/bar_charts_lesson.ipynb', 
+      label: 'Interactive Notebook',
+    },
+  ]}
+/>
+
+<ColabActivity pageId="bar-charts" />
+
+<div className="practice-section">
+  <h3>Lesson Exercise: Writing Scores Analysis</h3>
+  <p>In your notebook, construct a bar chart showing average writing scores by parental education level. Then, write 2–3 sentences answering:</p>
+  <ul>
+    <li>Which cohort achieved the highest average writing score, and which was lowest?</li>
+    <li>Is the progression between tiers linear, or is there a noticeable leap at certain degree levels?</li>
+  </ul>
+</div>
+
+---
+
+## Self Evaluation
+
+Test your mastery of bar charts with this quick interactive check:
+
+<Quiz title="Check Your Understanding" questions={barChartsQuiz} />
+
+---
+
+## Common Mistakes & Troubleshooting
+
+### 1. Using a Bar Chart for Continuous Time Series
+Bar charts can be used for time periods (like quarterly revenue), but if data has dozens of continuous points, a **line chart** provides a far clearer visual flow.
+
+### 2. Truncating the Baseline (The Zero-Axis Rule)
+Always start your vertical axis at **0** when using bar charts. Because human eyes judge the *area and height* of the bar, zooming in on the top can artificially exaggerate tiny differences and mislead your audience.
+
+### 3. Forgetting Axis Units
+Writing `Score` is good, but `Average Math Score (0–100)` removes all ambiguity.
+
+---
+
+<div className="lesson-summary">
+  <h3>Key Takeaways</h3>
+  <ul>
+    <li>Bar charts are the gold standard for discrete categorical comparisons.</li>
+    <li>Always keep the baseline at zero to preserve honest visual proportions.</li>
+    <li>Use <code>plt.xticks(rotation=..., ha='right')</code> and <code>plt.bar_label()</code> to ensure high readability.</li>
+    <li>Focus your interpretations on ranking, spread, and actionable insights.</li>
+  </ul>
+</div>
+
+<div className="next-steps">
+  <h3>Continue Your Journey</h3>
+  <p>Next up: Learn how to track trends and continuous progressions over time in <strong>Line Charts</strong>!</p>
+</div>
+
+<LessonCompletionBar />

@@ -1,0 +1,204 @@
+
+
+import Quiz from '@site/src/components/Quiz/Quiz.tsx';
+import variablesQuiz from '@site/src/data/quizzes/python-essentials/variables';
+import ResourceCards from '@site/src/components/ResourceCards';
+import ColabActivity from '@site/src/components/ColabActivity/ColabActivity';
+import InfoCallout from '@site/src/components/InfoCallout';
+
+# Variables
+
+**Skill Level:** Beginner  
+**Prerequisites:** None
+**Estimated Time:** 25-35 minutes
+
+## Story Time
+
+Imagine you are analysing student exam scores for a class. You need to keep track of information such as each student's name, their ID, exam scores, and course title. If you had to type each value repeatedly every time you performed a calculation or created a chart, your code would quickly become repetitive, tedious, and prone to bugs.
+
+This is where **variables** come in. Variables allow you to store information once and reference it whenever you need it. They are one of the most fundamental building blocks in programming—you will use them across every stage of data analysis, from data cleaning and transformation to visualization and modeling.
+
+<div className="lesson-objectives">
+  <h3>What You'll Learn</h3>
+  <ul>
+    <li>What a variable is and how computer memory references values</li>
+    <li>How to create, assign, and update variables in Python</li>
+    <li>How to choose clear, professional variable names (PEP 8 naming conventions)</li>
+    <li>How to display and format stored values with <code>print()</code></li>
+    <li>Common beginner pitfalls and how to easily avoid them</li>
+  </ul>
+</div>
+
+
+## What Is a Variable?
+
+A variable is a **named container in computer memory** that stores a value. You can think of a variable like a labeled box or sticky note attached to a piece of data:
+
+```python
+temperature = 38.2
+```
+
+Here, `temperature` is the variable name (the label), and `38.2` is the numeric value stored inside. Whenever Python sees `temperature` later in your code, it automatically retrieves `38.2`.
+
+<InfoCallout title="Mental Model: Name -> Value" variant="why">
+Think of a variable as an arrow pointing to a value: <code>temperature ➔ 38.2</code>. The name gives your data context and meaning, making your code readable to both humans and the computer.
+</InfoCallout>
+
+---
+
+## Creating & Assigning Variables
+
+In Python, creating a variable is simple: you write the name, followed by the assignment operator (`=`), followed by the value you wish to store:
+
+```python
+age = 21
+name = "Alex"
+height = 172.5
+```
+
+<InfoCallout title="Important: The Equals Sign Means Assignment" variant="warning">
+In mathematics, <code>=</code> signifies equality. In Python, <code>=</code> means <strong>assignment</strong>. Read <code>score = 95</code> as: <em>"Take the value 95 on the right, and store it into the variable named score on the left."</em>
+</InfoCallout>
+
+
+
+## Displaying & Updating Variables
+
+Once stored, you can output a variable's value at any time using Python's built-in `print()` function:
+
+```python
+name = "Alex"
+print(name)
+```
+
+```text
+Alex
+```
+
+### Variables Can Change Over Time
+
+Variables are *variable*—their contents can be updated as new data arrives:
+
+```python
+score = 80
+score = 92
+print(score)
+```
+
+```text
+92
+```
+
+The new value (`92`) overwrites the previous value (`80`). This is useful when tracking metrics that evolve, such as processing sensor data, updating scores, or accumulating totals.
+
+
+## Naming Best Practices (PEP 8)
+
+Writing clear, descriptive variable names is one of the habits that separates great programmers from beginners. Python uses **snake_case** (all lowercase letters separated by underscores).
+
+| Good Variable Names ✅ | Why It Works | Poor Variable Names ❌ | Why to Avoid |
+| :--- | :--- | :--- | :--- |
+| `student_name` | Clear & descriptive | `s` or `x` | Too vague; readers must guess |
+| `average_score` | Immediately tells you the metric | `a123` | Cryptic and confusing |
+| `patient_temperature` | Specific to the domain | `temp_data_new_v2_final` | Cluttered and unmaintainable |
+
+
+## Real-World Example: Tracking Patient Records
+
+Suppose a clinical health desk records incoming patient vitals. Instead of hardcoding numbers without context, you organize the information with meaningful variables:
+
+```python
+patient_name = "Sarah"
+patient_temperature = 38.2
+is_fever = patient_temperature > 37.5
+
+print("Patient:", patient_name)
+print("Recorded Temperature (°C):", patient_temperature)
+print("Fever Detected:", is_fever)
+```
+
+Because every variable has a purposeful name, anyone reviewing your code can instantly understand what each line does.
+
+## Practice in the Notebook
+
+Ready to write some code? Open the interactive Google Colab notebook below to practice hands-on:
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice declaring and updating variables in a live cloud notebook.',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/variables_lesson.ipynb',
+      label: 'Interactive Notebook'
+    }
+  ]}
+/>
+
+<ColabActivity pageId="variables" />
+
+<div className="practice-section">
+  <h3>Hands-on Coding Challenges</h3>
+  <ol>
+    <li>
+      <strong>Student Profile:</strong> Create 5 variables representing your <code>name</code>, <code>university</code>, <code>degree_program</code>, <code>favorite_language</code>, and <code>graduation_year</code>. Print each one formatted clearly.
+    </li>
+    <li>
+      <strong>Weather Station:</strong> A meteorological station records <code>city</code>, <code>temperature_celsius</code>, <code>humidity_percent</code>, and <code>wind_speed_kmh</code>. Define sensible variable names and print a mini weather bulletin.
+    </li>
+  </ol>
+</div>
+
+## Self Evaluation
+
+Test your understanding of Python variables before moving forward:
+
+<Quiz title="Check Your Understanding" questions={variablesQuiz} />
+
+## Common Mistakes & How to Avoid Them
+
+### 1. Forgetting Quotation Marks for Text
+Text (strings) must always be surrounded by quotes. Without quotes, Python thinks you are referencing another variable name.
+```python
+#  Incorrect: Python looks for a variable called Alex
+name = Alex
+
+# Correct: Text enclosed in quotation marks
+name = "Alex"
+```
+
+### 2. Including Spaces in Variable Names
+Python uses spaces to separate language keywords. Use underscores (`_`) instead.
+```python
+# Incorrect: SyntaxError
+student name = "Emma"
+
+# Correct
+student_name = "Emma"
+```
+
+### 3. Starting Variable Names with Numbers
+Variable names can contain numbers, but they must **not** begin with one.
+```python
+# Incorrect: SyntaxError
+2students = 50
+
+# Correct
+students_group_2 = 50
+```
+
+
+<div className="lesson-summary">
+  <h3>Key Takeaways</h3>
+  <ul>
+    <li>A variable is a named pointer to data stored in computer memory.</li>
+    <li>Use <code>=</code> for assignment (right to left).</li>
+    <li>Variables can be updated dynamically as your program runs.</li>
+    <li>Follow <code>snake_case</code> naming conventions to keep code readable and professional.</li>
+  </ul>
+</div>
+
+<div className="next-steps">
+  <h3>Continue Your Journey</h3>
+  <p>Now that you know how to create and manage variables, the next step is learning about <strong>Data Types</strong>—understanding integers, floats, strings, and booleans!</p>
+</div>
+

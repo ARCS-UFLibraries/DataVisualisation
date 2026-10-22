@@ -1,0 +1,183 @@
+import Quiz from '@site/src/components/Quiz/Quiz.tsx';
+import quiz from '@site/src/data/quizzes/python-essentials/data-types.ts';
+import InfoCallout from '@site/src/components/InfoCallout';
+
+import ResourceCards from '@site/src/components/ResourceCards';
+import ColabActivity from '@site/src/components/ColabActivity/ColabActivity';
+
+# Data Types
+
+**Skill Level:** Beginner  
+**Prerequisites:** Variables
+**Estimated Time:** 20 minutes
+
+Learn how Python categorizes and stores different kinds of information so you can manipulate numbers, text, and flags with confidence.
+
+## Story Time
+
+In the previous lesson, you learned that a variable acts as a named container for information. But what kind of information can actually be placed inside?
+
+Not all data is created equal. A student's name is text, their exam score is a whole number, their GPA involves decimals, and whether they submitted an assignment on time is a simple yes/no. Python needs to know what *type* of data it is handling so it knows what mathematical operations, text formatting, or logic it is permitted to perform.
+
+<div className="lesson-objectives">
+  <h3>Learning Objectives</h3>
+  <ul>
+    <li>Understand what data types are and why Python requires type definitions</li>
+    <li>Master the four core scalar types: <code>str</code>, <code>int</code>, <code>float</code>, and <code>bool</code></li>
+    <li>Use Python's built-in <code>type()</code> function to inspect and debug variable types</li>
+    <li>Identify and resolve common beginner type-mismatch mistakes</li>
+  </ul>
+</div>
+
+
+
+## What Is a Data Type?
+
+A **data type** defines the classification of a value. It tells Python what operations can be carried out on that data:
+
+```python
+name = "Emma"       # str (String)
+age = 22            # int (Integer)
+height = 165.5      # float (Floating-point)
+is_student = True   # bool (Boolean)
+```
+
+Each variable above stores a fundamentally distinct class of information.
+
+
+## The Four Core Primitive Data Types
+
+| Data Type | Formal Name | Description | Practical Example |
+| :--- | :--- | :--- | :--- |
+| **`str`** | String | Textual characters wrapped in matching quotes | `"Emma"`, `'Data Science'` |
+| **`int`** | Integer | Whole numbers without any decimal portion | `22`, `-5`, `1000` |
+| **`float`** | Floating-Point | Decimal approximations and fractional numbers | `165.5`, `3.14159`, `0.0` |
+| **`bool`** | Boolean | Binary logical truth values (`True` or `False`) | `True`, `False` |
+
+
+## Deep-Dive into Each Type
+
+### 1. Strings (`str`)
+Strings store text. In Python, you can enclose strings in either single quotes (`'...'`) or double quotes (`"..."`):
+```python
+course = "Data Visualization"
+print(course)
+```
+```text
+Data Visualization
+```
+<InfoCallout title="Quotation Marks Matter" variant="warning">
+Without quotation marks, Python thinks you are referring to a variable name. <code>course = Data</code> causes a <code>NameError</code> unless a variable named <code>Data</code> already exists.
+</InfoCallout>
+
+### 2. Integers (`int`)
+Integers represent whole numbers—both positive and negative—with no decimal places. They are ideal for counting items, measuring years, or indexing records:
+```python
+students_count = 45
+print(students_count)
+```
+
+### 3. Floating-Point Numbers (`float`)
+Floats represent real numbers containing decimal points. Use them whenever precision is required, such as calculating grade point averages, percentages, and sensor readings:
+```python
+temperature = 98.6
+print(temperature)
+```
+
+### 4. Booleans (`bool`)
+Booleans contain only one of two possible states: `True` or `False`. They power conditional logic, filtering, and decision-making in your algorithms:
+```python
+is_registered = True
+print(is_registered)
+```
+
+
+## Inspecting Types with `type()`
+
+When writing complex programs or importing datasets, you will often need to confirm how Python interprets a specific variable. Python provides the built-in `type()` function:
+
+```python
+name = "Emma"
+age = 22
+gpa = 3.8
+graduated = False
+
+print(type(name))       # Output: <class 'str'>
+print(type(age))        # Output: <class 'int'>
+print(type(gpa))        # Output: <class 'float'>
+print(type(graduated))  # Output: <class 'bool'>
+```
+
+
+## Quick Practice Check
+
+Can you identify the correct data type for each of the following expressions?
+
+| Value | Python Data Type | Explanation |
+| :--- | :--- | :--- |
+| `"Python"` | `str` | Text enclosed in double quotation marks |
+| `100` | `int` | Whole number without a decimal point |
+| `3.14` | `float` | Number containing a fractional decimal component |
+| `False` | `bool` | Capitalized Boolean truth value |
+| `"100"` | `str` | Enclosed in quotes, so Python treats it as text, not a number! |
+
+
+## Interactive Practice in Google Colab
+
+<ResourceCards
+  items={[
+    {
+      title: 'Open in Google Colab',
+      description: 'Practice declaring, inspecting, and converting data types in a live notebook.',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/data_types_lesson.ipynb',
+      label: 'Interactive Notebook'
+    }
+  ]}
+/>
+
+<ColabActivity pageId="data-types" />
+
+<div className="practice-section">
+  <h3>Hands-on Challenge: Library Catalog Record</h3>
+  <p>Create variables modeling an item in a university library catalog:</p>
+  <ul>
+    <li><code>book_title</code> (text)</li>
+    <li><code>page_count</code> (whole number)</li>
+    <li><code>rental_price</code> (decimal currency)</li>
+    <li><code>is_checked_out</code> (boolean availability)</li>
+  </ul>
+  <p>Print each variable alongside its confirmed type using <code>print(type(...))</code>.</p>
+</div>
+
+
+## Common Mistakes & How to Avoid Them
+
+### 1. Treating Numbers as Text
+Putting quotes around a number turns it into a string. You cannot perform mathematical operations on strings:
+```python
+# Incorrect: Treated as text
+age = "21"
+# age + 1  --> TypeError: can only concatenate str (not "int") to str
+
+# Correct: Treated as an integer
+age = 21
+print(age + 1)  # 22
+```
+
+### 2. Lowercase Boolean Keywords
+Python is strictly case-sensitive. `True` and `False` must always begin with a capital letter:
+```python
+# Incorrect: NameError
+is_valid = true
+
+# Correct
+is_valid = True
+```
+
+## Self Evaluation
+
+Test your knowledge of Python data types:
+
+<Quiz questions={quiz} />
+
+In the next lesson, you will learn about **type conversion**, which allows you to change one data type into another when needed.
