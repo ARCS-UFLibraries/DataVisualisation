@@ -113,7 +113,7 @@ You can create a basic boxplot in Matplotlib with `plt.boxplot()`.
 ```python
 import matplotlib.pyplot as plt
 
-math_scores =[2][3][4][5][6][7][8][9][10][11]
+math_scores = [55, 58, 60, 62, 65, 67, 68, 70, 72, 74, 75, 78]
 
 plt.boxplot(math_scores)
 plt.show()
@@ -126,7 +126,7 @@ This creates a single boxplot summarizing the distribution of mathematics scores
 ```python
 import matplotlib.pyplot as plt;
 
-math_scores =[3][4][5][6][7][8][9][10][11][2]
+math_scores = [55, 58, 60, 62, 65, 67, 68, 70, 72, 74, 75, 78]
 
 plt.boxplot(math_scores)
 plt.title("Boxplot of Mathematics Scores")
@@ -155,7 +155,7 @@ For example, if the median is near the center of the box and the whiskers are fa
 ```python
 import matplotlib.pyplot as plt
 
-scores =[12][13][4][7][8][9][10][11][14][15][2]
+scores = [52, 55, 58, 60, 62, 64, 65, 68, 70, 72, 98]
 
 plt.boxplot(scores)
 plt.title("Boxplot with a Possible Outlier")
@@ -178,8 +178,8 @@ One of the biggest strengths of boxplots is side-by-side comparison.
 ```python
 import matplotlib.pyplot as plt
 
-female_scores =[13][7][8][9][11][15][2][12]
-male_scores =[16][4][5][8][10][11][17][3]
+female_scores = [60, 64, 68, 70, 72, 75, 78, 82]
+male_scores = [62, 66, 70, 74, 78, 80, 85, 89]
 
 plt.boxplot([female_scores, male_scores], labels=["Female", "Male"])
 plt.title("Math Scores by Gender")

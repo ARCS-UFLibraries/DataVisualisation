@@ -91,8 +91,8 @@ You can create a scatter plot in Matplotlib with `plt.scatter()`.
 ```python
 import matplotlib.pyplot as plt
 
-reading = 
-writing = 
+reading = [60, 65, 70, 75, 80, 85]
+writing = [62, 66, 71, 76, 81, 86]
 
 plt.scatter(reading, writing)
 plt.show()
@@ -112,8 +112,8 @@ As with other charts, labels make the plot easier to interpret.
 ```python
 import matplotlib.pyplot as plt
 
-reading = 
-writing = 
+reading = [65, 70, 75, 80, 85, 60]
+writing = [66, 71, 76, 81, 86, 62]
 
 plt.scatter(reading, writing)
 plt.title("Reading Score vs Writing Score")
@@ -188,8 +188,8 @@ Suppose you create a scatter plot of reading and writing scores.
 ```python
 import matplotlib.pyplot as plt
 
-reading = 
-writing = 
+reading = [60, 65, 70, 75, 80, 85]
+writing = [62, 66, 71, 76, 81, 86]
 
 plt.scatter(reading, writing)
 plt.title("Reading Score vs Writing Score")
@@ -211,8 +211,8 @@ Now imagine a different scatter plot:
 ```python
 import matplotlib.pyplot as plt
 
-hours_studied =[1][2][3][4][5][6]
-quiz_score =[7]
+hours_studied = [1, 2, 3, 4, 5, 6, 7, 8]
+quiz_score = [58, 67, 63, 75, 70, 78, 76, 82]
 
 plt.scatter(hours_studied, quiz_score)
 plt.title("Hours Studied vs Quiz Score")
@@ -236,8 +236,8 @@ You can adjust the color, size, and transparency of points.
 ```python
 import matplotlib.pyplot as plt
 
-reading = 
-writing = 
+reading = [75, 80, 85, 90, 60, 65, 70, 78]
+writing = [77, 82, 88, 91, 59, 66, 71, 79]
 
 plt.scatter(reading, writing, color="purple", s=80, alpha=0.7)
 plt.title("Reading Score vs Writing Score")

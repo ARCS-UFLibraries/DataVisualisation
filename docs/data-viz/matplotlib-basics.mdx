@@ -63,8 +63,8 @@ A basic line plot can be created with `plt.plot()`.
 ```python
 import matplotlib.pyplot as plt
 
-x =[1][2][3][4]
-y =[5]
+x = [1, 2, 3, 4]
+y = [50, 60, 70, 80]
 
 plt.plot(x, y)
 plt.show()
@@ -111,8 +111,8 @@ Use:
 ```python
 import matplotlib.pyplot as plt
 
-x =[2][3][4][1]
-y =[5]
+x = [1, 2, 3, 4]
+y = [60, 70, 80, 50]
 
 plt.plot(x, y)
 plt.title("Student Score Trend")
@@ -145,8 +145,8 @@ For example:
 ```python
 import matplotlib.pyplot as plt
 
-x =[3][4][1][2]
-y =[5]
+x = [1, 2, 3, 4]
+y = [70, 80, 50, 60]
 
 plt.plot(x, y, color="green", marker="o", linestyle="--")
 plt.title("Student Score Trend")
@@ -183,8 +183,8 @@ You can do this with `plt.figure()`:
 ```python
 import matplotlib.pyplot as plt
 
-x =[4][1][2][3]
-y =[5]
+x = [1, 2, 3, 4]
+y = [80, 50, 60, 70]
 
 plt.figure(figsize=(8, 4))
 plt.plot(x, y)
@@ -217,8 +217,8 @@ Suppose you want to visualize the average mathematics score for four study sessi
 ```python
 import matplotlib.pyplot as plt
 
-sessions =[1][2][3][4]
-avg_scores = 
+sessions = [1, 2, 3, 4]
+avg_scores = [65, 70, 75, 82] 
 
 plt.plot(sessions, avg_scores, marker="o")
 plt.title("Average Mathematics Score by Study Session")

@@ -6,7 +6,7 @@ import styles from './assistant.module.css';
 
 export default function AssistantPage() {
   const {siteConfig} = useDocusaurusContext();
-  const apiUrl = siteConfig.customFields?.chatApiUrl;
+  const apiUrl = siteConfig.customFields?.chatApiUrl || 'http://localhost:8000';
   const [question, setQuestion] = useState('');
   const [messages, setMessages] = useState([
     {role: 'assistant', content: 'Hi! Ask me about Python, Pandas, data cleaning, statistics, or choosing the right visualization. I use the guide documentation when relevant.'},

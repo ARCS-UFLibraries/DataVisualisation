@@ -72,7 +72,7 @@ You can create a simple line chart with `plt.plot()`.
 import matplotlib.pyplot as plt
 
 months = ["Jan", "Feb", "Mar", "Apr"]
-sales = 
+sales = [4, 5, 6, 7]
 
 plt.plot(months, sales)
 plt.show()
@@ -110,7 +110,7 @@ As with any chart, titles and labels make the visual easier to interpret.
 import matplotlib.pyplot as plt
 
 months = ["Jan", "Feb", "Mar", "Apr"]
-sales = 
+sales = [5, 6, 7, 4]
 
 plt.plot(months, sales)
 plt.title("Monthly Sales Trend")
@@ -129,7 +129,7 @@ Markers make it easier to see each individual data point.
 import matplotlib.pyplot as plt
 
 months = ["Jan", "Feb", "Mar", "Apr"]
-sales = 
+sales = [6, 7, 4, 5]
 
 plt.plot(months, sales, marker="o")
 plt.title("Monthly Sales Trend")
@@ -148,7 +148,7 @@ Matplotlib also allows you to customize the line color, style, and marker design
 import matplotlib.pyplot as plt;
 
 months = ["Jan", "Feb", "Mar", "Apr"]
-sales = 
+sales = [7, 4, 5, 6]
 
 plt.plot(
     months,
@@ -195,8 +195,8 @@ Suppose a student takes four tests and you want to visualize the scores.
 ```python
 import matplotlib.pyplot as plt
 
-tests =[1][2][3][4]
-scores = 
+tests = [1, 2, 3, 4]
+scores = [62, 68, 74, 81] 
 
 plt.plot(tests, scores, marker="o")
 plt.title("Student Score Trend")
@@ -218,8 +218,8 @@ Not every line chart shows steady improvement.
 ```python
 import matplotlib.pyplot as plt
 
-weeks =[2][3][4][5][1]
-attendance =[6][7][8][9][10]
+weeks = [1, 2, 3, 4, 5]
+attendance = [24, 28, 25, 30, 27]
 
 plt.plot(weeks, attendance, marker="o")
 plt.title("Weekly Attendance")

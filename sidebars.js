@@ -116,6 +116,12 @@ const sidebars = {
       },
       items: [],
     },
+
+    {
+      type: "link",
+      label: "AI Assistant",
+      href: "/DataVisualisation/assistant",
+    },
   ],
 };
 

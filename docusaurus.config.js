@@ -15,6 +15,9 @@ const config = {
   favicon: 'img/favicon.ico',
 
   customFields: {
+    chatApiUrl:
+      process.env.CHAT_API_URL || 'http://localhost:8000',
+
     clerkPublishableKey:
       process.env.VITE_CLERK_PUBLISHABLE_KEY,
 
@@ -120,6 +123,11 @@ const config = {
           {
             to: '/docs/FAQs',
             label: 'FAQs',
+            position: 'left',
+          },
+          {
+            to: '/assistant',
+            label: 'AI Assistant',
             position: 'left',
           },
           // {
