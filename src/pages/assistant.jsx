@@ -6,7 +6,7 @@ import styles from './assistant.module.css';
 
 export default function AssistantPage() {
   const {siteConfig} = useDocusaurusContext();
-  const apiUrl = siteConfig.customFields?.chatApiUrl || 'http://localhost:8000';
+  const apiUrl = siteConfig.customFields?.chatApiUrl || 'https://datavisualisation-6nju.onrender.com';
   const [question, setQuestion] = useState('');
   const [messages, setMessages] = useState([
     {role: 'assistant', content: 'Hi! Ask me about Python, Pandas, data cleaning, statistics, or choosing the right visualization. I use the guide documentation when relevant.'},
@@ -43,14 +43,14 @@ export default function AssistantPage() {
   }
 
   return (
-    <Layout title="AI Assistant" description="Documentation-grounded data science assistant">
+    <Layout title="AI Assistant" description="Documentation-grounded data visualisation assistant">
       <main className={styles.page}>
         <header className={styles.header}>
           <p className={styles.eyebrow}>DOCUMENTATION-GROUNDED AI</p>
-          <h1>Data Science Assistant</h1>
+          <h1>Data Visualisation Assistant</h1>
           <p>Ask questions about the guide and get explanations grounded in its documentation, with source pages when available.</p>
         </header>
-        <section className={styles.chat} aria-label="Chat with the data science assistant">
+        <section className={styles.chat} aria-label="Chat with the data visualisation assistant">
           <div className={styles.messages} aria-live="polite">
             {messages.map((message, index) => (
               <article key={`${message.role}-${index}`} className={`${styles.message} ${message.role === 'user' ? styles.user : styles.assistant}`}>

@@ -16,7 +16,7 @@ const config = {
 
   customFields: {
     chatApiUrl:
-      process.env.CHAT_API_URL || 'http://localhost:8000',
+      process.env.CHAT_API_URL || 'https://datavisualisation-6nju.onrender.com',
 
     clerkPublishableKey:
       process.env.VITE_CLERK_PUBLISHABLE_KEY,
