@@ -91,7 +91,7 @@ You can create a histogram in Matplotlib with `plt.hist()`.
 ```python
 import matplotlib.pyplot as plt
 
-math_scores =[5][6][7][8][9][3]
+math_scores = [55, 58, 60, 62, 65, 67, 68, 70, 72, 74, 75, 78]
 
 plt.hist(math_scores)
 plt.show()
@@ -106,7 +106,7 @@ As with other charts, labels help the viewer interpret the plot more clearly.
 ```python
 import matplotlib.pyplot as plt
 
-math_scores =[6][7][8][9][5][3]
+math_scores = [55, 58, 60, 62, 65, 67, 68, 70, 72, 74, 75, 78]
 
 plt.hist(math_scores)
 plt.title("Distribution of Mathematics Scores")
@@ -130,7 +130,7 @@ Matplotlib chooses default bins automatically, but you can also set the number o
 ```python
 import matplotlib.pyplot as plt
 
-math_scores =[7][8][9][5][6][3]
+math_scores = [55, 58, 60, 62, 65, 67, 68, 70, 72, 74, 75, 78]
 
 plt.hist(math_scores, bins=5)
 plt.title("Distribution of Mathematics Scores")
@@ -221,7 +221,7 @@ Suppose you want to study the distribution of mathematics scores.
 ```python
 import matplotlib.pyplot as plt
 
-math_scores =[10][2][8][9][5][6][7]
+math_scores = [61, 64, 66, 68, 70, 72, 73, 75, 77, 79, 82, 85, 88, 91, 95, 58, 60]
 
 plt.hist(math_scores, bins=6, color="skyblue", edgecolor="black")
 plt.title("Distribution of Mathematics Scores")
@@ -243,7 +243,7 @@ Now imagine a second set of scores:
 ```python
 import matplotlib.pyplot as plt
 
-scores =[11][8][9][5][7]
+scores = [52, 55, 57, 60, 62, 63, 67, 69, 70, 72, 75, 78, 81, 84, 88]
 
 plt.hist(scores, bins=6, color="orange", edgecolor="black")
 plt.title("Distribution of Scores")
@@ -295,7 +295,7 @@ Then write a short interpretation that answers:
     {
       title: 'Open in Google Colab',
       description: 'Practice histograms with short runnable examples and exercises.',
-      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/data-viz/histograms_lesson.ipynb',
+      href: 'https://colab.research.google.com/github/ARCS-UFLibraries/Coding-Notebooks/blob/main/histograms_lesson.ipynb',
       label: 'Notebook',
     },
   ]}

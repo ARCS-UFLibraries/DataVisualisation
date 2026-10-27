@@ -1,15 +1,18 @@
 from __future__ import annotations
 
+import json
 import os
 import re
 from pathlib import Path
-from typing import Any
+from typing import Any, AsyncGenerator
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
+# Load environment variables
 load_dotenv(Path(__file__).resolve().parent.parent / '.env')
 load_dotenv(Path(__file__).resolve().parent / '.env')
 
@@ -28,24 +31,19 @@ KNOWLEDGE_DIR = BASE_DIR / "knowledge"
 DEFAULT_ORIGINS = "https://arcs-uflibraries.github.io,http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001"
 ALLOWED_ORIGINS = [x.strip() for x in os.getenv("ALLOWED_ORIGINS", DEFAULT_ORIGINS).split(",") if x.strip()]
 
-app = FastAPI(title="Data Visualisation Guide AI Assistant", version="1.0.0")
+app = FastAPI(title="Data Visualisation Guide AI Assistant", version="2.0.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
     allow_credentials=False,
-    allow_methods=["GET", "POST"],
-    allow_headers=["Content-Type", "Authorization"],
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["*"],
 )
 
 
 class ChatRequest(BaseModel):
     question: str = Field(min_length=2, max_length=2000)
-
-
-class SourceChunk(BaseModel):
-    title: str
-    path: str
-    excerpt: str
+    current_page: str | None = Field(default=None)
 
 
 def clean_mdx(text: str) -> str:
@@ -85,18 +83,40 @@ def load_chunks() -> list[dict[str, str]]:
     return chunks
 
 
-def retrieve(question: str, chunks: list[dict[str, str]], limit: int = 3) -> list[dict[str, str]]:
+def retrieve(question: str, chunks: list[dict[str, str]], limit: int = 3, current_page: str | None = None) -> list[dict[str, str]]:
     tokens = set(re.findall(r"[a-zA-Z0-9_+#.-]{2,}", question.lower()))
     if not tokens:
         return []
-    scored: list[tuple[int, dict[str, str]]] = []
+    scored: list[tuple[float, dict[str, str]]] = []
+    page_norm = current_page.strip("/").lower() if current_page else ""
     for chunk in chunks:
         text_tokens = set(re.findall(r"[a-zA-Z0-9_+#.-]{2,}", (chunk["title"] + " " + chunk["text"]).lower()))
         overlap = len(tokens & text_tokens)
         if overlap:
-            scored.append((overlap, chunk))
+            score = float(overlap)
+            # Boost chunks from the page the student is currently reading
+            if page_norm and page_norm in chunk["path"].lower():
+                score += 2.0
+            scored.append((score, chunk))
     scored.sort(key=lambda item: item[0], reverse=True)
     return [chunk for _, chunk in scored[:limit]]
+
+
+SYSTEM_PROMPT = (
+    "You are an encouraging, world-class Data Visualisation & Python tutor for university students. "
+    "Provide clear, crisp, visually appealing explanations with clean, copy-pasteable Python code blocks when relevant. "
+    "Formatting requirements for high visual readability:\n"
+    "- Structure with clean markdown headings, short bullet points, and code snippets.\n"
+    "- When writing code, use concise, well-commented Python (pandas, matplotlib, seaborn, plotly).\n"
+    "- Do NOT output robotic disclaimers or repetitive metadata tags like '### Distinction' or 'Reasoning:'.\n"
+    "- Keep explanations practical, concrete, and directly relevant to the student's question."
+)
+
+GEMINI_FALLBACK_MODELS = [
+    os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite"),
+    "gemini-3.8-flash",
+    "gemini-flash-latest",
+]
 
 
 @app.get("/")
@@ -104,7 +124,7 @@ def root() -> dict[str, Any]:
     return {
         "status": "running",
         "service": "Data Visualisation AI Assistant",
-        "endpoints": ["/health", "/api/chat", "/docs"]
+        "endpoints": ["/health", "/api/chat", "/api/chat/stream", "/docs"]
     }
 
 
@@ -115,46 +135,31 @@ def health() -> dict[str, str]:
 
 @app.post("/api/chat")
 def chat(request: ChatRequest) -> dict[str, Any]:
-    gemini_key = os.getenv("GEMINI_API_KEY")
-    openai_key = os.getenv("OPENAI_API_KEY")
+    gemini_key = (os.getenv("GEMINI_API_KEY") or "").strip()
+    openai_key = (os.getenv("OPENAI_API_KEY") or "").strip()
 
     chunks = load_chunks()
-    sources = retrieve(request.question, chunks)
-
-    system_prompt = (
-        "You are a friendly, expert Data Visualisation & Python tutor for students. "
-        "Provide direct, clear, well-formatted answers with practical Python code examples when helpful. "
-        "Style and formatting rules: "
-        "- Do NOT output robotic metadata sections like '### Distinction', 'Documentation:', or 'Reasoning:'. "
-        "- Seamlessly answer the student's question in a clear, conversational, and professional tone. "
-        "- Naturally reference relevant course topics if helpful, but avoid stiff bureaucratic disclaimers. "
-        "- Keep explanations easy to understand for beginners without unnecessary jargon."
-    )
+    sources = retrieve(request.question, chunks, limit=3, current_page=request.current_page)
 
     if sources:
         context = "\n\n".join(
             f"SOURCE: {chunk['title']} (docs/{chunk['path']})\nEXCERPT: {chunk['text']}" for chunk in sources
         )
     else:
-        context = "No strongly matching documentation excerpts were retrieved. Answer using standard Python/data visualization guidance."
+        context = "No strongly matching course excerpts found. Answer using standard Python and data visualization principles."
 
-    # 1. Use Google Gemini if GEMINI_API_KEY is configured
+    # 1. Use Google Gemini if configured
     if gemini_key and genai:
         try:
             client = genai.Client(api_key=gemini_key)
             prompt = (
-                f"{system_prompt}\n\n"
+                f"{SYSTEM_PROMPT}\n\n"
                 f"RETRIEVED DOCUMENTATION:\n{context}\n\n"
                 f"USER QUESTION:\n{request.question}"
             )
-            fallback_models = [
-                os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite"),
-                "gemini-flash-lite-latest",
-                "gemini-3.8-flash",
-            ]
-            last_err = None
             response = None
-            for model_name in fallback_models:
+            last_err = None
+            for model_name in GEMINI_FALLBACK_MODELS:
                 try:
                     response = client.models.generate_content(
                         model=model_name,
@@ -173,38 +178,129 @@ def chat(request: ChatRequest) -> dict[str, Any]:
         except Exception as exc:
             raise HTTPException(status_code=502, detail=f"Gemini API error: {str(exc)}") from exc
 
-    # 2. Use OpenAI if OPENAI_API_KEY is configured
+    # 2. Use OpenAI if configured
     if openai_key and OpenAI:
         try:
             client = OpenAI(api_key=openai_key)
-            response = client.responses.create(
-                model=os.getenv("OPENAI_MODEL", "gpt-4.1-mini"),
-                instructions=system_prompt,
-                input=f"USER QUESTION:\n{request.question}\n\nRETRIEVED DOCUMENTATION:\n{context}",
-                max_output_tokens=700,
+            response = client.chat.completions.create(
+                model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": f"USER QUESTION:\n{request.question}\n\nRETRIEVED DOCUMENTATION:\n{context}"}
+                ],
+                max_tokens=800,
             )
             return {
-                "answer": response.output_text,
+                "answer": response.choices[0].message.content,
                 "sources": [{"title": s["title"], "path": s["path"]} for s in sources],
             }
         except Exception as exc:
-            raise HTTPException(status_code=502, detail="OpenAI API error. Please try again.") from exc
+            raise HTTPException(status_code=502, detail=f"OpenAI API error: {str(exc)}") from exc
 
-    # 3. Local offline fallback if neither key is set
+    # 3. Offline fallback
     if sources:
         source_titles = ", ".join(s["title"] for s in sources)
         simulated_answer = (
             f"Based on the course guide ({source_titles}):\n\n"
             f"{sources[0]['text'][:450]}...\n\n"
-            "*(Assistant running in local documentation-retrieval mode. Add GEMINI_API_KEY in .env for live Gemini answers.)*"
+            "*(Add GEMINI_API_KEY in .env to activate live instant AI responses.)*"
         )
     else:
         simulated_answer = (
-            "I am your Data Visualisation Assistant. I can help answer questions on Python, Pandas, "
-            "Matplotlib, Seaborn, and choosing charts. "
-            "*(Add GEMINI_API_KEY in .env to enable live Gemini answers.)*"
+            "I am your Data Visualisation Assistant. Ask me anything about Python, Pandas, Matplotlib, Seaborn, and choosing charts!\n\n"
+            "*(Add GEMINI_API_KEY in .env to activate live instant AI responses.)*"
         )
     return {
         "answer": simulated_answer,
         "sources": [{"title": s["title"], "path": s["path"]} for s in sources],
     }
+
+
+@app.post("/api/chat/stream")
+async def chat_stream(request: ChatRequest):
+    """Server-Sent Events endpoint for lightning-fast token streaming."""
+    gemini_key = (os.getenv("GEMINI_API_KEY") or "").strip()
+    openai_key = (os.getenv("OPENAI_API_KEY") or "").strip()
+
+    chunks = load_chunks()
+    sources = retrieve(request.question, chunks, limit=3, current_page=request.current_page)
+    clean_sources = [{"title": s["title"], "path": s["path"]} for s in sources]
+
+    if sources:
+        context = "\n\n".join(
+            f"SOURCE: {chunk['title']} (docs/{chunk['path']})\nEXCERPT: {chunk['text']}" for chunk in sources
+        )
+    else:
+        context = "No strongly matching course excerpts found. Answer using standard Python and data visualization principles."
+
+    async def event_generator() -> AsyncGenerator[str, None]:
+        # Send sources first
+        yield f"event: sources\ndata: {json.dumps(clean_sources)}\n\n"
+
+        if gemini_key and genai:
+            try:
+                client = genai.Client(api_key=gemini_key)
+                prompt = (
+                    f"{SYSTEM_PROMPT}\n\n"
+                    f"RETRIEVED DOCUMENTATION:\n{context}\n\n"
+                    f"USER QUESTION:\n{request.question}"
+                )
+                stream_resp = None
+                last_err = None
+                for model_name in GEMINI_FALLBACK_MODELS:
+                    try:
+                        stream_resp = client.models.generate_content_stream(
+                            model=model_name,
+                            contents=prompt,
+                        )
+                        break
+                    except Exception as err:
+                        last_err = err
+                        continue
+                if not stream_resp:
+                    raise last_err
+
+                for chunk in stream_resp:
+                    if chunk.text:
+                        yield f"event: token\ndata: {json.dumps({'text': chunk.text})}\n\n"
+                yield "event: done\ndata: {}\n\n"
+                return
+            except Exception as e:
+                yield f"event: error\ndata: {json.dumps({'detail': f'Gemini error: {str(e)}'})}\n\n"
+                return
+
+        if openai_key and OpenAI:
+            try:
+                client = OpenAI(api_key=openai_key)
+                stream = client.chat.completions.create(
+                    model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
+                    messages=[
+                        {"role": "system", "content": SYSTEM_PROMPT},
+                        {"role": "user", "content": f"USER QUESTION:\n{request.question}\n\nRETRIEVED DOCUMENTATION:\n{context}"}
+                    ],
+                    max_tokens=800,
+                    stream=True,
+                )
+                for chunk in stream:
+                    delta = chunk.choices[0].delta.content if chunk.choices else ""
+                    if delta:
+                        yield f"event: token\ndata: {json.dumps({'text': delta})}\n\n"
+                yield "event: done\ndata: {}\n\n"
+                return
+            except Exception as e:
+                yield f"event: error\ndata: {json.dumps({'detail': f'OpenAI error: {str(e)}'})}\n\n"
+                return
+
+        # Fallback simulated response
+        yield f"event: token\ndata: {json.dumps({'text': 'I am your Data Visualisation Assistant. Ask me anything about Python, Pandas, Matplotlib, or Seaborn!'})}\n\n"
+        yield "event: done\ndata: {}\n\n"
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",
+        },
+    )

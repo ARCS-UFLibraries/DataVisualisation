@@ -4,6 +4,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { ProgressProvider } from "@site/src/context/ProgressContext";
 import { SupabaseProvider } from "@site/src/lib/supabaseClient";
 import ProfileSync from "@site/src/components/Supabase/ProfileSync";
+import GlobalChatBox from "@site/src/components/GlobalChatBox";
 
 export default function Root({ children }) {
   const {
@@ -27,6 +28,7 @@ export default function Root({ children }) {
         <ProfileSync />
         <ProgressProvider>
           {children}
+          <GlobalChatBox />
         </ProgressProvider>
       </SupabaseProvider>
     </ClerkProvider>
