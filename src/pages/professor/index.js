@@ -22,6 +22,14 @@ export default function ProfessorPage() {
   const [isLoadingStudents, setIsLoadingStudents] =
     useState(false);
 
+  // -----------------------------------
+  // Manage roles state
+  // -----------------------------------
+  const [roleSearch, setRoleSearch] = useState("");
+  const [roleResults, setRoleResults] = useState([]);
+  const [roleMessage, setRoleMessage] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
+
   useEffect(() => {
     if (!authLoaded) return;
 
@@ -116,6 +124,75 @@ export default function ProfessorPage() {
 
     loadProfessorData();
   }, [authLoaded, isSignedIn, user, supabase]);
+
+  // -----------------------------------
+  // Search users by name (for role management)
+  // -----------------------------------
+
+  const handleRoleSearch = async (event) => {
+    event.preventDefault();
+    if (!roleSearch.trim()) return;
+
+    setIsSearching(true);
+    setRoleResults([]);
+    setRoleMessage("");
+
+    const term = roleSearch.trim();
+
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("clerk_user_id, first_name, last_name, role")
+      .or(
+        `first_name.ilike.%${term}%,last_name.ilike.%${term}%`
+      )
+      .neq("clerk_user_id", user.id) // exclude yourself
+      .limit(10);
+
+    setIsSearching(false);
+
+    if (error) {
+      setRoleMessage("Search failed: " + error.message);
+      return;
+    }
+
+    if (!data || data.length === 0) {
+      setRoleMessage("No users found matching that name.");
+      return;
+    }
+
+    setRoleResults(data);
+  };
+
+  // -----------------------------------
+  // Update a user's role
+  // -----------------------------------
+
+  const handleRoleChange = async (targetUserId, newRole) => {
+    setRoleMessage("");
+
+    const { error } = await supabase
+      .from("profiles")
+      .update({ role: newRole })
+      .eq("clerk_user_id", targetUserId);
+
+    if (error) {
+      setRoleMessage("Failed to update role: " + error.message);
+      return;
+    }
+
+    // Update local results so the button reflects the change immediately
+    setRoleResults((prev) =>
+      prev.map((u) =>
+        u.clerk_user_id === targetUserId
+          ? { ...u, role: newRole }
+          : u
+      )
+    );
+
+    setRoleMessage(
+      `Role updated to "${newRole}" successfully.`
+    );
+  };
 
   // -----------------------------------
   // Generate classroom code
@@ -582,6 +659,110 @@ export default function ProfessorPage() {
               </div>
             )}
           </section>
+          {/* ============================== */}
+          {/* MANAGE ROLES */}
+          {/* ============================== */}
+
+          <section
+            style={{
+              marginTop: "2rem",
+              padding: "1.5rem",
+              border:
+                "1px solid var(--ifm-color-emphasis-200)",
+              borderRadius: 12,
+            }}
+          >
+            <h2>Manage User Roles</h2>
+            <p style={{ color: "var(--ifm-color-emphasis-600)", marginBottom: "1rem" }}>
+              Search for a user by name, then promote them to professor or demote them to student.
+            </p>
+
+            <form onSubmit={handleRoleSearch} style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+              <input
+                type="text"
+                value={roleSearch}
+                onChange={(e) => setRoleSearch(e.target.value)}
+                placeholder="Search by first or last name…"
+                style={{ flex: 1, minWidth: 200, padding: "0.75rem" }}
+              />
+              <button type="submit" disabled={isSearching}>
+                {isSearching ? "Searching…" : "Search"}
+              </button>
+            </form>
+
+            {roleMessage && (
+              <p style={{ marginTop: "0.75rem" }}>{roleMessage}</p>
+            )}
+
+            {roleResults.length > 0 && (
+              <table
+                style={{
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  marginTop: "1rem",
+                }}
+              >
+                <thead>
+                  <tr>
+                    {["Name", "Current Role", "Actions"].map((h) => (
+                      <th
+                        key={h}
+                        style={{
+                          textAlign: "left",
+                          padding: "0.75rem",
+                          borderBottom: "1px solid var(--ifm-color-emphasis-200)",
+                        }}
+                      >
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {roleResults.map((u) => (
+                    <tr key={u.clerk_user_id}>
+                      <td style={{ padding: "0.75rem", borderBottom: "1px solid var(--ifm-color-emphasis-100)" }}>
+                        {u.first_name} {u.last_name || ""}
+                      </td>
+                      <td style={{ padding: "0.75rem", borderBottom: "1px solid var(--ifm-color-emphasis-100)" }}>
+                        <span
+                          style={{
+                            fontWeight: 600,
+                            color: u.role === "professor"
+                              ? "var(--ifm-color-primary)"
+                              : "inherit",
+                          }}
+                        >
+                          {u.role}
+                        </span>
+                      </td>
+                      <td style={{ padding: "0.75rem", borderBottom: "1px solid var(--ifm-color-emphasis-100)", display: "flex", gap: "0.5rem" }}>
+                        {u.role !== "professor" && (
+                          <button
+                            onClick={() =>
+                              handleRoleChange(u.clerk_user_id, "professor")
+                            }
+                          >
+                            Make Professor
+                          </button>
+                        )}
+                        {u.role !== "student" && (
+                          <button
+                            onClick={() =>
+                              handleRoleChange(u.clerk_user_id, "student")
+                            }
+                          >
+                            Make Student
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </section>
+
         </div>
       </main>
     </Layout>

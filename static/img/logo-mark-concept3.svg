@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="100%" height="100%">
+  <defs>
+    <linearGradient id="lensBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0021A5" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <linearGradient id="barA" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#93C5FD" />
+    </linearGradient>
+
+    <linearGradient id="barB" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#1D4ED8" />
+      <stop offset="100%" stop-color="#60A5FA" />
+    </linearGradient>
+
+    <linearGradient id="barC" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#FA4616" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Aperture Ring (Representing clarity, observation, perception) -->
+  <circle cx="24" cy="24" r="21" fill="url(#lensBg)" />
+  <circle cx="24" cy="24" r="21" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.2" />
+
+  <!-- Internal Grid & Orbit Lines -->
+  <circle cx="24" cy="24" r="15" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3 3" stroke-width="0.8" />
+  <line x1="10" y1="33" x2="38" y2="33" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-linecap="round" />
+
+  <!-- Rising Bar Histogram through the Lens -->
+  <!-- Bar 1 -->
+  <rect x="13.5" y="24" width="4.5" height="9" rx="1.8" fill="url(#barA)" />
+  <!-- Bar 2 -->
+  <rect x="20.5" y="17" width="4.5" height="16" rx="1.8" fill="url(#barB)" />
+  <!-- Bar 3 -->
+  <rect x="27.5" y="11" width="4.5" height="22" rx="1.8" fill="url(#barC)" />
+
+  <!-- Dynamic Spark Wave -->
+  <path d="M 12 28 Q 18 25, 23 18 T 35 10" 
+        fill="none" 
+        stroke="#FFFFFF" 
+        stroke-width="2" 
+        stroke-linecap="round" />
+
+  <!-- Insight Point Spark -->
+  <circle cx="35" cy="10" r="3" fill="#FA4616" stroke="#FFFFFF" stroke-width="1.6" />
+</svg>

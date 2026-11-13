@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="100%" height="100%">
+  <defs>
+    <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0021A5" />
+      <stop offset="100%" stop-color="#0A1854" />
+    </linearGradient>
+
+    <linearGradient id="favOrange" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#FA4616" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background squircle -->
+  <rect x="1" y="1" width="30" height="30" rx="7.5" fill="url(#favBg)" />
+
+  <!-- Data bars -->
+  <rect x="7" y="17" width="4" height="8" rx="1.5" fill="#60A5FA" />
+  <rect x="13.5" y="12.5" width="4" height="12.5" rx="1.5" fill="#38BDF8" />
+  <rect x="20" y="8" width="4" height="17" rx="1.5" fill="url(#favOrange)" />
+
+  <!-- Spark line & Peak Node -->
+  <path d="M 6 20 C 11 18, 14 11, 22 9" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" />
+  <circle cx="22" cy="9" r="2.2" fill="#FA4616" stroke="#FFFFFF" stroke-width="1.2" />
+</svg>
