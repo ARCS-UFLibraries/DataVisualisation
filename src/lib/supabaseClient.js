@@ -16,6 +16,9 @@ export function SupabaseProvider({ children }) {
   } = useDocusaurusContext();
 
   const supabase = useMemo(() => {
+    // Don't create client during Docusaurus SSG (build-time Node.js rendering)
+    if (typeof window === "undefined") return null;
+
     if (
       !customFields.supabaseUrl ||
       !customFields.supabasePublishableKey
