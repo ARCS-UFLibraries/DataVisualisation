@@ -125,12 +125,16 @@ export default function ProfessorPage() {
       // -----------------------------------
       setIsLoadingProfiles(true);
       const { data: profilesData, error: profilesErr } = await supabase
-        .from("profiles")
-        .select("clerk_user_id, first_name, last_name, role")
-        .order("first_name", { ascending: true });
+        .rpc("get_all_profiles");
 
       if (profilesErr) {
-        console.error("Unable to load profiles:", profilesErr);
+        console.error("Unable to load profiles via RPC, falling back to select:", profilesErr);
+        // Fallback in case RPC is not yet created
+        const { data: fallbackData } = await supabase
+          .from("profiles")
+          .select("clerk_user_id, first_name, last_name, role")
+          .order("first_name", { ascending: true });
+        setAllProfiles(fallbackData || []);
       } else {
         setAllProfiles(profilesData || []);
       }
@@ -151,10 +155,11 @@ export default function ProfessorPage() {
     setRoleMessage("");
     setIsUpdatingRole(true);
 
-    const { error } = await supabase
-      .from("profiles")
-      .update({ role: newRole })
-      .eq("clerk_user_id", targetUserId);
+    // Call secure RPC to update role
+    const { error } = await supabase.rpc("update_user_role", {
+      target_clerk_id: targetUserId,
+      new_role: newRole,
+    });
 
     setIsUpdatingRole(false);
 
