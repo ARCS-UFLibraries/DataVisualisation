@@ -25,10 +25,12 @@ export default function ProfessorPage() {
   // -----------------------------------
   // Manage roles state
   // -----------------------------------
-  const [roleSearch, setRoleSearch] = useState("");
-  const [roleResults, setRoleResults] = useState([]);
+  const [allProfiles, setAllProfiles] = useState([]);
+  const [selectedUserId, setSelectedUserId] = useState("");
+  const [roleFilter, setRoleFilter] = useState("");
   const [roleMessage, setRoleMessage] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
+  const [isLoadingProfiles, setIsLoadingProfiles] = useState(false);
+  const [isUpdatingRole, setIsUpdatingRole] = useState(false);
 
   useEffect(() => {
     if (!authLoaded) return;
@@ -118,6 +120,22 @@ export default function ProfessorPage() {
         setStudents(studentData || []);
       }
 
+      // -----------------------------------
+      // Load all user profiles for role management
+      // -----------------------------------
+      setIsLoadingProfiles(true);
+      const { data: profilesData, error: profilesErr } = await supabase
+        .from("profiles")
+        .select("clerk_user_id, first_name, last_name, role")
+        .order("first_name", { ascending: true });
+
+      if (profilesErr) {
+        console.error("Unable to load profiles:", profilesErr);
+      } else {
+        setAllProfiles(profilesData || []);
+      }
+      setIsLoadingProfiles(false);
+
       setIsLoadingStudents(false);
       setIsLoading(false);
     };
@@ -126,62 +144,27 @@ export default function ProfessorPage() {
   }, [authLoaded, isSignedIn, user, supabase]);
 
   // -----------------------------------
-  // Search users by name (for role management)
-  // -----------------------------------
-
-  const handleRoleSearch = async (event) => {
-    event.preventDefault();
-    if (!roleSearch.trim()) return;
-
-    setIsSearching(true);
-    setRoleResults([]);
-    setRoleMessage("");
-
-    const term = roleSearch.trim();
-
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("clerk_user_id, first_name, last_name, role")
-      .or(
-        `first_name.ilike.%${term}%,last_name.ilike.%${term}%`
-      )
-      .neq("clerk_user_id", user.id) // exclude yourself
-      .limit(10);
-
-    setIsSearching(false);
-
-    if (error) {
-      setRoleMessage("Search failed: " + error.message);
-      return;
-    }
-
-    if (!data || data.length === 0) {
-      setRoleMessage("No users found matching that name.");
-      return;
-    }
-
-    setRoleResults(data);
-  };
-
-  // -----------------------------------
   // Update a user's role
   // -----------------------------------
 
   const handleRoleChange = async (targetUserId, newRole) => {
     setRoleMessage("");
+    setIsUpdatingRole(true);
 
     const { error } = await supabase
       .from("profiles")
       .update({ role: newRole })
       .eq("clerk_user_id", targetUserId);
 
+    setIsUpdatingRole(false);
+
     if (error) {
       setRoleMessage("Failed to update role: " + error.message);
       return;
     }
 
-    // Update local results so the button reflects the change immediately
-    setRoleResults((prev) =>
+    // Update local state so dropdown & display update immediately
+    setAllProfiles((prev) =>
       prev.map((u) =>
         u.clerk_user_id === targetUserId
           ? { ...u, role: newRole }
@@ -190,7 +173,7 @@ export default function ProfessorPage() {
     );
 
     setRoleMessage(
-      `Role updated to "${newRole}" successfully.`
+      `Role updated to "${newRole}" successfully!`
     );
   };
 
@@ -674,92 +657,159 @@ export default function ProfessorPage() {
           >
             <h2>Manage User Roles</h2>
             <p style={{ color: "var(--ifm-color-emphasis-600)", marginBottom: "1rem" }}>
-              Search for a user by name, then promote them to professor or demote them to student.
+              Select any registered user from the dropdown to view or change their access level.
             </p>
 
-            <form onSubmit={handleRoleSearch} style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-              <input
-                type="text"
-                value={roleSearch}
-                onChange={(e) => setRoleSearch(e.target.value)}
-                placeholder="Search by first or last name…"
-                style={{ flex: 1, minWidth: 200, padding: "0.75rem" }}
-              />
-              <button type="submit" disabled={isSearching}>
-                {isSearching ? "Searching…" : "Search"}
-              </button>
-            </form>
+            {isLoadingProfiles ? (
+              <p>Loading users list...</p>
+            ) : (
+              <div>
+                {/* Optional quick filter by name if the list grows */}
+                <div style={{ marginBottom: "1rem" }}>
+                  <label style={{ display: "block", marginBottom: 6, fontWeight: 500 }}>
+                    Filter list (optional):
+                  </label>
+                  <input
+                    type="text"
+                    value={roleFilter}
+                    onChange={(e) => setRoleFilter(e.target.value)}
+                    placeholder="Type to filter users..."
+                    style={{
+                      width: "100%",
+                      maxWidth: 400,
+                      padding: "0.5rem 0.75rem",
+                      borderRadius: 6,
+                      border: "1px solid var(--ifm-color-emphasis-300)",
+                    }}
+                  />
+                </div>
 
-            {roleMessage && (
-              <p style={{ marginTop: "0.75rem" }}>{roleMessage}</p>
-            )}
+                {/* Dropdown selection */}
+                <div style={{ marginBottom: "1.25rem" }}>
+                  <label style={{ display: "block", marginBottom: 6, fontWeight: 600 }}>
+                    Choose a User:
+                  </label>
+                  <select
+                    value={selectedUserId}
+                    onChange={(e) => {
+                      setSelectedUserId(e.target.value);
+                      setRoleMessage("");
+                    }}
+                    style={{
+                      width: "100%",
+                      maxWidth: 450,
+                      padding: "0.65rem 0.75rem",
+                      borderRadius: 8,
+                      border: "1px solid var(--ifm-color-emphasis-300)",
+                      backgroundColor: "var(--ifm-background-color)",
+                      color: "var(--ifm-font-color-base)",
+                      fontSize: "1rem",
+                    }}
+                  >
+                    <option value="">-- Select a user --</option>
+                    {allProfiles
+                      .filter((u) => u.clerk_user_id !== user.id) // exclude current professor
+                      .filter((u) => {
+                        if (!roleFilter.trim()) return true;
+                        const fullName = `${u.first_name || ""} ${u.last_name || ""}`.toLowerCase();
+                        return fullName.includes(roleFilter.toLowerCase());
+                      })
+                      .map((u) => (
+                        <option key={u.clerk_user_id} value={u.clerk_user_id}>
+                          {u.first_name} {u.last_name || ""} — [{u.role || "student"}]
+                        </option>
+                      ))}
+                  </select>
+                </div>
 
-            {roleResults.length > 0 && (
-              <table
-                style={{
-                  width: "100%",
-                  borderCollapse: "collapse",
-                  marginTop: "1rem",
-                }}
-              >
-                <thead>
-                  <tr>
-                    {["Name", "Current Role", "Actions"].map((h) => (
-                      <th
-                        key={h}
-                        style={{
-                          textAlign: "left",
-                          padding: "0.75rem",
-                          borderBottom: "1px solid var(--ifm-color-emphasis-200)",
-                        }}
-                      >
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {roleResults.map((u) => (
-                    <tr key={u.clerk_user_id}>
-                      <td style={{ padding: "0.75rem", borderBottom: "1px solid var(--ifm-color-emphasis-100)" }}>
-                        {u.first_name} {u.last_name || ""}
-                      </td>
-                      <td style={{ padding: "0.75rem", borderBottom: "1px solid var(--ifm-color-emphasis-100)" }}>
-                        <span
-                          style={{
-                            fontWeight: 600,
-                            color: u.role === "professor"
-                              ? "var(--ifm-color-primary)"
-                              : "inherit",
-                          }}
-                        >
-                          {u.role}
-                        </span>
-                      </td>
-                      <td style={{ padding: "0.75rem", borderBottom: "1px solid var(--ifm-color-emphasis-100)", display: "flex", gap: "0.5rem" }}>
-                        {u.role !== "professor" && (
-                          <button
-                            onClick={() =>
-                              handleRoleChange(u.clerk_user_id, "professor")
-                            }
+                {/* Actions for selected user */}
+                {selectedUserId && (() => {
+                  const target = allProfiles.find((u) => u.clerk_user_id === selectedUserId);
+                  if (!target) return null;
+                  const isTargetProf = target.role === "professor";
+
+                  return (
+                    <div
+                      style={{
+                        padding: "1rem",
+                        backgroundColor: "var(--ifm-color-emphasis-100)",
+                        borderRadius: 8,
+                        maxWidth: 450,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        flexWrap: "wrap",
+                        gap: "1rem",
+                      }}
+                    >
+                      <div>
+                        <strong>{target.first_name} {target.last_name || ""}</strong>
+                        <div style={{ fontSize: "0.85rem", marginTop: 4 }}>
+                          Current Role:{" "}
+                          <span
+                            style={{
+                              fontWeight: 700,
+                              color: isTargetProf
+                                ? "var(--ifm-color-primary)"
+                                : "inherit",
+                            }}
                           >
-                            Make Professor
+                            {target.role || "student"}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div>
+                        {!isTargetProf ? (
+                          <button
+                            onClick={() => handleRoleChange(target.clerk_user_id, "professor")}
+                            disabled={isUpdatingRole}
+                            style={{
+                              padding: "0.5rem 1rem",
+                              borderRadius: 6,
+                              backgroundColor: "var(--ifm-color-primary)",
+                              color: "#fff",
+                              border: "none",
+                              cursor: "pointer",
+                            }}
+                          >
+                            {isUpdatingRole ? "Updating..." : "Make Professor"}
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => handleRoleChange(target.clerk_user_id, "student")}
+                            disabled={isUpdatingRole}
+                            style={{
+                              padding: "0.5rem 1rem",
+                              borderRadius: 6,
+                              backgroundColor: "var(--ifm-color-emphasis-500)",
+                              color: "#fff",
+                              border: "none",
+                              cursor: "pointer",
+                            }}
+                          >
+                            {isUpdatingRole ? "Updating..." : "Make Student"}
                           </button>
                         )}
-                        {u.role !== "student" && (
-                          <button
-                            onClick={() =>
-                              handleRoleChange(u.clerk_user_id, "student")
-                            }
-                          >
-                            Make Student
-                          </button>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                {roleMessage && (
+                  <p
+                    style={{
+                      marginTop: "1rem",
+                      fontWeight: 500,
+                      color: roleMessage.includes("success")
+                        ? "var(--ifm-color-success)"
+                        : "var(--ifm-color-danger)",
+                    }}
+                  >
+                    {roleMessage}
+                  </p>
+                )}
+              </div>
             )}
           </section>
 
